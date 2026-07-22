@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — EORC</title>
+<meta name="description" content="Request a demo of the EORC platform, or contact us for general enquiries, partnerships, or questions about our work.">
+<link rel="icon" href="https://eorc.uk/wp-content/uploads/2026/01/cropped-EORC_logo_letter-270x270.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      EORC
+    </a>
+    <span class="nav-spacer"></span>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="product.html">Technology</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Contact hero -->
+  <section class="hero-dark on-dark" style="padding:180px 24px 120px;">
+    <div class="hero-glow"></div>
+    <div data-hero-content style="position:relative; max-width:900px; margin:0 auto;">
+      <div data-rv class="eyebrow">Contact</div>
+      <h1 data-rv data-rvd="90" class="hero-title">Request a demo.</h1>
+      <p data-rv data-rvd="190" class="hero-lede" style="max-width:620px; margin-top:24px;">Tell us about your system and the decisions you're facing — we'll show you how the platform handles them.</p>
+    </div>
+  </section>
+
+  <!-- Contact form -->
+  <section class="section-light" style="padding:110px 24px 130px;">
+    <div class="contact-grid">
+      <div data-rv data-form-card class="form-card">
+        <form data-form-type="contact" novalidate>
+          <!-- honeypot, hidden from real users -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="contact-website">Website</label>
+            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" required placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-org">Organisation</label>
+              <input id="f-org" name="org" placeholder="Company or institution" autocomplete="organization">
+            </div>
+            <div class="field span-2">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
+            </div>
+            <div class="field span-2">
+              <label for="f-msg">What would you like to see?</label>
+              <textarea id="f-msg" name="message" rows="5" placeholder="Your system, energy carriers, decision horizon, sources of uncertainty…"></textarea>
+            </div>
+            <div class="form-footer span-2">
+              <button type="submit" class="btn btn-primary">Send request</button>
+              <span class="hint">We'll get back to you shortly.</span>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </form>
+
+        <div data-form-success class="form-success" hidden>
+          <div class="check-ring"><span></span></div>
+          <h3>Request received.</h3>
+          <p>Thanks — we'll be in touch at the address you provided.</p>
+        </div>
+      </div>
+
+      <div data-rv data-rvd="120" class="contact-aside">
+        <div>
+          <div class="aside-label">Prefer email?</div>
+          <a href="mailto:hz@eorc.uk" class="aside-email">hz@eorc.uk</a>
+        </div>
+        <div>
+          <div class="aside-label">Based in</div>
+          <div class="aside-value">Edinburgh, United Kingdom</div>
+        </div>
+        <div class="aside-note">
+          <p>Demos run on a problem shaped like yours — bring a system, a portfolio or a planning question.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="section-dark" style="padding:50px 24px 60px;">
+    <div style="max-width:1180px; margin:0 auto;">
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="footer-mark"></span>
+          <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+        </div>
+        <div class="footer-links">
+          <a href="product.html">Technology</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');</script>
+<script src="js/email-service.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
