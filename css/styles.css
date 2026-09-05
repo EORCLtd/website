@@ -561,6 +561,24 @@ input, textarea, button { font-family: var(--font-sans); }
 .form-success h3 { font-size: 24px; font-weight: 650; color: var(--ink); margin: 22px 0 8px; }
 .form-success p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
 
+/* mailto panel filling the contact card while there is no form */
+.contact-invite { text-align: center; padding: 56px 20px; }
+.contact-invite h3 { font-size: 24px; font-weight: 650; color: var(--ink); margin: 0 0 10px; }
+.contact-invite p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); max-width: 440px; margin: 0 auto; }
+.contact-invite .contact-actions { margin: 28px auto 0; }
+.contact-invite .contact-fallback { font-size: 13px; margin: 22px auto 0; }
+.contact-fallback a, .link-btn { color: var(--link); font-weight: 500; }
+.contact-fallback a:hover, .link-btn:hover { color: var(--link-hover); }
+
+/* a button that reads as a link (clipboard copy) */
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
 .contact-aside {
   background: var(--bg-dark);
   border-radius: 28px;
