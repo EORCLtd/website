@@ -5,19 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — EORC</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="/img/cropped-EORC_logo_letter-270x270.png">
+<!-- GitHub Pages serves this file for any unknown path, at any depth, so relative
+     paths cannot be resolved against the request URL. They resolve against this
+     <base> instead: the site root on the custom domain, /<repo>/ on a project page.
+     The script must stay above every element below that uses a relative URL. -->
+<base href="/">
+<script>
+  if (location.hostname.endsWith('.github.io')) {
+    document.querySelector('base').href = '/' + location.pathname.split('/')[1] + '/';
+  }
+</script>
+<link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- GitHub Pages serves this file for any unknown path, at any depth, so its
-     asset and link paths are root-absolute rather than relative. -->
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="site-header">
   <nav class="nav">
-    <a href="/" class="brand">
+    <a href="./" class="brand">
       <span class="brand-mark"></span>
       EORC
     </a>
@@ -26,10 +34,10 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="/product.html">Technology</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-      <li><a href="/contact.html" class="nav-cta">Request a demo</a></li>
+      <li><a href="product.html">Technology</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
     </ul>
   </nav>
 </header>
@@ -42,8 +50,8 @@
       <h1 class="hero-title" style="margin-top:20px;">This page doesn't exist.</h1>
       <p class="hero-lede" style="max-width:560px; margin-top:24px;">The link may be outdated, or the page moved when the site was rebuilt.</p>
       <div class="btn-row" style="justify-content:flex-start; margin-top:38px;">
-        <a href="/" class="btn btn-primary">Back to home</a>
-        <a href="/contact.html" class="btn btn-ghost">Contact us</a>
+        <a href="./" class="btn btn-primary">Back to home</a>
+        <a href="contact.html" class="btn btn-ghost">Contact us</a>
       </div>
     </div>
   </section>
@@ -56,15 +64,15 @@
           <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
         </div>
         <div class="footer-links">
-          <a href="/product.html">Technology</a>
-          <a href="/about.html">About</a>
-          <a href="/contact.html">Contact</a>
+          <a href="product.html">Technology</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </div>
       </footer>
     </div>
   </section>
 </main>
 
-<script src="/js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
