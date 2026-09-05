@@ -48,23 +48,24 @@
     <div class="contact-grid">
       <div data-rv data-form-card class="form-card">
         <!--
-          The EmailJS-backed contact form lives in git history and is restored by
-          reverting the commit that introduced this block. To bring it back:
-            1. restore the <form data-form-type="contact"> markup and the
-               [data-form-success] panel here;
-            2. restore the EmailJS SDK <script>, the emailjs.init(...) call and
-               js/email-service.js at the bottom of this file;
-            3. fill in the three values in EMAILJS_CONFIG (js/email-service.js)
-               and in emailjs.init(), then restrict the key to eorc.uk in the
-               EmailJS dashboard.
-          Until then this static panel points people at the mailbox directly, so
-          nobody hits a form that cannot deliver.
+          A mailto panel rather than a form: the site is static, so sending has to
+          happen either in the visitor's own mail client or through a third party.
+          The subject and body are prefilled so an enquiry arrives with the details
+          we need. js/main.js reveals the fallback row below and fills in the webmail
+          links from this href — the one place the address and template live.
+          The EmailJS-backed form stays in git history; see the README to restore it.
         -->
-        <div class="form-success" style="display:block; padding:56px 20px;">
-          <h3 style="margin-top:0;">Email us to book a demo.</h3>
-          <p style="max-width:440px; margin:0 auto;">Send us a line about your system, the energy carriers involved and the decision you're facing — we'll come back with a slot.</p>
-          <p style="margin:28px 0 0;">
-            <a href="mailto:hz@eorc.uk?subject=Demo%20request%20%E2%80%94%20EORC%20platform" class="btn btn-primary">Email hz@eorc.uk</a>
+        <div class="contact-invite">
+          <h3>Email us to book a demo.</h3>
+          <p>Send us a line about your system, the energy carriers involved and the decision you're facing — we'll come back with a slot.</p>
+          <p class="contact-actions">
+            <a data-mailto href="mailto:hz@eorc.uk?subject=Demo%20request%20%E2%80%94%20EORC%20platform&amp;body=Hi%20EORC%20team%2C%0D%0A%0D%0AOrganisation%3A%0D%0ASystem%20%2F%20energy%20carriers%3A%0D%0ADecision%20we%27re%20facing%3A%0D%0APreferred%20time%20for%20a%20call%3A" class="btn btn-primary">Email hz@eorc.uk</a>
+          </p>
+          <p class="contact-fallback" data-mail-fallback hidden>
+            Nothing opened?
+            <a data-mail-web="gmail" href="#" target="_blank" rel="noopener">Gmail</a> ·
+            <a data-mail-web="outlook" href="#" target="_blank" rel="noopener">Outlook</a> ·
+            <button type="button" class="link-btn" data-copy="hz@eorc.uk">Copy address</button>
           </p>
         </div>
       </div>
@@ -103,7 +104,7 @@
   </section>
 </main>
 
-<!-- EmailJS SDK, emailjs.init(...) and js/email-service.js go back here when the form is re-enabled -->
+<!-- The EmailJS SDK, emailjs.init(...) and js/email-service.js go back here if the form returns -->
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initScrollEffects();
   initFanCanvas();
+  initMailFallback();
+  initCopyButtons();
   document.querySelectorAll('form[data-form-type]').forEach(initForm);
 });
 
@@ -148,6 +150,73 @@ function initFanCanvas() {
     requestAnimationFrame(draw);
   };
   draw();
+}
+
+// ---------- webmail fallback for the mailto CTA ----------
+// A mailto: link does nothing for a visitor with no mail client registered, so the
+// same recipient, subject and body are offered as webmail compose URLs, built from
+// the mailto href itself. The row stays hidden without JS, where they cannot be built.
+function initMailFallback() {
+  const row = document.querySelector('[data-mail-fallback]');
+  const link = document.querySelector('[data-mailto]');
+  if (!row || !link) return;
+
+  const mail = new URL(link.href);
+  const to = decodeURIComponent(mail.pathname);
+  const subject = mail.searchParams.get('subject') || '';
+  const body = mail.searchParams.get('body') || '';
+
+  const compose = {
+    gmail: ['https://mail.google.com/mail/', { view: 'cm', fs: '1', to, su: subject, body }],
+    outlook: ['https://outlook.office.com/mail/deeplink/compose', { to, subject, body }]
+  };
+
+  row.querySelectorAll('[data-mail-web]').forEach(a => {
+    const spec = compose[a.dataset.mailWeb];
+    if (!spec) return;
+    // encodeURIComponent rather than URLSearchParams: the latter writes spaces as
+    // "+", which only decodes back to a space in form-encoded readers
+    a.href = spec[0] + '?' + Object.entries(spec[1])
+      .map(([k, v]) => k + '=' + encodeURIComponent(v))
+      .join('&');
+  });
+
+  row.hidden = false;
+}
+
+// ---------- copy to clipboard: [data-copy] ----------
+function initCopyButtons() {
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    let timer;
+    btn.dataset.label = btn.textContent;
+    btn.addEventListener('click', async () => {
+      const copied = await copyText(btn.dataset.copy);
+      // on failure show the address itself, so it can still be selected by hand
+      btn.textContent = copied ? 'Copied' : btn.dataset.copy;
+      clearTimeout(timer);
+      timer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
+    });
+  });
+}
+
+// navigator.clipboard needs a secure context; fall back to a throwaway selection
+// so the button still works over plain http.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed; top:0; opacity:0;';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch { /* nothing else to try */ }
+    ta.remove();
+    return ok;
+  }
 }
 
 // ---------- generic form handling ----------
