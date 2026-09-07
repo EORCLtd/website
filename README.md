@@ -32,7 +32,7 @@ element that a two-line inline script points at the site root (`/` on a custom d
 ## Contact
 
 `contact.html` has **no form**: GitHub Pages cannot send mail, so the page offers a `mailto:` link to
-`hz@eorc.uk` with the subject and a short body template prefilled, and enquiries land in the mailbox directly.
+`info@eorc.uk` with the subject and a short body template prefilled, and enquiries land in the mailbox directly.
 
 Because a `mailto:` does nothing for a visitor without a registered mail client, `initMailFallback()` in
 `js/main.js` reads that same href and builds Gmail and Outlook compose URLs from it, plus a copy-to-clipboard
@@ -95,7 +95,7 @@ Nothing in the site needs editing for the move: all paths are relative and `404.
 | AAAA  | `@`  | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
 | CNAME | `www`| `eorcltd.github.io.` |
 
-- **Do not touch the MX records** or the SPF/DKIM TXT records: mail on `@eorc.uk` (including `hz@eorc.uk`,
+- **Do not touch the MX records** or the SPF/DKIM TXT records: mail on `@eorc.uk` (including `info@eorc.uk`,
   linked from the contact page) is unaffected by the A records as long as the MX entries stay put.
 - Remove any GoDaddy *Forwarding* / domain-parking rule — it takes precedence over the records and breaks
   certificate issuance.
