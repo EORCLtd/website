@@ -1,6 +1,8 @@
 /* ==========================================================================
    EORC — design tokens & global styles
-   Source design: claude.ai/design project f6079cf0 (Home/Technology/Contact/About)
+   Source designs: claude.ai/design project f6079cf0 (Contact/About)
+                   claude.ai/design project b13591e8 (Home/Technology, "EORC
+                   Homepage" — the generated figures drawn by js/figures.js)
    Dark base alternating with light rounded-top sections, mint accent.
    ========================================================================== */
 
@@ -44,6 +46,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+
+/* Figure controls ship as [hidden] and are un-hidden by js/figures.js, so a
+   visitor without JavaScript never sees a dead control. Author `display`
+   rules would otherwise beat the user-agent's [hidden] rule. */
+[hidden] { display: none !important; }
 
 html { scroll-behavior: smooth; }
 
@@ -670,6 +677,428 @@ input, textarea, button { font-family: var(--font-sans); }
 .site-footer .footer-links a:hover { color: #ffffff; }
 
 /* ==========================================================================
+   Statement (Home — "What we do")
+   ========================================================================== */
+
+.statement {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.statement p {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.32;
+  color: rgba(242, 244, 246, 0.92);
+  margin: 24px 0 0;
+  text-wrap: pretty;
+}
+.statement .lit { color: var(--accent); }
+
+/* ==========================================================================
+   Figure panels — generated diagrams (js/figures.js)
+   Every panel keeps its labels, legend and caption in the markup, so the
+   panel still reads as a labelled frame if the diagram never renders.
+   ========================================================================== */
+
+.figure-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 24px;
+}
+
+.figure-panel-light {
+  background: var(--card-bg);
+  border: 1px solid rgba(22, 25, 29, 0.08);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 20px 50px rgba(16, 24, 40, 0.08);
+}
+
+/* Hero panel: open-bottomed, bleeding into the dark section below it. */
+.hero-figure {
+  position: relative;
+  max-width: 1180px;
+  margin: 60px auto 0;
+  border-radius: 26px 26px 0 0;
+  border-bottom: 0;
+  padding: 24px 26px 28px;
+  text-align: left;
+}
+
+/* Dark network frame sitting inside a light section. */
+.figure-panel-dark {
+  background: var(--bg-dark);
+  border-radius: 26px;
+  padding: 22px;
+  box-shadow: 0 26px 60px rgba(16, 24, 40, 0.16);
+}
+
+.figure-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.figure-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.figure-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--paper-40);
+}
+
+.figure-svg { width: 100%; display: block; margin-top: 16px; }
+.figure-svg.fixed-h { height: 262px; }
+.figure-svg.auto-h { height: auto; }
+
+/* Equal side columns keep the middle label ("today") centred under x = 50%,
+   whatever the widths of the outer two; on narrow screens the gap makes an
+   outer label wrap rather than run into it. */
+.figure-axis {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-40);
+  padding: 0 2px;
+}
+.figure-axis span:last-child { text-align: right; }
+
+.figure-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 8px;
+  padding-top: 14px;
+}
+
+.figure-caption {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(242, 244, 246, 0.45);
+}
+.figure-panel-light .figure-caption { color: var(--ink-soft); }
+
+.figure-foot .horizon-title { font-size: 15px; font-weight: 600; color: var(--paper); }
+.figure-foot .horizon-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(242, 244, 246, 0.6);
+  margin-top: 4px;
+  max-width: 520px;
+}
+
+/* "Schematic — not model output" style disclaimers. */
+.figure-note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: rgba(242, 244, 246, 0.34);
+  margin-top: 14px;
+}
+.figure-note.on-light { color: var(--ink-soft); }
+
+/* ==========================================================================
+   Figure controls
+   ========================================================================== */
+
+/* Segmented tab control. */
+.seg {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  width: fit-content;
+  flex-wrap: wrap;
+}
+
+.seg button {
+  border: 0;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper-62);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.seg button:hover { color: var(--paper); }
+.seg button[aria-pressed="true"] {
+  background: oklch(0.78 0.14 170 / 0.18);
+  color: var(--accent);
+}
+
+/* Carrier filter pills. */
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-row button {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: var(--paper-62);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 13px;
+  border-radius: 999px;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.filter-row button:hover { border-color: rgba(255, 255, 255, 0.3); color: var(--paper); }
+.filter-row button[aria-pressed="true"] {
+  background: oklch(0.78 0.14 170 / 0.18);
+  color: var(--accent);
+  border-color: transparent;
+}
+
+/* Uncertainty slider. */
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+.range-row .range-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-50);
+  white-space: nowrap;
+}
+.range-row input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.range-row .range-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  width: 80px;
+  text-align: right;
+}
+
+/* Uncertainty-source tags. */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  padding-top: 18px;
+}
+.chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--paper-62);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.seg button:focus-visible,
+.filter-row button:focus-visible,
+.range-row input[type="range"]:focus-visible {
+  outline: 2px solid var(--accent-mid);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Figure internals
+   ========================================================================== */
+
+@keyframes flow { to { stroke-dashoffset: -140; } }
+
+.net-link, .net-node { transition: opacity 0.45s var(--ease); }
+.net-flow { animation: flow 2.6s linear infinite; }
+
+.alg-svg text { font-family: var(--font-mono); }
+
+/* Curves draw themselves in when the section is first scrolled to. */
+.alg-curve {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 1.6s ease-out;
+}
+.alg-curve.delayed { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   Platform mockup
+   ========================================================================== */
+
+.platform-mock {
+  margin-top: 36px;
+  background: var(--card-bg);
+  border: 1px solid rgba(22, 25, 29, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 26px 64px rgba(16, 24, 40, 0.14);
+}
+
+.mock-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(22, 25, 29, 0.08);
+  background: rgba(22, 25, 29, 0.02);
+}
+.mock-chrome .dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(22, 25, 29, 0.14);
+  flex: none;
+}
+.mock-chrome .mock-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-left: 8px;
+}
+
+.mock-body {
+  display: grid;
+  grid-template-columns: minmax(180px, 200px) minmax(0, 1fr) minmax(190px, 210px);
+  min-height: 330px;
+}
+
+.mock-side { border-right: 1px solid rgba(22, 25, 29, 0.08); padding: 16px 0; }
+.mock-config { border-left: 1px solid rgba(22, 25, 29, 0.08); padding: 18px; }
+.mock-main { padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+
+.mock-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.mock-side .mock-label { padding: 0 18px 12px; }
+.mock-side .mock-label.later { padding: 24px 18px 10px; }
+
+.mock-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border-left: 2px solid transparent;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.mock-item .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(22, 25, 29, 0.22);
+  flex: none;
+}
+.mock-item.on {
+  background: oklch(0.78 0.14 170 / 0.1);
+  border-left-color: var(--accent-deep);
+  color: var(--ink);
+  font-weight: 600;
+}
+.mock-item.on .dot { background: var(--accent-deep); }
+
+.mock-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px; }
+.mock-tags span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mid);
+  background: rgba(22, 25, 29, 0.05);
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.mock-main h3 { font-size: 14px; font-weight: 600; color: var(--ink); }
+.mock-main .mock-axis {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.mock-field { margin-top: 12px; }
+.mock-field:first-of-type { margin-top: 14px; }
+.mock-field .k { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-soft); }
+.mock-field .v {
+  font-size: 13px;
+  color: var(--ink);
+  border: 1px solid rgba(22, 25, 29, 0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 5px;
+  background: #fbfcfd;
+}
+
+.mock-note {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 860px) {
+  .mock-body { grid-template-columns: 1fr; }
+  .mock-side {
+    border-right: 0;
+    border-bottom: 1px solid rgba(22, 25, 29, 0.08);
+  }
+  .mock-config {
+    border-left: 0;
+    border-top: 1px solid rgba(22, 25, 29, 0.08);
+  }
+}
+
+@media (max-width: 560px) {
+  .figure-panel, .figure-panel-light { padding: 18px; }
+  .hero-figure { padding: 18px 18px 22px; border-radius: 20px 20px 0 0; }
+  .range-row { flex-wrap: wrap; gap: 10px; }
+  .range-row input[type="range"] { flex-basis: 100%; order: 3; }
+  .range-row .range-value { text-align: left; width: auto; }
+  .seg button { padding: 8px 13px; font-size: 12px; }
+}
+
+/* ==========================================================================
    Motion
    ========================================================================== */
 
@@ -678,4 +1107,7 @@ input, textarea, button { font-family: var(--font-sans); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .scroll-hint span { animation: none; }
+  .net-flow { animation: none; }
+  .net-link, .net-node { transition: none; }
+  .alg-curve { stroke-dashoffset: 0; transition: none; }
 }

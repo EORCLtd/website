@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact — EORC</title>
-<meta name="description" content="Request a demo of the EORC platform, or contact us for general enquiries, partnerships, or questions about our work.">
-<link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — EORC</title>
+  <meta name="description"
+    content="Request a demo of the EORC platform, or contact us for general enquiries, partnerships, or questions about our work.">
+  <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="brand">
-      <span class="brand-mark"></span>
-      EORC
-    </a>
-    <span class="nav-spacer"></span>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="product.html">Technology</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
-      <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
-    </ul>
-  </nav>
-</header>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"></span>
+        EORC
+      </a>
+      <span class="nav-spacer"></span>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="product.html">Technology</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <!-- Contact hero -->
-  <section class="hero-dark on-dark" style="padding:180px 24px 120px;">
-    <div class="hero-glow"></div>
-    <div data-hero-content style="position:relative; max-width:900px; margin:0 auto;">
-      <div data-rv class="eyebrow">Contact</div>
-      <h1 data-rv data-rvd="90" class="hero-title">Request a demo.</h1>
-      <p data-rv data-rvd="190" class="hero-lede" style="max-width:620px; margin-top:24px;">Tell us about your system and the decisions you're facing — we'll show you how the platform handles them.</p>
-    </div>
-  </section>
+  <main>
+    <!-- Contact hero -->
+    <section class="hero-dark on-dark" style="padding:180px 24px 120px;">
+      <div class="hero-glow"></div>
+      <div data-hero-content style="position:relative; max-width:900px; margin:0 auto;">
+        <div data-rv class="eyebrow">Contact</div>
+        <h1 data-rv data-rvd="90" class="hero-title">Request a demo.</h1>
+        <p data-rv data-rvd="190" class="hero-lede" style="max-width:620px; margin-top:24px;">Tell us about your system
+          and the decisions you're facing — we'll show you how the platform handles them.</p>
+      </div>
+    </section>
 
-  <!-- Contact form -->
-  <section class="section-light" style="padding:110px 24px 130px;">
-    <div class="contact-grid">
-      <div data-rv data-form-card class="form-card">
-        <!--
+    <!-- Contact form -->
+    <section class="section-light" style="padding:110px 24px 130px;">
+      <div class="contact-grid">
+        <div data-rv data-form-card class="form-card">
+          <!--
           A mailto panel rather than a form: the site is static, so sending has to
           happen either in the visitor's own mail client or through a third party.
           The subject and body are prefilled so an enquiry arrives with the details
@@ -55,56 +61,60 @@
           links from this href — the one place the address and template live.
           The EmailJS-backed form stays in git history; see the README to restore it.
         -->
-        <div class="contact-invite">
-          <h3>Email us to book a demo.</h3>
-          <p>Send us a line about your system, the energy carriers involved and the decision you're facing — we'll come back with a slot.</p>
-          <p class="contact-actions">
-            <a data-mailto href="mailto:hz@eorc.uk?subject=Demo%20request%20%E2%80%94%20EORC%20platform&amp;body=Hi%20EORC%20team%2C%0D%0A%0D%0AOrganisation%3A%0D%0ASystem%20%2F%20energy%20carriers%3A%0D%0ADecision%20we%27re%20facing%3A%0D%0APreferred%20time%20for%20a%20call%3A" class="btn btn-primary">Email hz@eorc.uk</a>
-          </p>
-          <p class="contact-fallback" data-mail-fallback hidden>
-            Nothing opened?
-            <a data-mail-web="gmail" href="#" target="_blank" rel="noopener">Gmail</a> ·
-            <a data-mail-web="outlook" href="#" target="_blank" rel="noopener">Outlook</a> ·
-            <button type="button" class="link-btn" data-copy="hz@eorc.uk">Copy address</button>
-          </p>
+          <div class="contact-invite">
+            <h3>Email us to book a demo.</h3>
+            <p>Send us a line about your system, the energy carriers involved and the decision you're facing — we'll
+              come back with a slot.</p>
+            <p class="contact-actions">
+              <a data-mailto
+                href="mailto:info@eorc.uk?subject=Demo%20request%20%E2%80%94%20EORC%20platform&amp;body=Hi%20EORC%20team%2C%0D%0A%0D%0AOrganisation%3A%0D%0ASystem%20%2F%20energy%20carriers%3A%0D%0ADecision%20we%27re%20facing%3A%0D%0APreferred%20time%20for%20a%20call%3A"
+                class="btn btn-primary">Email info@eorc.uk</a>
+            </p>
+            <p class="contact-fallback" data-mail-fallback hidden>
+              Nothing opened?
+              <a data-mail-web="gmail" href="#" target="_blank" rel="noopener">Gmail</a> ·
+              <a data-mail-web="outlook" href="#" target="_blank" rel="noopener">Outlook</a> ·
+              <button type="button" class="link-btn" data-copy="info@eorc.uk">Copy address</button>
+            </p>
+          </div>
+        </div>
+
+        <div data-rv data-rvd="120" class="contact-aside">
+          <div>
+            <div class="aside-label">Prefer email?</div>
+            <a href="mailto:info@eorc.uk" class="aside-email">info@eorc.uk</a>
+          </div>
+          <div>
+            <div class="aside-label">Based in</div>
+            <div class="aside-value">Edinburgh, United Kingdom</div>
+          </div>
+          <div class="aside-note">
+            <p>Demos run on a problem shaped like yours — bring a system, a portfolio or a planning question.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div data-rv data-rvd="120" class="contact-aside">
-        <div>
-          <div class="aside-label">Prefer email?</div>
-          <a href="mailto:hz@eorc.uk" class="aside-email">hz@eorc.uk</a>
-        </div>
-        <div>
-          <div class="aside-label">Based in</div>
-          <div class="aside-value">Edinburgh, United Kingdom</div>
-        </div>
-        <div class="aside-note">
-          <p>Demos run on a problem shaped like yours — bring a system, a portfolio or a planning question.</p>
-        </div>
+    <!-- Footer -->
+    <section class="section-dark" style="padding:50px 24px 60px;">
+      <div style="max-width:1180px; margin:0 auto;">
+        <footer class="site-footer">
+          <div class="footer-brand">
+            <span class="footer-mark"></span>
+            <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+          </div>
+          <div class="footer-links">
+            <a href="product.html">Technology</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </footer>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <section class="section-dark" style="padding:50px 24px 60px;">
-    <div style="max-width:1180px; margin:0 auto;">
-      <footer class="site-footer">
-        <div class="footer-brand">
-          <span class="footer-mark"></span>
-          <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
-        </div>
-        <div class="footer-links">
-          <a href="product.html">Technology</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </footer>
-    </div>
-  </section>
-</main>
-
-<!-- The EmailJS SDK, emailjs.init(...) and js/email-service.js go back here if the form returns -->
-<script src="js/main.js"></script>
+  <!-- The EmailJS SDK, emailjs.init(...) and js/email-service.js go back here if the form returns -->
+  <script src="js/main.js"></script>
 </body>
+
 </html>

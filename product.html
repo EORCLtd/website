@@ -47,7 +47,7 @@
   </section>
 
   <!-- 01 System modelling -->
-  <section class="section-light" style="padding-bottom:60px;">
+  <section class="section-light" style="padding-bottom:90px;">
     <div class="feature-row">
       <div data-rv class="feature-copy">
         <div class="eyebrow">01 · System modelling</div>
@@ -60,59 +60,99 @@
         </ul>
       </div>
       <div data-rv data-rvd="120" class="feature-media">
-        <div data-zoom class="media-frame">
-          <img src="img/initial_grid-4.png" alt="Pan-European energy network model">
+        <!-- Pan-European network, filtered by energy carrier -->
+        <div data-fig="network" class="figure-panel-dark on-dark">
+          <div class="filter-row" data-net-controls hidden>
+            <button type="button" data-value="all" aria-pressed="true">All carriers</button>
+            <button type="button" data-value="e" aria-pressed="false">Power</button>
+            <button type="button" data-value="h" aria-pressed="false">Hydrogen</button>
+            <button type="button" data-value="g" aria-pressed="false">Oil, gas &amp; CCS</button>
+          </div>
+          <svg class="figure-svg auto-h" viewBox="0 0 600 620" aria-hidden="true">
+            <g data-net-links></g>
+            <g data-net-flows></g>
+            <g data-net-nodes></g>
+          </svg>
+          <div class="figure-foot">
+            <div class="figure-caption" data-net-caption>All carriers in one integrated model</div>
+            <div class="figure-caption">schematic topology</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 02 Uncertainty -->
-  <section style="background:var(--bg-light); padding:80px 24px 60px;">
+  <section class="section-dark on-dark" style="padding:96px 24px;">
     <div class="feature-row reverse">
       <div data-rv data-rvd="120" class="feature-media">
-        <div data-zoom class="media-frame">
-          <img src="img/node_form-1.png" alt="Uncertainty configuration in the model">
+        <!-- Uncertainty across three decision timescales -->
+        <div data-fig="horizon" class="figure-panel">
+          <div class="seg" data-horizon-controls hidden>
+            <button type="button" data-value="day" aria-pressed="false">Operational</button>
+            <button type="button" data-value="year" aria-pressed="true">Seasonal</button>
+            <button type="button" data-value="decade" aria-pressed="false">Strategic</button>
+          </div>
+          <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:250px;" aria-hidden="true">
+            <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(242,244,246,.07)"></line>
+            <line x1="0" y1="110" x2="600" y2="110" stroke="rgba(242,244,246,.07)"></line>
+            <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(242,244,246,.07)"></line>
+            <path data-horizon-area fill="oklch(0.78 0.14 170 / .14)"></path>
+            <path data-horizon-path fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+          </svg>
+          <div class="figure-foot">
+            <div>
+              <div class="horizon-title" data-horizon-title>Uncertainty across multiple time horizons</div>
+              <div class="horizon-body" data-horizon-body>Scenarios generated and evaluated across seasons, with trade-offs between cost, risk and system performance made comparable.</div>
+            </div>
+            <div class="figure-caption" data-horizon-axis>seasons</div>
+          </div>
         </div>
       </div>
       <div data-rv class="feature-copy">
         <div class="eyebrow">02 · Uncertainty</div>
-        <h2 class="feature-title">Uncertainty, modelled explicitly</h2>
-        <p>Unlike deterministic planning tools, our models represent uncertainty directly within the optimisation problem — demand evolution, renewable generation, fuel prices, policy assumptions and technology costs.</p>
-        <p>Decisions are evaluated for <span style="color:var(--ink); font-weight:600;">robustness</span> — not optimality under a single assumed future.</p>
+        <h2 class="feature-title" style="color:var(--paper);">Uncertainty, modelled explicitly</h2>
+        <p style="color:var(--paper-66);">Unlike deterministic planning tools, our models represent uncertainty directly within the optimisation problem — demand evolution, renewable generation, fuel prices, policy assumptions and technology costs.</p>
+        <p style="color:var(--paper-66);">Decisions are evaluated for <span style="color:var(--paper); font-weight:600;">robustness</span> — not optimality under a single assumed future.</p>
       </div>
     </div>
   </section>
 
   <!-- 03 Algorithms -->
-  <section style="background:var(--bg-light); padding:80px 24px 60px;">
-    <div style="max-width:1180px; margin:0 auto;">
-      <div data-rv style="max-width:720px;">
+  <section class="section-light" style="padding:100px 24px 90px;">
+    <div class="feature-row">
+      <div data-rv class="feature-copy">
         <div class="eyebrow">03 · Algorithms</div>
         <h2 class="feature-title">Scalable optimisation and AI algorithms</h2>
-        <p style="font-size:16px; line-height:1.6; color:var(--ink-soft); margin:18px 0 0;">Formulations and solution techniques chosen to balance computational tractability with modelling fidelity — enabling analysis at high spatial, temporal and technological resolution.</p>
+        <p>Formulations and solution techniques chosen to balance computational tractability with modelling fidelity — enabling analysis at high spatial, temporal and technological resolution.</p>
         <ul class="feature-list">
           <li>Proprietary EORC algorithms solve large-scale problems that are intractable for leading commercial solvers</li>
-          <li>Neural-network-enhanced optimisation algorithms</li>
         </ul>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; margin-top:44px;">
-        <div data-rv class="card" style="padding:28px; border-color:rgba(22,25,29,0.08);">
-          <div style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);">Rapid solution times</div>
-          <img src="img/solution_performance-4.png" alt="Solution performance versus problem size" style="width:100%; display:block; border-radius:12px; margin-top:18px;">
+      <div data-rv data-rvd="120" class="feature-media">
+        <!-- Solution time against problem size; draws itself in when first scrolled to -->
+        <div data-fig="algorithms" class="figure-panel-light" style="padding:28px;">
+          <div class="figure-caption">Rapid solution times</div>
+          <svg class="figure-svg auto-h alg-svg" viewBox="0 0 600 300" aria-hidden="true">
+            <line x1="40" y1="270" x2="590" y2="270" stroke="rgba(22,25,29,.14)"></line>
+            <line x1="40" y1="20" x2="40" y2="270" stroke="rgba(22,25,29,.14)"></line>
+            <path data-alg-solver class="alg-curve" fill="none" stroke="rgba(22,25,29,.28)" stroke-width="2.4"></path>
+            <path data-alg-eorc class="alg-curve delayed" fill="none" stroke="var(--accent-deep)" stroke-width="2.8"></path>
+            <text x="52" y="248" font-size="12" fill="var(--accent-deep)">EORC algorithms</text>
+            <text x="120" y="70" font-size="12" fill="rgba(22,25,29,.45)">commercial solver</text>
+            <text x="46" y="16" font-size="10" fill="rgba(22,25,29,.4)">solution time</text>
+            <text x="516" y="290" font-size="10" fill="rgba(22,25,29,.4)">problem size</text>
+          </svg>
         </div>
-        <div data-rv data-rvd="110" class="card" style="padding:28px; border-color:rgba(22,25,29,0.08);">
-          <div style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);">Tractability beyond solver limits</div>
-          <img src="img/problem_size-2.png" alt="Problem size beyond commercial solver limits" style="width:100%; display:block; border-radius:12px; margin-top:18px;">
-        </div>
+        <div class="figure-note on-light">Qualitative chart — shape only, not benchmark results.</div>
       </div>
     </div>
   </section>
 
   <!-- 04 Scenarios -->
-  <section style="background:var(--bg-light); padding:80px 24px 120px;">
+  <section style="background:var(--bg-light); padding:0 24px 96px;">
     <div class="feature-row">
-      <div data-rv class="feature-copy">
+      <div data-rv class="feature-copy" style="max-width:720px;">
         <div class="eyebrow">04 · Scenarios</div>
         <h2 class="feature-title">Scenario generation and evaluation</h2>
         <p>Scenarios derived from historical data, probabilistic forecasts or user-defined assumptions — compared across time horizons to quantify trade-offs between cost, risk and system performance.</p>
@@ -122,27 +162,86 @@
           <li>Data-driven long-term scenario generation</li>
         </ul>
       </div>
-      <div data-rv data-rvd="120" class="feature-media">
-        <div data-zoom class="media-frame">
-          <img src="img/scenario_generation-1.png" alt="Scenario fan across time horizons">
+    </div>
+  </section>
+
+  <!-- 05 Platform -->
+  <section style="background:#ffffff; border-top:1px solid rgba(22,25,29,0.08); padding:96px 24px;">
+    <div style="max-width:1180px; margin:0 auto;">
+      <div data-rv class="eyebrow">05 · Platform</div>
+      <h2 data-rv data-rvd="80" style="font-size:clamp(28px,3.6vw,46px); line-height:1.08; letter-spacing:-0.028em; font-weight:650; color:var(--ink); max-width:660px; margin:16px 0 0;">Built for analysts and decision-makers.</h2>
+      <p data-rv data-rvd="140" style="font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:640px; margin:18px 0 0;">Data management, model configuration and results analysis in one place — transparent exploration of assumptions and outcomes.</p>
+
+      <div data-rv data-rvd="200" class="platform-mock">
+        <div class="mock-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="mock-title">EORC platform — interface mockup</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-side">
+            <div class="mock-label">Data management</div>
+            <div class="mock-item on"><span class="dot"></span>Demand evolution</div>
+            <div class="mock-item"><span class="dot"></span>Renewable generation</div>
+            <div class="mock-item"><span class="dot"></span>Fuel prices</div>
+            <div class="mock-item"><span class="dot"></span>Policy assumptions</div>
+            <div class="mock-item"><span class="dot"></span>Technology costs</div>
+            <div class="mock-label later">Carriers</div>
+            <div class="mock-tags">
+              <span>power</span><span>heat</span><span>hydrogen</span><span>oil &amp; gas</span><span>CCS</span>
+            </div>
+          </div>
+          <div class="mock-main">
+            <h3>Results analysis — outcome spread across scenarios</h3>
+            <svg viewBox="0 0 560 180" preserveAspectRatio="none" style="width:100%; height:180px; display:block;" aria-hidden="true">
+              <line x1="0" y1="150" x2="560" y2="150" stroke="rgba(22,25,29,.1)"></line>
+              <line x1="0" y1="100" x2="560" y2="100" stroke="rgba(22,25,29,.06)"></line>
+              <line x1="0" y1="50" x2="560" y2="50" stroke="rgba(22,25,29,.06)"></line>
+              <line x1="68" y1="120" x2="68" y2="160" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="46" y="132" width="44" height="16" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="46" y1="138.8" x2="90" y2="138.8" stroke="var(--accent-deep)" stroke-width="2"></line>
+              <line x1="160" y1="89.3" x2="160" y2="156.8" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="138" y="109.5" width="44" height="27" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="138" y1="121" x2="182" y2="121" stroke="var(--accent-deep)" stroke-width="2"></line>
+              <line x1="252" y1="58.5" x2="252" y2="153.5" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="230" y="87" width="44" height="38" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="230" y1="103.2" x2="274" y2="103.2" stroke="var(--accent-deep)" stroke-width="2"></line>
+              <line x1="344" y1="27.8" x2="344" y2="150.3" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="322" y="64.5" width="44" height="49" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="322" y1="85.3" x2="366" y2="85.3" stroke="var(--accent-deep)" stroke-width="2"></line>
+              <line x1="436" y1="4" x2="436" y2="147" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="414" y="42" width="44" height="60" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="414" y1="67.5" x2="458" y2="67.5" stroke="var(--accent-deep)" stroke-width="2"></line>
+              <line x1="528" y1="4" x2="528" y2="143.8" stroke="rgba(22,25,29,.3)"></line>
+              <rect x="506" y="19.5" width="44" height="71" rx="2" fill="oklch(0.78 0.14 170 / .35)" stroke="var(--accent-deep)"></rect>
+              <line x1="506" y1="49.7" x2="550" y2="49.7" stroke="var(--accent-deep)" stroke-width="2"></line>
+            </svg>
+            <div class="mock-axis">
+              <span>near term</span><span>time horizon →</span><span>long term</span>
+            </div>
+          </div>
+          <div class="mock-config">
+            <div class="mock-label">Model configuration</div>
+            <div class="mock-field"><div class="k">Scope</div><div class="v">pan-European</div></div>
+            <div class="mock-field"><div class="k">Timescale</div><div class="v">operational → strategic</div></div>
+            <div class="mock-field"><div class="k">Uncertainty</div><div class="v">explicit</div></div>
+            <div class="mock-field"><div class="k">Planning</div><div class="v">investment · retrofit · abandonment</div></div>
+            <div class="mock-note">Interface mockup — illustrative, not a screenshot of the shipping build.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 05 Platform + footer -->
-  <section class="section-dark on-dark" style="padding:140px 24px 70px; text-align:center; overflow:hidden;">
+  <!-- CTA + footer -->
+  <section class="section-dark on-dark" style="padding:130px 24px 60px;">
     <div style="max-width:1180px; margin:0 auto;">
-      <div data-rv class="eyebrow">05 · Platform</div>
-      <h2 data-rv data-rvd="80" style="font-size:clamp(32px,4.2vw,56px); line-height:1.06; letter-spacing:-0.028em; font-weight:650; color:var(--paper); max-width:820px; margin:18px auto 0;">Built for analysts and decision-makers.</h2>
-      <p data-rv data-rvd="160" style="font-size:17px; line-height:1.6; color:var(--paper-62); max-width:640px; margin:22px auto 0;">Data management, model configuration and results analysis in one place — transparent exploration of assumptions and outcomes.</p>
-      <div data-rv data-rvd="220">
-        <div data-zoom style="max-width:1040px; margin:56px auto 0; background:#ffffff; border-radius:20px; padding:18px; border:1px solid rgba(255,255,255,0.14); box-shadow:0 40px 120px oklch(0.78 0.14 170 / 0.16);">
-          <img src="img/software-5-1024x328.png" alt="EORC software platform interface" style="width:100%; display:block; border-radius:10px;">
+      <div style="text-align:center;">
+        <h2 data-rv class="cta-title">See your energy system<span class="muted-line">under uncertainty.</span></h2>
+        <p data-rv data-rvd="90" class="cta-lede" style="max-width:540px;">Get a walkthrough of the EORC platform on a problem that looks like yours.</p>
+        <div data-rv data-rvd="180" class="btn-row" style="margin-top:36px;">
+          <a href="contact.html" class="btn btn-primary">Request a demo</a>
+          <a href="about.html" class="btn btn-ghost">Meet the team</a>
         </div>
-      </div>
-      <div data-rv style="margin-top:80px;">
-        <a href="contact.html" class="btn btn-primary">Request a demo</a>
       </div>
       <footer class="site-footer" style="margin-top:120px;">
         <div class="footer-brand">
@@ -160,7 +259,7 @@
   </section>
 </main>
 
-<script src="js/email-service.js"></script>
+<script src="js/figures.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
