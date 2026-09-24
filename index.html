@@ -127,7 +127,90 @@
       <div data-rv class="eyebrow">Our technology</div>
       <h2 data-rv data-rvd="80" class="section-title">One platform, from scenarios to decisions.</h2>
       <p data-rv data-rvd="140" style="font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:660px; margin:20px 0 0;">Advanced optimisation and AI methods with explicit representations of uncertainty — operating at scale across energy carriers, geographic regions and decision timescales.</p>
-      <div data-rv data-rvd="200" style="margin-top:36px;">
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));">
+        <div data-rv class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
+          <h3 style="font-size:20px; margin:0 0 8px;">Multi-energy, multi-scale modelling</h3>
+          <p style="margin-bottom:20px;">Pan-European scope. Power, heat, hydrogen, oil &amp; gas and CCS in one integrated model.</p>
+          <img src="img/initial_grid-4.png" alt="Pan-European energy system network model" style="width:100%; height:210px; object-fit:contain; border-radius:14px; border:1px solid rgba(22,25,29,0.06); background:#ffffff; margin-top:auto;">
+        </div>
+        <div data-rv data-rvd="90" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
+          <h3 style="font-size:20px; margin:0 0 8px;">Algorithms beyond solver limits</h3>
+          <p style="margin-bottom:20px;">Proprietary optimisation and neural-network-enhanced algorithms solve problems commercial solvers can't.</p>
+          <!-- Tractable problem size, EORC against Gurobi -->
+          <figure data-fig="bars" class="bars compact card-chart" style="--max:5000;">
+            <div class="bars-legend">
+              <span style="--swatch:var(--series-a);">Variables</span>
+              <span style="--swatch:var(--series-b);">Constraints</span>
+            </div>
+            <div class="bars-plot">
+              <div class="bars-row">
+                <div class="bars-name">Gurobi</div>
+                <div class="bars-track"><span class="bars-note">549× smaller — not visible at this scale</span></div>
+              </div>
+              <div class="bars-row">
+                <div class="bars-name">EORC</div>
+                <div class="bars-track">
+                  <div class="bar-line" style="--i:0;"><span class="bar" style="--v:1000;"></span><span class="bar-value out"><span class="sr-only">Variables: </span>≈ 1&nbsp;000&nbsp;M</span></div>
+                  <div class="bar-line" style="--i:1;"><span class="bar b" style="--v:4500;"><span class="bar-value"><span class="sr-only">Constraints: </span>≈ 4&nbsp;500&nbsp;M</span></span></div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="bars-caption">
+              <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than those tractable with Gurobi.</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div data-rv data-rvd="180" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
+          <h3 style="font-size:20px; margin:0 0 8px;">Scenario generation</h3>
+          <p style="margin-bottom:20px;">Data-driven and optimisation-based scenarios, from historical data to user-defined futures.</p>
+          <img src="img/scenario_generation-1.png" alt="Scenario generation across time horizons" style="width:100%; height:210px; object-fit:contain; border-radius:14px; border:1px solid rgba(22,25,29,0.06); background:#ffffff; margin-top:auto;">
+        </div>
+        <div data-rv class="card" style="grid-column:1/-1; border-radius:28px; padding:48px 28px 40px; text-align:center;">
+          <h3 style="font-size:24px; letter-spacing:-0.015em; margin:0 0 8px;">A user-focused platform</h3>
+          <p style="font-size:16px; max-width:620px; margin:0 auto;">Integrated data management, model configuration and results analysis — built for analysts and decision-makers.</p>
+          <!-- Platform workflow: stages flow in when first scrolled to -->
+          <div class="figure-panel-light" style="max-width:920px; margin:30px auto 0;">
+            <div data-fig="workflow" class="workflow">
+              <div class="wf-stage wf-data" style="--i:0;">
+                <h4 class="wf-title">Data analytics</h4>
+                <ul class="wf-list">
+                  <li>Time series scenario generation</li>
+                  <li>Long-term commodity, policy, and technology scenario generation</li>
+                  <li>European energy system database</li>
+                </ul>
+              </div>
+              <div class="wf-arrow" style="--i:1;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></div>
+              <div class="wf-core">
+                <div class="wf-stage wf-alg" style="--i:2;">
+                  <h4 class="wf-title">Algorithms</h4>
+                  <p>A toolbox of fast AI- and optimisation-based algorithms</p>
+                </div>
+                <div class="wf-arrow down" style="--i:3;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></div>
+                <div class="wf-stage wf-models" style="--i:4;">
+                  <h4 class="wf-title">Models</h4>
+                  <ul class="wf-list wf-chips">
+                    <li>Long-term and short-term uncertainty</li>
+                    <li>Integrated investment, retrofit and abandonment planning with operational scheduling</li>
+                    <li>Pan-European multi-energy system: power, oil and natural gas, hydrogen</li>
+                    <li>North Sea offshore system: offshore wind, O&amp;G platforms, pipelines</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="wf-arrow" style="--i:5;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></div>
+              <div class="wf-stage wf-results" style="--i:6;">
+                <h4 class="wf-title">Results analytics</h4>
+                <ul class="wf-list">
+                  <li>Long-term power prices analytics</li>
+                  <li>Energy infrastructure pathways analysis</li>
+                  <li>Energy asset valuation</li>
+                  <li>Uncertainty analytics</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-rv style="text-align:center; margin-top:48px;">
         <a href="product.html" class="btn btn-dark">Explore the technology</a>
       </div>
     </div>

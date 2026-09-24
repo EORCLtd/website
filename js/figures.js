@@ -2,10 +2,14 @@
    EORC — generated figures
    Geometry ported from Claude Design project b13591e8 ("EORC Homepage").
 
-   Every figure is decorative: headings, body copy, bullet lists, captions and
-   legends all live in the static markup, so a visitor without JavaScript loses
-   the diagrams but no information. Interactive controls are marked [hidden] in
-   the markup and un-hidden here, so they never appear dead.
+   The drawn figures are decorative: headings, body copy, bullet lists,
+   captions and legends all live in the static markup, so a visitor without
+   JavaScript loses the diagrams but no information. Interactive controls are
+   marked [hidden] in the markup and un-hidden here, so they never appear dead.
+
+   The benchmark bar charts and the platform workflow are the exception: they
+   are real content, built entirely in markup and CSS, and this file only
+   plays their entrance.
 
    Each init returns early when its host element is absent, so all pages can
    load this file.
@@ -311,37 +315,28 @@ window.EORCFigures = (function () {
   }
 
   // ==========================================================================
-  // Technology 03 — algorithm chart (draws in once on scroll)
+  // Benchmark bar charts + platform workflow (Home, Technology 03 and 05)
   // ==========================================================================
 
-  const SOLVER_CURVE = line(x => Math.min(1, Math.pow(x / 0.62, 3.4)), 40, 400, 40, 270, 240);
-  const EORC_CURVE = line(x => Math.pow(x, 1.12) * 0.42, 40, 588, 50, 270, 240);
-
-  function initAlgorithmCharts() {
-    const host = document.querySelector('[data-fig="algorithms"]');
-    if (!host) return;
-
-    const solver = host.querySelector('[data-alg-solver]');
-    const eorc = host.querySelector('[data-alg-eorc]');
-
-    if (solver) solver.setAttribute('d', SOLVER_CURVE);
-    if (eorc) eorc.setAttribute('d', EORC_CURVE);
-
-    const run = () => {
-      if (solver) solver.style.strokeDashoffset = '0';
-      if (eorc) eorc.style.strokeDashoffset = '0';
-    };
-
-    if (REDUCED || !('IntersectionObserver' in window)) { run(); return; }
-
+  // Both are plain markup and CSS, complete without this. It only arms their
+  // entrance (.is-armed hides the parts that animate) and plays it (.is-in)
+  // the first time the figure is scrolled to. Nothing is armed under reduced
+  // motion or without IntersectionObserver, so the figure just shows.
+  function playOnFirstView(host) {
+    if (REDUCED || !('IntersectionObserver' in window)) return;
+    host.classList.add('is-armed');
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
-        run();
+        host.classList.add('is-in');
         io.disconnect();
       });
     }, { threshold: 0.2 });
     io.observe(host);
+  }
+
+  function initEntrances() {
+    document.querySelectorAll('[data-fig="bars"], [data-fig="workflow"]').forEach(playOnFirstView);
   }
 
   // ==========================================================================
@@ -350,7 +345,7 @@ window.EORCFigures = (function () {
     initFanChart();
     initNetworkMap();
     initHorizonChart();
-    initAlgorithmCharts();
+    initEntrances();
   }
 
   return { init: init };
