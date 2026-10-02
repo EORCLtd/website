@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initReveal();
   initScrollEffects();
+  initRoleTabs();
   if (window.EORCFigures) EORCFigures.init();
   initMailFallback();
   initCopyButtons();
@@ -84,6 +85,38 @@ function initScrollEffects() {
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   update();
+}
+
+// ---------- role tabs: [role="tablist"] ----------
+// Panels ship visible so the copy reads without JavaScript; from here on only
+// the selected one is shown.
+function initRoleTabs() {
+  const list = document.querySelector('[role="tablist"]');
+  if (!list) return;
+  const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
+  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+
+  const select = i => {
+    tabs.forEach((t, k) => {
+      t.setAttribute('aria-selected', String(k === i));
+      t.tabIndex = k === i ? 0 : -1;
+      if (panels[k]) panels[k].hidden = k !== i;
+    });
+  };
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i));
+    t.addEventListener('keydown', e => {
+      const n = tabs.length;
+      const to = { ArrowRight: (i + 1) % n, ArrowLeft: (i + n - 1) % n, Home: 0, End: n - 1 }[e.key];
+      if (to === undefined) return;
+      e.preventDefault();
+      select(to);
+      tabs[to].focus();
+    });
+  });
+
+  select(0);
 }
 
 // ---------- webmail fallback for the mailto CTA ----------
