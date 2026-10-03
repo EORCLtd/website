@@ -65,7 +65,7 @@
       <div class="hero-home-copy">
         <div data-rv class="eyebrow">An uncertainty management company</div>
         <h1 data-rv data-rvd="90">Managing uncertainty<span class="muted-line">in energy system decisions.</span></h1>
-        <p data-rv data-rvd="200" class="hero-home-lede">Optimisation- and AI-based decision support for energy planners and asset owners.</p>
+        <p data-rv data-rvd="200" class="hero-home-lede">Optimisation-based decision support for energy planners and asset owners.</p>
       </div>
 
       <!-- Role tabs. Every panel ships visible so the copy reads without
@@ -101,189 +101,126 @@
           </div>
         </div>
       </div>
+
+      <!-- Fan of futures, drawn by js/figures.js -->
+      <div data-rv class="fan-block">
+        <div class="fan-head">
+          <div class="fan-title"><span class="role-num">—</span><span>Decisions evaluated for today</span></div>
+          <div class="role-label">Managing uncertainty using scenarios</div>
+        </div>
+        <figure data-fig="fan" class="fan">
+          <svg viewBox="0 0 600 250" preserveAspectRatio="none" aria-hidden="true">
+            <path class="fan-gridlines" d="M0 60 H600 M0 125 H600 M0 190 H600"></path>
+            <path class="fan-today" d="M300 10 V230"></path>
+            <polygon data-fan-band class="fan-band" points=""></polygon>
+            <g data-fan-lines></g>
+            <path data-fan-history class="fan-history" d=""></path>
+          </svg>
+          <div class="fan-axis">
+            <span>What happened before</span><span>Today</span><span>Possible futures</span>
+          </div>
+          <figcaption class="figure-note">Schematic illustration — not model output.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <!-- Scenario tree + worked example -->
-  <section class="section-light scenario">
+  <!-- Worked example: one battery, planned two ways (illustrative figures) -->
+  <section class="section-light example">
     <div style="max-width:1180px; margin:0 auto;">
-      <div data-rv class="eyebrow">How we look at the future</div>
-      <h2 data-rv data-rvd="80" class="section-title">One decision today, many possible futures.</h2>
-      <p data-rv data-rvd="140" class="section-lede">Read it from left to right: each fork is something nobody can know yet, each line is one possible future, and thicker lines are the more likely ones.</p>
-
-      <!-- Scenario tree: stroke width encodes probability -->
-      <div data-rv class="figure-panel-light tree-panel">
-        <div class="tree-legend">
-          <span class="t-fast">Demand grows fast</span>
-          <span class="t-mid">Demand grows as expected</span>
-          <span class="t-slow">Demand grows slowly</span>
-        </div>
-        <div class="tree-scroll">
-          <svg class="tree" viewBox="0 0 1000 440" role="img" aria-label="Scenario tree: one decision today branches into three demand futures by 2030, each branching into two gas price futures by 2035.">
-            <g class="tree-stage">
-              <text x="40" y="18">TODAY</text>
-              <text x="400" y="18" text-anchor="middle">BY 2030</text>
-              <text x="720" y="18" text-anchor="middle">BY 2035</text>
-            </g>
-            <g class="tree-learn" text-anchor="middle">
-              <text x="400" y="38">We learn how fast demand grows</text>
-              <text x="720" y="38">We learn where gas prices land</text>
-            </g>
-            <path class="tree-guide" d="M400 52 L400 432 M720 52 L720 432"></path>
-            <g class="tree-branches" transform="translate(0,40)">
-              <path class="t-fast" d="M60 200 C230 200 230 80 400 80" stroke-width="5"></path>
-              <path class="t-mid" d="M60 200 L400 200" stroke-width="9"></path>
-              <path class="t-slow" d="M60 200 C230 200 230 320 400 320" stroke-width="5"></path>
-              <path class="t-fast" d="M400 80 C560 80 560 45 720 45" stroke-width="2.5"></path>
-              <path class="t-fast" d="M400 80 C560 80 560 115 720 115" stroke-width="3.5"></path>
-              <path class="t-mid" d="M400 200 C560 200 560 165 720 165" stroke-width="4.5"></path>
-              <path class="t-mid" d="M400 200 C560 200 560 235 720 235" stroke-width="6"></path>
-              <path class="t-slow" d="M400 320 C560 320 560 285 720 285" stroke-width="2.5"></path>
-              <path class="t-slow" d="M400 320 C560 320 560 355 720 355" stroke-width="3.5"></path>
-              <circle class="tree-root" cx="60" cy="200" r="11"></circle>
-              <circle class="tree-fork t-fast" cx="400" cy="80" r="8"></circle>
-              <circle class="tree-fork t-mid" cx="400" cy="200" r="8"></circle>
-              <circle class="tree-fork t-slow" cx="400" cy="320" r="8"></circle>
-              <circle class="tree-leaf t-fast" cx="720" cy="45" r="4.5"></circle>
-              <circle class="tree-leaf t-fast" cx="720" cy="115" r="4.5"></circle>
-              <circle class="tree-leaf t-mid" cx="720" cy="165" r="4.5"></circle>
-              <circle class="tree-leaf t-mid" cx="720" cy="235" r="4.5"></circle>
-              <circle class="tree-leaf t-slow" cx="720" cy="285" r="4.5"></circle>
-              <circle class="tree-leaf t-slow" cx="720" cy="355" r="4.5"></circle>
-            </g>
-            <g transform="translate(0,40)">
-              <text class="tree-you" x="40" y="236">You decide</text>
-              <text class="tree-you-sub" x="40" y="256">with every future in view</text>
-              <g class="tree-demand" text-anchor="middle">
-                <text class="t-fast" x="400" y="60">Demand grows fast · 25%</text>
-                <text class="t-mid" x="400" y="180">As expected · 50%</text>
-                <text class="t-slow" x="400" y="350">Demand grows slowly · 25%</text>
-              </g>
-              <g class="tree-gas">
-                <text x="738" y="50">Gas stays expensive</text>
-                <text x="738" y="120">Gas gets cheaper</text>
-                <text x="738" y="170">Gas stays expensive</text>
-                <text x="738" y="240">Gas gets cheaper</text>
-                <text x="738" y="290">Gas stays expensive</text>
-                <text x="738" y="360">Gas gets cheaper</text>
-              </g>
-              <g class="tree-pct" text-anchor="end">
-                <text x="996" y="50">10%</text>
-                <text x="996" y="120">15%</text>
-                <text x="996" y="170">20%</text>
-                <text x="996" y="240">30%</text>
-                <text x="996" y="290">10%</text>
-                <text x="996" y="360">15%</text>
-              </g>
-            </g>
-          </svg>
-        </div>
-        <div class="tree-foot">
-          <span>Percentages show how likely each future is. Together they add up to 100%.</span>
-          <span class="figure-note on-light">Schematic illustration — not model output.</span>
-        </div>
+      <div data-rv class="eyebrow">A simple example</div>
+      <div class="ex-head">
+        <h2 data-rv data-rvd="80" class="section-title">Why it pays to plan for more than one future.</h2>
+        <p data-rv data-rvd="140">A battery is full at noon. It can sell its 10 MWh now for £70 each, or keep it and sell in the evening. The evening price is usually £60, but on about 3 days in 10 it jumps to £250.</p>
       </div>
 
-      <div class="plan-intro">
-        <div data-rv class="eyebrow">Stochastic vs deterministic planning</div>
-        <h2 data-rv data-rvd="80" class="section-title">The same decision, planned two ways.</h2>
-        <p data-rv data-rvd="140" class="section-lede">Example: a utility decides how much battery storage to build before 2030, while demand growth is still uncertain. Both plans are tested against the three demand futures from the tree above.</p>
-      </div>
-
-      <!-- Illustrative figures; bar widths are driven by --v (cost in £M) -->
-      <div class="plan-grid">
-        <div data-rv class="plan-card">
+      <div class="ex-grid">
+        <div data-rv class="ex-col">
           <div>
-            <div class="plan-kind">Deterministic planning</div>
-            <p class="plan-desc">Plans for a single forecast: demand grows as expected.</p>
+            <div class="ex-kind"><span class="ex-num">01</span><span>Planning for one forecast</span></div>
+            <p class="ex-desc">The forecast says the evening price will be £60, so selling now at £70 looks best.</p>
           </div>
-          <div class="plan-decision">
-            <div class="plan-cap">The decision</div>
-            <h3>Build 200 MW of storage now</h3>
+          <div class="ex-body">
+            <div class="ex-cap">The decision</div>
+            <h3>Sell everything at noon</h3>
+            <div class="ex-gauges">
+              <span class="ex-when">Noon</span>
+              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 10 MWh</span></div>
+              <span class="ex-when">Evening</span>
+              <div class="ex-gauge"><span class="ex-cell"></span><span>nothing left</span></div>
+            </div>
           </div>
-          <div class="plan-costs">
-            <div class="plan-cap">Total cost to 2035 in each future</div>
-            <div class="cost-row"><span class="cost-name">Grows fast</span><span class="cost-track"><span class="cost-bar t-fast" style="--v:620;"></span><span class="cost-value">£620M</span></span></div>
-            <div class="cost-row"><span class="cost-name">As expected</span><span class="cost-track"><span class="cost-bar t-mid" style="--v:410;"></span><span class="cost-value">£410M</span></span></div>
-            <div class="cost-row"><span class="cost-name">Grows slowly</span><span class="cost-track"><span class="cost-bar t-slow" style="--v:400;"></span><span class="cost-value">£400M</span></span></div>
-            <p class="plan-note">If demand grows fast, the shortfall is covered with expensive emergency capacity.</p>
+          <div class="ex-body">
+            <div class="ex-cap">What it earns</div>
+            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£700</span></div>
+            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount">£700<span class="ex-miss">misses the jump</span></span></div>
           </div>
-          <div class="plan-stats">
-            <div><div class="plan-cap">Average cost</div><div class="plan-stat">£460M</div></div>
-            <div><div class="plan-cap">Worst case</div><div class="plan-stat">£620M</div></div>
-          </div>
+          <div class="ex-body ex-total"><span class="ex-avg">£700</span><span>average per day</span></div>
         </div>
 
-        <div data-rv data-rvd="90" class="plan-card is-eorc">
+        <div data-rv data-rvd="90" class="ex-col is-eorc">
           <div>
-            <div class="plan-kind">Stochastic planning · EORC</div>
-            <p class="plan-desc">Plans for all three demand futures at once, weighted by how likely each is.</p>
+            <div class="ex-kind"><span class="ex-num">02</span><span>Planning with scenarios · EORC</span></div>
+            <p class="ex-desc">Looks at both possible evenings and how often each one happens.</p>
           </div>
-          <div class="plan-decision">
-            <div class="plan-cap">The decision</div>
-            <h3>Build 260 MW now, expand in 2030 if demand grows fast</h3>
+          <div class="ex-body">
+            <div class="ex-cap">The decision</div>
+            <h3>Sell half at noon, keep half for the evening</h3>
+            <div class="ex-gauges">
+              <span class="ex-when">Noon</span>
+              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 5 MWh</span></div>
+              <span class="ex-when">Evening</span>
+              <div class="ex-gauge"><span class="ex-cell"><span style="width:50%;"></span></span><span>sell 5 MWh</span></div>
+            </div>
           </div>
-          <div class="plan-costs">
-            <div class="plan-cap">Total cost to 2035 in each future</div>
-            <div class="cost-row"><span class="cost-name">Grows fast</span><span class="cost-track"><span class="cost-bar t-fast" style="--v:490;"></span><span class="cost-value">£490M</span></span></div>
-            <div class="cost-row"><span class="cost-name">As expected</span><span class="cost-track"><span class="cost-bar t-mid" style="--v:430;"></span><span class="cost-value">£430M</span></span></div>
-            <div class="cost-row"><span class="cost-name">Grows slowly</span><span class="cost-track"><span class="cost-bar t-slow" style="--v:425;"></span><span class="cost-value">£425M</span></span></div>
-            <p class="plan-note">Slightly more upfront, but no expensive scramble when demand surprises.</p>
+          <div class="ex-body">
+            <div class="ex-cap">What it earns</div>
+            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£650</span></div>
+            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount ex-win">£1,600</span></div>
           </div>
-          <div class="plan-stats">
-            <div><div class="plan-cap">Average cost</div><div class="plan-stat">£444M</div></div>
-            <div><div class="plan-cap">Worst case</div><div class="plan-stat">£490M</div></div>
-          </div>
+          <div class="ex-body ex-total"><span class="ex-avg">£935</span><span>average per day</span></div>
         </div>
       </div>
 
-      <div data-rv class="plan-takeaway">
-        <p>Planning for the range lowers the average cost by <span class="lit">£16M</span> and cuts the worst-case bill by <span class="lit">£130M</span>.</p>
-        <span class="plan-flag">Illustrative figures</span>
+      <div data-rv class="ex-takeaway">
+        <p>Keeping some charge back earns about <span class="lit">a third more</span> on average, and on a normal day it costs only £50.</p>
+        <span class="ex-flag">Illustrative figures</span>
       </div>
     </div>
   </section>
 
   <!-- What we do -->
-  <section class="section-dark on-dark" style="padding:110px 24px 118px;">
-    <div class="statement">
-      <div data-rv class="eyebrow">What we do</div>
-      <p data-rv data-rvd="80">We build optimisation and AI models, algorithms and decision-support tools that treat <span class="lit">uncertainty as a first-class input</span> — so energy planning and investment decisions are robust and transparent across every timescale and energy carrier.</p>
-    </div>
-  </section>
-
-  <!-- What we enable -->
-  <section class="section-light" style="padding-bottom:70px;">
-    <div style="max-width:1180px; margin:0 auto;">
-      <div data-rv class="eyebrow">What we enable</div>
-      <h2 data-rv data-rvd="80" class="section-title">Built for decisions that can't wait for certainty.</h2>
-      <div class="card-grid">
-        <div data-rv class="card">
-          <div class="card-num">01</div>
-          <h3>Model at scale</h3>
-          <p>Large-scale, multi-energy systems modelled under uncertainty across multiple timescales.</p>
+  <section class="section-dark on-dark wwd">
+    <div class="wwd-inner">
+      <div class="wwd-head">
+        <div>
+          <div data-rv class="eyebrow">What we do</div>
+          <h2 data-rv data-rvd="80">We make stochastic modeling an effortless part of your workflow</h2>
         </div>
-        <div data-rv data-rvd="90" class="card">
-          <div class="card-num">02</div>
-          <h3>Quantify risk</h3>
-          <p>Investment and operational risk made explicit, measurable and comparable.</p>
+        <p data-rv data-rvd="140">Uncertainty becomes an input to every plan, rather than a caveat added at the end.</p>
+      </div>
+      <div data-rv class="wwd-strip">
+        <div class="wwd-cell is-lead">
+          <span class="wwd-mark"></span>
+          <h3>Decision intelligence</h3>
+          <p><span class="lit">Using data, models and AI to make better decisions.</span> We apply it to plans that must hold up across many possible futures.</p>
         </div>
-        <div data-rv data-rvd="180" class="card">
-          <div class="card-num">03</div>
-          <h3>Generate scenarios</h3>
-          <p>Uncertainty scenarios generated and evaluated across multiple time horizons.</p>
+        <div class="wwd-cell">
+          <span class="wwd-mark"></span>
+          <h3>User-friendly interface</h3>
+          <p>Set up models, run scenarios and read results without writing code.</p>
         </div>
-        <div data-rv data-rvd="270" class="card">
-          <div class="card-num">04</div>
-          <h3>Plan across horizons</h3>
-          <p>Short-term operations and long-term planning, integrated in a single decision framework.</p>
+        <div class="wwd-cell">
+          <span class="wwd-mark"></span>
+          <h3>Fits your existing tools</h3>
+          <p>Connects to the data and software your team already relies on.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Our technology -->
-  <section style="background:var(--bg-light); padding:60px 24px 110px;">
+  <section class="section-light">
     <div style="max-width:1180px; margin:0 auto;">
       <div data-rv class="eyebrow">Our technology</div>
       <h2 data-rv data-rvd="80" class="section-title">One platform, from scenarios to decisions.</h2>
@@ -297,7 +234,7 @@
         <div data-rv data-rvd="90" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
           <h3 style="font-size:20px; margin:0 0 8px;">Algorithms beyond solver limits</h3>
           <p style="margin-bottom:20px;">Proprietary optimisation and neural-network-enhanced algorithms solve problems commercial solvers can't.</p>
-          <!-- Tractable problem size, EORC against Gurobi -->
+          <!-- Tractable problem size, EORC against an industry-leading solver -->
           <figure data-fig="bars" class="bars compact card-chart" style="--max:5000;">
             <div class="bars-legend">
               <span style="--swatch:var(--series-a);">Variables</span>
@@ -305,7 +242,7 @@
             </div>
             <div class="bars-plot">
               <div class="bars-row">
-                <div class="bars-name">Gurobi</div>
+                <div class="bars-name">Industry-leading solver</div>
                 <div class="bars-track"><span class="bars-note">549× smaller — not visible at this scale</span></div>
               </div>
               <div class="bars-row">
@@ -317,7 +254,7 @@
               </div>
             </div>
             <figcaption class="bars-caption">
-              <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than those tractable with Gurobi.</span>
+              <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than those tractable with an industry-leading solver.</span>
             </figcaption>
           </figure>
         </div>
