@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EORC — An uncertainty management company</title>
-<meta name="description" content="Optimisation- and AI-based decision support for energy planners and asset owners. EORC models multi-energy systems under uncertainty.">
+<meta name="description" content="Decision support for energy planners and asset owners. EORC helps you plan for many possible futures, not just one forecast.">
 <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,41 +65,63 @@
       <div class="hero-home-copy">
         <div data-rv class="eyebrow">An uncertainty management company</div>
         <h1 data-rv data-rvd="90">Managing uncertainty<span class="muted-line">in energy system decisions.</span></h1>
-        <p data-rv data-rvd="200" class="hero-home-lede">Optimisation-based decision support for energy planners and asset owners.</p>
       </div>
 
       <!-- Role tabs. Every panel ships visible so the copy reads without
            JavaScript; js/main.js hides all but the selected one. -->
-      <div data-rv data-rvd="300" class="role-tabs">
+      <div data-rv data-rvd="200" class="role-tabs">
         <div class="role-label" id="role-label">Choose your role</div>
         <div class="role-tablist" role="tablist" aria-labelledby="role-label">
-          <button type="button" role="tab" id="role-tab-1" aria-controls="role-panel-1" aria-selected="true"><span class="role-num">01</span><span class="role-name">Asset Owner</span></button>
-          <button type="button" role="tab" id="role-tab-2" aria-controls="role-panel-2" aria-selected="false"><span class="role-num">02</span><span class="role-name">System Operator</span></button>
-          <button type="button" role="tab" id="role-tab-3" aria-controls="role-panel-3" aria-selected="false"><span class="role-num">03</span><span class="role-name">Power Market Analyst</span></button>
+          <button type="button" role="tab" id="role-tab-1" aria-controls="role-panel-1" aria-selected="true"><span class="role-num">01</span><span class="role-name">Energy Asset Owners</span></button>
+          <button type="button" role="tab" id="role-tab-2" aria-controls="role-panel-2" aria-selected="false"><span class="role-num">02</span><span class="role-name">System Operators</span></button>
+          <button type="button" role="tab" id="role-tab-3" aria-controls="role-panel-3" aria-selected="false"><span class="role-num">03</span><span class="role-name">Power Market Analysts</span></button>
         </div>
         <div class="role-panels">
-          <div class="role-panel" role="tabpanel" id="role-panel-1" aria-labelledby="role-tab-1">
+          <div class="role-panel" data-role="asset-owner" role="tabpanel" id="role-panel-1" aria-labelledby="role-tab-1">
             <h2>Invest with every likely future in view.</h2>
             <div>
-              <p>EORC tests your investment, retrofit and retirement decisions against thousands of possible futures for prices, demand and policy. You see which choices hold their value when conditions change, and how much risk each one carries. Every recommendation comes with the evidence your board and lenders will ask for.</p>
-              <a href="contact.html" class="btn btn-primary">Request a demo</a>
+              <ul>
+                <li>Test investment, retrofit and retirement decisions against thousands of possible futures for prices, demand and policy.</li>
+                <li>See which choices keep their value when conditions change, and how much risk each one carries.</li>
+                <li>Get the evidence your board and lenders will ask for with every recommendation.</li>
+              </ul>
+              <a href="contact.html?role=asset-owner" class="btn btn-primary">Request a demo</a>
             </div>
           </div>
-          <div class="role-panel" role="tabpanel" id="role-panel-2" aria-labelledby="role-tab-2">
+          <div class="role-panel" data-role="system-operator" role="tabpanel" id="role-panel-2" aria-labelledby="role-tab-2">
             <h2>Keep the lights on when the weather won't cooperate.</h2>
             <div>
-              <p>EORC plans operations across many possible outcomes for wind, solar and demand, instead of a single forecast. You get schedules and reserve levels that stay reliable across the range of likely conditions, without paying for more backup than you need.</p>
-              <a href="contact.html" class="btn btn-primary">Request a demo</a>
+              <ul>
+                <li>Plan operations across many possible outcomes for wind, solar and demand, instead of a single forecast.</li>
+                <li>Get schedules and reserve levels that stay reliable across the range of likely conditions.</li>
+                <li>Avoid paying for more backup than you need.</li>
+              </ul>
+              <a href="contact.html?role=system-operator" class="btn btn-primary">Request a demo</a>
             </div>
           </div>
-          <div class="role-panel" role="tabpanel" id="role-panel-3" aria-labelledby="role-tab-3">
+          <div class="role-panel" data-role="market-analyst" role="tabpanel" id="role-panel-3" aria-labelledby="role-tab-3">
             <h2>Price outlooks that show the range, not just one line.</h2>
             <div>
-              <p>EORC models the European energy system across fuel prices, policy and new-build scenarios to produce long-term power price outlooks. Each outlook shows the likely range and what drives it, so you can explain the numbers and stress-test your positions.</p>
-              <a href="contact.html" class="btn btn-primary">Request a demo</a>
+              <ul>
+                <li>Long-term power price outlooks for Europe, across fuel price, policy and new-build scenarios.</li>
+                <li>See the likely range for each outlook and what drives it.</li>
+                <li>Explain the numbers and stress-test your positions.</li>
+              </ul>
+              <a href="contact.html?role=market-analyst" class="btn btn-primary">Request a demo</a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why uncertainty matters: plain-English explanation, then the fan of futures -->
+  <section class="section-dark on-dark why">
+    <div class="why-inner">
+      <div data-rv class="eyebrow">Why uncertainty matters</div>
+      <div class="why-head">
+        <h2 data-rv data-rvd="80">Nobody knows tomorrow's prices, weather or demand.</h2>
+        <p data-rv data-rvd="140">Every energy decision is made today, but how it turns out depends on things no one can know yet. A plan built on one forecast only works if that forecast comes true. Planning with scenarios keeps many possible futures in view, so the decision still holds when things turn out differently.</p>
       </div>
 
       <!-- Fan of futures, drawn by js/figures.js -->
@@ -165,25 +187,25 @@
           </div>
           <div class="ex-body">
             <div class="ex-cap">The decision</div>
-            <h3>Sell half at noon, keep half for the evening</h3>
+            <h3>Keep the charge for the evening</h3>
             <div class="ex-gauges">
               <span class="ex-when">Noon</span>
-              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 5 MWh</span></div>
+              <div class="ex-gauge"><span class="ex-cell"></span><span>sell nothing</span></div>
               <span class="ex-when">Evening</span>
-              <div class="ex-gauge"><span class="ex-cell"><span style="width:50%;"></span></span><span>sell 5 MWh</span></div>
+              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 10 MWh</span></div>
             </div>
           </div>
           <div class="ex-body">
             <div class="ex-cap">What it earns</div>
-            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£650</span></div>
-            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount ex-win">£1,600</span></div>
+            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£600</span></div>
+            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount ex-win">£2,500</span></div>
           </div>
-          <div class="ex-body ex-total"><span class="ex-avg">£935</span><span>average per day</span></div>
+          <div class="ex-body ex-total"><span class="ex-avg">£1,170</span><span>average per day</span></div>
         </div>
       </div>
 
       <div data-rv class="ex-takeaway">
-        <p>Keeping some charge back earns about <span class="lit">a third more</span> on average, and on a normal day it costs only £50.</p>
+        <p>Waiting for the evening earns about <span class="lit">two-thirds more</span> on average, and on a normal day it costs only £100.</p>
         <span class="ex-flag">Illustrative figures</span>
       </div>
     </div>

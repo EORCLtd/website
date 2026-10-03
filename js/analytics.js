@@ -38,6 +38,11 @@
   });
   if (debug) posthog.debug();
 
+  // A role-panel CTA lands on contact.html?role=…; keep the role for the rest of
+  // the visit so contact_intent carries it too.
+  const role = new URLSearchParams(location.search).get('role');
+  if (role) posthog.register_for_session({ role });
+
   // ---------- named events ----------
   // Keyed on attributes the markup already carries, so main.js and figures.js
   // need no knowledge of analytics.
@@ -75,8 +80,12 @@
       });
     }
 
-    if (el.matches('a[href$="contact.html"]')) {
-      track('demo_cta_clicked', { location: ctaLocation(el), label: text(el) });
+    if (el.matches('a[href*="contact.html"]')) {
+      track('demo_cta_clicked', {
+        location: ctaLocation(el),
+        label: text(el),
+        role: el.closest('[data-role]')?.dataset.role
+      });
     }
   });
 })();

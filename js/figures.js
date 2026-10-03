@@ -106,6 +106,9 @@ window.EORCFigures = (function () {
     6, 300, 44, 190, 130
   );
 
+  // How far the scenarios fan out, 0–100.
+  const FAN_SPREAD = 45;
+
   function initFanChart() {
     const host = document.querySelector('[data-fig="fan"]');
     if (!host) return;
@@ -113,26 +116,17 @@ window.EORCFigures = (function () {
     const band = host.querySelector('[data-fan-band]');
     const lines = host.querySelector('[data-fan-lines]');
     const history = host.querySelector('[data-fan-history]');
-    const label = host.querySelector('[data-fan-label]');
     if (!band || !lines || !history) return;
 
     history.setAttribute('d', FAN_HISTORY);
 
-    const draw = spread => {
-      band.setAttribute('points', fanBand(spread));
-      fill(lines, [0, 1, 2, 3, 4, 5, 6].map(k => node('path', {
-        d: fanLine(k, 7, spread),
-        fill: 'none',
-        stroke: 'oklch(0.78 0.14 170 / .45)',
-        'stroke-width': '1.3'
-      })));
-      if (label) label.textContent = spread < 30 ? 'narrow' : spread < 70 ? 'moderate' : 'wide';
-    };
-
-    enable(host, '[data-fan-controls]');
-    const input = host.querySelector('[data-fan-range]');
-    if (input) input.addEventListener('input', () => draw(Number(input.value)));
-    draw(input ? Number(input.value) : 45);
+    band.setAttribute('points', fanBand(FAN_SPREAD));
+    fill(lines, [0, 1, 2, 3, 4, 5, 6].map(k => node('path', {
+      d: fanLine(k, 7, FAN_SPREAD),
+      fill: 'none',
+      stroke: 'oklch(0.78 0.14 170 / .45)',
+      'stroke-width': '1.3'
+    })));
   }
 
   // ==========================================================================

@@ -69,8 +69,8 @@ views, page leaves with scroll depth, clicks (autocapture), heatmaps and session
 
 | Event | Fired when | Properties |
 |-------|------------|------------|
-| `contact_intent` | the mailto button, a webmail link or "Copy address" is clicked on the contact page | `method`: `mailto` / `gmail` / `outlook` / `copy` |
-| `demo_cta_clicked` | any link to `contact.html` is clicked | `location`: `nav` / `hero` / `role-panel` / `section` / `footer`, `label` |
+| `contact_intent` | the mailto button, a webmail link or "Copy address" is clicked on the contact page | `method`: `mailto` / `gmail` / `outlook` / `copy`; `role` when the visitor arrived from a role panel |
+| `demo_cta_clicked` | any link to `contact.html` is clicked | `location`: `nav` / `hero` / `role-panel` / `section` / `footer`, `label`, `role` (role-panel only): `asset-owner` / `system-operator` / `market-analyst` |
 | `role_tab_selected` | a role tab on the home page is clicked | `role` |
 | `figure_control_used` | a filter on the Technology figures is clicked | `figure`, `value` |
 
