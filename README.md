@@ -19,6 +19,7 @@ request-a-demo/index.html Same redirect for the directory-style URL /request-a-d
 css/styles.css            Styles and design tokens
 js/main.js                Mobile nav, scroll animations, mailto helpers + generic form handling
 js/email-service.js       Abstraction layer for sending email (currently unused)
+js/analytics.js           PostHog analytics, see "Analytics" below
 img/                      All site images, self-hosted
 .nojekyll                 Skip the Jekyll build step
 ```
@@ -60,6 +61,32 @@ All form code talks to `EmailService.send(...)` in `js/email-service.js`, so swi
 changing only that file. The form has a hidden honeypot field (`name="website"`) as basic anti-spam
 protection; EmailJS also offers reCAPTCHA integration on templates. Since sending happens in the browser
 there is no server-side validation layer; EmailJS rate-limits per public key.
+
+## Analytics
+
+`js/analytics.js` loads **PostHog** (Cloud EU) on every page except the two redirect stubs. It records page
+views, page leaves with scroll depth, clicks (autocapture), heatmaps and session replay, plus four named events:
+
+| Event | Fired when | Properties |
+|-------|------------|------------|
+| `contact_intent` | the mailto button, a webmail link or "Copy address" is clicked on the contact page | `method`: `mailto` / `gmail` / `outlook` / `copy` |
+| `demo_cta_clicked` | any link to `contact.html` is clicked | `location`: `nav` / `hero` / `role-panel` / `section` / `footer`, `label` |
+| `role_tab_selected` | a role tab on the home page is clicked | `role` |
+| `figure_control_used` | a filter on the Technology figures is clicked | `figure`, `value` |
+
+`contact_intent` is the conversion: with no form, reaching the mailbox is the goal. The events hang off
+attributes already in the markup (`data-mailto`, `role="tab"`, `data-net-controls`, …), so renaming those
+breaks the tracking silently.
+
+- **Setup**: create a project on `eu.posthog.com`, paste its project API key into `POSTHOG_KEY` at the top of
+  `js/analytics.js` (the key is public and write-only, so it belongs in the repo), and in the project settings
+  enable Session replay and Heatmaps and add `https://eorc.uk` to the authorised URLs. Until the key is set
+  the script does nothing.
+- **No cookies**: the visit id is kept in `sessionStorage` and disappears when the tab closes, so a returning
+  visitor counts as a new one. It is still storage on the device — the site should say so in a privacy note.
+- **Production only**: the script initialises on `eorc.uk` / `www.eorc.uk` and nowhere else. To test on
+  `localhost` or the `github.io` URL, append `?ph_debug=1` to the address (this also turns on console logging).
+- Visitors with an ad blocker are not counted; the site works the same for them.
 
 ## Deploying
 
@@ -111,6 +138,6 @@ python3 -m http.server 8000   # then open http://localhost:8000/
 
 - Images are self-hosted in `img/` (~1.1 MB total). They used to be loaded from `eorc.uk/wp-content/uploads/`
   on the old WordPress install; that dependency is gone, so decommissioning the WordPress site is safe.
-- Remaining external dependency: **Google Fonts**. If full independence is wanted, self-host the two
-  families and drop the `fonts.googleapis.com` links.
+- Remaining external dependencies: **Google Fonts** and **PostHog** (analytics). If full independence is
+  wanted, self-host the two font families and drop the `fonts.googleapis.com` links.
 - GitHub Pages soft limits: 1 GB site, ~100 GB/month bandwidth, 10 builds/hour. Not a constraint here.
