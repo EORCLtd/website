@@ -19,7 +19,6 @@
   const LIVE_HOSTS = ['eorc.uk', 'www.eorc.uk'];
 
   const debug = new URLSearchParams(location.search).has('ph_debug');
-  if (POSTHOG_KEY.includes('REPLACE')) return;
   if (!debug && !LIVE_HOSTS.includes(location.hostname)) return;
 
   // Official PostHog loader snippet, unmodified (posthog.com/docs/libraries/js)

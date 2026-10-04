@@ -133,7 +133,7 @@ window.EORCFigures = (function () {
     return {
       history: toPath(history),
       scenarios: scenarios.map(toPath),
-      band: toPath(upper) + ' L' + lower.reverse().map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') + ' Z'
+      band: toPath(upper.concat(lower.reverse())) + ' Z'
     };
   }
 
