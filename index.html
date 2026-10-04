@@ -136,22 +136,54 @@
       <!-- Fan of futures, drawn by js/figures.js -->
       <div data-rv class="fan-block">
         <div class="fan-head">
-          <div class="fan-title"><span class="role-num">—</span><span>Decisions evaluated for today</span></div>
-          <div class="role-label">Managing uncertainty using scenarios</div>
+          <div class="fan-title"><span class="fan-dot"></span><span>Decisions evaluated for today</span></div>
+          <div class="fan-key"><span class="fan-wedge"></span><span>Managing uncertainty using scenarios</span></div>
         </div>
         <figure data-fig="fan" class="fan">
-          <svg viewBox="0 0 600 250" preserveAspectRatio="none" aria-hidden="true">
-            <path class="fan-gridlines" d="M0 60 H600 M0 125 H600 M0 190 H600"></path>
-            <path class="fan-today" d="M300 10 V230"></path>
-            <polygon data-fan-band class="fan-band" points=""></polygon>
-            <g data-fan-lines></g>
-            <path data-fan-history class="fan-history" d=""></path>
-          </svg>
-          <div class="fan-axis">
-            <span>What happened before</span><span>Today</span><span>Possible futures</span>
+          <div class="fan-plot">
+            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+              <path class="fan-gridlines" d="M0 60 H1000 M0 150 H1000 M0 240 H1000"></path>
+              <path data-fan-band class="fan-band" d=""></path>
+              <g data-fan-lines></g>
+              <path data-fan-history class="fan-history" d=""></path>
+              <path class="fan-today" d="M500 0 V300"></path>
+            </svg>
+            <span class="fan-marker-today"></span>
+            <span class="fan-marker fan-marker--1" style="left:24%; top:24%;">1</span>
+            <span class="fan-marker fan-marker--2" style="left:50%; top:8%;">2</span>
+            <span class="fan-marker fan-marker--3" style="left:84%; top:12%;">3</span>
           </div>
-          <figcaption class="figure-note">Schematic illustration — not model output.</figcaption>
+          <div class="fan-axis">
+            <span>Past</span><span>Today</span><span>Possible futures</span>
+          </div>
         </figure>
+
+        <div class="fan-steps">
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--1">1</span>
+            <div><h3>What has happened</h3><p>The white line shows real past data, such as how much energy was used.</p></div>
+          </div>
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--2">2</span>
+            <div><h3>The decision made today</h3><p>Choices like what to build or invest in have to be made now, before the future is known.</p></div>
+          </div>
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--3">3</span>
+            <div><h3>What could happen next</h3><p>Each green line is one possible future, called a scenario. We test today's decision against all of them.</p></div>
+          </div>
+        </div>
+
+        <div class="fan-factors">
+          <div class="role-label">Things that can change</div>
+          <ul>
+            <li>energy demand</li>
+            <li>wind and solar output</li>
+            <li>fuel prices</li>
+            <li>government policy</li>
+            <li>technology costs</li>
+          </ul>
+          <p class="figure-note">Simplified illustration, not real model results.</p>
+        </div>
       </div>
     </div>
   </section>
