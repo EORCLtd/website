@@ -116,6 +116,9 @@ function initRoleTabs() {
     });
   });
 
+  const wrap = panels[0] && panels[0].parentElement;
+  if (wrap) wrap.classList.add('is-stacked');
+
   select(0);
 }
 

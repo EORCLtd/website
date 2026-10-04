@@ -12,6 +12,24 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<!-- Symbols shared by every line-art background (.hero-art, .bg-art) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <g id="eo-turbine">
+          <path vector-effect="non-scaling-stroke" d="M-3 0 L-1.2 -160 M3 0 L1.2 -160 M-6 -160 L11 -160 L11 -168 L-6 -168 Z"></path>
+          <circle vector-effect="non-scaling-stroke" cx="0" cy="-164" r="3"></circle>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z"></path>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(120 0 -164)"></path>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(240 0 -164)"></path>
+        </g>
+        <g id="eo-pylon">
+          <path vector-effect="non-scaling-stroke" d="M-24 0 L-5 -150 M24 0 L5 -150 M-5 -150 L5 -150 M-42 -122 L42 -122 M-32 -96 L32 -96 M-21 -28 L17 -58 M21 -28 L-17 -58 M-17 -58 L12 -90 M17 -58 L-12 -90 M-5 -140 L-42 -122 M5 -140 L42 -122 M-8 -112 L-32 -96 M8 -112 L32 -96 M-42 -122 L-42 -112 M42 -122 L42 -112 M-32 -96 L-32 -86 M32 -96 L32 -86"></path>
+        </g>
+        <g id="eo-plant">
+          <path vector-effect="non-scaling-stroke" d="M-44 0 C-26 -50 -24 -80 -30 -130 L30 -130 C24 -80 26 -50 44 0 M56 0 C74 -50 76 -80 70 -130 L130 -130 C124 -80 126 -50 144 0 M160 0 L160 -60 L260 -60 L260 0 M180 -60 L180 -80 L240 -80 L240 -60 M214 -80 L218 -200 L228 -200 L232 -80"></path>
+        </g>
+      </defs>
+</svg>
 
 <header class="site-header">
   <nav class="nav">
@@ -37,21 +55,6 @@
   <section class="section-dark on-dark hero-home">
     <!-- Line art behind the title: pylons, plant and turbine on one horizon -->
     <svg class="hero-art" viewBox="0 0 740 520" aria-hidden="true">
-      <defs>
-        <g id="eo-turbine">
-          <path vector-effect="non-scaling-stroke" d="M-3 0 L-1.2 -160 M3 0 L1.2 -160 M-6 -160 L11 -160 L11 -168 L-6 -168 Z"></path>
-          <circle vector-effect="non-scaling-stroke" cx="0" cy="-164" r="3"></circle>
-          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z"></path>
-          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(120 0 -164)"></path>
-          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(240 0 -164)"></path>
-        </g>
-        <g id="eo-pylon">
-          <path vector-effect="non-scaling-stroke" d="M-24 0 L-5 -150 M24 0 L5 -150 M-5 -150 L5 -150 M-42 -122 L42 -122 M-32 -96 L32 -96 M-21 -28 L17 -58 M21 -28 L-17 -58 M-17 -58 L12 -90 M17 -58 L-12 -90 M-5 -140 L-42 -122 M5 -140 L42 -122 M-8 -112 L-32 -96 M8 -112 L32 -96 M-42 -122 L-42 -112 M42 -122 L42 -112 M-32 -96 L-32 -86 M32 -96 L32 -86"></path>
-        </g>
-        <g id="eo-plant">
-          <path vector-effect="non-scaling-stroke" d="M-44 0 C-26 -50 -24 -80 -30 -130 L30 -130 C24 -80 26 -50 44 0 M56 0 C74 -50 76 -80 70 -130 L130 -130 C124 -80 126 -50 144 0 M160 0 L160 -60 L260 -60 L260 0 M180 -60 L180 -80 L240 -80 L240 -60 M214 -80 L218 -200 L228 -200 L232 -80"></path>
-        </g>
-      </defs>
       <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
       <use href="#eo-pylon" transform="translate(90 500) scale(1.3)"></use>
       <use href="#eo-pylon" transform="translate(260 500)"></use>
@@ -117,6 +120,12 @@
 
   <!-- Why uncertainty matters: plain-English explanation, then the fan of futures -->
   <section class="section-dark on-dark why">
+    <svg class="bg-art bg-art--1" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-plant" transform="translate(60 500) scale(0.7)"></use>
+      <use href="#eo-turbine" transform="translate(470 500) scale(1.1)"></use>
+      <use href="#eo-turbine" transform="translate(620 500) scale(0.8)"></use>
+    </svg>
     <div class="why-inner">
       <div data-rv class="eyebrow">Why uncertainty matters</div>
       <div class="why-head">
@@ -149,70 +158,100 @@
 
   <!-- Worked example: one battery, planned two ways (illustrative figures) -->
   <section class="section-light example">
+    <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-pylon" transform="translate(120 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(300 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(480 500) scale(0.8)"></use>
+      <path vector-effect="non-scaling-stroke" d="M162 378 Q210 402 258 378 M152 404 Q210 428 268 404 M342 378 Q394.2 414.2 446.4 402.4 M332 404 Q393.2 437.6 454.4 423.2"></path>
+      <use href="#eo-turbine" transform="translate(640 500) scale(1)"></use>
+    </svg>
     <div style="max-width:1180px; margin:0 auto;">
       <div data-rv class="eyebrow">A simple example</div>
       <div class="ex-head">
-        <h2 data-rv data-rvd="80" class="section-title">Why it pays to plan for more than one future.</h2>
-        <p data-rv data-rvd="140">A battery is full at noon. It can sell its 10 MWh now for £70 each, or keep it and sell in the evening. The evening price is usually £60, but on about 3 days in 10 it jumps to £250.</p>
+        <h2 data-rv data-rvd="80" class="section-title">Should we invest in energy storage?</h2>
+        <p data-rv data-rvd="140">An average-price forecast can hide a profitable opportunity. This simple example shows how modelling possible futures changes the investment decision.</p>
+      </div>
+
+      <div data-rv class="ex-inputs">
+        <div class="ex-stat"><div class="ex-stat-label">Buy energy today</div><div class="ex-stat-value">£50</div><div class="ex-stat-unit">per unit of energy</div></div>
+        <div class="ex-stat"><div class="ex-stat-label">Storage cost</div><div class="ex-stat-value">£20</div><div class="ex-stat-unit">per unit for this period</div></div>
+        <div class="ex-stat"><div class="ex-stat-label">Capacity limit</div><div class="ex-stat-value">100</div><div class="ex-stat-unit">units of energy</div></div>
+      </div>
+      <p data-rv class="ex-note">Stored energy can be sold later at a known £50 per unit. We choose capacity and buy energy today, then decide whether to sell tomorrow or hold for that later sale.</p>
+
+      <div data-rv class="ex-price">
+        <span class="ex-price-title">Tomorrow's price: <span class="ex-hi">£110</span> or <span class="ex-lo">£10</span></span>
+        <span class="ex-price-odds">50% chance of each outcome</span>
       </div>
 
       <div class="ex-grid">
         <div data-rv class="ex-col">
           <div>
-            <div class="ex-kind"><span class="ex-num">01</span><span>Planning for one forecast</span></div>
-            <p class="ex-desc">The forecast says the evening price will be £60, so selling now at £70 looks best.</p>
+            <div class="ex-kind"><span class="ex-num">01</span><span>Use the average price</span></div>
+            <div class="ex-model">Deterministic model</div>
           </div>
+          <ul class="ex-steps">
+            <li>Average price: (£110 + £10) / 2 = £60.</li>
+            <li>Trading margin: £60 - £50 = £10.</li>
+            <li>£10 per unit is below the £20 storage cost.</li>
+          </ul>
           <div class="ex-body">
-            <div class="ex-cap">The decision</div>
-            <h3>Sell everything at noon</h3>
-            <div class="ex-gauges">
-              <span class="ex-when">Noon</span>
-              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 10 MWh</span></div>
-              <span class="ex-when">Evening</span>
-              <div class="ex-gauge"><span class="ex-cell"></span><span>nothing left</span></div>
-            </div>
+            <h3>Do not invest</h3>
+            <div class="ex-sub">100 units would lose £1,000 in this forecast.</div>
           </div>
-          <div class="ex-body">
-            <div class="ex-cap">What it earns</div>
-            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£700</span></div>
-            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount">£700<span class="ex-miss">misses the jump</span></span></div>
-          </div>
-          <div class="ex-body ex-total"><span class="ex-avg">£700</span><span>average per day</span></div>
         </div>
 
         <div data-rv data-rvd="90" class="ex-col is-eorc">
           <div>
-            <div class="ex-kind"><span class="ex-num">02</span><span>Planning with scenarios · EORC</span></div>
-            <p class="ex-desc">Looks at both possible evenings and how often each one happens.</p>
+            <div class="ex-kind"><span class="ex-num">02</span><span>Model both outcomes</span></div>
+            <div class="ex-model">Stochastic model</div>
           </div>
+          <ul class="ex-steps">
+            <li>High price: sell at £110; margin £60.</li>
+            <li>Low price: hold for £50; margin £0.</li>
+            <li>Expected margin: (£60 + £0) / 2 = £30.</li>
+            <li>£30 exceeds the £20 storage cost.</li>
+          </ul>
           <div class="ex-body">
-            <div class="ex-cap">The decision</div>
-            <h3>Keep the charge for the evening</h3>
-            <div class="ex-gauges">
-              <span class="ex-when">Noon</span>
-              <div class="ex-gauge"><span class="ex-cell"></span><span>sell nothing</span></div>
-              <span class="ex-when">Evening</span>
-              <div class="ex-gauge"><span class="ex-cell"><span style="width:100%;"></span></span><span>sell 10 MWh</span></div>
-            </div>
+            <h3>Invest in 100 units</h3>
+            <div class="ex-sub">Expected net profit: £10 per unit.</div>
           </div>
-          <div class="ex-body">
-            <div class="ex-cap">What it earns</div>
-            <div class="ex-row"><span>Normal evening · 7 days in 10</span><span class="ex-amount">£600</span></div>
-            <div class="ex-row"><span>Price jumps · 3 days in 10</span><span class="ex-amount ex-win">£2,500</span></div>
-          </div>
-          <div class="ex-body ex-total"><span class="ex-avg">£1,170</span><span>average per day</span></div>
         </div>
       </div>
 
-      <div data-rv class="ex-takeaway">
-        <p>Waiting for the evening earns about <span class="lit">two-thirds more</span> on average, and on a normal day it costs only £100.</p>
-        <span class="ex-flag">Illustrative figures</span>
+      <div data-rv class="ex-reveal">
+        <div class="ex-cap">What happens when the price is revealed?</div>
+        <div class="ex-table">
+          <div class="ex-tr ex-th"><span>Price and chance</span><span>Action with 100 units</span><span>Net profit after all costs</span></div>
+          <div class="ex-tr"><span class="ex-mono">£110 (50%)</span><span>Sell tomorrow at £110</span><span class="ex-profit ex-win">+£4,000</span></div>
+          <div class="ex-tr"><span class="ex-mono">£10 (50%)</span><span>Hold; sell later at £50</span><span class="ex-profit ex-loss">-£2,000</span></div>
+        </div>
+        <p class="ex-sub">Each outcome includes £5,000 to buy energy and £2,000 for storage.</p>
       </div>
+
+      <div data-rv class="ex-takeaway">
+        <div>
+          <div class="ex-big">£1,000</div>
+          <div class="ex-big-label">additional expected profit</div>
+        </div>
+        <div>
+          <p>The average misses the value of adapting.</p>
+          <p class="ex-calc">Expected profit: (£4,000 - £2,000) / 2 = £1,000.<br>Not investing earns £0 in either outcome.</p>
+        </div>
+      </div>
+      <p data-rv class="ex-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra charges. Both decisions face the same outcomes. £1,000 is an expected profit; the low-price outcome loses £2,000.</p>
     </div>
   </section>
 
   <!-- What we do -->
   <section class="section-dark on-dark wwd">
+    <svg class="bg-art bg-art--3" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-turbine" transform="translate(250 500) scale(0.9)"></use>
+      <use href="#eo-turbine" transform="translate(430 500) scale(1.25)"></use>
+      <use href="#eo-turbine" transform="translate(620 500) scale(0.7)"></use>
+    </svg>
     <div class="wwd-inner">
       <div class="wwd-head">
         <div>
@@ -243,6 +282,13 @@
 
   <!-- Our technology -->
   <section class="section-light">
+    <svg class="bg-art bg-art--4" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-plant" transform="translate(330 500) scale(0.6)"></use>
+      <use href="#eo-pylon" transform="translate(110 500) scale(1.2)"></use>
+      <use href="#eo-pylon" transform="translate(600 500) scale(0.9)"></use>
+      <path vector-effect="non-scaling-stroke" d="M160.4 353.6 Q245.2 383.6 330 430"></path>
+    </svg>
     <div style="max-width:1180px; margin:0 auto;">
       <div data-rv class="eyebrow">Our technology</div>
       <h2 data-rv data-rvd="80" class="section-title">One platform, from scenarios to decisions.</h2>
@@ -338,6 +384,14 @@
 
   <!-- CTA + footer -->
   <section class="section-dark on-dark" style="padding:150px 24px 60px;">
+    <svg class="bg-art bg-art--5" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-pylon" transform="translate(60 500) scale(0.9)"></use>
+      <use href="#eo-pylon" transform="translate(250 500) scale(1.1)"></use>
+      <use href="#eo-pylon" transform="translate(450 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(640 500) scale(0.8)"></use>
+      <path vector-effect="non-scaling-stroke" d="M97.8 390.2 Q150.8 402 203.8 365.8 M88.8 413.6 Q151.8 428 214.8 394.4 M296.2 365.8 Q352.1 395.9 408 378 M285.2 394.4 Q351.6 423.2 418 404 M492 378 Q549.2 414.2 606.4 402.4 M482 404 Q548.2 437.6 614.4 423.2"></path>
+    </svg>
     <div style="max-width:1180px; margin:0 auto;">
       <div style="text-align:center;">
         <h2 data-rv class="cta-title">See your energy system<span class="muted-line">under uncertainty.</span></h2>
