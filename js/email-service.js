@@ -15,8 +15,8 @@
 const EmailService = (() => {
 
   const EMAILJS_CONFIG = {
-    publicKey:  'YOUR_EMAILJS_PUBLIC_KEY',
-    serviceId:  'YOUR_EMAILJS_SERVICE_ID',
+    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
+    serviceId: 'YOUR_EMAILJS_SERVICE_ID',
     templateIds: {
       contact: 'YOUR_CONTACT_TEMPLATE_ID'
     }

@@ -223,8 +223,8 @@ window.EORCFigures = (function () {
       return {
         e,
         d: 'M' + a.x.toFixed(1) + ' ' + a.y.toFixed(1) +
-           ' Q' + mx.toFixed(1) + ' ' + my.toFixed(1) +
-           ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1)
+          ' Q' + mx.toFixed(1) + ' ' + my.toFixed(1) +
+          ' ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1)
       };
     });
 
