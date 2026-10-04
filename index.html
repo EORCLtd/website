@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EORC — An uncertainty management company</title>
-<meta name="description" content="Optimisation- and AI-based decision support for energy planners and asset owners. EORC models multi-energy systems under uncertainty.">
+<meta name="description" content="Decision support for energy planners and asset owners. EORC helps you plan for many possible futures, not just one forecast.">
 <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,24 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<!-- Symbols shared by every line-art background (.hero-art, .bg-art) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <g id="eo-turbine">
+          <path vector-effect="non-scaling-stroke" d="M-3 0 L-1.2 -160 M3 0 L1.2 -160 M-6 -160 L11 -160 L11 -168 L-6 -168 Z"></path>
+          <circle vector-effect="non-scaling-stroke" cx="0" cy="-164" r="3"></circle>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z"></path>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(120 0 -164)"></path>
+          <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(240 0 -164)"></path>
+        </g>
+        <g id="eo-pylon">
+          <path vector-effect="non-scaling-stroke" d="M-24 0 L-5 -150 M24 0 L5 -150 M-5 -150 L5 -150 M-42 -122 L42 -122 M-32 -96 L32 -96 M-21 -28 L17 -58 M21 -28 L-17 -58 M-17 -58 L12 -90 M17 -58 L-12 -90 M-5 -140 L-42 -122 M5 -140 L42 -122 M-8 -112 L-32 -96 M8 -112 L32 -96 M-42 -122 L-42 -112 M42 -122 L42 -112 M-32 -96 L-32 -86 M32 -96 L32 -86"></path>
+        </g>
+        <g id="eo-plant">
+          <path vector-effect="non-scaling-stroke" d="M-44 0 C-26 -50 -24 -80 -30 -130 L30 -130 C24 -80 26 -50 44 0 M56 0 C74 -50 76 -80 70 -130 L130 -130 C124 -80 126 -50 144 0 M160 0 L160 -60 L260 -60 L260 0 M180 -60 L180 -80 L240 -80 L240 -60 M214 -80 L218 -200 L228 -200 L232 -80"></path>
+        </g>
+      </defs>
+</svg>
 
 <header class="site-header">
   <nav class="nav">
@@ -34,95 +52,275 @@
 
 <main>
   <!-- Hero -->
-  <section class="section-dark on-dark" style="position:relative; overflow:hidden; padding:150px 24px 0;">
-    <div class="hero-glow"></div>
-    <!-- No [data-hero-content] parallax here: the fan panel sits directly below
-         the copy, so drifting the copy on scroll would overlap it. -->
-    <div style="position:relative; max-width:1180px; margin:0 auto; text-align:center;">
-      <div data-rv class="eyebrow">An uncertainty management company</div>
-      <h1 data-rv data-rvd="90" style="font-size:clamp(44px,6.4vw,88px); line-height:1.02; letter-spacing:-0.035em; font-weight:650; color:var(--paper); margin:24px 0 0;">Managing uncertainty<span class="muted-line">in energy system decisions.</span></h1>
-      <p data-rv data-rvd="200" style="font-size:19px; line-height:1.55; color:var(--paper-66); max-width:640px; margin:28px auto 0;">Optimisation- and AI-based decision support for energy planners and asset owners.</p>
-      <div data-rv data-rvd="300" class="btn-row" style="margin-top:36px;">
-        <a href="contact.html" class="btn btn-primary">Request a demo</a>
-        <a href="product.html" class="btn btn-ghost">Explore the technology</a>
+  <section class="section-dark on-dark hero-home">
+    <!-- Line art behind the title: pylons, plant and turbine on one horizon -->
+    <svg class="hero-art" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-pylon" transform="translate(90 500) scale(1.3)"></use>
+      <use href="#eo-pylon" transform="translate(260 500)"></use>
+      <use href="#eo-pylon" transform="translate(380 500) scale(0.75)"></use>
+      <path vector-effect="non-scaling-stroke" d="M0 330 Q20 338 35.4 341 M144.6 341 Q180 370 218 378 M302 378 Q325 400 348.5 408.5 M0 364 Q24 372 48.4 375 M131.6 375 Q180 398 228 404 M292 404 Q320 420 356 428"></path>
+      <use href="#eo-plant" transform="translate(450 500) scale(0.55)"></use>
+      <use href="#eo-turbine" transform="translate(650 500) scale(1.2)"></use>
+    </svg>
+
+    <div class="hero-home-inner">
+      <div class="hero-home-copy">
+        <div data-rv class="eyebrow">An uncertainty management company</div>
+        <h1 data-rv data-rvd="90">Managing uncertainty<span class="muted-line">in energy system decisions.</span></h1>
+      </div>
+
+      <!-- Role tabs. Every panel ships visible so the copy reads without
+           JavaScript; js/main.js hides all but the selected one. -->
+      <div data-rv data-rvd="200" class="role-tabs">
+        <div class="role-label" id="role-label">Choose your role</div>
+        <div class="role-tablist" role="tablist" aria-labelledby="role-label">
+          <button type="button" role="tab" id="role-tab-1" aria-controls="role-panel-1" aria-selected="true"><span class="role-num">01</span><span class="role-name">Energy Asset Owners</span></button>
+          <button type="button" role="tab" id="role-tab-2" aria-controls="role-panel-2" aria-selected="false"><span class="role-num">02</span><span class="role-name">System Operators</span></button>
+          <button type="button" role="tab" id="role-tab-3" aria-controls="role-panel-3" aria-selected="false"><span class="role-num">03</span><span class="role-name">Power Market Analysts</span></button>
+        </div>
+        <div class="role-panels">
+          <div class="role-panel" data-role="asset-owner" role="tabpanel" id="role-panel-1" aria-labelledby="role-tab-1">
+            <h2>Invest with every likely future in view.</h2>
+            <div>
+              <ul>
+                <li>Test investment, retrofit and retirement decisions against thousands of possible futures for prices, demand and policy.</li>
+                <li>See which choices keep their value when conditions change, and how much risk each one carries.</li>
+                <li>Get the evidence your board and lenders will ask for with every recommendation.</li>
+              </ul>
+              <a href="contact.html?role=asset-owner" class="btn btn-primary">Request a demo</a>
+            </div>
+          </div>
+          <div class="role-panel" data-role="system-operator" role="tabpanel" id="role-panel-2" aria-labelledby="role-tab-2">
+            <h2>Keep the lights on when the weather won't cooperate.</h2>
+            <div>
+              <ul>
+                <li>Plan operations across many possible outcomes for wind, solar and demand, instead of a single forecast.</li>
+                <li>Get schedules and reserve levels that stay reliable across the range of likely conditions.</li>
+                <li>Avoid paying for more backup than you need.</li>
+              </ul>
+              <a href="contact.html?role=system-operator" class="btn btn-primary">Request a demo</a>
+            </div>
+          </div>
+          <div class="role-panel" data-role="market-analyst" role="tabpanel" id="role-panel-3" aria-labelledby="role-tab-3">
+            <h2>Price outlooks that show the range, not just one line.</h2>
+            <div>
+              <ul>
+                <li>Long-term power price outlooks for Europe, across fuel price, policy and new-build scenarios.</li>
+                <li>See the likely range for each outlook and what drives it.</li>
+                <li>Explain the numbers and stress-test your positions.</li>
+              </ul>
+              <a href="contact.html?role=market-analyst" class="btn btn-primary">Request a demo</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Fan of futures — spread driven by the uncertainty slider -->
-    <div data-rv data-rvd="380" data-fig="fan" class="figure-panel hero-figure">
-      <div class="figure-head">
-        <div class="figure-label">Decisions evaluated for robustness</div>
-        <div class="figure-sub">not optimality under a single assumed future</div>
+  <!-- Why uncertainty matters: plain-English explanation, then the fan of futures -->
+  <section class="section-dark on-dark why">
+    <svg class="bg-art bg-art--1" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-plant" transform="translate(60 500) scale(0.7)"></use>
+      <use href="#eo-turbine" transform="translate(470 500) scale(1.1)"></use>
+      <use href="#eo-turbine" transform="translate(620 500) scale(0.8)"></use>
+    </svg>
+    <div class="why-inner">
+      <div data-rv class="eyebrow">Why uncertainty matters</div>
+      <div class="why-head">
+        <h2 data-rv data-rvd="80">Nobody knows tomorrow's prices, weather or demand.</h2>
+        <p data-rv data-rvd="140">Every energy decision is made today, but how it turns out depends on things no one can know yet. A plan built on one forecast only works if that forecast comes true. Planning with scenarios keeps many possible futures in view, so the decision still holds when things turn out differently.</p>
       </div>
-      <svg class="figure-svg fixed-h" viewBox="0 0 600 250" preserveAspectRatio="none" aria-hidden="true">
-        <line x1="0" y1="60" x2="600" y2="60" stroke="rgba(242,244,246,.07)"></line>
-        <line x1="0" y1="125" x2="600" y2="125" stroke="rgba(242,244,246,.07)"></line>
-        <line x1="0" y1="190" x2="600" y2="190" stroke="rgba(242,244,246,.07)"></line>
-        <line x1="300" y1="10" x2="300" y2="230" stroke="rgba(242,244,246,.2)" stroke-dasharray="3 5"></line>
-        <polygon data-fan-band fill="oklch(0.78 0.14 170 / .15)"></polygon>
-        <g data-fan-lines></g>
-        <path data-fan-history fill="none" stroke="var(--paper)" stroke-width="2.4" stroke-linejoin="round"></path>
-        <circle cx="300" cy="125" r="4" fill="var(--paper)"></circle>
-      </svg>
-      <div class="figure-axis">
-        <span>historical data</span><span>today</span><span>scenarios</span>
+
+      <!-- Fan of futures, drawn by js/figures.js -->
+      <div data-rv class="fan-block">
+        <div class="fan-head">
+          <div class="fan-title"><span class="fan-dot"></span><span>Decisions evaluated for today</span></div>
+          <div class="fan-key"><span class="fan-wedge"></span><span>Managing uncertainty using scenarios</span></div>
+        </div>
+        <figure data-fig="fan" class="fan">
+          <div class="fan-plot">
+            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+              <path class="fan-gridlines" d="M0 60 H1000 M0 150 H1000 M0 240 H1000"></path>
+              <path data-fan-band class="fan-band" d=""></path>
+              <g data-fan-lines></g>
+              <path data-fan-history class="fan-history" d=""></path>
+              <path class="fan-today" d="M500 0 V300"></path>
+            </svg>
+            <span class="fan-marker-today"></span>
+            <span class="fan-marker fan-marker--1" style="left:24%; top:24%;">1</span>
+            <span class="fan-marker fan-marker--2" style="left:50%; top:8%;">2</span>
+            <span class="fan-marker fan-marker--3" style="left:84%; top:12%;">3</span>
+          </div>
+          <div class="fan-axis">
+            <span>Past</span><span>Today</span><span>Possible futures</span>
+          </div>
+        </figure>
+
+        <div class="fan-steps">
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--1">1</span>
+            <div><h3>What has happened</h3><p>The white line shows real past data, such as how much energy was used.</p></div>
+          </div>
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--2">2</span>
+            <div><h3>The decision made today</h3><p>Choices like what to build or invest in have to be made now, before the future is known.</p></div>
+          </div>
+          <div class="fan-step">
+            <span class="fan-marker fan-marker--3">3</span>
+            <div><h3>What could happen next</h3><p>Each green line is one possible future, called a scenario. We test today's decision against all of them.</p></div>
+          </div>
+        </div>
+
+        <div class="fan-factors">
+          <div class="role-label">Things that can change</div>
+          <ul>
+            <li>energy demand</li>
+            <li>wind and solar output</li>
+            <li>fuel prices</li>
+            <li>government policy</li>
+            <li>technology costs</li>
+          </ul>
+          <p class="figure-note">Simplified illustration, not real model results.</p>
+        </div>
       </div>
-      <div class="range-row" data-fan-controls hidden>
-        <span class="range-label">Uncertainty</span>
-        <input type="range" min="5" max="100" value="45" data-fan-range aria-label="Uncertainty level">
-        <span class="range-value" data-fan-label>moderate</span>
+    </div>
+  </section>
+
+  <!-- Worked example: one battery, planned two ways (illustrative figures) -->
+  <section class="section-light example">
+    <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-pylon" transform="translate(120 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(300 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(480 500) scale(0.8)"></use>
+      <path vector-effect="non-scaling-stroke" d="M162 378 Q210 402 258 378 M152 404 Q210 428 268 404 M342 378 Q394.2 414.2 446.4 402.4 M332 404 Q393.2 437.6 454.4 423.2"></path>
+      <use href="#eo-turbine" transform="translate(640 500) scale(1)"></use>
+    </svg>
+    <div style="max-width:1180px; margin:0 auto;">
+      <div data-rv class="eyebrow">A simple example</div>
+      <div class="ex-head">
+        <h2 data-rv data-rvd="80" class="section-title">Should we invest in energy storage?</h2>
+        <p data-rv data-rvd="140">An average-price forecast can hide a profitable opportunity. This simple example shows how modelling possible futures changes the investment decision.</p>
       </div>
-      <div class="chip-row">
-        <span class="chip">demand evolution</span>
-        <span class="chip">renewable generation</span>
-        <span class="chip">fuel prices</span>
-        <span class="chip">policy assumptions</span>
-        <span class="chip">technology costs</span>
+
+      <div data-rv class="ex-inputs">
+        <div class="ex-stat"><div class="ex-stat-label">Buy energy today</div><div class="ex-stat-value">£50</div><div class="ex-stat-unit">per unit of energy</div></div>
+        <div class="ex-stat"><div class="ex-stat-label">Storage cost</div><div class="ex-stat-value">£20</div><div class="ex-stat-unit">per unit for this period</div></div>
+        <div class="ex-stat"><div class="ex-stat-label">Capacity limit</div><div class="ex-stat-value">100</div><div class="ex-stat-unit">units of energy</div></div>
       </div>
-      <div class="figure-note">Schematic illustration — not model output.</div>
+      <p data-rv class="ex-note">Stored energy can be sold later at a known £50 per unit. We choose capacity and buy energy today, then decide whether to sell tomorrow or hold for that later sale.</p>
+
+      <div data-rv class="ex-price">
+        <span class="ex-price-title">Tomorrow's price: <span class="ex-hi">£110</span> or <span class="ex-lo">£10</span></span>
+        <span class="ex-price-odds">50% chance of each outcome</span>
+      </div>
+
+      <div class="ex-grid">
+        <div data-rv class="ex-col">
+          <div>
+            <div class="ex-kind"><span class="ex-num">01</span><span>Use the average price</span></div>
+            <div class="ex-model">Deterministic model</div>
+          </div>
+          <ul class="ex-steps">
+            <li>Average price: (£110 + £10) / 2 = £60.</li>
+            <li>Trading margin: £60 - £50 = £10.</li>
+            <li>£10 per unit is below the £20 storage cost.</li>
+          </ul>
+          <div class="ex-body">
+            <h3>Do not invest</h3>
+            <div class="ex-sub">100 units would lose £1,000 in this forecast.</div>
+          </div>
+        </div>
+
+        <div data-rv data-rvd="90" class="ex-col is-eorc">
+          <div>
+            <div class="ex-kind"><span class="ex-num">02</span><span>Model both outcomes</span></div>
+            <div class="ex-model">Stochastic model</div>
+          </div>
+          <ul class="ex-steps">
+            <li>High price: sell at £110; margin £60.</li>
+            <li>Low price: hold for £50; margin £0.</li>
+            <li>Expected margin: (£60 + £0) / 2 = £30.</li>
+            <li>£30 exceeds the £20 storage cost.</li>
+          </ul>
+          <div class="ex-body">
+            <h3>Invest in 100 units</h3>
+            <div class="ex-sub">Expected net profit: £10 per unit.</div>
+          </div>
+        </div>
+      </div>
+
+      <div data-rv class="ex-reveal">
+        <div class="ex-cap">What happens when the price is revealed?</div>
+        <div class="ex-table">
+          <div class="ex-tr ex-th"><span>Price and chance</span><span>Action with 100 units</span><span>Net profit after all costs</span></div>
+          <div class="ex-tr"><span class="ex-mono">£110 (50%)</span><span>Sell tomorrow at £110</span><span class="ex-profit ex-win">+£4,000</span></div>
+          <div class="ex-tr"><span class="ex-mono">£10 (50%)</span><span>Hold; sell later at £50</span><span class="ex-profit ex-loss">-£2,000</span></div>
+        </div>
+        <p class="ex-sub">Each outcome includes £5,000 to buy energy and £2,000 for storage.</p>
+      </div>
+
+      <div data-rv class="ex-takeaway">
+        <div>
+          <div class="ex-big">£1,000</div>
+          <div class="ex-big-label">additional expected profit</div>
+        </div>
+        <div>
+          <p>The average misses the value of adapting.</p>
+          <p class="ex-calc">Expected profit: (£4,000 - £2,000) / 2 = £1,000.<br>Not investing earns £0 in either outcome.</p>
+        </div>
+      </div>
+      <p data-rv class="ex-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra charges. Both decisions face the same outcomes. £1,000 is an expected profit; the low-price outcome loses £2,000.</p>
     </div>
   </section>
 
   <!-- What we do -->
-  <section class="section-dark on-dark" style="padding:110px 24px 118px;">
-    <div class="statement">
-      <div data-rv class="eyebrow">What we do</div>
-      <p data-rv data-rvd="80">We build optimisation and AI models, algorithms and decision-support tools that treat <span class="lit">uncertainty as a first-class input</span> — so energy planning and investment decisions are robust and transparent across every timescale and energy carrier.</p>
-    </div>
-  </section>
-
-  <!-- What we enable -->
-  <section class="section-light" style="padding-bottom:70px;">
-    <div style="max-width:1180px; margin:0 auto;">
-      <div data-rv class="eyebrow">What we enable</div>
-      <h2 data-rv data-rvd="80" class="section-title">Built for decisions that can't wait for certainty.</h2>
-      <div class="card-grid">
-        <div data-rv class="card">
-          <div class="card-num">01</div>
-          <h3>Model at scale</h3>
-          <p>Large-scale, multi-energy systems modelled under uncertainty across multiple timescales.</p>
+  <section class="section-dark on-dark wwd">
+    <svg class="bg-art bg-art--3" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-turbine" transform="translate(250 500) scale(0.9)"></use>
+      <use href="#eo-turbine" transform="translate(430 500) scale(1.25)"></use>
+      <use href="#eo-turbine" transform="translate(620 500) scale(0.7)"></use>
+    </svg>
+    <div class="wwd-inner">
+      <div class="wwd-head">
+        <div>
+          <div data-rv class="eyebrow">What we do</div>
+          <h2 data-rv data-rvd="80">We make stochastic modeling an effortless part of your workflow</h2>
         </div>
-        <div data-rv data-rvd="90" class="card">
-          <div class="card-num">02</div>
-          <h3>Quantify risk</h3>
-          <p>Investment and operational risk made explicit, measurable and comparable.</p>
+        <p data-rv data-rvd="140">Uncertainty becomes an input to every plan, rather than a caveat added at the end.</p>
+      </div>
+      <div data-rv class="wwd-strip">
+        <div class="wwd-cell is-lead">
+          <span class="wwd-mark"></span>
+          <h3>Decision intelligence</h3>
+          <p><span class="lit">Using data, models and AI to make better decisions.</span> We apply it to plans that must hold up across many possible futures.</p>
         </div>
-        <div data-rv data-rvd="180" class="card">
-          <div class="card-num">03</div>
-          <h3>Generate scenarios</h3>
-          <p>Uncertainty scenarios generated and evaluated across multiple time horizons.</p>
+        <div class="wwd-cell">
+          <span class="wwd-mark"></span>
+          <h3>User-friendly interface</h3>
+          <p>Set up models, run scenarios and read results without writing code.</p>
         </div>
-        <div data-rv data-rvd="270" class="card">
-          <div class="card-num">04</div>
-          <h3>Plan across horizons</h3>
-          <p>Short-term operations and long-term planning, integrated in a single decision framework.</p>
+        <div class="wwd-cell">
+          <span class="wwd-mark"></span>
+          <h3>Fits your existing tools</h3>
+          <p>Connects to the data and software your team already relies on.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Our technology -->
-  <section style="background:var(--bg-light); padding:60px 24px 110px;">
+  <section class="section-light">
+    <svg class="bg-art bg-art--4" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-plant" transform="translate(330 500) scale(0.6)"></use>
+      <use href="#eo-pylon" transform="translate(110 500) scale(1.2)"></use>
+      <use href="#eo-pylon" transform="translate(600 500) scale(0.9)"></use>
+      <path vector-effect="non-scaling-stroke" d="M160.4 353.6 Q245.2 383.6 330 430"></path>
+    </svg>
     <div style="max-width:1180px; margin:0 auto;">
       <div data-rv class="eyebrow">Our technology</div>
       <h2 data-rv data-rvd="80" class="section-title">One platform, from scenarios to decisions.</h2>
@@ -136,7 +334,7 @@
         <div data-rv data-rvd="90" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
           <h3 style="font-size:20px; margin:0 0 8px;">Algorithms beyond solver limits</h3>
           <p style="margin-bottom:20px;">Proprietary optimisation and neural-network-enhanced algorithms solve problems commercial solvers can't.</p>
-          <!-- Tractable problem size, EORC against Gurobi -->
+          <!-- Tractable problem size, EORC against an industry-leading solver -->
           <figure data-fig="bars" class="bars compact card-chart" style="--max:5000;">
             <div class="bars-legend">
               <span style="--swatch:var(--series-a);">Variables</span>
@@ -144,7 +342,7 @@
             </div>
             <div class="bars-plot">
               <div class="bars-row">
-                <div class="bars-name">Gurobi</div>
+                <div class="bars-name">Industry-leading solver</div>
                 <div class="bars-track"><span class="bars-note">549× smaller — not visible at this scale</span></div>
               </div>
               <div class="bars-row">
@@ -156,7 +354,7 @@
               </div>
             </div>
             <figcaption class="bars-caption">
-              <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than those tractable with Gurobi.</span>
+              <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than those tractable with an industry-leading solver.</span>
             </figcaption>
           </figure>
         </div>
@@ -218,6 +416,14 @@
 
   <!-- CTA + footer -->
   <section class="section-dark on-dark" style="padding:150px 24px 60px;">
+    <svg class="bg-art bg-art--5" viewBox="0 0 740 520" aria-hidden="true">
+      <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+      <use href="#eo-pylon" transform="translate(60 500) scale(0.9)"></use>
+      <use href="#eo-pylon" transform="translate(250 500) scale(1.1)"></use>
+      <use href="#eo-pylon" transform="translate(450 500) scale(1)"></use>
+      <use href="#eo-pylon" transform="translate(640 500) scale(0.8)"></use>
+      <path vector-effect="non-scaling-stroke" d="M97.8 390.2 Q150.8 402 203.8 365.8 M88.8 413.6 Q151.8 428 214.8 394.4 M296.2 365.8 Q352.1 395.9 408 378 M285.2 394.4 Q351.6 423.2 418 404 M492 378 Q549.2 414.2 606.4 402.4 M482 404 Q548.2 437.6 614.4 423.2"></path>
+    </svg>
     <div style="max-width:1180px; margin:0 auto;">
       <div style="text-align:center;">
         <h2 data-rv class="cta-title">See your energy system<span class="muted-line">under uncertainty.</span></h2>
@@ -244,6 +450,7 @@
 </main>
 
 <script src="js/figures.js"></script>
+<script src="js/analytics.js" defer></script>
 <script src="js/main.js"></script>
 </body>
 </html>

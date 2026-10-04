@@ -69,42 +69,73 @@ window.EORCFigures = (function () {
   }
 
   // ==========================================================================
-  // Hero — fan of futures
+  // Why uncertainty matters — fan of futures
   // ==========================================================================
 
-  // Outer envelope of the scenario fan, as a closed polygon point list.
-  function fanBand(spread) {
-    const up = [], lo = [];
-    for (let i = 0; i <= 30; i++) {
-      const t = i / 30;
-      const x = 300 + t * 296;
-      const h = (spread / 100) * 100 * Math.pow(t, 1.3);
-      up.push(x.toFixed(1) + ',' + (125 - h - 4 * Math.sin(t * 3)).toFixed(1));
-      lo.push(x.toFixed(1) + ',' + (125 + h * 0.9 + 4 * Math.sin(t * 2)).toFixed(1));
-    }
-    return up.join(' ') + ' ' + lo.reverse().join(' ');
+  const FAN_TODAY = { x: 500, y: 150 };
+  const FAN_SCENARIOS = 10;
+  const FAN_STEPS = 30;
+
+  // Small seeded PRNG (mulberry32) so the illustration is identical on every load.
+  function seededRandom(seed) {
+    let a = seed;
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
   }
 
-  // One scenario trajectory, k of n, fanning out from the "today" marker.
-  function fanLine(k, n, spread) {
-    const dir = (k - (n - 1) / 2) / ((n - 1) / 2);
-    let d = '';
-    for (let i = 0; i <= 26; i++) {
-      const t = i / 26;
-      const x = 300 + t * 296;
-      const drift = dir * (spread / 100) * 88 * Math.pow(t, 1.35);
-      const noise = 6 * Math.sin(t * 9 + k * 2.1) * t;
-      d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + (125 - drift + noise).toFixed(1);
-    }
-    return d;
+  function toPath(points) {
+    return 'M' + points.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
   }
 
-  // Wiggle measured back from "today", so it vanishes at u = 1 and the series
-  // ends exactly on the marker (300,125) where the scenario fan starts.
-  const FAN_HISTORY = line(
-    u => 0.5 + 0.075 * Math.sin((1 - u) * 7) + 0.05 * Math.sin((1 - u) * 13),
-    6, 300, 44, 190, 130
-  );
+  // Past data (ending exactly on "today"), scenario paths fanning out from it,
+  // and the envelope around them. Returns SVG path strings.
+  function buildFan(count) {
+    const random = seededRandom(11);
+    const y0 = FAN_TODAY.y;
+
+    const history = [];
+    for (let i = 0; i <= 48; i++) {
+      const t = i / 48;
+      const x = 10 + i * (490 / 48);
+      const y = y0 + Math.sin(t * 7.2 + 0.6) * 14 * (1 - t * 0.4) + Math.sin(t * 17) * 4 - (1 - t) * 6;
+      history.push([x, i === 48 ? y0 : y]);
+    }
+
+    const scenarios = [];
+    const columns = []; // columns[i] = y of every scenario at step i
+    for (let k = 0; k < count; k++) {
+      const drift = (random() * 2 - 1) * 70;
+      const bend = (random() - 0.5) * 30;
+      const points = [[FAN_TODAY.x, y0]];
+      for (let i = 1; i <= FAN_STEPS; i++) {
+        const t = i / FAN_STEPS;
+        const y = y0 + drift * Math.pow(t, 1.3) + bend * Math.sin(t * Math.PI);
+        points.push([FAN_TODAY.x + t * 490, y]);
+        (columns[i] = columns[i] || []).push(y);
+      }
+      scenarios.push(points);
+    }
+
+    // Padding grows with time so the band stays wider than the outermost lines.
+    const upper = [[FAN_TODAY.x, y0]];
+    const lower = [[FAN_TODAY.x, y0]];
+    for (let i = 1; i <= FAN_STEPS; i++) {
+      const t = i / FAN_STEPS;
+      const pad = 4 + 10 * t;
+      upper.push([FAN_TODAY.x + t * 490, Math.min(...columns[i]) - pad]);
+      lower.push([FAN_TODAY.x + t * 490, Math.max(...columns[i]) + pad]);
+    }
+
+    return {
+      history: toPath(history),
+      scenarios: scenarios.map(toPath),
+      band: toPath(upper.concat(lower.reverse())) + ' Z'
+    };
+  }
 
   function initFanChart() {
     const host = document.querySelector('[data-fig="fan"]');
@@ -113,26 +144,12 @@ window.EORCFigures = (function () {
     const band = host.querySelector('[data-fan-band]');
     const lines = host.querySelector('[data-fan-lines]');
     const history = host.querySelector('[data-fan-history]');
-    const label = host.querySelector('[data-fan-label]');
     if (!band || !lines || !history) return;
 
-    history.setAttribute('d', FAN_HISTORY);
-
-    const draw = spread => {
-      band.setAttribute('points', fanBand(spread));
-      fill(lines, [0, 1, 2, 3, 4, 5, 6].map(k => node('path', {
-        d: fanLine(k, 7, spread),
-        fill: 'none',
-        stroke: 'oklch(0.78 0.14 170 / .45)',
-        'stroke-width': '1.3'
-      })));
-      if (label) label.textContent = spread < 30 ? 'narrow' : spread < 70 ? 'moderate' : 'wide';
-    };
-
-    enable(host, '[data-fan-controls]');
-    const input = host.querySelector('[data-fan-range]');
-    if (input) input.addEventListener('input', () => draw(Number(input.value)));
-    draw(input ? Number(input.value) : 45);
+    const fan = buildFan(FAN_SCENARIOS);
+    history.setAttribute('d', fan.history);
+    band.setAttribute('d', fan.band);
+    fill(lines, fan.scenarios.map(d => node('path', { d, class: 'fan-scenario' })));
   }
 
   // ==========================================================================
