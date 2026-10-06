@@ -50,6 +50,7 @@
   /* battery example — figure ink on light, and the missed-upside note */
   --accent-ink: oklch(0.42 0.12 170);
   --warn: oklch(0.5 0.15 50);
+  --forecast: oklch(0.72 0.16 55);
 
   /* links (teal) */
   --link: oklch(0.55 0.13 195);
@@ -2071,11 +2072,12 @@ section:has(> .bg-art) {
 }
 
 /* ==========================================================================
-   Home: why uncertainty matters, with the fan of futures, then the battery example
+   Home: understanding uncertainty (scenario tree), then why it's important
+   (the battery example)
    ========================================================================== */
 
 .why {
-  padding: 150px 24px;
+  padding: 130px 24px;
 }
 
 .why-inner {
@@ -2083,89 +2085,166 @@ section:has(> .bg-art) {
   margin: 0 auto;
 }
 
-.why-head {
+.why-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
-  margin-top: 24px;
+  gap: 24px 72px;
+  align-items: center;
+  margin-top: 40px;
 }
 
-.why-head h2 {
-  font-size: clamp(30px, 3.4vw, 44px);
-  line-height: 1.06;
-  letter-spacing: -0.028em;
+.why-text {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.why-block h2,
+.why-block h3 {
   font-weight: 650;
+  letter-spacing: -0.028em;
   color: var(--paper);
-  max-width: 520px;
   text-wrap: balance;
 }
 
-.why-head p {
+.why-block h2 {
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.06;
+}
+
+.why-block h3 {
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.12;
+}
+
+.why-block p {
   font-size: 17px;
   line-height: 1.6;
   color: rgba(242, 244, 246, 0.7);
-  margin-top: 6px;
+  margin-top: 14px;
+  max-width: 520px;
   text-wrap: pretty;
 }
 
-.fan-block {
-  margin-top: 72px;
+.why-factors {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 28px 28px 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.why-factors li {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--paper-75);
+}
+
+/* Scenario tree */
+.tree {
+  margin: 0;
+  padding: 24px 24px 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.03);
 }
 
-.fan-head {
+.tree svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tree-edges path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-opacity: 0.7;
+  stroke-width: 2;
+}
+
+.tree-forecast {
+  fill: none;
+  stroke: var(--forecast);
+  stroke-width: 2.4;
+  stroke-dasharray: 7 6;
+}
+
+.tree-nodes circle {
+  fill: #14161a;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.tree-today {
+  fill: var(--paper);
+  stroke: #14161a;
+  stroke-width: 4;
+}
+
+.tree-forecast-end {
+  fill: var(--forecast);
+}
+
+.tree-labels text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  fill: var(--paper-75);
+}
+
+.tree-labels .tree-forecast-label {
+  fill: var(--forecast);
+}
+
+.tree-key,
+.fan-legend {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 12px 24px;
+  gap: 8px 24px;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.fan-title,
-.fan-key {
+.tree-key {
+  margin-top: 14px;
+  color: var(--paper-62);
+}
+
+.tree-key span,
+.fan-legend span {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.fan-title {
-  color: var(--accent);
-  font-weight: 500;
+.key-line {
+  display: block;
+  width: 24px;
+  height: 0;
+  border-top: 2px solid var(--accent);
 }
 
-.fan-key {
-  color: var(--paper-75);
+.key-line--forecast {
+  border-top: 2px dashed var(--forecast);
 }
 
-.fan-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex: none;
+.key-line--history {
+  border-top-color: var(--ink);
 }
 
-.fan-wedge {
-  width: 18px;
-  height: 8px;
-  flex: none;
-  background: linear-gradient(90deg, oklch(0.78 0.14 170 / 0.15), oklch(0.78 0.14 170 / 0.45));
-  clip-path: polygon(0 50%, 100% 0, 100% 100%);
-}
-
+/* Fan of futures (inside the example, so it uses the light palette) */
 .fan {
   margin: 0;
+}
+
+.fan-legend {
+  margin-bottom: 14px;
+  color: var(--ink-soft);
 }
 
 .fan-plot {
@@ -2176,8 +2255,7 @@ section:has(> .bg-art) {
 .fan svg {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1000 / 300;
+  height: 210px;
 }
 
 .fan svg path {
@@ -2186,33 +2264,40 @@ section:has(> .bg-art) {
 
 .fan-gridlines {
   fill: none;
-  stroke: rgba(242, 244, 246, 0.07);
+  stroke: rgba(22, 25, 29, 0.08);
 }
 
 .fan-today {
   fill: none;
-  stroke: rgba(242, 244, 246, 0.3);
+  stroke: rgba(22, 25, 29, 0.35);
   stroke-width: 1.2;
   stroke-dasharray: 3 5;
 }
 
 .fan-band {
-  fill: oklch(0.78 0.14 170 / 0.13);
+  fill: oklch(0.62 0.14 170 / 0.12);
 }
 
 .fan-scenario {
   fill: none;
-  stroke: var(--accent);
-  stroke-opacity: 0.55;
+  stroke: var(--accent-mid);
+  stroke-opacity: 0.7;
   stroke-width: 1.2;
 }
 
 .fan-history {
   fill: none;
-  stroke: var(--paper);
+  stroke: var(--ink);
   stroke-width: 2.4;
   stroke-linejoin: round;
   stroke-linecap: round;
+}
+
+.fan-forecast {
+  fill: none;
+  stroke: var(--forecast);
+  stroke-width: 2.4;
+  stroke-dasharray: 7 6;
 }
 
 .fan-marker-today {
@@ -2223,164 +2308,148 @@ section:has(> .bg-art) {
   height: 12px;
   margin: -6px 0 0 -6px;
   border-radius: 50%;
-  background: var(--paper);
-  box-shadow: 0 0 0 4px #14161a, 0 0 0 5px var(--accent);
-}
-
-/* Numbered markers: placed on the chart, repeated in the explainer below. */
-.fan-marker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  flex: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #14161a;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1;
-}
-
-.fan-plot .fan-marker {
-  position: absolute;
-  margin: -12px;
-}
-
-.fan-marker--1 {
-  border: 1px solid var(--paper);
-  color: var(--paper);
-}
-
-.fan-marker--2 {
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 500;
-}
-
-.fan-marker--3 {
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  background: var(--ink);
+  box-shadow: 0 0 0 4px var(--bg-light), 0 0 0 5px var(--accent-mid);
 }
 
 .fan-axis {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   column-gap: 16px;
-  margin-top: 14px;
+  margin-top: 10px;
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--paper-40);
+  color: var(--ink-soft);
 }
 
 .fan-axis span:nth-child(2) {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .fan-axis span:last-child {
   text-align: right;
 }
 
-.fan-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: 24px 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 24px;
+/* Reserved for the plot buttons; takes no space until they exist. */
+.fan-controls:empty {
+  display: none;
 }
 
-.fan-step {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
+.example .figure-note {
+  color: var(--ink-soft);
+  margin-top: 8px;
 }
 
-.fan-step h3 {
-  margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--paper);
-}
-
-.fan-step p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--paper-62);
-  text-wrap: pretty;
-}
-
-.fan-factors {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 20px;
-}
-
-.fan-factors .role-label {
-  margin-bottom: 12px;
-}
-
-.fan-factors ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.fan-factors li {
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--paper-75);
-}
-
+/* Example: sized to fit one screen; detail sits in the step tabs. */
 .example {
-  padding-bottom: 130px;
+  padding: 72px 24px 64px;
 }
 
 .ex-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   gap: 24px;
-  align-items: start;
-  margin-top: 24px;
 }
 
 .ex-head .section-title {
-  margin-top: 0;
-  max-width: 560px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  max-width: 640px;
   text-wrap: balance;
 }
 
-.ex-head p {
-  font-size: 17px;
-  line-height: 1.6;
+.ex-problem {
+  max-width: 340px;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--ink-mid);
-  margin-top: 6px;
-  text-wrap: pretty;
+}
+
+.ex-slides {
+  margin-top: 28px;
+}
+
+.ex-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(22, 25, 29, 0.16);
+}
+
+.ex-tablist [role="tab"] {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: -1px;
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.ex-tablist [role="tab"]:hover {
+  color: var(--ink);
+}
+
+.ex-tablist [role="tab"]:focus-visible {
+  outline: 2px solid var(--accent-mid);
+  outline-offset: 4px;
+}
+
+.ex-tablist [aria-selected="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent-mid);
+}
+
+.ex-tablist [aria-selected="true"] .ex-num {
+  color: var(--accent-deep);
+}
+
+/* Without JS every slide is shown in turn. With JS they share one grid cell so
+   the area stays as tall as the tallest slide and the takeaway never jumps. */
+.ex-slide+.ex-slide {
+  margin-top: 40px;
+}
+
+.ex-slides.is-stacked {
+  display: grid;
+}
+
+.ex-slides.is-stacked .ex-tablist {
+  grid-area: 1 / 1;
+}
+
+.ex-slides.is-stacked .ex-slide {
+  grid-area: 2 / 1;
+  margin-top: 0;
+}
+
+.ex-slides.is-stacked .ex-slide[hidden] {
+  display: block;
+  visibility: hidden;
 }
 
 .ex-inputs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 64px;
 }
 
 .ex-stat {
   border-top: 1px solid rgba(22, 25, 29, 0.16);
-  padding-top: 18px;
+  padding-top: 14px;
 }
 
 .ex-stat-label,
-.ex-cap,
-.ex-model {
+.ex-cap {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.16em;
@@ -2389,10 +2458,10 @@ section:has(> .bg-art) {
 }
 
 .ex-stat-value {
-  font-size: 44px;
+  font-size: 40px;
   font-weight: 650;
   letter-spacing: -0.03em;
-  margin-top: 10px;
+  margin-top: 6px;
   color: var(--ink);
 }
 
@@ -2406,12 +2475,12 @@ section:has(> .bg-art) {
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink-mid);
-  max-width: 760px;
-  margin-top: 26px;
+  max-width: 640px;
+  margin-top: 16px;
   text-wrap: pretty;
 }
 
-/* Price banner: the two possible outcomes tomorrow. */
+/* Price banner: the two possible prices tomorrow. */
 .ex-price {
   display: flex;
   flex-wrap: wrap;
@@ -2419,8 +2488,8 @@ section:has(> .bg-art) {
   gap: 8px 18px;
   background: var(--bg-dark);
   border-radius: 20px;
-  padding: 22px 28px;
-  margin-top: 56px;
+  padding: 18px 28px;
+  margin-top: 24px;
 }
 
 .ex-price-title {
@@ -2448,17 +2517,16 @@ section:has(> .bg-art) {
 .ex-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 56px;
+  gap: 24px 40px;
 }
 
 .ex-col {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 14px;
   border-top: 1px solid rgba(22, 25, 29, 0.16);
-  padding-top: 22px;
+  padding-top: 18px;
   color: var(--ink);
 }
 
@@ -2487,37 +2555,19 @@ section:has(> .bg-art) {
   color: var(--ink-soft);
 }
 
-.is-eorc .ex-num,
-.is-eorc .ex-model {
+.is-eorc .ex-num {
   color: var(--accent-deep);
 }
 
-/* Body copy lines up with the title, past the number. */
-.ex-model,
-.ex-steps,
-.ex-body {
-  margin-left: 34px;
-}
-
-.ex-model {
-  margin-top: 8px;
-}
-
 .ex-steps {
-  list-style: none;
-  padding: 0;
-}
-
-.ex-steps li {
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--ink-mid);
-  padding: 11px 0;
-  border-bottom: 1px solid rgba(22, 25, 29, 0.08);
+  text-wrap: pretty;
 }
 
 .ex-body h3 {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 650;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -2531,21 +2581,7 @@ section:has(> .bg-art) {
 .ex-sub {
   font-size: 15px;
   color: var(--ink-soft);
-  margin-top: 8px;
-}
-
-.ex-reveal {
-  margin-top: 80px;
-}
-
-.ex-cap {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  font-weight: 500;
-}
-
-.ex-table {
-  margin-top: 18px;
+  margin-top: 6px;
 }
 
 .ex-tr {
@@ -2553,13 +2589,13 @@ section:has(> .bg-art) {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 24px;
   align-items: baseline;
-  padding: 16px 0;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(22, 25, 29, 0.08);
   font-size: 16px;
 }
 
 .ex-th {
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom-color: rgba(22, 25, 29, 0.16);
   font-size: 13px;
   color: var(--ink-soft);
@@ -2588,18 +2624,26 @@ section:has(> .bg-art) {
   color: var(--warn);
 }
 
+.ex-calc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  max-width: 640px;
+  margin-top: 16px;
+}
+
 .ex-takeaway {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 24px 48px;
+  gap: 16px 48px;
   align-items: end;
   border-top: 1px solid rgba(22, 25, 29, 0.16);
-  margin-top: 80px;
-  padding-top: 32px;
+  margin-top: 28px;
+  padding-top: 24px;
 }
 
 .ex-big {
-  font-size: 84px;
+  font-size: 72px;
   line-height: 0.95;
   font-weight: 650;
   letter-spacing: -0.04em;
@@ -2609,7 +2653,7 @@ section:has(> .bg-art) {
 .ex-big-label {
   font-size: 16px;
   color: var(--ink-mid);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .ex-takeaway p {
@@ -2621,41 +2665,26 @@ section:has(> .bg-art) {
   text-wrap: pretty;
 }
 
-.ex-takeaway .ex-calc {
-  font-size: 15px;
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--ink-mid);
-  margin-top: 12px;
-}
-
 .ex-flag {
-  font-size: 12.5px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--ink-soft);
   max-width: 900px;
-  margin-top: 40px;
+  margin-top: 16px;
   text-wrap: pretty;
 }
 
 @media (max-width: 860px) {
 
-  .why-head,
-  .ex-head,
+  .why-grid,
   .ex-grid,
   .ex-takeaway {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .ex-grid {
-    gap: 64px;
-    margin-top: 48px;
-  }
-
-  .ex-takeaway,
-  .ex-reveal {
-    margin-top: 64px;
+  .ex-head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -2664,9 +2693,8 @@ section:has(> .bg-art) {
     padding: 96px 24px;
   }
 
-  .fan-block {
-    margin-top: 48px;
-    padding: 20px 16px 18px;
+  .tree {
+    padding: 16px 12px 14px;
   }
 
   .fan-axis {
@@ -2674,23 +2702,25 @@ section:has(> .bg-art) {
     letter-spacing: 0.06em;
   }
 
+  .ex-tablist {
+    gap: 8px 20px;
+  }
+
+  .ex-tablist [role="tab"] {
+    font-size: 14px;
+  }
+
   .ex-inputs {
     grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
+    gap: 12px;
   }
 
   .ex-stat-value {
-    font-size: 38px;
+    font-size: 34px;
   }
 
   .ex-price-title {
     font-size: 20px;
-  }
-
-  .ex-model,
-  .ex-steps,
-  .ex-body {
-    margin-left: 0;
   }
 
   .ex-body h3 {
@@ -2724,7 +2754,7 @@ section:has(> .bg-art) {
   }
 
   .ex-big {
-    font-size: 60px;
+    font-size: 56px;
   }
 
   .ex-takeaway p {

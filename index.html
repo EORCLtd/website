@@ -87,7 +87,7 @@
         <!-- Role tabs. Every panel ships visible so the copy reads without
            JavaScript; js/main.js hides all but the selected one. -->
         <div data-rv data-rvd="200" class="role-tabs">
-          <div class="role-label" id="role-label">Choose your role</div>
+          <div class="role-label" id="role-label">For</div>
           <div class="role-tablist" role="tablist" aria-labelledby="role-label">
             <button type="button" role="tab" id="role-tab-1" aria-controls="role-panel-1" aria-selected="true"><span
                 class="role-num">01</span><span class="role-name">Energy Asset Owners</span></button>
@@ -141,7 +141,7 @@
       </div>
     </section>
 
-    <!-- Why uncertainty matters: plain-English explanation, then the fan of futures -->
+    <!-- Understanding uncertainty: what it is, why it matters, with a scenario tree -->
     <section class="section-dark on-dark why">
       <svg class="bg-art bg-art--1" viewBox="0 0 740 520" aria-hidden="true">
         <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
@@ -150,80 +150,71 @@
         <use href="#eo-turbine" transform="translate(620 500) scale(0.8)"></use>
       </svg>
       <div class="why-inner">
-        <div data-rv class="eyebrow">Why uncertainty matters</div>
-        <div class="why-head">
-          <h2 data-rv data-rvd="80">Nobody knows tomorrow's prices, weather or demand.</h2>
-          <p data-rv data-rvd="140">Every energy decision is made today, but how it turns out depends on things no one
-            can know yet. A plan built on one forecast only works if that forecast comes true. Planning with scenarios
-            keeps many possible futures in view, so the decision still holds when things turn out differently.</p>
-        </div>
-
-        <!-- Fan of futures, drawn by js/figures.js -->
-        <div data-rv class="fan-block">
-          <div class="fan-head">
-            <div class="fan-title"><span class="fan-dot"></span><span>Decisions evaluated for today</span></div>
-            <div class="fan-key"><span class="fan-wedge"></span><span>Managing uncertainty using scenarios</span></div>
+        <div data-rv class="eyebrow">Understanding uncertainty</div>
+        <div class="why-grid">
+          <div class="why-text">
+            <div data-rv data-rvd="80" class="why-block">
+              <div class="role-label">Defining uncertainty</div>
+              <h2>Nobody knows tomorrow's prices, weather or demand.</h2>
+              <p>Uncertainty is not knowing how things will turn out. A forecast gives one answer, but many futures are
+                possible. We call each one a scenario.</p>
+              <ul class="why-factors">
+                <li>energy demand</li>
+                <li>wind and solar output</li>
+                <li>fuel prices</li>
+                <li>government policy</li>
+              </ul>
+            </div>
+            <div data-rv data-rvd="140" class="why-block">
+              <div class="role-label">Why it matters</div>
+              <h3>A decision built on one forecast can fail.</h3>
+              <p>It only works if that forecast comes true. Testing a decision against many scenarios shows whether it
+                still holds when things turn out differently.</p>
+            </div>
           </div>
-          <figure data-fig="fan" class="fan">
-            <div class="fan-plot">
-              <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
-                <path class="fan-gridlines" d="M0 60 H1000 M0 150 H1000 M0 240 H1000"></path>
-                <path data-fan-band class="fan-band" d=""></path>
-                <g data-fan-lines></g>
-                <path data-fan-history class="fan-history" d=""></path>
-                <path class="fan-today" d="M500 0 V300"></path>
-              </svg>
-              <span class="fan-marker-today"></span>
-              <span class="fan-marker fan-marker--1" style="left:24%; top:24%;">1</span>
-              <span class="fan-marker fan-marker--2" style="left:50%; top:8%;">2</span>
-              <span class="fan-marker fan-marker--3" style="left:84%; top:12%;">3</span>
-            </div>
-            <div class="fan-axis">
-              <span>Past</span><span>Today</span><span>Possible futures</span>
-            </div>
+
+          <!-- Scenario tree: one decision today, many possible futures -->
+          <figure data-rv data-rvd="100" class="tree">
+            <svg viewBox="0 0 600 290" role="img"
+              aria-label="Scenario tree: from today, the future branches into four scenarios, while a single forecast follows one straight line.">
+              <g class="tree-edges">
+                <path d="M50 145 C150 145 150 85 250 85"></path>
+                <path d="M50 145 C150 145 150 205 250 205"></path>
+                <path d="M250 85 C330 85 330 45 420 45"></path>
+                <path d="M250 85 C330 85 330 115 420 115"></path>
+                <path d="M250 205 C330 205 330 175 420 175"></path>
+                <path d="M250 205 C330 205 330 245 420 245"></path>
+              </g>
+              <path class="tree-forecast" d="M50 145 H420"></path>
+              <g class="tree-nodes">
+                <circle cx="250" cy="85" r="5"></circle>
+                <circle cx="250" cy="205" r="5"></circle>
+                <circle cx="420" cy="45" r="5"></circle>
+                <circle cx="420" cy="115" r="5"></circle>
+                <circle cx="420" cy="175" r="5"></circle>
+                <circle cx="420" cy="245" r="5"></circle>
+              </g>
+              <circle class="tree-today" cx="50" cy="145" r="8"></circle>
+              <circle class="tree-forecast-end" cx="420" cy="145" r="5"></circle>
+              <g class="tree-labels">
+                <text x="50" y="176" text-anchor="middle">Today</text>
+                <text x="436" y="49">Scenario 1</text>
+                <text x="436" y="119">Scenario 2</text>
+                <text x="436" y="179">Scenario 3</text>
+                <text x="436" y="249">Scenario 4</text>
+                <text class="tree-forecast-label" x="436" y="149">Single forecast</text>
+              </g>
+            </svg>
+            <figcaption class="tree-key">
+              <span><i class="key-line key-line--scenario"></i>Possible futures</span>
+              <span><i class="key-line key-line--forecast"></i>One forecast</span>
+            </figcaption>
           </figure>
-
-          <div class="fan-steps">
-            <div class="fan-step">
-              <span class="fan-marker fan-marker--1">1</span>
-              <div>
-                <h3>What has happened</h3>
-                <p>The white line shows real past data, such as how much energy was used.</p>
-              </div>
-            </div>
-            <div class="fan-step">
-              <span class="fan-marker fan-marker--2">2</span>
-              <div>
-                <h3>The decision made today</h3>
-                <p>Choices like what to build or invest in have to be made now, before the future is known.</p>
-              </div>
-            </div>
-            <div class="fan-step">
-              <span class="fan-marker fan-marker--3">3</span>
-              <div>
-                <h3>What could happen next</h3>
-                <p>Each green line is one possible future, called a scenario. We test today's decision against all of
-                  them.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="fan-factors">
-            <div class="role-label">Things that can change</div>
-            <ul>
-              <li>energy demand</li>
-              <li>wind and solar output</li>
-              <li>fuel prices</li>
-              <li>government policy</li>
-              <li>technology costs</li>
-            </ul>
-            <p class="figure-note">Simplified illustration, not real model results.</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Worked example: one battery, planned two ways (illustrative figures) -->
+    <!-- Why it's important: one battery, planned two ways (illustrative figures) -->
     <section class="section-light example">
       <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
         <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
@@ -236,101 +227,125 @@
         <use href="#eo-turbine" transform="translate(640 500) scale(1)"></use>
       </svg>
       <div style="max-width:1180px; margin:0 auto;">
-        <div data-rv class="eyebrow">A simple example</div>
+        <div data-rv class="eyebrow">Why it's important</div>
         <div class="ex-head">
-          <h2 data-rv data-rvd="80" class="section-title">Should we invest in energy storage?</h2>
-          <p data-rv data-rvd="140">An average-price forecast can hide a profitable opportunity. This simple example
-            shows how modelling possible futures changes the investment decision.</p>
+          <h2 data-rv data-rvd="280" class="section-title">Should we invest in energy storage?</h2>
+          <!-- Problem statement: add the estimated cost of poor decisions here once agreed, then remove [hidden] -->
+          <div class="ex-problem" hidden></div>
         </div>
 
-        <div data-rv class="ex-inputs">
-          <div class="ex-stat">
-            <div class="ex-stat-label">Buy energy today</div>
-            <div class="ex-stat-value">£50</div>
-            <div class="ex-stat-unit">per unit of energy</div>
-          </div>
-          <div class="ex-stat">
-            <div class="ex-stat-label">Storage cost</div>
-            <div class="ex-stat-value">£20</div>
-            <div class="ex-stat-unit">per unit for this period</div>
-          </div>
-          <div class="ex-stat">
-            <div class="ex-stat-label">Capacity limit</div>
-            <div class="ex-stat-value">100</div>
-            <div class="ex-stat-unit">units of energy</div>
-          </div>
-        </div>
-        <p data-rv class="ex-note">Stored energy can be sold later at a known £50 per unit. We choose capacity and buy
-          energy today, then decide whether to sell tomorrow or hold for that later sale.</p>
-
-        <div data-rv class="ex-price">
-          <span class="ex-price-title">Tomorrow's price: <span class="ex-hi">£110</span> or <span
-              class="ex-lo">£10</span></span>
-          <span class="ex-price-odds">50% chance of each outcome</span>
-        </div>
-
-        <div class="ex-grid">
-          <div data-rv class="ex-col">
-            <div>
-              <div class="ex-kind"><span class="ex-num">01</span><span>Use the average price</span></div>
-              <div class="ex-model">Deterministic model</div>
-            </div>
-            <ul class="ex-steps">
-              <li>Average price: (£110 + £10) / 2 = £60.</li>
-              <li>Trading margin: £60 - £50 = £10.</li>
-              <li>£10 per unit is below the £20 storage cost.</li>
-            </ul>
-            <div class="ex-body">
-              <h3>Do not invest</h3>
-              <div class="ex-sub">100 units would lose £1,000 in this forecast.</div>
-            </div>
+        <div data-rv class="ex-slides" data-slides>
+          <div class="ex-tablist" role="tablist" aria-label="Example steps">
+            <button type="button" role="tab" id="ex-tab-1" aria-controls="ex-slide-1" aria-selected="true"><span
+                class="ex-num">01</span>Many futures</button>
+            <button type="button" role="tab" id="ex-tab-2" aria-controls="ex-slide-2" aria-selected="false"><span
+                class="ex-num">02</span>The battery</button>
+            <button type="button" role="tab" id="ex-tab-3" aria-controls="ex-slide-3" aria-selected="false"><span
+                class="ex-num">03</span>Two plans</button>
+            <button type="button" role="tab" id="ex-tab-4" aria-controls="ex-slide-4" aria-selected="false"><span
+                class="ex-num">04</span>What happens</button>
           </div>
 
-          <div data-rv data-rvd="90" class="ex-col is-eorc">
-            <div>
-              <div class="ex-kind"><span class="ex-num">02</span><span>Model both outcomes</span></div>
-              <div class="ex-model">Stochastic model</div>
-            </div>
-            <ul class="ex-steps">
-              <li>High price: sell at £110; margin £60.</li>
-              <li>Low price: hold for £50; margin £0.</li>
-              <li>Expected margin: (£60 + £0) / 2 = £30.</li>
-              <li>£30 exceeds the £20 storage cost.</li>
-            </ul>
-            <div class="ex-body">
-              <h3>Invest in 100 units</h3>
-              <div class="ex-sub">Expected net profit: £10 per unit.</div>
-            </div>
+          <div class="ex-slide" role="tabpanel" id="ex-slide-1" aria-labelledby="ex-tab-1">
+            <!-- Fan of futures, drawn by js/figures.js -->
+            <figure data-fig="fan" class="fan">
+              <div class="fan-legend">
+                <span><i class="key-line key-line--history"></i>Past</span>
+                <span><i class="key-line key-line--scenario"></i>Possible futures</span>
+                <span><i class="key-line key-line--forecast"></i>One forecast (the average)</span>
+              </div>
+              <div class="fan-plot">
+                <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="fan-gridlines" d="M0 60 H1000 M0 150 H1000 M0 240 H1000"></path>
+                  <path data-fan-band class="fan-band" d=""></path>
+                  <g data-fan-lines></g>
+                  <path data-fan-history class="fan-history" d=""></path>
+                  <path data-fan-forecast class="fan-forecast" d=""></path>
+                  <path class="fan-today" d="M500 0 V300"></path>
+                </svg>
+                <span class="fan-marker-today"></span>
+              </div>
+              <div class="fan-axis">
+                <span>Past</span><span>Today</span><span>Possible futures</span>
+              </div>
+              <!-- Mount point for the plot controls, to be added -->
+              <div class="fan-controls" data-fan-controls></div>
+              <p class="figure-note">Simplified illustration, not real model results.</p>
+            </figure>
           </div>
-        </div>
 
-        <div data-rv class="ex-reveal">
-          <div class="ex-cap">What happens when the price is revealed?</div>
-          <div class="ex-table">
-            <div class="ex-tr ex-th"><span>Price and chance</span><span>Action with 100 units</span><span>Net profit
-                after all costs</span></div>
-            <div class="ex-tr"><span class="ex-mono">£110 (50%)</span><span>Sell tomorrow at £110</span><span
-                class="ex-profit ex-win">+£4,000</span></div>
-            <div class="ex-tr"><span class="ex-mono">£10 (50%)</span><span>Hold; sell later at £50</span><span
-                class="ex-profit ex-loss">-£2,000</span></div>
+          <div class="ex-slide" role="tabpanel" id="ex-slide-2" aria-labelledby="ex-tab-2">
+            <div class="ex-inputs">
+              <div class="ex-stat">
+                <div class="ex-stat-label">Buy energy today</div>
+                <div class="ex-stat-value">£50</div>
+                <div class="ex-stat-unit">per unit</div>
+              </div>
+              <div class="ex-stat">
+                <div class="ex-stat-label">Store it</div>
+                <div class="ex-stat-value">£20</div>
+                <div class="ex-stat-unit">per unit</div>
+              </div>
+              <div class="ex-stat">
+                <div class="ex-stat-label">Battery size</div>
+                <div class="ex-stat-value">100</div>
+                <div class="ex-stat-unit">units</div>
+              </div>
+            </div>
+            <div class="ex-price">
+              <span class="ex-price-title">Tomorrow's price: <span class="ex-hi">£110</span> or <span
+                  class="ex-lo">£10</span></span>
+              <span class="ex-price-odds">equally likely</span>
+            </div>
+            <p class="ex-note">We can sell tomorrow at that unknown price, or keep the energy and sell the day after
+              for a guaranteed £50*.</p>
           </div>
-          <p class="ex-sub">Each outcome includes £5,000 to buy energy and £2,000 for storage.</p>
+
+          <div class="ex-slide" role="tabpanel" id="ex-slide-3" aria-labelledby="ex-tab-3">
+            <div class="ex-grid">
+              <div class="ex-col">
+                <div class="ex-kind"><span class="ex-num">A</span><span>Plan with the average price</span></div>
+                <p class="ex-steps">Average price £60, so a margin of £10. That is less than the £20 storage cost.</p>
+                <div class="ex-body">
+                  <h3>Do not invest</h3>
+                  <div class="ex-sub">Seen as a £1,000 loss on 100 units.</div>
+                </div>
+              </div>
+              <div class="ex-col is-eorc">
+                <div class="ex-kind"><span class="ex-num">B</span><span>Plan with both prices</span></div>
+                <p class="ex-steps">High price: sell at £110, margin £60. Low price: keep it and sell at £50, margin £0.
+                  Average margin £30, more than the £20 cost.</p>
+                <div class="ex-body">
+                  <h3>Invest in 100 units</h3>
+                  <div class="ex-sub">Expected profit: £10 per unit.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ex-slide" role="tabpanel" id="ex-slide-4" aria-labelledby="ex-tab-4">
+            <div class="ex-table">
+              <div class="ex-tr ex-th"><span>Tomorrow's price</span><span>What we do</span><span>Profit</span></div>
+              <div class="ex-tr"><span class="ex-mono">£110 (50%)</span><span>Sell tomorrow</span><span
+                  class="ex-profit ex-win">+£4,000</span></div>
+              <div class="ex-tr"><span class="ex-mono">£10 (50%)</span><span>Keep it, sell at £50 the day
+                  after</span><span class="ex-profit ex-loss">-£2,000</span></div>
+            </div>
+            <p class="ex-calc">Expected profit: (£4,000 - £2,000) / 2 = £1,000. Not investing earns £0 either way. Each
+              case already includes £5,000 to buy energy and £2,000 for storage.</p>
+          </div>
         </div>
 
         <div data-rv class="ex-takeaway">
           <div>
             <div class="ex-big">£1,000</div>
-            <div class="ex-big-label">additional expected profit</div>
+            <div class="ex-big-label">more expected profit</div>
           </div>
-          <div>
-            <p>The average misses the value of adapting.</p>
-            <p class="ex-calc">Expected profit: (£4,000 - £2,000) / 2 = £1,000.<br>Not investing earns £0 in either
-              outcome.</p>
-          </div>
+          <p>The average misses the value of adapting.</p>
         </div>
         <p data-rv class="ex-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra
-          charges. Both decisions face the same outcomes. £1,000 is an expected profit; the low-price outcome loses
-          £2,000.</p>
+          charges. £1,000 is an expected profit; the low-price case loses £2,000. *For simplicity, we omit the fee for
+          the fixed-price sale.</p>
       </div>
     </section>
 

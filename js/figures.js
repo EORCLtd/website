@@ -130,8 +130,16 @@ window.EORCFigures = (function () {
       lower.push([FAN_TODAY.x + t * 490, Math.max(...columns[i]) + pad]);
     }
 
+    // The single "deterministic" forecast: the average of all scenarios.
+    const forecast = [[FAN_TODAY.x, y0]];
+    for (let i = 1; i <= FAN_STEPS; i++) {
+      const mean = columns[i].reduce((sum, y) => sum + y, 0) / columns[i].length;
+      forecast.push([FAN_TODAY.x + (i / FAN_STEPS) * 490, mean]);
+    }
+
     return {
       history: toPath(history),
+      forecast: toPath(forecast),
       scenarios: scenarios.map(toPath),
       band: toPath(upper.concat(lower.reverse())) + ' Z'
     };
@@ -144,10 +152,12 @@ window.EORCFigures = (function () {
     const band = host.querySelector('[data-fan-band]');
     const lines = host.querySelector('[data-fan-lines]');
     const history = host.querySelector('[data-fan-history]');
-    if (!band || !lines || !history) return;
+    const forecast = host.querySelector('[data-fan-forecast]');
+    if (!band || !lines || !history || !forecast) return;
 
     const fan = buildFan(FAN_SCENARIOS);
     history.setAttribute('d', fan.history);
+    forecast.setAttribute('d', fan.forecast);
     band.setAttribute('d', fan.band);
     fill(lines, fan.scenarios.map(d => node('path', { d, class: 'fan-scenario' })));
   }
