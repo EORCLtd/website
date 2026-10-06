@@ -69,100 +69,6 @@ window.EORCFigures = (function () {
   }
 
   // ==========================================================================
-  // Why uncertainty matters — fan of futures
-  // ==========================================================================
-
-  const FAN_TODAY = { x: 500, y: 150 };
-  const FAN_SCENARIOS = 10;
-  const FAN_STEPS = 30;
-
-  // Small seeded PRNG (mulberry32) so the illustration is identical on every load.
-  function seededRandom(seed) {
-    let a = seed;
-    return () => {
-      a = (a + 0x6D2B79F5) | 0;
-      let t = Math.imul(a ^ (a >>> 15), 1 | a);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  function toPath(points) {
-    return 'M' + points.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
-  }
-
-  // Past data (ending exactly on "today"), scenario paths fanning out from it,
-  // and the envelope around them. Returns SVG path strings.
-  function buildFan(count) {
-    const random = seededRandom(11);
-    const y0 = FAN_TODAY.y;
-
-    const history = [];
-    for (let i = 0; i <= 48; i++) {
-      const t = i / 48;
-      const x = 10 + i * (490 / 48);
-      const y = y0 + Math.sin(t * 7.2 + 0.6) * 14 * (1 - t * 0.4) + Math.sin(t * 17) * 4 - (1 - t) * 6;
-      history.push([x, i === 48 ? y0 : y]);
-    }
-
-    const scenarios = [];
-    const columns = []; // columns[i] = y of every scenario at step i
-    for (let k = 0; k < count; k++) {
-      const drift = (random() * 2 - 1) * 70;
-      const bend = (random() - 0.5) * 30;
-      const points = [[FAN_TODAY.x, y0]];
-      for (let i = 1; i <= FAN_STEPS; i++) {
-        const t = i / FAN_STEPS;
-        const y = y0 + drift * Math.pow(t, 1.3) + bend * Math.sin(t * Math.PI);
-        points.push([FAN_TODAY.x + t * 490, y]);
-        (columns[i] = columns[i] || []).push(y);
-      }
-      scenarios.push(points);
-    }
-
-    // Padding grows with time so the band stays wider than the outermost lines.
-    const upper = [[FAN_TODAY.x, y0]];
-    const lower = [[FAN_TODAY.x, y0]];
-    for (let i = 1; i <= FAN_STEPS; i++) {
-      const t = i / FAN_STEPS;
-      const pad = 4 + 10 * t;
-      upper.push([FAN_TODAY.x + t * 490, Math.min(...columns[i]) - pad]);
-      lower.push([FAN_TODAY.x + t * 490, Math.max(...columns[i]) + pad]);
-    }
-
-    // The single "deterministic" forecast: the average of all scenarios.
-    const forecast = [[FAN_TODAY.x, y0]];
-    for (let i = 1; i <= FAN_STEPS; i++) {
-      const mean = columns[i].reduce((sum, y) => sum + y, 0) / columns[i].length;
-      forecast.push([FAN_TODAY.x + (i / FAN_STEPS) * 490, mean]);
-    }
-
-    return {
-      history: toPath(history),
-      forecast: toPath(forecast),
-      scenarios: scenarios.map(toPath),
-      band: toPath(upper.concat(lower.reverse())) + ' Z'
-    };
-  }
-
-  function initFanChart() {
-    const host = document.querySelector('[data-fig="fan"]');
-    if (!host) return;
-
-    const band = host.querySelector('[data-fan-band]');
-    const lines = host.querySelector('[data-fan-lines]');
-    const history = host.querySelector('[data-fan-history]');
-    const forecast = host.querySelector('[data-fan-forecast]');
-    if (!band || !lines || !history || !forecast) return;
-
-    const fan = buildFan(FAN_SCENARIOS);
-    history.setAttribute('d', fan.history);
-    forecast.setAttribute('d', fan.forecast);
-    band.setAttribute('d', fan.band);
-    fill(lines, fan.scenarios.map(d => node('path', { d, class: 'fan-scenario' })));
-  }
-
-  // ==========================================================================
   // Technology 01 — pan-European network
   // ==========================================================================
 
@@ -369,7 +275,6 @@ window.EORCFigures = (function () {
   // ==========================================================================
 
   function init() {
-    initFanChart();
     initNetworkMap();
     initHorizonChart();
     initEntrances();

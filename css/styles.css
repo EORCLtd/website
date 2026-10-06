@@ -2144,6 +2144,20 @@ section:has(> .bg-art) {
   color: var(--paper-75);
 }
 
+.why-next {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.why-next:hover {
+  color: var(--accent-bright);
+}
+
 /* Scenario tree */
 .tree {
   margin: 0;
@@ -2199,8 +2213,7 @@ section:has(> .bg-art) {
   fill: var(--forecast);
 }
 
-.tree-key,
-.fan-legend {
+.tree-key {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
@@ -2215,8 +2228,7 @@ section:has(> .bg-art) {
   color: var(--paper-62);
 }
 
-.tree-key span,
-.fan-legend span {
+.tree-key span {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2231,115 +2243,6 @@ section:has(> .bg-art) {
 
 .key-line--forecast {
   border-top: 2px dashed var(--forecast);
-}
-
-.key-line--history {
-  border-top-color: var(--ink);
-}
-
-/* Fan of futures (inside the example, so it uses the light palette) */
-.fan {
-  margin: 0;
-}
-
-.fan-legend {
-  margin-bottom: 14px;
-  color: var(--ink-soft);
-}
-
-.fan-plot {
-  position: relative;
-}
-
-/* The chart stretches to the column width, so strokes must not scale with it. */
-.fan svg {
-  display: block;
-  width: 100%;
-  height: 210px;
-}
-
-.fan svg path {
-  vector-effect: non-scaling-stroke;
-}
-
-.fan-gridlines {
-  fill: none;
-  stroke: rgba(22, 25, 29, 0.08);
-}
-
-.fan-today {
-  fill: none;
-  stroke: rgba(22, 25, 29, 0.35);
-  stroke-width: 1.2;
-  stroke-dasharray: 3 5;
-}
-
-.fan-band {
-  fill: oklch(0.62 0.14 170 / 0.12);
-}
-
-.fan-scenario {
-  fill: none;
-  stroke: var(--accent-mid);
-  stroke-opacity: 0.7;
-  stroke-width: 1.2;
-}
-
-.fan-history {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2.4;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.fan-forecast {
-  fill: none;
-  stroke: var(--forecast);
-  stroke-width: 2.4;
-  stroke-dasharray: 7 6;
-}
-
-.fan-marker-today {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 12px;
-  height: 12px;
-  margin: -6px 0 0 -6px;
-  border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 4px var(--bg-light), 0 0 0 5px var(--accent-mid);
-}
-
-.fan-axis {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  column-gap: 16px;
-  margin-top: 10px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.fan-axis span:nth-child(2) {
-  color: var(--ink);
-}
-
-.fan-axis span:last-child {
-  text-align: right;
-}
-
-/* Reserved for the plot buttons; takes no space until they exist. */
-.fan-controls:empty {
-  display: none;
-}
-
-.example .figure-note {
-  color: var(--ink-soft);
-  margin-top: 8px;
 }
 
 /* Example: sized to fit one screen; detail sits in the step tabs. */
@@ -2411,6 +2314,67 @@ section:has(> .bg-art) {
 
 .ex-tablist [aria-selected="true"] .ex-num {
   color: var(--accent-deep);
+}
+
+/* Slide layout: a small price tree beside the explanation. */
+.ex-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px 56px;
+  align-items: center;
+}
+
+.ex-tree {
+  margin: 0;
+}
+
+.ex-tree svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 230px;
+}
+
+.ex-tree figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.ex-tree .tree-edges path {
+  stroke: var(--accent-mid);
+}
+
+.ex-tree .tree-edges.is-dim path {
+  stroke-opacity: 0.25;
+}
+
+.ex-tree .tree-forecast {
+  stroke: var(--warn);
+}
+
+.ex-tree .tree-forecast-end {
+  fill: var(--warn);
+}
+
+.ex-tree .tree-nodes circle {
+  fill: var(--bg-light);
+  stroke: var(--accent-mid);
+}
+
+.ex-tree .tree-today {
+  fill: var(--ink);
+  stroke: var(--bg-light);
+}
+
+.ex-tree .tree-labels text {
+  font-size: 15px;
+  font-weight: 500;
+  fill: var(--ink-mid);
+}
+
+.ex-tree .tree-labels .tree-forecast-label {
+  fill: var(--warn);
 }
 
 /* Without JS every slide is shown in turn. With JS they share one grid cell so
@@ -2624,6 +2588,29 @@ section:has(> .bg-art) {
   color: var(--warn);
 }
 
+.ex-outcomes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.ex-outcome {
+  border-top: 1px solid rgba(22, 25, 29, 0.16);
+  padding-top: 14px;
+}
+
+.ex-outcome.is-avg {
+  border-top: 2px solid var(--accent-mid);
+  margin-top: -1px;
+}
+
+.ex-outcome .ex-profit {
+  margin-top: 6px;
+  font-size: 40px;
+  text-align: left;
+  letter-spacing: -0.03em;
+}
+
 .ex-calc {
   font-size: 15px;
   line-height: 1.6;
@@ -2665,6 +2652,15 @@ section:has(> .bg-art) {
   text-wrap: pretty;
 }
 
+.ex-takeaway .ex-term {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
 .ex-flag {
   font-size: 12px;
   line-height: 1.5;
@@ -2677,7 +2673,7 @@ section:has(> .bg-art) {
 @media (max-width: 860px) {
 
   .why-grid,
-  .ex-grid,
+  .ex-split,
   .ex-takeaway {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2697,11 +2693,6 @@ section:has(> .bg-art) {
     padding: 16px 12px 14px;
   }
 
-  .fan-axis {
-    font-size: 10px;
-    letter-spacing: 0.06em;
-  }
-
   .ex-tablist {
     gap: 8px 20px;
   }
@@ -2710,7 +2701,8 @@ section:has(> .bg-art) {
     font-size: 14px;
   }
 
-  .ex-inputs {
+  .ex-inputs,
+  .ex-outcomes {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }

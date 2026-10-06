@@ -170,6 +170,7 @@
               <h3>A decision built on one forecast can fail.</h3>
               <p>It only works if that forecast comes true. Testing a decision against many scenarios shows whether it
                 still holds when things turn out differently.</p>
+              <a class="why-next" href="#example">See it in a small example <span aria-hidden="true">↓</span></a>
             </div>
           </div>
 
@@ -215,7 +216,7 @@
     </section>
 
     <!-- Why it's important: one battery, planned two ways (illustrative figures) -->
-    <section class="section-light example">
+    <section class="section-light example" id="example">
       <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
         <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
         <use href="#eo-pylon" transform="translate(120 500) scale(1)"></use>
@@ -229,7 +230,7 @@
       <div style="max-width:1180px; margin:0 auto;">
         <div data-rv class="eyebrow">Why it's important</div>
         <div class="ex-head">
-          <h2 data-rv data-rvd="280" class="section-title">Should we invest in energy storage?</h2>
+          <h2 data-rv data-rvd="80" class="section-title">Should you buy a battery?</h2>
           <!-- Problem statement: add the estimated cost of poor decisions here once agreed, then remove [hidden] -->
           <div class="ex-problem" hidden></div>
         </div>
@@ -237,115 +238,162 @@
         <div data-rv class="ex-slides" data-slides>
           <div class="ex-tablist" role="tablist" aria-label="Example steps">
             <button type="button" role="tab" id="ex-tab-1" aria-controls="ex-slide-1" aria-selected="true"><span
-                class="ex-num">01</span>Many futures</button>
+                class="ex-num">01</span>The choice</button>
             <button type="button" role="tab" id="ex-tab-2" aria-controls="ex-slide-2" aria-selected="false"><span
-                class="ex-num">02</span>The battery</button>
+                class="ex-num">02</span>Plan with the average</button>
             <button type="button" role="tab" id="ex-tab-3" aria-controls="ex-slide-3" aria-selected="false"><span
-                class="ex-num">03</span>Two plans</button>
+                class="ex-num">03</span>Plan for both outcomes</button>
             <button type="button" role="tab" id="ex-tab-4" aria-controls="ex-slide-4" aria-selected="false"><span
                 class="ex-num">04</span>What happens</button>
           </div>
 
           <div class="ex-slide" role="tabpanel" id="ex-slide-1" aria-labelledby="ex-tab-1">
-            <!-- Fan of futures, drawn by js/figures.js -->
-            <figure data-fig="fan" class="fan">
-              <div class="fan-legend">
-                <span><i class="key-line key-line--history"></i>Past</span>
-                <span><i class="key-line key-line--scenario"></i>Possible futures</span>
-                <span><i class="key-line key-line--forecast"></i>One forecast (the average)</span>
+            <div class="ex-split">
+              <figure class="ex-tree">
+            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+              <g class="tree-edges">
+                <path d="M40 100 C170 100 170 40 300 40"></path>
+                <path d="M40 100 C170 100 170 160 300 160"></path>
+              </g>
+              <g class="tree-nodes">
+                <circle cx="300" cy="40" r="5"></circle>
+                <circle cx="300" cy="160" r="5"></circle>
+              </g>
+              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+              <g class="tree-labels">
+                <text x="40" y="132" text-anchor="middle">Today</text>
+                <text x="316" y="45">£110</text>
+                <text x="316" y="165">£10</text>
+              </g>
+            </svg>
+                <figcaption>Tomorrow's price is a coin flip: equally likely to be high or low.</figcaption>
+              </figure>
+              <div>
+                <div class="ex-inputs">
+                  <div class="ex-stat">
+                    <div class="ex-stat-label">Buy energy today</div>
+                    <div class="ex-stat-value">£50</div>
+                    <div class="ex-stat-unit">per unit</div>
+                  </div>
+                  <div class="ex-stat">
+                    <div class="ex-stat-label">Store it</div>
+                    <div class="ex-stat-value">£20</div>
+                    <div class="ex-stat-unit">per unit</div>
+                  </div>
+                  <div class="ex-stat">
+                    <div class="ex-stat-label">Battery size</div>
+                    <div class="ex-stat-value">100</div>
+                    <div class="ex-stat-unit">units</div>
+                  </div>
+                </div>
+                <p class="ex-note">You can sell tomorrow at whatever the price turns out to be, or keep the energy and
+                  sell the day after for a guaranteed £50*.</p>
               </div>
-              <div class="fan-plot">
-                <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
-                  <path class="fan-gridlines" d="M0 60 H1000 M0 150 H1000 M0 240 H1000"></path>
-                  <path data-fan-band class="fan-band" d=""></path>
-                  <g data-fan-lines></g>
-                  <path data-fan-history class="fan-history" d=""></path>
-                  <path data-fan-forecast class="fan-forecast" d=""></path>
-                  <path class="fan-today" d="M500 0 V300"></path>
-                </svg>
-                <span class="fan-marker-today"></span>
-              </div>
-              <div class="fan-axis">
-                <span>Past</span><span>Today</span><span>Possible futures</span>
-              </div>
-              <!-- Mount point for the plot controls, to be added -->
-              <div class="fan-controls" data-fan-controls></div>
-              <p class="figure-note">Simplified illustration, not real model results.</p>
-            </figure>
+            </div>
           </div>
 
           <div class="ex-slide" role="tabpanel" id="ex-slide-2" aria-labelledby="ex-tab-2">
-            <div class="ex-inputs">
-              <div class="ex-stat">
-                <div class="ex-stat-label">Buy energy today</div>
-                <div class="ex-stat-value">£50</div>
-                <div class="ex-stat-unit">per unit</div>
-              </div>
-              <div class="ex-stat">
-                <div class="ex-stat-label">Store it</div>
-                <div class="ex-stat-value">£20</div>
-                <div class="ex-stat-unit">per unit</div>
-              </div>
-              <div class="ex-stat">
-                <div class="ex-stat-label">Battery size</div>
-                <div class="ex-stat-value">100</div>
-                <div class="ex-stat-unit">units</div>
+            <div class="ex-split">
+              <figure class="ex-tree">
+            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+              <g class="tree-edges is-dim">
+                <path d="M40 100 C170 100 170 40 300 40"></path>
+                <path d="M40 100 C170 100 170 160 300 160"></path>
+              </g>
+                <path class="tree-forecast" d="M40 100 H300"></path>
+                <circle class="tree-forecast-end" cx="300" cy="100" r="5"></circle>
+              <g class="tree-nodes">
+                <circle cx="300" cy="40" r="5"></circle>
+                <circle cx="300" cy="160" r="5"></circle>
+              </g>
+              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+              <g class="tree-labels">
+                <text x="40" y="132" text-anchor="middle">Today</text>
+                <text x="316" y="45">£110</text>
+                <text x="316" y="165">£10</text>
+                <text class="tree-forecast-label" x="316" y="105">Average £60</text>
+              </g>
+            </svg>
+                <figcaption>The average guess squeezes both outcomes into one number.</figcaption>
+              </figure>
+              <div class="ex-col">
+                <div class="ex-kind"><span class="ex-num">A</span><span>Plan with the average guess</span></div>
+                <p class="ex-steps">The average price is £60, only £10 more than the £50 you paid. Storing costs £20, so
+                  it looks like a loss.</p>
+                <div class="ex-body">
+                  <h3>Don't buy</h3>
+                </div>
               </div>
             </div>
-            <div class="ex-price">
-              <span class="ex-price-title">Tomorrow's price: <span class="ex-hi">£110</span> or <span
-                  class="ex-lo">£10</span></span>
-              <span class="ex-price-odds">equally likely</span>
-            </div>
-            <p class="ex-note">We can sell tomorrow at that unknown price, or keep the energy and sell the day after
-              for a guaranteed £50*.</p>
           </div>
 
           <div class="ex-slide" role="tabpanel" id="ex-slide-3" aria-labelledby="ex-tab-3">
-            <div class="ex-grid">
-              <div class="ex-col">
-                <div class="ex-kind"><span class="ex-num">A</span><span>Plan with the average price</span></div>
-                <p class="ex-steps">Average price £60, so a margin of £10. That is less than the £20 storage cost.</p>
-                <div class="ex-body">
-                  <h3>Do not invest</h3>
-                  <div class="ex-sub">Seen as a £1,000 loss on 100 units.</div>
-                </div>
-              </div>
+            <div class="ex-split">
+              <figure class="ex-tree">
+            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+              <g class="tree-edges">
+                <path d="M40 100 C170 100 170 40 300 40"></path>
+                <path d="M40 100 C170 100 170 160 300 160"></path>
+              </g>
+              <g class="tree-nodes">
+                <circle cx="300" cy="40" r="5"></circle>
+                <circle cx="300" cy="160" r="5"></circle>
+              </g>
+              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+              <g class="tree-labels">
+                <text x="40" y="132" text-anchor="middle">Today</text>
+                <text x="316" y="38" class="ex-lab">£110: sell tomorrow</text>
+                <text x="316" y="168" class="ex-lab">£10: keep, sell for £50</text>
+              </g>
+            </svg>
+                <figcaption>Planning for both outcomes means having an answer for each.</figcaption>
+              </figure>
               <div class="ex-col is-eorc">
-                <div class="ex-kind"><span class="ex-num">B</span><span>Plan with both prices</span></div>
-                <p class="ex-steps">High price: sell at £110, margin £60. Low price: keep it and sell at £50, margin £0.
-                  Average margin £30, more than the £20 cost.</p>
+                <div class="ex-kind"><span class="ex-num">B</span><span>Plan for both outcomes</span></div>
+                <p class="ex-steps">If the price is high, sell tomorrow and earn £60 a unit. If it is low, keep it and
+                  earn £0. On average that is £30 a unit, more than the £20 storage cost.</p>
                 <div class="ex-body">
-                  <h3>Invest in 100 units</h3>
-                  <div class="ex-sub">Expected profit: £10 per unit.</div>
+                  <h3>Buy 100 units</h3>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="ex-slide" role="tabpanel" id="ex-slide-4" aria-labelledby="ex-tab-4">
-            <div class="ex-table">
-              <div class="ex-tr ex-th"><span>Tomorrow's price</span><span>What we do</span><span>Profit</span></div>
-              <div class="ex-tr"><span class="ex-mono">£110 (50%)</span><span>Sell tomorrow</span><span
-                  class="ex-profit ex-win">+£4,000</span></div>
-              <div class="ex-tr"><span class="ex-mono">£10 (50%)</span><span>Keep it, sell at £50 the day
-                  after</span><span class="ex-profit ex-loss">-£2,000</span></div>
+            <div class="ex-outcomes">
+              <div class="ex-outcome">
+                <div class="ex-stat-label">High price (50%)</div>
+                <div class="ex-profit ex-win">+£4,000</div>
+                <div class="ex-stat-unit">sell tomorrow at £110</div>
+              </div>
+              <div class="ex-outcome">
+                <div class="ex-stat-label">Low price (50%)</div>
+                <div class="ex-profit ex-loss">-£2,000</div>
+                <div class="ex-stat-unit">keep it, sell at £50</div>
+              </div>
+              <div class="ex-outcome is-avg">
+                <div class="ex-stat-label">On average</div>
+                <div class="ex-profit ex-win">+£1,000</div>
+                <div class="ex-stat-unit">not buying earns £0</div>
+              </div>
             </div>
-            <p class="ex-calc">Expected profit: (£4,000 - £2,000) / 2 = £1,000. Not investing earns £0 either way. Each
-              case already includes £5,000 to buy energy and £2,000 for storage.</p>
+            <p class="ex-calc">Each case already includes £5,000 to buy the energy and £2,000 to store it.</p>
           </div>
         </div>
 
         <div data-rv class="ex-takeaway">
           <div>
             <div class="ex-big">£1,000</div>
-            <div class="ex-big-label">more expected profit</div>
+            <div class="ex-big-label">more on average by planning for both outcomes</div>
           </div>
-          <p>The average misses the value of adapting.</p>
+          <div>
+            <p>The average misses the value of adapting.</p>
+            <p class="ex-term">Planning for many possible futures like this is called stochastic optimization.</p>
+          </div>
         </div>
         <p data-rv class="ex-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra
-          charges. £1,000 is an expected profit; the low-price case loses £2,000. *For simplicity, we omit the fee for
-          the fixed-price sale.</p>
+          charges. £1,000 is an average; the low-price case loses £2,000. *For simplicity, we omit the fee for the
+          fixed-price sale.</p>
       </div>
     </section>
 
