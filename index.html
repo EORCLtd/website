@@ -228,10 +228,17 @@
         <use href="#eo-turbine" transform="translate(640 500) scale(1)"></use>
       </svg>
       <div style="max-width:1180px; margin:0 auto;">
-        <div data-rv class="eyebrow">Why it's important</div>
+        <div data-rv class="eyebrow">What Planning With Uncertainty Looks Like</div>
         <div class="ex-head">
-          <h2 data-rv data-rvd="80" class="section-title">Should you buy a battery?</h2>
-          <!-- Problem statement: add the estimated cost of poor decisions here once agreed, then remove [hidden] -->
+          <div>
+            <h2 data-rv data-rvd="80" class="section-title">Accounting for uncertainty helps us make better decisions.
+            </h2>
+            <p data-rv data-rvd="140" class="ex-note">Here is a simple choice where the two ways of planning disagree:
+              should
+              you buy a battery?</p>
+          </div>
+          <!-- Problem statement: add the estimated cost of poor decisions here once agreed, then remove [hidden].
+               It is the stakes, so it may also belong in the "Why it matters" block above. -->
           <div class="ex-problem" hidden></div>
         </div>
 
@@ -250,22 +257,23 @@
           <div class="ex-slide" role="tabpanel" id="ex-slide-1" aria-labelledby="ex-tab-1">
             <div class="ex-split">
               <figure class="ex-tree">
-            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
-              <g class="tree-edges">
-                <path d="M40 100 C170 100 170 40 300 40"></path>
-                <path d="M40 100 C170 100 170 160 300 160"></path>
-              </g>
-              <g class="tree-nodes">
-                <circle cx="300" cy="40" r="5"></circle>
-                <circle cx="300" cy="160" r="5"></circle>
-              </g>
-              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
-              <g class="tree-labels">
-                <text x="40" y="132" text-anchor="middle">Today</text>
-                <text x="316" y="45">£110</text>
-                <text x="316" y="165">£10</text>
-              </g>
-            </svg>
+                <svg viewBox="0 0 580 200" role="img"
+                  aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+                  <g class="tree-edges">
+                    <path d="M40 100 C170 100 170 40 300 40"></path>
+                    <path d="M40 100 C170 100 170 160 300 160"></path>
+                  </g>
+                  <g class="tree-nodes">
+                    <circle cx="300" cy="40" r="5"></circle>
+                    <circle cx="300" cy="160" r="5"></circle>
+                  </g>
+                  <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+                  <g class="tree-labels">
+                    <text x="40" y="132" text-anchor="middle">Today</text>
+                    <text x="316" y="45">£110</text>
+                    <text x="316" y="165">£10</text>
+                  </g>
+                </svg>
                 <figcaption>Tomorrow's price is a coin flip: equally likely to be high or low.</figcaption>
               </figure>
               <div>
@@ -295,25 +303,26 @@
           <div class="ex-slide" role="tabpanel" id="ex-slide-2" aria-labelledby="ex-tab-2">
             <div class="ex-split">
               <figure class="ex-tree">
-            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
-              <g class="tree-edges is-dim">
-                <path d="M40 100 C170 100 170 40 300 40"></path>
-                <path d="M40 100 C170 100 170 160 300 160"></path>
-              </g>
-                <path class="tree-forecast" d="M40 100 H300"></path>
-                <circle class="tree-forecast-end" cx="300" cy="100" r="5"></circle>
-              <g class="tree-nodes">
-                <circle cx="300" cy="40" r="5"></circle>
-                <circle cx="300" cy="160" r="5"></circle>
-              </g>
-              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
-              <g class="tree-labels">
-                <text x="40" y="132" text-anchor="middle">Today</text>
-                <text x="316" y="45">£110</text>
-                <text x="316" y="165">£10</text>
-                <text class="tree-forecast-label" x="316" y="105">Average £60</text>
-              </g>
-            </svg>
+                <svg viewBox="0 0 580 200" role="img"
+                  aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+                  <g class="tree-edges is-dim">
+                    <path d="M40 100 C170 100 170 40 300 40"></path>
+                    <path d="M40 100 C170 100 170 160 300 160"></path>
+                  </g>
+                  <path class="tree-forecast" d="M40 100 H300"></path>
+                  <circle class="tree-forecast-end" cx="300" cy="100" r="5"></circle>
+                  <g class="tree-nodes">
+                    <circle cx="300" cy="40" r="5"></circle>
+                    <circle cx="300" cy="160" r="5"></circle>
+                  </g>
+                  <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+                  <g class="tree-labels">
+                    <text x="40" y="132" text-anchor="middle">Today</text>
+                    <text x="316" y="45">£110</text>
+                    <text x="316" y="165">£10</text>
+                    <text class="tree-forecast-label" x="316" y="105">Average £60</text>
+                  </g>
+                </svg>
                 <figcaption>The average guess squeezes both outcomes into one number.</figcaption>
               </figure>
               <div class="ex-col">
@@ -330,22 +339,23 @@
           <div class="ex-slide" role="tabpanel" id="ex-slide-3" aria-labelledby="ex-tab-3">
             <div class="ex-split">
               <figure class="ex-tree">
-            <svg viewBox="0 0 580 200" role="img" aria-label="Tomorrow's price is either £110 or £10, equally likely.">
-              <g class="tree-edges">
-                <path d="M40 100 C170 100 170 40 300 40"></path>
-                <path d="M40 100 C170 100 170 160 300 160"></path>
-              </g>
-              <g class="tree-nodes">
-                <circle cx="300" cy="40" r="5"></circle>
-                <circle cx="300" cy="160" r="5"></circle>
-              </g>
-              <circle class="tree-today" cx="40" cy="100" r="8"></circle>
-              <g class="tree-labels">
-                <text x="40" y="132" text-anchor="middle">Today</text>
-                <text x="316" y="38" class="ex-lab">£110: sell tomorrow</text>
-                <text x="316" y="168" class="ex-lab">£10: keep, sell for £50</text>
-              </g>
-            </svg>
+                <svg viewBox="0 0 580 200" role="img"
+                  aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+                  <g class="tree-edges">
+                    <path d="M40 100 C170 100 170 40 300 40"></path>
+                    <path d="M40 100 C170 100 170 160 300 160"></path>
+                  </g>
+                  <g class="tree-nodes">
+                    <circle cx="300" cy="40" r="5"></circle>
+                    <circle cx="300" cy="160" r="5"></circle>
+                  </g>
+                  <circle class="tree-today" cx="40" cy="100" r="8"></circle>
+                  <g class="tree-labels">
+                    <text x="40" y="132" text-anchor="middle">Today</text>
+                    <text x="316" y="38" class="ex-lab">£110: sell tomorrow</text>
+                    <text x="316" y="168" class="ex-lab">£10: keep, sell for £50</text>
+                  </g>
+                </svg>
                 <figcaption>Planning for both outcomes means having an answer for each.</figcaption>
               </figure>
               <div class="ex-col is-eorc">
@@ -392,7 +402,7 @@
           </div>
         </div>
         <p data-rv class="ex-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra
-          charges. £1,000 is an average; the low-price case loses £2,000. *For simplicity, we omit the fee for the
+          charges. £1,000 is an average; the low-price case loses £2,000. For simplicity, we omit the fee for the
           fixed-price sale.</p>
       </div>
     </section>
