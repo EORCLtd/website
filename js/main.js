@@ -87,12 +87,14 @@ function initScrollEffects() {
   update();
 }
 
-// ---------- role tabs: [role="tablist"] ----------
+// ---------- tabs: every [role="tablist"] (role selector, example steps) ----------
 // Panels ship visible so the copy reads without JavaScript; from here on only
 // the selected one is shown.
 function initRoleTabs() {
-  const list = document.querySelector('[role="tablist"]');
-  if (!list) return;
+  document.querySelectorAll('[role="tablist"]').forEach(initTabList);
+}
+
+function initTabList(list) {
   const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
   const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
 

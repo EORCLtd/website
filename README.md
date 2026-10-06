@@ -1,132 +1,104 @@
-# EORC — static site
+<p align="center">
+  <img src="img/cropped-EORC_logo_letter-270x270.png" alt="EORC logo" width="120">
+</p>
 
-Static replacement (HTML/CSS/JS, no server code) for the previous WordPress site, hosted on GitHub Pages.
-Currently served at `https://eorcltd.github.io/website/`; the `eorc.uk` domain gets attached later, see
-"Connecting eorc.uk" below.
+<h1 align="center">Edinburgh Operational Research Corporation Ltd</h1>
 
-The design comes from Claude Design project `f6079cf0` (Home / Technology / Contact / About): dark base `#0b0d10` alternating with light sections with rounded corners, mint accent, Instrument Sans + IBM Plex Mono fonts, scroll animations.
+<p align="center">
+  <strong>Managing uncertainty in energy system decisions.</strong><br>
+  <a href="https://eorc.uk">eorc.uk</a> · <a href="mailto:info@eorc.uk">info@eorc.uk</a>
+</p>
+
+---
+
+## About EORC
+
+EORC is an Edinburgh-based technology company specialising in optimisation and decision support under
+uncertainty for energy systems. We build rigorous, scalable methods for planning and investment decisions in
+complex, uncertain environments, grounded in years of research and applied work.
+
+Our focus is operational research, applied mathematics and energy systems analysis, with explicit
+representations of uncertainty: demand evolution, technology costs, policy and market dynamics. We work with
+asset owners, infrastructure planners and long-term system planners, and we prioritise transparency, robustness
+and interpretability so that trade-offs and assumptions stay visible.
+
+## What we do
+
+We make stochastic modelling an effortless part of your workflow, so uncertainty becomes an input to every plan
+rather than a caveat added at the end.
+
+- **Plan for many futures, not one forecast.** Test decisions against thousands of possible futures for prices,
+  weather, demand and policy.
+- **Multi-energy, multi-scale modelling.** Pan-European scope covering power, heat, hydrogen, oil & gas and CCS
+  in one integrated model.
+- **Proprietary algorithms.** Optimisation and neural-network-enhanced methods built for problems that
+  commercial solvers struggle to handle.
+- **No-code interface.** Set up models, run scenarios and read results without writing code, connected to the
+  data and software your team already uses.
+
+### Who we help
+
+| Audience | How we help |
+|----------|-------------|
+| Energy asset owners | Invest, retrofit and retire with every likely future in view. |
+| System operators | Plan operations across many possible outcomes for wind, solar and demand. |
+| Power market analysts | Long-term power price outlooks for Europe that show the range, not just one line. |
+
+### Platform
+
+- **Data analytics**: time-series scenario generation, long-term commodity, policy and technology scenarios, and a
+  European energy system database.
+- **Algorithms**: scalable optimisation under uncertainty.
+- **Models**: integrated multi-energy models, including North Sea offshore systems.
+- **Results analytics**: power price outlooks, infrastructure pathways, asset valuation and uncertainty analytics.
+
+## Team
+
+| | Role | Profile |
+|---|------|---------|
+| Dr Hongyu Zhang | Director | [LinkedIn](https://www.linkedin.com/in/hongyu-zhang-0416/) |
+| Tommaso Ferrario | Software Engineer | [LinkedIn](https://www.linkedin.com/in/tommaso-ferrario-383423200/) |
+| Gabriele Sormani | Software Engineer | [LinkedIn](https://www.linkedin.com/in/gabriele-sormani-0866962a3/) |
+
+## Contact
+
+Want to see your energy system under uncertainty? Email us at [info@eorc.uk](mailto:info@eorc.uk) with a line
+about your system, the energy carriers involved and the decision you are facing, or visit
+[eorc.uk/contact](https://eorc.uk/contact.html) to request a demo.
+
+---
+
+# About this repository
+
+This repository is the source of the [eorc.uk](https://eorc.uk) website: plain HTML, CSS and vanilla JavaScript,
+no build step and no server code, hosted on GitHub Pages. It replaces the previous WordPress site.
+
+The design is dark (`#0b0d10`) alternating with light, rounded sections, with a mint accent, Instrument Sans and
+IBM Plex Mono fonts, and scroll animations.
 
 ## Structure
 
 ```
 index.html                Home
 product.html              Technology
-contact.html              Contact — a mailto panel, see "Contact" below
+contact.html              Contact (a mailto panel, no form)
 about.html                About / team
 404.html                  Served by GitHub Pages on any unknown path
 request-a-demo.html       Redirect to contact.html (the old URL stays valid)
 request-a-demo/index.html Same redirect for the directory-style URL /request-a-demo/
 css/styles.css            Styles and design tokens
-js/main.js                Mobile nav, scroll animations, mailto helpers + generic form handling
-js/email-service.js       Abstraction layer for sending email (currently unused)
-js/analytics.js           PostHog analytics, see "Analytics" below
+js/main.js                Mobile nav, scroll animations, mailto helpers
+js/figures.js             Interactive figures on the Technology page
+js/analytics.js           PostHog analytics (see below)
+js/email-service.js       Email abstraction layer (currently unused, see below)
 img/                      All site images, self-hosted
+CNAME                     Custom domain (eorc.uk). Do not delete
 .nojekyll                 Skip the Jekyll build step
 ```
 
-All internal paths are **relative** (`css/styles.css`, `img/foo.png`), so the site works both on the
-project-page URL and on a custom domain. `404.html` is relative too, but GitHub Pages serves it for unknown
-paths *at any depth*, where relative URLs would resolve against the request path — so it carries a `<base>`
-element that a two-line inline script points at the site root (`/` on a custom domain, `/<repo>/` on
-`*.github.io`). Any new link added to that page must stay relative.
-
-## Contact
-
-`contact.html` has **no form**: GitHub Pages cannot send mail, so the page offers a `mailto:` link to
-`info@eorc.uk` with the subject and a short body template prefilled, and enquiries land in the mailbox directly.
-
-Because a `mailto:` does nothing for a visitor without a registered mail client, `initMailFallback()` in
-`js/main.js` reads that same href and builds Gmail and Outlook compose URLs from it, plus a copy-to-clipboard
-button. The mailto href in `contact.html` is the single place the address and the template live — the fallback
-row is generated from it and stays hidden when JS is off.
-
-### Restoring the form (optional)
-
-The EmailJS-backed form markup lives in git history (commit `c0f33e0` removed it) and `js/email-service.js`
-is still in the tree. EmailJS sends directly from the browser, so the site stays fully static. Free tier:
-200 emails/month. To bring it back, restore the `<form data-form-type="contact">` markup and the
-`[data-form-success]` panel in the contact card, put the EmailJS SDK `<script>`, the `emailjs.init(...)` call
-and `js/email-service.js` back before `js/main.js`, and then:
-
-1. Create a free account at emailjs.com.
-2. Add an **Email Service** (e.g. the Gmail connector, or SMTP for a mailbox on the `eorc.uk` domain) and
-   note its **Service ID**.
-3. Create an **Email Template** using the variables `{{name}}`, `{{org}}`, `{{email}}`, `{{message}}`. Set
-   the "To" address to the mailbox that should receive the requests, and note the **Template ID**.
-4. Copy your **Public Key** from Account → API Keys, and under Account → Security restrict it to `eorc.uk`
-   — the key ships in the public repo, so domain restriction is what stops it being reused elsewhere.
-5. Paste the values into `js/email-service.js` → `EMAILJS_CONFIG` and into the `emailjs.init(...)` line.
-
-All form code talks to `EmailService.send(...)` in `js/email-service.js`, so switching provider later means
-changing only that file. The form has a hidden honeypot field (`name="website"`) as basic anti-spam
-protection; EmailJS also offers reCAPTCHA integration on templates. Since sending happens in the browser
-there is no server-side validation layer; EmailJS rate-limits per public key.
-
-## Analytics
-
-`js/analytics.js` loads **PostHog** (Cloud EU) on every page except the two redirect stubs. It records page
-views, page leaves with scroll depth, clicks (autocapture), heatmaps and session replay, plus four named events:
-
-| Event | Fired when | Properties |
-|-------|------------|------------|
-| `contact_intent` | the mailto button, a webmail link or "Copy address" is clicked on the contact page | `method`: `mailto` / `gmail` / `outlook` / `copy`; `role` when the visitor arrived from a role panel |
-| `demo_cta_clicked` | any link to `contact.html` is clicked | `location`: `nav` / `hero` / `role-panel` / `section` / `footer`, `label`, `role` (role-panel only): `asset-owner` / `system-operator` / `market-analyst` |
-| `role_tab_selected` | a role tab on the home page is clicked | `role` |
-| `figure_control_used` | a filter on the Technology figures is clicked | `figure`, `value` |
-
-`contact_intent` is the conversion: with no form, reaching the mailbox is the goal. The events hang off
-attributes already in the markup (`data-mailto`, `role="tab"`, `data-net-controls`, …), so renaming those
-breaks the tracking silently.
-
-- **Setup**: create a project on `eu.posthog.com`, paste its project API key into `POSTHOG_KEY` at the top of
-  `js/analytics.js` (the key is public and write-only, so it belongs in the repo), and in the project settings
-  enable Session replay and Heatmaps and add `https://eorc.uk` to the authorised URLs. Until the key is set
-  the script does nothing.
-- **No cookies**: the visit id is kept in `sessionStorage` and disappears when the tab closes, so a returning
-  visitor counts as a new one. It is still storage on the device — the site should say so in a privacy note.
-- **Production only**: the script initialises on `eorc.uk` / `www.eorc.uk` and nowhere else. To test on
-  `localhost` or the `github.io` URL, append `?ph_debug=1` to the address (this also turns on console logging).
-- Visitors with an ad blocker are not counted; the site works the same for them.
-
-## Deploying
-
-The site is served by **GitHub Pages** from the `main` branch of `EORCLtd/website`, root folder. Any push to
-`main` redeploys within a minute — there is no build step.
-
-Repo settings: Settings → Pages → Source **Deploy from a branch**, branch `main`, folder `/ (root)`.
-The repo must stay **public** (Pages on private repos requires GitHub Team or Enterprise).
-
-Live at `https://eorcltd.github.io/website/`.
-
-## Connecting eorc.uk
-
-Not done yet — the repo deliberately has **no `CNAME` file**, so that the site is reachable on the
-`github.io` URL while the domain still points elsewhere. A `CNAME` file in the repo *is* the custom domain:
-as soon as one exists, Pages redirects `eorcltd.github.io/website/` to it, and the site is unreachable
-everywhere until DNS resolves to GitHub.
-
-When the switch is wanted:
-
-1. Point the DNS at GitHub (table below) and wait for it to propagate.
-2. Settings → Pages → **Custom domain** = `eorc.uk`. GitHub commits the `CNAME` file back into the repo —
-   `git pull` afterwards, and from then on don't delete it.
-3. Once the domain check is green, turn on **Enforce HTTPS**.
-
-Nothing in the site needs editing for the move: all paths are relative and `404.html` detects the host itself.
-
-### DNS (GoDaddy, `eorc.uk`)
-
-| Type  | Host | Value |
-|-------|------|-------|
-| A     | `@`  | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
-| AAAA  | `@`  | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
-| CNAME | `www`| `eorcltd.github.io.` |
-
-- **Do not touch the MX records** or the SPF/DKIM TXT records: mail on `@eorc.uk` (including `info@eorc.uk`,
-  linked from the contact page) is unaffected by the A records as long as the MX entries stay put.
-- Remove any GoDaddy *Forwarding* / domain-parking rule — it takes precedence over the records and breaks
-  certificate issuance.
-- The Let's Encrypt certificate is issued automatically once the domain check passes and can take a few hours.
+All internal paths are **relative**, so the site works on both the project-page URL and the custom domain.
+`404.html` is served at any path depth, so it carries a `<base>` element that an inline script points at the
+site root. Any new link added to that page must stay relative.
 
 ## Local preview
 
@@ -134,10 +106,63 @@ Nothing in the site needs editing for the move: all paths are relative and `404.
 python3 -m http.server 8000   # then open http://localhost:8000/
 ```
 
+## Deploying
+
+Served by **GitHub Pages** from the `main` branch of `EORCLtd/website`, root folder (Settings → Pages → Deploy
+from a branch). Any push to `main` redeploys within a minute. The repo must stay **public**, because Pages on
+private repos needs GitHub Team or Enterprise.
+
+### Custom domain
+
+The `CNAME` file sets the custom domain to `eorc.uk`. DNS at GoDaddy must point at GitHub Pages:
+
+| Type  | Host | Value |
+|-------|------|-------|
+| A     | `@`  | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| AAAA  | `@`  | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| CNAME | `www`| `eorcltd.github.io.` |
+
+- Do not touch the MX records or the SPF/DKIM TXT records: mail on `@eorc.uk` is unaffected as long as they
+  stay put.
+- Remove any GoDaddy forwarding or parking rule, which takes precedence over these records and breaks
+  certificate issuance.
+- Turn on **Enforce HTTPS** in Settings → Pages once the domain check is green.
+
+## Contact page
+
+`contact.html` has no form, because GitHub Pages cannot send mail. It offers a `mailto:` link to
+`info@eorc.uk` with the subject and a short body prefilled. `initMailFallback()` in `js/main.js` reads that
+href and also builds Gmail and Outlook compose links and a copy button for visitors without a mail client. The
+mailto href in `contact.html` is the single place the address and template live.
+
+An EmailJS-backed form existed before (removed in commit `c0f33e0`). `js/email-service.js` is still in the tree,
+and all form code goes through `EmailService.send(...)`, so restoring it means restoring the markup from git
+history and filling in `EMAILJS_CONFIG`. If restored, restrict the public key to `eorc.uk` in the EmailJS
+dashboard, since the key ships in this public repo.
+
+## Analytics
+
+`js/analytics.js` loads [PostHog](https://posthog.com) (Cloud EU) on every page except the redirect stubs. It
+records page views, scroll depth, clicks, heatmaps and session replay, plus four named events:
+
+| Event | Fired when | Properties |
+|-------|------------|------------|
+| `contact_intent` | The mailto button, a webmail link or "Copy address" is clicked | `method`: `mailto` / `gmail` / `outlook` / `copy`; `role` when the visitor came from a role panel |
+| `demo_cta_clicked` | Any link to `contact.html` is clicked | `location`, `label`, and `role` for role panels |
+| `role_tab_selected` | A role tab on the home page is clicked | `role` |
+| `figure_control_used` | A filter on the Technology figures is clicked | `figure`, `value` |
+
+- The events hang off attributes in the markup (`data-mailto`, `role="tab"`, `data-net-controls`, ...), so
+  renaming those breaks tracking silently.
+- The PostHog project key in `POSTHOG_KEY` is public and write-only, so it belongs in the repo.
+- No cookies: the visit id lives in `sessionStorage` and disappears when the tab closes.
+- The script runs only on `eorc.uk` / `www.eorc.uk`. To test elsewhere, append `?ph_debug=1` to the URL.
+
 ## Notes
 
-- Images are self-hosted in `img/` (~1.1 MB total). They used to be loaded from `eorc.uk/wp-content/uploads/`
-  on the old WordPress install; that dependency is gone, so decommissioning the WordPress site is safe.
-- Remaining external dependencies: **Google Fonts** and **PostHog** (analytics). If full independence is
-  wanted, self-host the two font families and drop the `fonts.googleapis.com` links.
-- GitHub Pages soft limits: 1 GB site, ~100 GB/month bandwidth, 10 builds/hour. Not a constraint here.
+- Images are self-hosted in `img/` (about 1.1 MB). Remaining external dependencies are Google Fonts and PostHog.
+- GitHub Pages soft limits: 1 GB site, about 100 GB/month bandwidth, 10 builds/hour. Not a constraint here.
+
+---
+
+<p align="center">© 2026 Edinburgh Operational Research Corporation Ltd. All rights reserved.</p>
