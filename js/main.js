@@ -94,6 +94,16 @@ function initRoleTabs() {
   document.querySelectorAll('[role="tablist"]').forEach(initTabList);
 }
 
+// Tabs that carry data-stage (Technology section) also light up the matching
+// stage of the pipeline diagram that sits beside them.
+function highlightStage(list, activeTab) {
+  const scope = list.closest('[data-tech]');
+  if (!scope) return;
+  scope.querySelectorAll('.tech-stage').forEach(stage => {
+    stage.classList.toggle('is-active', stage.dataset.stage === activeTab.dataset.stage);
+  });
+}
+
 function initTabList(list) {
   const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
   const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
@@ -104,6 +114,7 @@ function initTabList(list) {
       t.tabIndex = k === i ? 0 : -1;
       if (panels[k]) panels[k].hidden = k !== i;
     });
+    highlightStage(list, tabs[i]);
   };
 
   tabs.forEach((t, i) => {

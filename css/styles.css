@@ -2792,3 +2792,235 @@ section:has(> .bg-art) {
     animation: none;
   }
 }
+
+/* ---------- Technology: tabs following the pipeline ---------- */
+.tech-tabs-wrap {
+  margin-top: 56px;
+}
+
+.tech-tabs,
+.tech-pipeline {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.tech-tabs {
+  padding: 0 27px;
+  grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+}
+
+.tech-tab {
+  grid-row: 1;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 22px 0 6px;
+  border: 0;
+  border-top: 2px solid rgba(22, 25, 29, 0.14);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.3s var(--ease);
+}
+
+.tech-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.tech-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.tech-tab[aria-selected="true"] {
+  border-top-color: var(--accent-mid);
+}
+
+.tech-tab[aria-selected="true"] .tech-num {
+  color: var(--accent-deep);
+}
+
+.tech-tab[aria-selected="true"] .tech-name {
+  color: var(--ink);
+}
+
+.tech-pipeline {
+  margin-top: 14px;
+  padding: 26px;
+  background: var(--card-bg);
+  border: 1px solid rgba(22, 25, 29, 0.08);
+  border-radius: 24px;
+  grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+  text-align: center;
+}
+
+.tech-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 14px;
+  border: 1px solid;
+  border-radius: 14px;
+  opacity: 0.45;
+  transition: opacity 0.35s, box-shadow 0.35s;
+}
+
+.tech-stage.is-active {
+  opacity: 1;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12);
+}
+
+.tech-stage--data {
+  background: oklch(0.975 0.012 165);
+  border-color: oklch(0.82 0.07 165);
+  --stage-ink: oklch(0.45 0.1 165);
+}
+
+.tech-stage--alg,
+.tech-stage--models {
+  background: oklch(0.975 0.01 250);
+  border-color: oklch(0.82 0.06 250);
+  --stage-ink: oklch(0.45 0.11 250);
+}
+
+.tech-stage--results {
+  background: oklch(0.98 0.008 25);
+  border-color: oklch(0.82 0.07 20);
+  --stage-ink: oklch(0.48 0.13 25);
+}
+
+.tech-stage-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stage-ink);
+}
+
+.tech-stage-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-mid);
+}
+
+.tech-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-deep);
+  font-size: 18px;
+}
+
+/* One grid cell shared by all panels keeps the area as tall as the tallest
+   panel, so switching tabs never shifts the content below. */
+.tech-panels {
+  display: grid;
+  gap: 40px;
+  margin-top: 44px;
+}
+
+.tech-panels.is-stacked {
+  gap: 0;
+  min-height: 150px;
+}
+
+.tech-panels.is-stacked .tech-panel {
+  grid-area: 1 / 1;
+}
+
+.tech-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px 56px;
+  align-items: end;
+}
+
+.tech-panel[hidden] {
+  display: grid;
+  visibility: hidden;
+}
+
+.tech-stat {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 0.95;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  color: oklch(0.42 0.12 170);
+}
+
+.tech-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tech-copy h3 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.tech-copy p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  text-wrap: pretty;
+}
+
+.tech-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(22, 25, 29, 0.12);
+  font-size: 17px;
+  color: var(--ink-mid);
+}
+
+@media (max-width: 860px) {
+  .tech-tabs {
+    padding: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 20px;
+  }
+
+  .tech-tab {
+    grid-column: auto !important;
+    grid-row: auto;
+  }
+
+  .tech-pipeline {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  .tech-arrow {
+    transform: rotate(90deg);
+    padding: 4px 0;
+  }
+
+  .tech-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tech-tab,
+  .tech-stage {
+    transition: none;
+  }
+}

@@ -196,6 +196,7 @@
                 <circle cx="420" cy="245" r="5"></circle>
               </g>
               <circle class="tree-today" cx="50" cy="145" r="8"></circle>
+              <circle class="tree-forecast-end" cx="250" cy="145" r="5"></circle>
               <circle class="tree-forecast-end" cx="420" cy="145" r="5"></circle>
               <g class="tree-labels">
                 <text x="50" y="176" text-anchor="middle">Today</text>
@@ -456,115 +457,78 @@
       </svg>
       <div style="max-width:1180px; margin:0 auto;">
         <div data-rv class="eyebrow">Our technology</div>
-        <h2 data-rv data-rvd="80" class="section-title">One platform, from scenarios to decisions.</h2>
+        <h2 data-rv data-rvd="80" class="section-title">Built for problems too big for standard solvers.</h2>
         <p data-rv data-rvd="140"
-          style="font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:660px; margin:20px 0 0;">Advanced
-          optimisation methods with explicit representations of uncertainty — operating at scale across energy
-          carriers, geographic regions and decision timescales.</p>
-        <div class="card-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));">
-          <div data-rv class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
-            <h3 style="font-size:20px; margin:0 0 8px;">Multi-energy, multi-scale modelling</h3>
-            <p style="margin-bottom:20px;">Pan-European scope. Power, heat, hydrogen, oil &amp; gas and CCS in one
-              integrated model.</p>
-            <img src="img/initial_grid-4.png" alt="Pan-European energy system network model"
-              style="width:100%; height:210px; object-fit:contain; border-radius:14px; border:1px solid rgba(22,25,29,0.06); background:#ffffff; margin-top:auto;">
+          style="font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:660px; margin:20px 0 0;">Our algorithms handle energy system models up to 549 times larger than an industry-leading solver, with uncertainty built in from the start.</p>
+        <div data-rv class="tech-tabs-wrap" data-tech>
+          <div class="tech-tabs" role="tablist" aria-label="Technology pipeline stages">
+          <button type="button" role="tab" class="tech-tab" id="tech-tab-0" aria-controls="tech-panel-0" data-stage="data" style="grid-column:1;">
+            <span class="tech-num">01</span><span class="tech-name">Data</span>
+          </button>
+          <button type="button" role="tab" class="tech-tab" id="tech-tab-1" aria-controls="tech-panel-1" data-stage="alg" style="grid-column:3;">
+            <span class="tech-num">02</span><span class="tech-name">Algorithms</span>
+          </button>
+          <button type="button" role="tab" class="tech-tab" id="tech-tab-2" aria-controls="tech-panel-2" data-stage="models" style="grid-column:5;">
+            <span class="tech-num">03</span><span class="tech-name">Models</span>
+          </button>
+          <button type="button" role="tab" class="tech-tab" id="tech-tab-3" aria-controls="tech-panel-3" data-stage="results" style="grid-column:7;">
+            <span class="tech-num">04</span><span class="tech-name">Results</span>
+          </button>
           </div>
-          <div data-rv data-rvd="90" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
-            <h3 style="font-size:20px; margin:0 0 8px;">Algorithms beyond solver limits</h3>
-            <p style="margin-bottom:20px;">Proprietary optimisation and neural-network-enhanced algorithms solve
-              problems commercial solvers can't.</p>
-            <!-- Tractable problem size, EORC against an industry-leading solver -->
-            <figure data-fig="bars" class="bars compact card-chart" style="--max:5000;">
-              <div class="bars-legend">
-                <span style="--swatch:var(--series-a);">Variables</span>
-                <span style="--swatch:var(--series-b);">Constraints</span>
-              </div>
-              <div class="bars-plot">
-                <div class="bars-row">
-                  <div class="bars-name">Industry-leading solver</div>
-                  <div class="bars-track"><span class="bars-note">549× smaller — not visible at this scale</span></div>
-                </div>
-                <div class="bars-row">
-                  <div class="bars-name">EORC</div>
-                  <div class="bars-track">
-                    <div class="bar-line" style="--i:0;"><span class="bar" style="--v:1000;"></span><span
-                        class="bar-value out"><span class="sr-only">Variables: </span>≈ 1&nbsp;000&nbsp;M</span></div>
-                    <div class="bar-line" style="--i:1;"><span class="bar b" style="--v:4500;"><span
-                          class="bar-value"><span class="sr-only">Constraints: </span>≈ 4&nbsp;500&nbsp;M</span></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <figcaption class="bars-caption">
-                <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than
-                  those tractable with an industry-leading solver.</span>
-              </figcaption>
-            </figure>
+          <div class="tech-pipeline">
+          <div class="tech-stage tech-stage--data" data-stage="data">
+            <div class="tech-stage-label">Data</div>
+            <div class="tech-stage-text">Scenarios from history and your assumptions</div>
           </div>
-          <div data-rv data-rvd="180" class="card" style="padding-bottom:24px; display:flex; flex-direction:column;">
-            <h3 style="font-size:20px; margin:0 0 8px;">Scenario generation</h3>
-            <p style="margin-bottom:20px;">Data-driven and optimisation-based scenarios, from historical data to
-              user-defined futures.</p>
-            <img src="img/scenario_generation-1.png" alt="Scenario generation across time horizons"
-              style="width:100%; height:210px; object-fit:contain; border-radius:14px; border:1px solid rgba(22,25,29,0.06); background:#ffffff; margin-top:auto;">
+          <div class="tech-arrow" aria-hidden="true">→</div>
+          <div class="tech-stage tech-stage--alg" data-stage="alg">
+            <div class="tech-stage-label">Algorithms</div>
+            <div class="tech-stage-text">Fast optimisation and AI</div>
           </div>
-          <div data-rv class="card"
-            style="grid-column:1/-1; border-radius:28px; padding:48px 28px 40px; text-align:center;">
-            <h3 style="font-size:24px; letter-spacing:-0.015em; margin:0 0 8px;">A user-focused platform</h3>
-            <p style="font-size:16px; max-width:620px; margin:0 auto;">Integrated data management, model configuration
-              and results analysis — built for analysts and decision-makers.</p>
-            <!-- Platform workflow: stages flow in when first scrolled to -->
-            <div class="figure-panel-light" style="max-width:920px; margin:30px auto 0;">
-              <div data-fig="workflow" class="workflow">
-                <div class="wf-stage wf-data" style="--i:0;">
-                  <h4 class="wf-title">Data analytics</h4>
-                  <ul class="wf-list">
-                    <li>Time series scenario generation</li>
-                    <li>Long-term commodity, policy, and technology scenario generation</li>
-                    <li>European energy system database</li>
-                  </ul>
-                </div>
-                <div class="wf-arrow" style="--i:1;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 12h15M13 6l6 6-6 6"></path>
-                  </svg></div>
-                <div class="wf-core">
-                  <div class="wf-stage wf-alg" style="--i:2;">
-                    <h4 class="wf-title">Algorithms</h4>
-                    <p>A toolbox of fast optimisation-based algorithms</p>
-                  </div>
-                  <div class="wf-arrow down" style="--i:3;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 12h15M13 6l6 6-6 6"></path>
-                    </svg></div>
-                  <div class="wf-stage wf-models" style="--i:4;">
-                    <h4 class="wf-title">Models</h4>
-                    <ul class="wf-list wf-chips">
-                      <li>Long-term and short-term uncertainty</li>
-                      <li>Integrated investment, retrofit and abandonment planning with operational scheduling</li>
-                      <li>Pan-European multi-energy system: power, oil and natural gas, hydrogen</li>
-                      <li>North Sea offshore system: offshore wind, O&amp;G platforms, pipelines</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="wf-arrow" style="--i:5;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 12h15M13 6l6 6-6 6"></path>
-                  </svg></div>
-                <div class="wf-stage wf-results" style="--i:6;">
-                  <h4 class="wf-title">Results analytics</h4>
-                  <ul class="wf-list">
-                    <li>Long-term power prices analytics</li>
-                    <li>Energy infrastructure pathways analysis</li>
-                    <li>Energy asset valuation</li>
-                    <li>Uncertainty analytics</li>
-                  </ul>
-                </div>
-              </div>
+          <div class="tech-arrow" aria-hidden="true">→</div>
+          <div class="tech-stage tech-stage--models" data-stage="models">
+            <div class="tech-stage-label">Models</div>
+            <div class="tech-stage-text">One integrated energy system</div>
+          </div>
+          <div class="tech-arrow" aria-hidden="true">→</div>
+          <div class="tech-stage tech-stage--results" data-stage="results">
+            <div class="tech-stage-label">Results</div>
+            <div class="tech-stage-text">Prices, pathways, valuations, risk</div>
+          </div>
+          </div>
+          <div class="tech-panels">
+          <div class="tech-panel" role="tabpanel" id="tech-panel-0" aria-labelledby="tech-tab-0">
+            <div class="tech-stat">Hours → decades</div>
+            <div class="tech-copy">
+              <h3>Scenarios for every time horizon.</h3>
+              <p>We turn historical data, probabilistic forecasts and your own assumptions into scenarios, from next week's weather to long-term prices and policy.</p>
             </div>
           </div>
+          <div class="tech-panel" role="tabpanel" id="tech-panel-1" aria-labelledby="tech-tab-1">
+            <div class="tech-stat">549×</div>
+            <div class="tech-copy">
+              <h3>We solve problems other solvers can't.</h3>
+              <p>Our algorithms handle problems up to 549 times larger than an industry-leading solver, and solve a billion-variable case in under an hour.</p>
+            </div>
+          </div>
+          <div class="tech-panel" role="tabpanel" id="tech-panel-2" aria-labelledby="tech-tab-2">
+            <div class="tech-stat">1 model</div>
+            <div class="tech-copy">
+              <h3>Every energy carrier in one integrated model.</h3>
+              <p>Power, heat, hydrogen, oil &amp; gas and CCS across Europe, linking long-term investment with day-to-day operations.</p>
+            </div>
+          </div>
+          <div class="tech-panel" role="tabpanel" id="tech-panel-3" aria-labelledby="tech-tab-3">
+            <div class="tech-stat">The full range</div>
+            <div class="tech-copy">
+              <h3>Answers you can take to the board.</h3>
+              <p>Power price outlooks, infrastructure pathways and asset valuations, each showing the likely range and the risk it carries.</p>
+            </div>
+          </div>
+          </div>
         </div>
-        <div data-rv style="text-align:center; margin-top:48px;">
+        <div data-rv class="tech-cta">
+          <span>See the benchmarks, models and full platform.</span>
           <a href="product.html" class="btn btn-dark">Explore the technology</a>
         </div>
       </div>
