@@ -17,6 +17,31 @@
 </head>
 
 <body>
+  <!-- Symbols shared by every line-art background (.hero-art, .bg-art) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="eo-turbine">
+        <path vector-effect="non-scaling-stroke"
+          d="M-3 0 L-1.2 -160 M3 0 L1.2 -160 M-6 -160 L11 -160 L11 -168 L-6 -168 Z"></path>
+        <circle vector-effect="non-scaling-stroke" cx="0" cy="-164" r="3"></circle>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z"></path>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(120 0 -164)">
+        </path>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(240 0 -164)">
+        </path>
+      </g>
+      <g id="eo-pylon">
+        <path vector-effect="non-scaling-stroke"
+          d="M-24 0 L-5 -150 M24 0 L5 -150 M-5 -150 L5 -150 M-42 -122 L42 -122 M-32 -96 L32 -96 M-21 -28 L17 -58 M21 -28 L-17 -58 M-17 -58 L12 -90 M17 -58 L-12 -90 M-5 -140 L-42 -122 M5 -140 L42 -122 M-8 -112 L-32 -96 M8 -112 L32 -96 M-42 -122 L-42 -112 M42 -122 L42 -112 M-32 -96 L-32 -86 M32 -96 L32 -86">
+        </path>
+      </g>
+      <g id="eo-plant">
+        <path vector-effect="non-scaling-stroke"
+          d="M-44 0 C-26 -50 -24 -80 -30 -130 L30 -130 C24 -80 26 -50 44 0 M56 0 C74 -50 76 -80 70 -130 L130 -130 C124 -80 126 -50 144 0 M160 0 L160 -60 L260 -60 L260 0 M180 -60 L180 -80 L240 -80 L240 -60 M214 -80 L218 -200 L228 -200 L232 -80">
+        </path>
+      </g>
+    </defs>
+  </svg>
 
   <header class="site-header">
     <nav class="nav">
@@ -39,99 +64,137 @@
 
   <main>
     <!-- About hero -->
-    <section class="hero-dark on-dark" style="padding:190px 24px 130px;">
-      <div class="hero-glow"></div>
-      <div data-hero-content style="position:relative; max-width:980px; margin:0 auto;">
-        <div data-rv class="eyebrow">About EORC</div>
-        <h1 data-rv data-rvd="90" class="hero-title">Rigorous methods<span class="muted-line">for uncertain
-            futures.</span></h1>
-        <p data-rv data-rvd="190" class="hero-lede" style="max-width:700px;">Edinburgh Operational Research Corporation
-          is a technology company specialising in optimisation and decision support under uncertainty for energy
-          systems.</p>
+    <section class="section-dark on-dark hero-home about-hero">
+      <svg class="hero-art" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-pylon" transform="translate(90 500) scale(1.3)"></use>
+        <use href="#eo-pylon" transform="translate(260 500)"></use>
+        <path vector-effect="non-scaling-stroke"
+          d="M0 330 Q20 338 35.4 341 M144.6 341 Q180 370 218 378 M0 364 Q24 372 48.4 375 M131.6 375 Q180 398 228 404">
+        </path>
+        <use href="#eo-plant" transform="translate(380 500) scale(0.6)"></use>
+        <use href="#eo-turbine" transform="translate(660 500) scale(1.15)"></use>
+      </svg>
+      <div data-hero-content class="hero-home-inner">
+        <div class="hero-home-copy">
+          <div data-rv class="eyebrow">About EORC</div>
+          <h1 data-rv data-rvd="90">Rigorous methods<span class="muted-line">for uncertain futures.</span></h1>
+          <p data-rv data-rvd="190" class="about-lede">Edinburgh Operational Research Corporation is a technology company
+            specialising in optimisation and decision support under uncertainty for energy systems.</p>
+          <a data-rv data-rvd="260" href="#team" class="about-jump">Meet the team ↓</a>
+        </div>
       </div>
     </section>
 
     <!-- Who we are -->
-    <section class="section-light" style="padding-bottom:60px;">
-      <div
-        style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px;">
-        <div data-rv class="card" style="padding:36px 32px;">
-          <div class="card-label">Who we are</div>
-          <p style="font-size:16px; line-height:1.65; color:var(--ink-mid); margin:16px 0 0;">A team focused on
-            rigorous, scalable methods for planning and investment decisions in complex, uncertain environments —
-            grounded in years of research and applied work.</p>
-        </div>
-        <div data-rv data-rvd="90" class="card" style="padding:36px 32px;">
-          <div class="card-label">Our focus</div>
-          <p style="font-size:16px; line-height:1.65; color:var(--ink-mid); margin:16px 0 0;">Operational research,
-            applied mathematics and energy systems analysis — with explicit representations of uncertainty: demand
-            evolution, technology costs, policy and market dynamics.</p>
-        </div>
-        <div data-rv data-rvd="180" class="card" style="padding:36px 32px;">
-          <div class="card-label">How we work</div>
-          <p style="font-size:16px; line-height:1.65; color:var(--ink-mid); margin:16px 0 0;">With asset owners,
-            infrastructure planners and long-term system planners. We prioritise transparency, robustness and
-            interpretability — so trade-offs and assumptions stay visible.</p>
+    <section class="section-dark on-dark about-pillars">
+      <div class="about-inner">
+        <div class="about-kicker">In three parts</div>
+        <div class="about-pillar-grid">
+          <div data-rv class="about-pillar">
+            <div class="about-pillar-head"><span class="about-pillar-num">01</span><span>Who we are</span></div>
+            <p>A team focused on rigorous, scalable methods for planning and investment decisions in complex,
+              uncertain environments — grounded in years of research and applied work.</p>
+          </div>
+          <div data-rv data-rvd="90" class="about-pillar">
+            <div class="about-pillar-head"><span class="about-pillar-num">02</span><span>Our focus</span></div>
+            <p>Operational research, applied mathematics and energy systems analysis — with explicit
+              representations of uncertainty: demand evolution, technology costs, policy and market dynamics.</p>
+          </div>
+          <div data-rv data-rvd="180" class="about-pillar">
+            <div class="about-pillar-head"><span class="about-pillar-num">03</span><span>How we work</span></div>
+            <p>With asset owners, infrastructure planners and long-term system planners. We prioritise
+              transparency, robustness and interpretability — so trade-offs and assumptions stay visible.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Team -->
-    <section style="background:var(--bg-light); padding:90px 24px 130px;">
-      <div style="max-width:1180px; margin:0 auto;">
-        <div data-rv class="eyebrow">The team</div>
-        <h2 data-rv data-rvd="80"
-          style="font-size:clamp(32px,4vw,52px); line-height:1.06; letter-spacing:-0.028em; font-weight:650; color:var(--ink); margin:16px 0 0;">
-          Operational researchers and engineers.</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; margin-top:48px;">
-          <div data-rv class="team-card">
-            <img src="img/HZ_ntnu_profile_photo.jpg" alt="Dr Hongyu Zhang">
-            <div>
+    <section id="team" class="section-light about-team">
+      <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-plant" transform="translate(330 500) scale(0.6)"></use>
+        <use href="#eo-pylon" transform="translate(110 500) scale(1.2)"></use>
+        <use href="#eo-pylon" transform="translate(600 500) scale(0.9)"></use>
+        <path vector-effect="non-scaling-stroke" d="M160.4 353.6 Q245.2 383.6 330 430"></path>
+      </svg>
+      <div class="about-inner">
+        <div class="about-team-head">
+          <div>
+            <div data-rv class="eyebrow">The team</div>
+            <h2 data-rv data-rvd="80" class="section-title">Operational researchers and engineers.</h2>
+          </div>
+          <p data-rv data-rvd="140">A small team that builds the methods and the software, and works directly with
+            the people who use them.</p>
+        </div>
+        <div class="team-grid">
+          <article data-rv class="team-member">
+            <div class="team-member-photo">
+              <img src="img/HZ_ntnu_profile_photo.jpg" alt="Dr Hongyu Zhang">
+              <span class="team-member-num">01</span>
+            </div>
+            <div class="team-member-body">
               <div class="name">Dr Hongyu Zhang</div>
               <div class="role">Director</div>
+              <p>Leads EORC and its research. Works on large-scale optimisation under uncertainty for energy system planning, and on the algorithms behind the platform.</p>
               <div class="links">
                 <a href="mailto:info@eorc.uk">Email</a>
-                <a href="https://www.linkedin.com/in/hongyu-zhang-0416/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/hongyu-zhang-0416/" target="_blank" rel="noopener">LinkedIn ↗</a>
               </div>
             </div>
-          </div>
-          <div data-rv data-rvd="90" class="team-card">
-            <img src="img/TF_profile_photo.jpg" alt="Tommaso Ferrario">
-            <div>
+          </article>
+          <article data-rv data-rvd="90" class="team-member">
+            <div class="team-member-photo">
+              <img src="img/TF_profile_photo.jpg" alt="Tommaso Ferrario">
+              <span class="team-member-num">02</span>
+            </div>
+            <div class="team-member-body">
               <div class="name">Tommaso Ferrario</div>
               <div class="role">Software Engineer</div>
+              <p>Builds the EORC platform, from data pipelines and scenario generation to the interface analysts use to set up models and read results.</p>
               <div class="links">
                 <a href="mailto:tf@eorc.uk">Email</a>
-                <a href="https://www.linkedin.com/in/tommaso-ferrario-383423200/" target="_blank"
-                  rel="noopener">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/tommaso-ferrario-383423200/" target="_blank" rel="noopener">LinkedIn ↗</a>
               </div>
             </div>
-          </div>
-          <div data-rv data-rvd="180" class="team-card">
-            <img src="img/GS_square.jpg" alt="Gabriele Sormani">
-            <div>
+          </article>
+          <article data-rv data-rvd="180" class="team-member">
+            <div class="team-member-photo">
+              <img src="img/GS_square.jpg" alt="Gabriele Sormani">
+              <span class="team-member-num">03</span>
+            </div>
+            <div class="team-member-body">
               <div class="name">Gabriele Sormani</div>
               <div class="role">Software Engineer</div>
+              <p>Works on the modelling and solver side of the platform, turning research methods into software that runs at full scale.</p>
               <div class="links">
                 <a href="mailto:gs@eorc.uk">Email</a>
-                <a href="https://www.linkedin.com/in/gabriele-sormani-0866962a3/" target="_blank"
-                  rel="noopener">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/gabriele-sormani-0866962a3/" target="_blank" rel="noopener">LinkedIn ↗</a>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- CTA + footer -->
-    <section class="section-dark on-dark" style="padding:130px 24px 60px;">
-      <div style="max-width:1180px; margin:0 auto;">
+    <section class="section-dark on-dark" style="padding:150px 24px 60px; position:relative; overflow:hidden;">
+      <svg class="bg-art bg-art--5" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-turbine" transform="translate(150 500) scale(0.9)"></use>
+        <use href="#eo-turbine" transform="translate(330 500) scale(1.25)"></use>
+        <use href="#eo-turbine" transform="translate(520 500) scale(0.8)"></use>
+        <use href="#eo-turbine" transform="translate(650 500) scale(1)"></use>
+      </svg>
+      <div style="max-width:1180px; margin:0 auto; position:relative; z-index:1;">
         <div style="text-align:center;">
           <h2 data-rv class="cta-title" style="font-size:clamp(34px,4.6vw,60px);">Talk to the team.</h2>
           <p data-rv data-rvd="90" class="cta-lede" style="max-width:540px; margin-top:22px;">Tell us about the
             decisions you're facing — we'll show you how the platform handles them.</p>
-          <div data-rv data-rvd="180" style="margin-top:34px;">
+          <div data-rv data-rvd="180" class="btn-row" style="margin-top:34px;">
             <a href="contact.html" class="btn btn-primary">Request a demo</a>
+            <a href="product.html" class="btn btn-ghost">Explore the technology</a>
           </div>
         </div>
         <footer class="site-footer" style="margin-top:120px;">
