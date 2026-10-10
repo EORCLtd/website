@@ -1055,19 +1055,6 @@ section:has(> .bg-art) {
   display: block;
 }
 
-.team-member-num {
-  position: absolute;
-  left: 18px;
-  top: 18px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--paper);
-  background: rgba(11, 13, 16, 0.72);
-  padding: 5px 10px;
-  border-radius: 999px;
-}
-
 .team-member-body {
   display: flex;
   flex-direction: column;

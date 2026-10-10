@@ -13,7 +13,7 @@ const sandbox = {
   matchMedia,
   URLSearchParams,
   encodeURIComponent,
-  document: { addEventListener() {}, querySelectorAll: () => [], querySelector: () => null }
+  document: { addEventListener() { }, querySelectorAll: () => [], querySelector: () => null }
 };
 vm.runInNewContext(
   fs.readFileSync(path.join(__dirname, '..', 'js', 'main.js'), 'utf8') +

@@ -11,7 +11,7 @@ function load(file, extra = {}) {
   const sandbox = {
     window: {},
     matchMedia: () => ({ matches: false }),
-    document: { addEventListener() {}, querySelectorAll: () => [], querySelector: () => null },
+    document: { addEventListener() { }, querySelectorAll: () => [], querySelector: () => null },
     ...extra
   };
   sandbox.window.matchMedia = sandbox.matchMedia;
