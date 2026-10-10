@@ -68,8 +68,18 @@ window.EORCFigures = (function () {
     return d;
   }
 
+  // Closed path between a lower and an upper curve, both sampled like line().
+  function band(lo, hi, x0, x1, steps, y0, span) {
+    const upper = line(hi, x0, x1, steps, y0, span);
+    const lower = line(lo, x0, x1, steps, y0, span).split(' L').reverse();
+    // line() starts with 'M'; walking the lower curve backwards makes its first
+    // point the last element, which still carries the 'M'
+    lower[lower.length - 1] = lower[lower.length - 1].replace(/^M/, '');
+    return upper + ' L' + lower.join(' L') + ' Z';
+  }
+
   // ==========================================================================
-  // Technology 01 — pan-European network
+  // Technology 03 — pan-European network
   // ==========================================================================
 
   // [name, lat, lon, weight, carriers] — real coordinates, schematic topology.
@@ -200,7 +210,7 @@ window.EORCFigures = (function () {
   }
 
   // ==========================================================================
-  // Technology 02 — uncertainty across horizons
+  // Technology 02 — uncertainty across horizons (Scenario generation)
   // ==========================================================================
 
   const HORIZONS = {
@@ -208,19 +218,22 @@ window.EORCFigures = (function () {
       title: 'Short-term operational decisions',
       body: 'Resolved at high temporal resolution, inside the same model that carries the long-term plan.',
       axis: 'hours → days',
-      f: t => 0.52 + 0.3 * Math.sin(t * 2 * Math.PI - 1.4) + 0.07 * Math.sin(t * 17)
+      f: t => 0.52 + 0.3 * Math.sin(t * 2 * Math.PI - 1.4) + 0.07 * Math.sin(t * 17),
+      w: t => 0.06 + 0.06 * t
     },
     year: {
       title: 'Uncertainty across multiple time horizons',
       body: 'Scenarios generated and evaluated across seasons, with trade-offs between cost, risk and system performance made comparable.',
       axis: 'seasons',
-      f: t => 0.5 + 0.34 * Math.cos(t * 2 * Math.PI) + 0.05 * Math.sin(t * 9)
+      f: t => 0.5 + 0.34 * Math.cos(t * 2 * Math.PI) + 0.05 * Math.sin(t * 9),
+      w: t => 0.07 + 0.05 * Math.sin(t * Math.PI)
     },
     decade: {
       title: 'Long-term strategic planning',
       body: 'Investment, retrofit and abandonment planning, linked to short-term operational decisions rather than studied separately.',
       axis: 'decades',
-      f: t => 0.24 + 0.6 * Math.pow(t, 1.5) + 0.04 * Math.sin(t * 11)
+      f: t => 0.24 + 0.6 * Math.pow(t, 1.5) + 0.04 * Math.sin(t * 11),
+      w: t => 0.02 + 0.16 * t
     }
   };
 
@@ -230,6 +243,7 @@ window.EORCFigures = (function () {
 
     const path = host.querySelector('[data-horizon-path]');
     const area = host.querySelector('[data-horizon-area]');
+    const bandPath = host.querySelector('[data-horizon-band]');
     const title = host.querySelector('[data-horizon-title]');
     const body = host.querySelector('[data-horizon-body]');
     const axis = host.querySelector('[data-horizon-axis]');
@@ -241,6 +255,7 @@ window.EORCFigures = (function () {
       const d = line(cfg.f, 4, 596, 60, 200, 170);
       path.setAttribute('d', d);
       area.setAttribute('d', d + ' L596 212 L4 212 Z');
+      if (bandPath) bandPath.setAttribute('d', band(t => cfg.f(t) - cfg.w(t), t => cfg.f(t) + cfg.w(t), 4, 596, 60, 200, 170));
       if (title) title.textContent = cfg.title;
       if (body) body.textContent = cfg.body;
       if (axis) axis.textContent = cfg.axis;
@@ -248,7 +263,52 @@ window.EORCFigures = (function () {
   }
 
   // ==========================================================================
-  // Benchmark bar charts + platform workflow (Home, Technology 03 and 05)
+  // Technology 01 — data input sparklines
+  // ==========================================================================
+
+  const SPARKS = {
+    demand: t => 0.5 + 0.3 * Math.sin(t * 12) + 0.1 * Math.sin(t * 41),
+    renewables: t => 0.45 + 0.35 * Math.sin(t * 7 + 1) * Math.cos(t * 23),
+    prices: t => 0.3 + 0.4 * t + 0.12 * Math.sin(t * 9),
+    costs: t => 0.8 - 0.55 * t + 0.03 * Math.sin(t * 6)
+  };
+
+  function initInputSparks() {
+    document.querySelectorAll('[data-spark]').forEach(path => {
+      const f = SPARKS[path.dataset.spark];
+      if (f) path.setAttribute('d', line(f, 2, 138, 48, 29, 26));
+    });
+  }
+
+  // ==========================================================================
+  // Technology 05 — fan of futures around a single forecast
+  // ==========================================================================
+
+  const fanMedian = t => 0.42 + 0.18 * t + 0.03 * Math.sin(t * 8);
+  const fanSpread = t => 0.03 + 0.3 * Math.pow(t, 0.8);
+
+  // Full range, likely range (45 % of it), median and the single-forecast line.
+  function fanPaths() {
+    const around = k => band(t => fanMedian(t) - fanSpread(t) * k, t => fanMedian(t) + fanSpread(t) * k, 4, 596, 60, 205, 190);
+    return {
+      outer: around(1),
+      inner: around(0.45),
+      median: line(fanMedian, 4, 596, 60, 205, 190),
+      forecast: line(t => 0.42 + 0.1 * t, 4, 596, 2, 205, 190)
+    };
+  }
+
+  function initFan() {
+    const host = document.querySelector('[data-fig="fan"]');
+    if (!host) return;
+    const paths = fanPaths();
+    host.querySelectorAll('[data-fan]').forEach(path => {
+      if (paths[path.dataset.fan]) path.setAttribute('d', paths[path.dataset.fan]);
+    });
+  }
+
+  // ==========================================================================
+  // Benchmark bar charts + platform workflow (Home and Technology 04)
   // ==========================================================================
 
   // Both are plain markup and CSS, complete without this. It only arms their
@@ -277,8 +337,11 @@ window.EORCFigures = (function () {
   function init() {
     initNetworkMap();
     initHorizonChart();
+    initInputSparks();
+    initFan();
     initEntrances();
   }
 
-  return { init: init };
+  // Pure geometry, exported so tests/ can check it without a DOM.
+  return { init: init, geometry: { line: line, band: band, fanPaths: fanPaths, project: project, HORIZONS: HORIZONS } };
 })();

@@ -90,7 +90,6 @@ css/styles.css            Styles and design tokens
 js/main.js                Mobile nav, scroll animations, mailto helpers
 js/figures.js             Interactive figures on the Technology page
 js/analytics.js           PostHog analytics (see below)
-js/email-service.js       Email abstraction layer (currently unused, see below)
 img/                      All site images, self-hosted
 CNAME                     Custom domain (eorc.uk). Do not delete
 .nojekyll                 Skip the Jekyll build step
@@ -135,9 +134,9 @@ The `CNAME` file sets the custom domain to `eorc.uk`. DNS at GoDaddy must point 
 href and also builds Gmail and Outlook compose links and a copy button for visitors without a mail client. The
 mailto href in `contact.html` is the single place the address and template live.
 
-An EmailJS-backed form existed before (removed in commit `c0f33e0`). `js/email-service.js` is still in the tree,
-and all form code goes through `EmailService.send(...)`, so restoring it means restoring the markup from git
-history and filling in `EMAILJS_CONFIG`. If restored, restrict the public key to `eorc.uk` in the EmailJS
+An EmailJS-backed form existed before (removed in commit `c0f33e0`). Restoring it means recovering the form
+markup and `js/email-service.js` from that commit's parent in git history, then filling in `EMAILJS_CONFIG`.
+If restored, restrict the public key to `eorc.uk` in the EmailJS
 dashboard, since the key ships in this public repo.
 
 ## Analytics

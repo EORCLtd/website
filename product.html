@@ -17,6 +17,31 @@
 </head>
 
 <body>
+  <!-- Symbols shared by every line-art background (.hero-art, .bg-art) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="eo-turbine">
+        <path vector-effect="non-scaling-stroke"
+          d="M-3 0 L-1.2 -160 M3 0 L1.2 -160 M-6 -160 L11 -160 L11 -168 L-6 -168 Z"></path>
+        <circle vector-effect="non-scaling-stroke" cx="0" cy="-164" r="3"></circle>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z"></path>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(120 0 -164)">
+        </path>
+        <path vector-effect="non-scaling-stroke" d="M0 -167 L-3 -200 L0 -236 L3 -200 Z" transform="rotate(240 0 -164)">
+        </path>
+      </g>
+      <g id="eo-pylon">
+        <path vector-effect="non-scaling-stroke"
+          d="M-24 0 L-5 -150 M24 0 L5 -150 M-5 -150 L5 -150 M-42 -122 L42 -122 M-32 -96 L32 -96 M-21 -28 L17 -58 M21 -28 L-17 -58 M-17 -58 L12 -90 M17 -58 L-12 -90 M-5 -140 L-42 -122 M5 -140 L42 -122 M-8 -112 L-32 -96 M8 -112 L32 -96 M-42 -122 L-42 -112 M42 -122 L42 -112 M-32 -96 L-32 -86 M32 -96 L32 -86">
+        </path>
+      </g>
+      <g id="eo-plant">
+        <path vector-effect="non-scaling-stroke"
+          d="M-44 0 C-26 -50 -24 -80 -30 -130 L30 -130 C24 -80 26 -50 44 0 M56 0 C74 -50 76 -80 70 -130 L130 -130 C124 -80 126 -50 144 0 M160 0 L160 -60 L260 -60 L260 0 M180 -60 L180 -80 L240 -80 L240 -60 M214 -80 L218 -200 L228 -200 L232 -80">
+        </path>
+      </g>
+    </defs>
+  </svg>
 
   <header class="site-header">
     <nav class="nav">
@@ -37,36 +62,211 @@
     </nav>
   </header>
 
+  <!-- Progress through the five steps; shown from step 01 until the closing CTA (js/main.js) -->
+  <nav class="step-nav" data-step-nav aria-label="Steps from data to decision">
+    <div class="step-nav-inner">
+      <a href="#step-1" data-step="step-1"><span class="step-num">01</span><span class="step-name">Data
+          analysis</span></a>
+      <a href="#step-2" data-step="step-2"><span class="step-num">02</span><span class="step-name">Scenario
+          generation</span></a>
+      <a href="#step-3" data-step="step-3"><span class="step-num">03</span><span class="step-name">Modelling</span></a>
+      <a href="#step-4" data-step="step-4"><span class="step-num">04</span><span class="step-name">Algorithms</span></a>
+      <a href="#step-5" data-step="step-5"><span class="step-num">05</span><span class="step-name">Results</span></a>
+    </div>
+  </nav>
+
   <main>
-    <!-- Tech hero -->
-    <section class="hero-dark on-dark" style="padding:190px 24px 130px;">
-      <div class="hero-glow"></div>
-      <div data-hero-content style="position:relative; max-width:980px; margin:0 auto;">
-        <div data-rv class="eyebrow">Our technology</div>
-        <h1 data-rv data-rvd="90" class="hero-title">Optimisation and AI,<span class="muted-line">built around
-            uncertainty.</span></h1>
-        <p data-rv data-rvd="190" class="hero-lede" style="max-width:680px;">Advanced optimisation and AI methods with
-          explicit representations of uncertainty — operating at scale across energy carriers, geographic regions and
-          decision timescales.</p>
-        <div data-rv data-rvd="280" style="margin-top:36px;">
-          <a href="contact.html" class="btn btn-primary">Request a demo</a>
+    <!-- Hero -->
+    <section class="section-dark on-dark tech-hero">
+      <svg class="hero-art" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-plant" transform="translate(40 500) scale(0.6)"></use>
+        <use href="#eo-turbine" transform="translate(330 500) scale(0.85)"></use>
+        <use href="#eo-turbine" transform="translate(470 500) scale(1.2)"></use>
+        <use href="#eo-turbine" transform="translate(640 500) scale(0.95)"></use>
+      </svg>
+      <div class="tech-hero-inner">
+        <div style="max-width:960px;">
+          <div data-rv class="eyebrow">Our technology</div>
+          <h1 data-rv data-rvd="90" class="tech-hero-title">Decision intelligence,<span class="muted-line">built around
+              uncertainty.</span></h1>
+          <p data-rv data-rvd="190" class="tech-hero-lede">Advanced optimisation methods with explicit
+            representations of uncertainty, operating at scale across energy carriers, geographic regions and decision
+            timescales.</p>
+        </div>
+        <div data-rv data-rvd="260" class="path">
+          <div class="path-label">The path, from data to decision</div>
+          <div class="path-steps">
+            <a href="#step-1"><span class="path-head"><span class="path-num">01</span><span class="path-name">Data
+                  analysis</span></span><span class="path-blurb">Historical data, scenarios and your
+                assumptions.</span></a>
+            <a href="#step-2"><span class="path-head"><span class="path-num">02</span><span class="path-name">Scenario
+                  generation</span></span><span class="path-blurb">Many possible futures, on every time
+                horizon.</span></a>
+            <a href="#step-3"><span class="path-head"><span class="path-num">03</span><span
+                  class="path-name">Modelling</span></span><span class="path-blurb">One integrated model of the energy
+                system.</span></a>
+            <a href="#step-4"><span class="path-head"><span class="path-num">04</span><span
+                  class="path-name">Algorithms</span></span><span class="path-blurb">Fast optimisation that
+                scales.</span></a>
+            <a href="#step-5"><span class="path-head"><span class="path-num">05</span><span
+                  class="path-name">Results</span></span><span class="path-blurb">Prices, pathways, valuations and
+                risk.</span></a>
+          </div>
+          <div class="btn-row path-actions">
+            <a href="#step-1" class="btn btn-primary">Start with the data ↓</a>
+            <a href="contact.html?intent=demo" class="btn btn-ghost">Request a demo</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 01 System modelling -->
-    <section class="section-light" style="padding-bottom:90px;">
+    <!-- 01 Data analysis -->
+    <section id="step-1" class="section-light tech-step">
+      <svg class="bg-art bg-art--2" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-pylon" transform="translate(120 500) scale(1)"></use>
+        <use href="#eo-pylon" transform="translate(300 500) scale(1)"></use>
+        <path vector-effect="non-scaling-stroke" d="M162 378 Q210 402 258 378 M152 404 Q210 428 268 404"></path>
+        <use href="#eo-turbine" transform="translate(560 500) scale(1)"></use>
+      </svg>
       <div class="feature-row">
         <div data-rv class="feature-copy">
-          <div class="eyebrow">01 · System modelling</div>
-          <h2 class="feature-title">Multi-energy, multi-scale system modelling</h2>
-          <p>Electricity, heat, transport and other carriers in one integrated model — configurable up to pan-European
+          <div class="eyebrow">Step 01 · Data analysis</div>
+          <h2 class="feature-title">Start from the data you already have.</h2>
+          <p>We combine historical data and your own assumptions with our European energy
+            system database, then analyse what drives each series before any scenario is drawn.</p>
+          <ul class="feature-list">
+            <li>European energy system database</li>
+            <li>Historical time series for demand, wind and solar</li>
+            <li>Your assumptions on commodities, policy and technology costs</li>
+          </ul>
+          <a href="#step-2" class="step-next">Next: Scenario generation ↓</a>
+        </div>
+        <div data-rv data-rvd="120" class="feature-media">
+          <div data-fig="inputs" class="figure-panel-light">
+            <div class="inputs-head">
+              <span class="inputs-label">Data inputs</span>
+              <span class="inputs-label muted">resolution</span>
+            </div>
+            <div class="input-row">
+              <div>
+                <div class="input-name">Energy demand</div>
+                <div class="input-source">Historical load, national grids</div>
+              </div>
+              <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
+                <path data-spark="demand"></path>
+              </svg>
+              <span class="input-res">hourly</span>
+            </div>
+            <div class="input-row">
+              <div>
+                <div class="input-name">Wind and solar output</div>
+                <div class="input-source">Weather reanalysis, forecasts</div>
+              </div>
+              <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
+                <path data-spark="renewables"></path>
+              </svg>
+              <span class="input-res">hourly</span>
+            </div>
+            <div class="input-row">
+              <div>
+                <div class="input-name">Fuel and carbon prices</div>
+                <div class="input-source">Market history, your assumptions</div>
+              </div>
+              <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
+                <path data-spark="prices"></path>
+              </svg>
+              <span class="input-res">monthly</span>
+            </div>
+            <div class="input-row">
+              <div>
+                <div class="input-name">Policy and technology costs</div>
+                <div class="input-source">European energy system database</div>
+              </div>
+              <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
+                <path data-spark="costs"></path>
+              </svg>
+              <span class="input-res">yearly</span>
+            </div>
+            <div class="figure-caption inputs-note">Schematic series</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Scenario generation -->
+    <section id="step-2" class="section-dark on-dark tech-step tech-step-dark">
+      <svg class="bg-art bg-art--1" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-plant" transform="translate(60 500) scale(0.7)"></use>
+        <use href="#eo-turbine" transform="translate(470 500) scale(1.1)"></use>
+        <use href="#eo-turbine" transform="translate(620 500) scale(0.8)"></use>
+      </svg>
+      <div class="feature-row reverse">
+        <div data-rv data-rvd="120" class="feature-media">
+          <!-- Uncertainty across three decision timescales -->
+          <div data-fig="horizon" class="figure-panel">
+            <div class="seg" data-horizon-controls hidden>
+              <button type="button" data-value="day" aria-pressed="false">Operational</button>
+              <button type="button" data-value="year" aria-pressed="true">Seasonal</button>
+              <button type="button" data-value="decade" aria-pressed="false">Strategic</button>
+            </div>
+            <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:250px;"
+              aria-hidden="true">
+              <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(242,244,246,.07)"></line>
+              <line x1="0" y1="110" x2="600" y2="110" stroke="rgba(242,244,246,.07)"></line>
+              <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(242,244,246,.07)"></line>
+              <path data-horizon-band fill="oklch(0.78 0.14 170 / .1)"></path>
+              <path data-horizon-area fill="oklch(0.78 0.14 170 / .1)"></path>
+              <path data-horizon-path fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round"
+                vector-effect="non-scaling-stroke"></path>
+            </svg>
+            <div class="figure-foot">
+              <div>
+                <div class="horizon-title" data-horizon-title>Uncertainty across multiple time horizons</div>
+                <div class="horizon-body" data-horizon-body>Scenarios generated and evaluated across seasons, with
+                  trade-offs between cost, risk and system performance made comparable.</div>
+              </div>
+              <div class="figure-caption" data-horizon-axis>seasons</div>
+            </div>
+          </div>
+        </div>
+        <div data-rv class="feature-copy">
+          <div class="eyebrow">Step 02 · Scenario generation</div>
+          <h2 class="feature-title">Turn the data into many possible futures.</h2>
+          <p>Scenarios derived from historical data, probabilistic forecasts or user-defined assumptions, compared
+            across time horizons to quantify trade-offs between cost, risk and system performance.</p>
+          <ul class="feature-list">
+            <li>Sampling-based short-term scenario generation</li>
+            <li>Short-term scenario generation</li>
+            <li>Data-driven long-term scenario generation</li>
+          </ul>
+          <a href="#step-3" class="step-next">Next: Modelling ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Modelling -->
+    <section id="step-3" class="section-light tech-step">
+      <svg class="bg-art bg-art--4" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-plant" transform="translate(330 500) scale(0.6)"></use>
+        <use href="#eo-pylon" transform="translate(110 500) scale(1.2)"></use>
+        <path vector-effect="non-scaling-stroke" d="M160.4 353.6 Q245.2 383.6 330 430"></path>
+      </svg>
+      <div class="feature-row">
+        <div data-rv class="feature-copy">
+          <div class="eyebrow">Step 03 · Modelling</div>
+          <h2 class="feature-title">Put every scenario into one model of the system.</h2>
+          <p>Electricity, heat, transport and other carriers in one integrated model, configurable up to pan-European
             scale, linking long-term strategic planning with short-term operational decisions.</p>
           <ul class="feature-list">
-            <li>Pan-European multi-energy model</li>
-            <li>Power, heat, hydrogen, oil &amp; gas, CCS</li>
-            <li>Investment, retrofit and abandonment planning</li>
+            <li>Pan-European multi-energy system: power, oil and natural gas, hydrogen</li>
+            <li>North Sea offshore system: offshore wind, O&amp;G platforms, pipelines</li>
+            <li>Investment, retrofit and abandonment planning with operational scheduling</li>
           </ul>
+          <a href="#step-4" class="step-next">Next: Algorithms ↓</a>
         </div>
         <div data-rv data-rvd="120" class="feature-media">
           <!-- Pan-European network, filtered by energy carrier -->
@@ -91,72 +291,34 @@
       </div>
     </section>
 
-    <!-- 02 Uncertainty -->
-    <section class="section-dark on-dark" style="padding:96px 24px;">
-      <div class="feature-row reverse">
-        <div data-rv data-rvd="120" class="feature-media">
-          <!-- Uncertainty across three decision timescales -->
-          <div data-fig="horizon" class="figure-panel">
-            <div class="seg" data-horizon-controls hidden>
-              <button type="button" data-value="day" aria-pressed="false">Operational</button>
-              <button type="button" data-value="year" aria-pressed="true">Seasonal</button>
-              <button type="button" data-value="decade" aria-pressed="false">Strategic</button>
-            </div>
-            <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:250px;"
-              aria-hidden="true">
-              <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(242,244,246,.07)"></line>
-              <line x1="0" y1="110" x2="600" y2="110" stroke="rgba(242,244,246,.07)"></line>
-              <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(242,244,246,.07)"></line>
-              <path data-horizon-area fill="oklch(0.78 0.14 170 / .14)"></path>
-              <path data-horizon-path fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round"
-                vector-effect="non-scaling-stroke"></path>
-            </svg>
-            <div class="figure-foot">
-              <div>
-                <div class="horizon-title" data-horizon-title>Uncertainty across multiple time horizons</div>
-                <div class="horizon-body" data-horizon-body>Scenarios generated and evaluated across seasons, with
-                  trade-offs between cost, risk and system performance made comparable.</div>
-              </div>
-              <div class="figure-caption" data-horizon-axis>seasons</div>
+    <!-- 04 Algorithms -->
+    <section id="step-4" class="section-dark on-dark tech-step tech-step-dark">
+      <svg class="bg-art bg-art--3" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-turbine" transform="translate(250 500) scale(0.9)"></use>
+        <use href="#eo-turbine" transform="translate(430 500) scale(1.25)"></use>
+        <use href="#eo-turbine" transform="translate(620 500) scale(0.7)"></use>
+      </svg>
+      <div style="max-width:1180px; margin:0 auto;">
+        <div class="tech-split">
+          <div data-rv>
+            <div class="eyebrow">Step 04 · Algorithms</div>
+            <h2 class="tech-step-title">Solve it at full scale, uncertainty included.</h2>
+          </div>
+          <div data-rv data-rvd="90">
+            <p class="tech-step-lede">Formulations and solution techniques chosen to balance computational tractability
+              with modelling fidelity, enabling analysis at high spatial, temporal and technological resolution.</p>
+            <div class="tag-row">
+              <span>proprietary EORC algorithms</span>
             </div>
           </div>
         </div>
-        <div data-rv class="feature-copy">
-          <div class="eyebrow">02 · Uncertainty</div>
-          <h2 class="feature-title" style="color:var(--paper);">Uncertainty, modelled explicitly</h2>
-          <p style="color:var(--paper-66);">Unlike deterministic planning tools, our models represent uncertainty
-            directly within the optimisation problem — demand evolution, renewable generation, fuel prices, policy
-            assumptions and technology costs.</p>
-          <p style="color:var(--paper-66);">Decisions are evaluated for <span
-              style="color:var(--paper); font-weight:600;">robustness</span> — not optimality under a single assumed
-            future.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- 03 Algorithms -->
-    <section class="section-light" style="padding:100px 24px 90px;">
-      <div style="max-width:1180px; margin:0 auto;">
-        <div data-rv style="max-width:720px;">
-          <div class="eyebrow">03 · Algorithms</div>
-          <h2 class="feature-title">Scalable optimisation and AI algorithms</h2>
-          <p style="font-size:16px; line-height:1.6; color:var(--ink-soft); margin:18px 0 0;">Formulations and solution
-            techniques chosen to balance computational tractability with modelling fidelity — enabling analysis at high
-            spatial, temporal and technological resolution.</p>
-          <ul class="feature-list">
-            <li>Proprietary EORC algorithms solve large-scale problems that are intractable for leading commercial
-              solvers</li>
-            <li>Neural-network-enhanced optimisation algorithms</li>
-          </ul>
-        </div>
         <!-- Benchmarks: bars grow from the axis when first scrolled to -->
-        <div
-          style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:18px; margin-top:44px;">
-          <div data-rv class="card" style="padding:28px; border-color:rgba(22,25,29,0.08);">
-            <div
-              style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);">
-              Rapid solution times</div>
-            <figure data-fig="bars" class="bars" style="--max:120;">
+        <div class="bench-grid">
+          <div data-rv class="bench-card">
+            <div class="bench-label">Rapid solution times</div>
+            <figure data-fig="bars" class="bars on-dark" style="--max:120;">
               <div class="bars-plot">
                 <div class="bars-row">
                   <div class="bars-name">Industry-leading solver</div>
@@ -193,11 +355,9 @@
               </figcaption>
             </figure>
           </div>
-          <div data-rv data-rvd="110" class="card" style="padding:28px; border-color:rgba(22,25,29,0.08);">
-            <div
-              style="font-family:var(--font-mono); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);">
-              Tractability beyond solver limits</div>
-            <figure data-fig="bars" class="bars" style="--max:5000;">
+          <div data-rv data-rvd="110" class="bench-card">
+            <div class="bench-label">Tractability beyond solver limits</div>
+            <figure data-fig="bars" class="bars on-dark" style="--max:5000;">
               <div class="bars-legend">
                 <span style="--swatch:var(--series-a);">Variables</span>
                 <span style="--swatch:var(--series-b);">Constraints</span>
@@ -233,99 +393,99 @@
             </figure>
           </div>
         </div>
+        <a href="#step-5" class="step-next">Next: Results ↓</a>
       </div>
     </section>
 
-    <!-- 04 Scenarios -->
-    <section style="background:var(--bg-light); padding:0 24px 96px;">
-      <div class="feature-row">
-        <div data-rv class="feature-copy" style="max-width:720px;">
-          <div class="eyebrow">04 · Scenarios</div>
-          <h2 class="feature-title">Scenario generation and evaluation</h2>
-          <p>Scenarios derived from historical data, probabilistic forecasts or user-defined assumptions — compared
-            across time horizons to quantify trade-offs between cost, risk and system performance.</p>
-          <ul class="feature-list">
-            <li>Sampling-based short-term scenario generation</li>
-            <li>AI-integrated short-term scenario generation</li>
-            <li>Data-driven long-term scenario generation</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 Platform -->
-    <section style="background:#ffffff; border-top:1px solid rgba(22,25,29,0.08); padding:96px 24px;">
+    <!-- 05 Results -->
+    <section id="step-5" class="section-light tech-step">
+      <svg class="bg-art bg-art--6" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-pylon" transform="translate(300 500) scale(1)"></use>
+        <use href="#eo-pylon" transform="translate(480 500) scale(0.8)"></use>
+        <path vector-effect="non-scaling-stroke"
+          d="M342 378 Q394.2 414.2 446.4 402.4 M332 404 Q393.2 437.6 454.4 423.2"></path>
+        <use href="#eo-turbine" transform="translate(640 500) scale(1)"></use>
+      </svg>
       <div style="max-width:1180px; margin:0 auto;">
-        <div data-rv class="eyebrow">05 · Platform</div>
-        <h2 data-rv data-rvd="80"
-          style="font-size:clamp(28px,3.6vw,46px); line-height:1.08; letter-spacing:-0.028em; font-weight:650; color:var(--ink); max-width:660px; margin:16px 0 0;">
-          Built for analysts and decision-makers.</h2>
-        <p data-rv data-rvd="140"
-          style="font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:640px; margin:18px 0 0;">Data
-          management, model configuration and results analysis in one place — transparent exploration of assumptions and
-          outcomes.</p>
+        <div data-rv class="eyebrow">Step 05 · Results</div>
+        <div data-rv data-rvd="80" class="tech-split">
+          <h2 class="tech-step-title on-light">Answers you can take to the board.</h2>
+          <p class="tech-step-lede on-light">Power price outlooks, infrastructure pathways and asset valuations, each
+            showing the likely range and the risk it carries.</p>
+        </div>
 
-        <!-- Platform workflow: stages flow in when first scrolled to -->
-        <div class="figure-panel-light" style="margin-top:40px;">
-          <div data-fig="workflow" class="workflow">
-            <div class="wf-stage wf-data" style="--i:0;">
-              <h3 class="wf-title">Data analytics</h3>
-              <ul class="wf-list">
-                <li>Time series scenario generation</li>
-                <li>Long-term commodity, policy, and technology scenario generation</li>
-                <li>European energy system database</li>
-              </ul>
-            </div>
-            <div class="wf-arrow" style="--i:1;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12h15M13 6l6 6-6 6"></path>
-              </svg></div>
-            <div class="wf-core">
-              <div class="wf-stage wf-alg" style="--i:2;">
-                <h3 class="wf-title">Algorithms</h3>
-                <p>A toolbox of fast AI- and optimisation-based algorithms</p>
-              </div>
-              <div class="wf-arrow down" style="--i:3;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 12h15M13 6l6 6-6 6"></path>
-                </svg></div>
-              <div class="wf-stage wf-models" style="--i:4;">
-                <h3 class="wf-title">Models</h3>
-                <ul class="wf-list wf-chips">
-                  <li>Long-term and short-term uncertainty</li>
-                  <li>Integrated investment, retrofit and abandonment planning with operational scheduling</li>
-                  <li>Pan-European multi-energy system: power, oil and natural gas, hydrogen</li>
-                  <li>North Sea offshore system: offshore wind, O&amp;G platforms, pipelines</li>
-                </ul>
-              </div>
-            </div>
-            <div class="wf-arrow" style="--i:5;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12h15M13 6l6 6-6 6"></path>
-              </svg></div>
-            <div class="wf-stage wf-results" style="--i:6;">
-              <h3 class="wf-title">Results analytics</h3>
-              <ul class="wf-list">
-                <li>Long-term power prices analytics</li>
-                <li>Energy infrastructure pathways analysis</li>
-                <li>Energy asset valuation</li>
-                <li>Uncertainty analytics</li>
-              </ul>
-            </div>
+        <div data-rv data-rvd="120" data-fig="fan" class="figure-panel-light fan-panel">
+          <div class="fan-head">
+            <span class="inputs-label">Long-term power price outlook</span>
+            <span class="fan-legend">
+              <span><i class="swatch-line"></i>Median</span>
+              <span><i class="swatch-box strong"></i>Likely range</span>
+              <span><i class="swatch-box"></i>Full range</span>
+              <span><i class="swatch-line dashed"></i>Single forecast</span>
+            </span>
+          </div>
+          <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:260px;"
+            aria-hidden="true">
+            <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(22,25,29,.06)"></line>
+            <line x1="0" y1="110" x2="600" y2="110" stroke="rgba(22,25,29,.06)"></line>
+            <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(22,25,29,.06)"></line>
+            <path data-fan="outer" fill="oklch(0.78 0.14 170 / .15)"></path>
+            <path data-fan="inner" fill="oklch(0.78 0.14 170 / .35)"></path>
+            <path data-fan="forecast" fill="none" stroke="var(--forecast)" stroke-width="2" stroke-dasharray="7 6"
+              vector-effect="non-scaling-stroke"></path>
+            <path data-fan="median" fill="none" stroke="var(--accent-deep)" stroke-width="2.4" stroke-linejoin="round"
+              vector-effect="non-scaling-stroke"></path>
+          </svg>
+          <div class="fan-axis"><span>Today</span><span>+10 years</span><span>+25 years · illustrative</span></div>
+        </div>
+
+        <div data-rv data-rvd="160" class="output-grid">
+          <div class="output">
+            <span class="output-mark"></span>
+            <h3>Long-term power prices</h3>
+            <p>Price outlooks for Europe across fuel price, policy and new-build scenarios.</p>
+          </div>
+          <div class="output">
+            <span class="output-mark"></span>
+            <h3>Infrastructure pathways</h3>
+            <p>Which assets to build, retrofit or retire, and when.</p>
+          </div>
+          <div class="output">
+            <span class="output-mark"></span>
+            <h3>Asset valuation</h3>
+            <p>The value of an asset across the full range of futures, not one.</p>
+          </div>
+          <div class="output">
+            <span class="output-mark"></span>
+            <h3>Uncertainty analytics</h3>
+            <p>What drives the range, and how much risk each decision carries.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA + footer -->
-    <section class="section-dark on-dark" style="padding:130px 24px 60px;">
+    <section id="get-started" class="section-dark on-dark" style="padding:150px 24px 60px;">
+      <svg class="bg-art bg-art--5" viewBox="0 0 740 520" aria-hidden="true">
+        <path vector-effect="non-scaling-stroke" d="M0 500 L740 500"></path>
+        <use href="#eo-pylon" transform="translate(60 500) scale(0.9)"></use>
+        <use href="#eo-pylon" transform="translate(250 500) scale(1.1)"></use>
+        <use href="#eo-pylon" transform="translate(450 500) scale(1)"></use>
+        <use href="#eo-pylon" transform="translate(640 500) scale(0.8)"></use>
+        <path vector-effect="non-scaling-stroke"
+          d="M97.8 390.2 Q150.8 402 203.8 365.8 M88.8 413.6 Q151.8 428 214.8 394.4 M296.2 365.8 Q352.1 395.9 408 378 M285.2 394.4 Q351.6 423.2 418 404 M492 378 Q549.2 414.2 606.4 402.4 M482 404 Q548.2 437.6 614.4 423.2">
+        </path>
+      </svg>
       <div style="max-width:1180px; margin:0 auto;">
         <div style="text-align:center;">
-          <h2 data-rv class="cta-title">See your energy system<span class="muted-line">under uncertainty.</span></h2>
-          <p data-rv data-rvd="90" class="cta-lede" style="max-width:540px;">Get a walkthrough of the EORC platform on a
-            problem that looks like yours.</p>
+          <div data-rv class="eyebrow">Your next step</div>
+          <h2 data-rv data-rvd="60" class="cta-title" style="margin-top:22px;">See your energy system<span
+              class="muted-line">under uncertainty.</span></h2>
+          <p data-rv data-rvd="120" class="cta-lede" style="max-width:540px;">Get a walkthrough of the EORC platform on
+            a problem that looks like yours.</p>
           <div data-rv data-rvd="180" class="btn-row" style="margin-top:36px;">
-            <a href="contact.html" class="btn btn-primary">Request a demo</a>
+            <a href="contact.html?intent=demo" class="btn btn-primary">Request a demo</a>
             <a href="about.html" class="btn btn-ghost">Meet the team</a>
           </div>
         </div>

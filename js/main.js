@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initScrollEffects();
   initRoleTabs();
+  initStepNav();
   if (window.EORCFigures) EORCFigures.init();
-  initMailFallback();
+  initContact();
   initCopyButtons();
   document.querySelectorAll('form[data-form-type]').forEach(initForm);
 });
@@ -87,11 +88,58 @@ function initScrollEffects() {
   update();
 }
 
+// ---------- step progress bar (Technology page): [data-step-nav] ----------
+// Index of the last step whose top has scrolled above `line`, or -1 before the
+// first step and once the closing CTA is half way up the viewport.
+function activeStep(stepTops, endTop, viewportHeight, line = 200) {
+  if (endTop < viewportHeight * 0.5) return -1;
+  let active = -1;
+  stepTops.forEach((top, i) => { if (top < line) active = i; });
+  return active;
+}
+
+function initStepNav() {
+  const nav = document.querySelector('[data-step-nav]');
+  const end = document.getElementById('get-started');
+  if (!nav || !end) return;
+
+  const links = Array.from(nav.querySelectorAll('a[data-step]'));
+  const steps = links.map(a => document.getElementById(a.dataset.step));
+  if (steps.some(s => !s)) return;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const active = activeStep(steps.map(s => s.getBoundingClientRect().top), end.getBoundingClientRect().top, innerHeight);
+    nav.classList.toggle('is-visible', active >= 0);
+    links.forEach((a, i) => {
+      a.classList.toggle('is-active', i === active);
+      a.classList.toggle('is-done', i < active);
+      if (i === active) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+    });
+  };
+
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  update();
+}
+
 // ---------- tabs: every [role="tablist"] (role selector, example steps) ----------
 // Panels ship visible so the copy reads without JavaScript; from here on only
 // the selected one is shown.
 function initRoleTabs() {
   document.querySelectorAll('[role="tablist"]').forEach(initTabList);
+}
+
+// Tabs that carry data-stage (Technology section) also light up the matching
+// stage of the pipeline diagram that sits beside them.
+function highlightStage(list, activeTab) {
+  const scope = list.closest('[data-tech]');
+  if (!scope) return;
+  scope.querySelectorAll('.tech-stage').forEach(stage => {
+    stage.classList.toggle('is-active', stage.dataset.stage === activeTab.dataset.stage);
+  });
 }
 
 function initTabList(list) {
@@ -104,6 +152,8 @@ function initTabList(list) {
       t.tabIndex = k === i ? 0 : -1;
       if (panels[k]) panels[k].hidden = k !== i;
     });
+    highlightStage(list, tabs[i]);
+    list.dispatchEvent(new CustomEvent('tabchange', { detail: { tab: tabs[i] } }));
   };
 
   tabs.forEach((t, i) => {
@@ -124,36 +174,105 @@ function initTabList(list) {
   select(0);
 }
 
-// ---------- webmail fallback for the mailto CTA ----------
-// A mailto: link does nothing for a visitor with no mail client registered, so the
-// same recipient, subject and body are offered as webmail compose URLs, built from
-// the mailto href itself. The row stays hidden without JS, where they cannot be built.
-function initMailFallback() {
-  const row = document.querySelector('[data-mail-fallback]');
-  const link = document.querySelector('[data-mailto]');
-  if (!row || !link) return;
+// ---------- contact: intent + role tabs build the email ----------
+// The site is static, so "sending" is a mailto link in the visitor's own mail
+// client. The subject and body are prefilled from the intent and role chosen, so
+// an enquiry arrives with the details we need. The static href in contact.html is
+// the no-JavaScript fallback for the default (demo) intent.
+const CONTACT_EMAIL = 'info@eorc.uk';
 
-  const mail = new URL(link.href);
-  const to = decodeURIComponent(mail.pathname);
-  const subject = mail.searchParams.get('subject') || '';
-  const body = mail.searchParams.get('body') || '';
+const CONTACT_INTENTS = {
+  demo: {
+    cta: 'Email us to book a demo',
+    subject: 'Demo request — EORC platform',
+    fields: ['Your organisation and role', 'The system or portfolio, and the energy carriers involved', "The decision you're facing", 'A preferred time for a call']
+  },
+  question: {
+    cta: 'Email us your question',
+    subject: 'Enquiry — EORC',
+    fields: ['Your organisation and role', 'Your question']
+  }
+};
 
-  const compose = {
-    gmail: ['https://mail.google.com/mail/', { view: 'cm', fs: '1', to, su: subject, body }],
-    outlook: ['https://outlook.office.com/mail/deeplink/compose', { to, subject, body }]
-  };
+const CONTACT_ROLES = {
+  'asset-owner': 'Energy asset owner',
+  'system-operator': 'System operator',
+  'market-analyst': 'Power market analyst',
+  other: 'Something else'
+};
 
-  row.querySelectorAll('[data-mail-web]').forEach(a => {
-    const spec = compose[a.dataset.mailWeb];
-    if (!spec) return;
-    // encodeURIComponent rather than URLSearchParams: the latter writes spaces as
-    // "+", which only decodes back to a space in form-encoded readers
-    a.href = spec[0] + '?' + Object.entries(spec[1])
-      .map(([k, v]) => k + '=' + encodeURIComponent(v))
-      .join('&');
+// ?intent= picks the tab and ?role= the pill; a role on its own means a demo
+// request (the home page role panels link here that way). Unknown values are ignored.
+function parseContactParams(search) {
+  const q = new URLSearchParams(search);
+  const role = Object.hasOwn(CONTACT_ROLES, q.get('role')) ? q.get('role') : null;
+  const asked = q.get('intent');
+  const intent = Object.hasOwn(CONTACT_INTENTS, asked) ? asked : 'demo';
+  return { intent, role };
+}
+
+function buildEmail(intentKey, roleKey) {
+  const intent = CONTACT_INTENTS[Object.hasOwn(CONTACT_INTENTS, intentKey) ? intentKey : 'demo'];
+  const roleLabel = Object.hasOwn(CONTACT_ROLES, roleKey) ? CONTACT_ROLES[roleKey] : null;
+
+  // the role pill already answers half of the first field
+  const lines = ['Hi EORC team,', ''];
+  if (roleLabel) lines.push('I work as: ' + roleLabel);
+  intent.fields.forEach(f => {
+    lines.push(roleLabel && f === 'Your organisation and role' ? 'Organisation:' : f + ':');
   });
 
-  row.hidden = false;
+  const subject = intent.subject;
+  const body = lines.join('\r\n');
+  const enc = encodeURIComponent;
+  // encodeURIComponent rather than URLSearchParams: the latter writes spaces as
+  // "+", which only decodes back to a space in form-encoded readers
+  return {
+    cta: intent.cta,
+    mailto: `mailto:${CONTACT_EMAIL}?subject=${enc(subject)}&body=${enc(body)}`,
+    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(CONTACT_EMAIL)}&su=${enc(subject)}&body=${enc(body)}`,
+    outlook: `https://outlook.office.com/mail/deeplink/compose?to=${enc(CONTACT_EMAIL)}&subject=${enc(subject)}&body=${enc(body)}`
+  };
+}
+
+function initContact() {
+  const tabs = Array.from(document.querySelectorAll('[role="tab"][data-intent]'));
+  const mailto = document.querySelector('[data-mailto]');
+  if (!tabs.length || !mailto) return;
+
+  const params = parseContactParams(location.search);
+  const state = { intent: params.intent, role: params.role };
+  const pills = Array.from(document.querySelectorAll('[data-role-pick]'));
+  const webmail = Array.from(document.querySelectorAll('[data-mail-web]'));
+
+  const render = () => {
+    const email = buildEmail(state.intent, state.role);
+    mailto.href = email.mailto;
+    mailto.textContent = email.cta;
+    webmail.forEach(a => { a.href = email[a.dataset.mailWeb]; });
+    document.querySelectorAll('[data-for-intent]').forEach(el => {
+      el.hidden = el.dataset.forIntent !== state.intent;
+    });
+    pills.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.rolePick === state.role)));
+  };
+
+  tabs[0].closest('[role="tablist"]').addEventListener('tabchange', e => {
+    state.intent = e.detail.tab.dataset.intent;
+    render();
+  });
+
+  // clicking the pressed pill again clears the role
+  pills.forEach(b => b.addEventListener('click', () => {
+    state.role = state.role === b.dataset.rolePick ? null : b.dataset.rolePick;
+    render();
+  }));
+
+  // role pills and the "nothing opened?" row are hidden until there is JS to drive them
+  document.querySelectorAll('[data-roles], [data-mail-fallback]').forEach(el => { el.hidden = false; });
+
+  const initial = tabs.find(t => t.dataset.intent === state.intent);
+  if (initial) initial.click(); // selects the tab and renders
+  else render();
 }
 
 // ---------- copy to clipboard: [data-copy] ----------
