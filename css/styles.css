@@ -2598,6 +2598,23 @@ section:has(> .bg-art) {
   text-wrap: pretty;
 }
 
+.ex-decisions {
+  margin-top: 24px;
+  max-width: 640px;
+}
+
+.ex-decisions ol {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+.ex-decisions li+li {
+  margin-top: 6px;
+}
+
 /* Price banner: the two possible prices tomorrow. */
 .ex-price {
   display: flex;
