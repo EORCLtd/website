@@ -1482,30 +1482,45 @@ section:has(> .bg-art) {
   padding: 34px 30px 36px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 14px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
 }
 
 .wwd-cell+.wwd-cell {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.wwd-cell.is-lead {
+.wwd-cell:hover {
+  background: oklch(0.78 0.14 170 / 0.04);
+}
+
+.wwd-cell[aria-selected="true"] {
   background: oklch(0.78 0.14 170 / 0.07);
 }
 
-.wwd-cell h3 {
+.wwd-cell:focus-visible {
+  outline: 2px solid var(--accent-mid);
+  outline-offset: -4px;
+}
+
+.wwd-title {
   font-size: 21px;
   font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--paper);
-  margin: 6px 0 0;
+  margin-top: 6px;
 }
 
-.wwd-cell p {
+.wwd-text {
   font-size: 15px;
   line-height: 1.55;
   color: var(--paper-66);
-  margin: 0;
 }
 
 .wwd-cell .lit {
@@ -1517,17 +1532,77 @@ section:has(> .bg-art) {
   height: 10px;
   border-radius: 3px;
   border: 1.5px solid var(--accent);
+  transition: background 0.2s var(--ease);
 }
 
-.is-lead .wwd-mark {
+.wwd-cell:hover .wwd-mark,
+.wwd-cell[aria-selected="true"] .wwd-mark {
   background: var(--accent);
+}
+
+.wwd-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.wwd-panels {
+  margin-top: 56px;
+}
+
+/* only reachable without JavaScript, when all three panels are stacked */
+.wwd-panel+.wwd-panel {
+  margin-top: 40px;
+}
+
+.wwd-panel h3 {
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  color: var(--paper);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.wwd-panel p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--paper-62);
+  max-width: 420px;
+  margin: 0;
+}
+
+/* With JS, all panels share one grid cell so the area is always as tall as the
+   tallest panel and switching tabs never moves the content below. */
+.wwd-panels.is-stacked {
+  display: grid;
+}
+
+.wwd-panels.is-stacked .wwd-panel {
+  grid-area: 1 / 1;
+}
+
+.wwd-panels.is-stacked .wwd-panel+.wwd-panel {
+  margin-top: 0;
+}
+
+.wwd-panels.is-stacked .wwd-panel[hidden] {
+  display: grid;
+  visibility: hidden;
 }
 
 @media (max-width: 860px) {
 
   .wwd-head,
-  .wwd-strip {
+  .wwd-strip,
+  .wwd-panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wwd-panel {
+    gap: 20px;
   }
 
   .wwd-head {
@@ -2241,7 +2316,7 @@ section:has(> .bg-art) {
 
 .why-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 24px 72px;
   align-items: center;
   margin-top: 40px;
@@ -2251,6 +2326,16 @@ section:has(> .bg-art) {
   display: flex;
   flex-direction: column;
   gap: 44px;
+}
+
+/* the two ideas read as separate sections, not one long column */
+.why-block+.why-block {
+  padding-top: 44px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.why-block .role-label {
+  color: var(--accent);
 }
 
 .why-block h2,
@@ -2274,10 +2359,18 @@ section:has(> .bg-art) {
 .why-block p {
   font-size: 17px;
   line-height: 1.6;
-  color: rgba(242, 244, 246, 0.7);
+  color: rgba(242, 244, 246, 0.75);
   margin-top: 14px;
   max-width: 520px;
   text-wrap: pretty;
+}
+
+/* the sentence that introduces scenarios, so it points at the tree beside it */
+.why-block p.why-bridge {
+  color: var(--paper);
+  margin-top: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
 }
 
 .why-factors {
@@ -2359,7 +2452,7 @@ section:has(> .bg-art) {
 
 .tree-labels text {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 15px;
   fill: var(--paper-75);
 }
 
@@ -2858,6 +2951,10 @@ section:has(> .bg-art) {
 @media (max-width: 560px) {
   .why {
     padding: 96px 24px;
+  }
+
+  .why-block+.why-block {
+    padding-top: 32px;
   }
 
   .tree {

@@ -157,8 +157,9 @@
               <div class="role-label">Defining uncertainty</div>
               <h2>Most decisions have to be made before the future is revealed.</h2>
               <p>Uncertainty is a state of having unknown information about the future. It prevents decision-maker from
-                knowing the consequences of a decision but also comes with great value if managed properly. <br><br>EORC
-                uses scenarios to represent the unknown information to identify the hidden value in uncertainty.</p>
+                knowing the consequences of a decision but also comes with great value if managed properly.</p>
+              <p class="why-bridge">EORC uses scenarios to represent the unknown information to identify the hidden
+                value in uncertainty.</p>
             </div>
             <div data-rv data-rvd="140" class="why-block">
               <div class="role-label">Why it matters</div>
@@ -427,22 +428,43 @@
           <p data-rv data-rvd="140">Uncertainty becomes an input to every plan, rather than a caveat added at the end.
           </p>
         </div>
-        <div data-rv class="wwd-strip">
-          <div class="wwd-cell is-lead">
+        <!-- Every panel ships visible so the copy reads without JavaScript; js/main.js hides all but the selected one. -->
+        <div data-rv class="wwd-strip" role="tablist" aria-label="What we do">
+          <button type="button" role="tab" class="wwd-cell" id="wwd-tab-1" aria-controls="wwd-panel-1"
+            aria-selected="true">
             <span class="wwd-mark"></span>
-            <h3>Decision intelligence</h3>
-            <p><span class="lit">Using data and models to make better decisions.</span> We apply it to plans that
-              must hold up across many possible futures.</p>
+            <span class="wwd-title">Decision intelligence</span>
+            <span class="wwd-text"><span class="lit">Using data and models to make better decisions.</span> We apply it
+              to plans that must hold up across many possible futures.</span>
+          </button>
+          <button type="button" role="tab" class="wwd-cell" id="wwd-tab-2" aria-controls="wwd-panel-2"
+            aria-selected="false">
+            <span class="wwd-mark"></span>
+            <span class="wwd-title">User-friendly interface</span>
+            <span class="wwd-text">Set up models, run scenarios and read results without writing code.</span>
+          </button>
+          <button type="button" role="tab" class="wwd-cell" id="wwd-tab-3" aria-controls="wwd-panel-3"
+            aria-selected="false">
+            <span class="wwd-mark"></span>
+            <span class="wwd-title">Fits your existing tools</span>
+            <span class="wwd-text">Connects to the data and software your team already relies on.</span>
+          </button>
+        </div>
+        <div data-rv data-rvd="80" class="wwd-panels">
+          <div class="wwd-panel" role="tabpanel" id="wwd-panel-1" aria-labelledby="wwd-tab-1">
+            <h3>Plans that hold up across many possible futures.</h3>
+            <p>We test each plan against scenarios built from history, forecasts and your own assumptions, and show
+              the likely range and the risk it carries.</p>
           </div>
-          <div class="wwd-cell">
-            <span class="wwd-mark"></span>
-            <h3>User-friendly interface</h3>
-            <p>Set up models, run scenarios and read results without writing code.</p>
+          <div class="wwd-panel" role="tabpanel" id="wwd-panel-2" aria-labelledby="wwd-tab-2">
+            <h3>From model to answer, without code.</h3>
+            <p>Set up the model, run scenarios and read prices, pathways and valuations in one platform, with no
+              programming needed.</p>
           </div>
-          <div class="wwd-cell">
-            <span class="wwd-mark"></span>
-            <h3>Fits your existing tools</h3>
-            <p>Connects to the data and software your team already relies on.</p>
+          <div class="wwd-panel" role="tabpanel" id="wwd-panel-3" aria-labelledby="wwd-tab-3">
+            <h3>Works with what your team already uses.</h3>
+            <p>Bring in the data you already have, and take the results back into the software your team relies
+              on.</p>
           </div>
         </div>
       </div>
