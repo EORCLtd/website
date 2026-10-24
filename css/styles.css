@@ -858,8 +858,9 @@ section:has(> .bg-art) {
 }
 
 .feature-title {
-  font-size: clamp(30px, 3.4vw, 44px);
-  line-height: 1.08;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.12;
+  text-wrap: balance;
   letter-spacing: -0.025em;
   font-weight: 650;
   color: var(--ink);
@@ -3556,9 +3557,16 @@ section:has(> .bg-art) {
   align-items: end;
 }
 
+/* Step headings are full sentences, so give them the wider column. */
+@media (min-width: 900px) {
+  .tech-split {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+}
+
 .tech-step-title {
-  font-size: clamp(34px, 4.4vw, 54px);
-  line-height: 1.06;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.12;
   letter-spacing: -0.03em;
   font-weight: 650;
   color: var(--paper);
@@ -3640,6 +3648,7 @@ section:has(> .bg-art) {
 
 .input-source {
   font-size: 13px;
+  line-height: 1.45;
   color: var(--ink-soft);
   margin-top: 2px;
 }

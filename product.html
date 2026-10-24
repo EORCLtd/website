@@ -66,7 +66,7 @@
   <nav class="step-nav" data-step-nav aria-label="Steps from data to decision">
     <div class="step-nav-inner">
       <a href="#step-1" data-step="step-1"><span class="step-num">01</span><span class="step-name">Data
-          analysis</span></a>
+          analytics</span></a>
       <a href="#step-2" data-step="step-2"><span class="step-num">02</span><span class="step-name">Scenario
           generation</span></a>
       <a href="#step-3" data-step="step-3"><span class="step-num">03</span><span class="step-name">Modelling</span></a>
@@ -134,13 +134,13 @@
       <div class="feature-row">
         <div data-rv class="feature-copy">
           <div class="eyebrow">Step 01 · Data Analytics</div>
-          <h2 class="feature-title">Flexible data analysis.</h2>
-          <p>We combine historical data and your own assumptions with our European energy
-            system database, then analyse what drives each series before any scenario is drawn.</p>
+          <h2 class="feature-title">Flexible database management.</h2>
+          <p>EORC's data analytics provides European energy system database with high customisation capabilities.</p>
           <ul class="feature-list">
-            <li>European energy system database</li>
-            <li>Historical time series for demand, wind and solar</li>
-            <li>Put in your assumptions on commodities, policy and technology costs</li>
+            <li>Up-to-date European energy system database covering multiple energy carriers.</li>
+            <li>Decades of high resolution time series data for renewable and energy demand</li>
+            <li>Flexible and user friendly data management interface allowing you to input your own data and assumptions
+            </li>
           </ul>
           <a href="#step-2" class="step-next">Next: Scenario generation ↓</a>
         </div>
@@ -153,7 +153,7 @@
             <div class="input-row">
               <div>
                 <div class="input-name">Energy demand</div>
-                <div class="input-source">Historical load, national grids</div>
+                <div class="input-source">Historical load</div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="demand"></path>
@@ -162,8 +162,8 @@
             </div>
             <div class="input-row">
               <div>
-                <div class="input-name">Wind and solar output</div>
-                <div class="input-source">Weather reanalysis, forecasts</div>
+                <div class="input-name">Wind and solar generation</div>
+                <div class="input-source">40 years historical data and machine learning based forecasts.</div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="renewables"></path>
@@ -173,7 +173,7 @@
             <div class="input-row">
               <div>
                 <div class="input-name">Fuel and carbon prices</div>
-                <div class="input-source">Market history, your assumptions</div>
+                <div class="input-source">Up-to-date market information and policy assumptions</div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="prices"></path>
@@ -209,8 +209,7 @@
           <!-- Uncertainty across three decision timescales -->
           <div data-fig="horizon" class="figure-panel">
             <div class="seg" data-horizon-controls hidden>
-              <button type="button" data-value="day" aria-pressed="false">Operational</button>
-              <button type="button" data-value="year" aria-pressed="true">Seasonal</button>
+              <button type="button" data-value="day" aria-pressed="true">Operational</button>
               <button type="button" data-value="decade" aria-pressed="false">Strategic</button>
             </div>
             <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:250px;"
@@ -225,22 +224,21 @@
             </svg>
             <div class="figure-foot">
               <div>
-                <div class="horizon-title" data-horizon-title>Uncertainty across multiple time horizons</div>
-                <div class="horizon-body" data-horizon-body>Scenarios generated and evaluated across seasons, with
-                  trade-offs between cost, risk and system performance made comparable.</div>
+                <div class="horizon-title" data-horizon-title>Short-term operational decisions</div>
+                <div class="horizon-body" data-horizon-body>Resolved at high temporal resolution, inside the same model
+                  that carries the long-term plan.</div>
               </div>
-              <div class="figure-caption" data-horizon-axis>seasons</div>
+              <div class="figure-caption" data-horizon-axis>hours → days</div>
             </div>
           </div>
         </div>
         <div data-rv class="feature-copy">
           <div class="eyebrow">Step 02 · Scenario generation</div>
-          <h2 class="feature-title">Turn the data into many possible futures.</h2>
-          <p>Scenarios derived from historical data, probabilistic forecasts or user-defined assumptions, compared
-            across time horizons to quantify trade-offs between cost, risk and system performance.</p>
+          <h2 class="feature-title">Multi-timescale uncertainty scenario generation.</h2>
+          <p>Proprietary scenario generation algorithms to help you capture uncertainty on both operational and
+            strategic time horizons.</p>
           <ul class="feature-list">
-            <li>Sampling-based short-term scenario generation</li>
-            <li>Short-term scenario generation</li>
+            <li>Optimisation and machine learning based short-term scenario generation.</li>
             <li>Data-driven long-term scenario generation</li>
           </ul>
           <a href="#step-3" class="step-next">Next: Modelling ↓</a>
@@ -259,7 +257,7 @@
       <div class="feature-row">
         <div data-rv class="feature-copy">
           <div class="eyebrow">Step 03 · Modelling</div>
-          <h2 class="feature-title">Put every scenario into one model of the system.</h2>
+          <h2 class="feature-title">Modular multi-energy-carrier model library makes model building easy.</h2>
           <p>Electricity, heat, transport and other carriers in one integrated model, configurable up to pan-European
             scale, linking long-term strategic planning with short-term operational decisions.</p>
           <ul class="feature-list">
@@ -304,11 +302,12 @@
         <div class="tech-split">
           <div data-rv>
             <div class="eyebrow">Step 04 · Algorithms</div>
-            <h2 class="tech-step-title">Solve it at full scale, uncertainty included.</h2>
+            <h2 class="tech-step-title">Efficient computational capability to solve large problems at unprecedented
+              scale.</h2>
           </div>
           <div data-rv data-rvd="90">
-            <p class="tech-step-lede">Formulations and solution techniques chosen to balance computational tractability
-              with modelling fidelity, enabling analysis at high spatial, temporal and technological resolution.</p>
+            <p class="tech-step-lede">Fast, cost efficient optimisation and machine learning based algorithms enabling
+              analysis at high spatial, temporal and technological resolution under multi-timescale uncertainty.</p>
             <div class="tag-row">
               <span>proprietary EORC algorithms</span>
             </div>
@@ -411,9 +410,10 @@
       <div style="max-width:1180px; margin:0 auto;">
         <div data-rv class="eyebrow">Step 05 · Results</div>
         <div data-rv data-rvd="80" class="tech-split">
-          <h2 class="tech-step-title on-light">Answers you can take to the board.</h2>
-          <p class="tech-step-lede on-light">Power price outlooks, infrastructure pathways and asset valuations, each
-            showing the likely range and the risk it carries.</p>
+          <h2 class="tech-step-title on-light">Powerful results analytics help you make advanced decision intelligence
+            accessible to stakeholders from all backgrounds.</h2>
+          <p class="tech-step-lede on-light">Interactive visualisation and reporting helping you find and demonstrate
+            the hidden value in uncertainty as an expert.</p>
         </div>
 
         <div data-rv data-rvd="120" data-fig="fan" class="figure-panel-light fan-panel">
@@ -445,22 +445,24 @@
           <div class="output">
             <span class="output-mark"></span>
             <h3>Long-term power prices</h3>
-            <p>Price outlooks for Europe across fuel price, policy and new-build scenarios.</p>
+            <p>Robust power price forecast based on optimisation and machine learning with multi-timescale uncertainty.
+            </p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
             <h3>Infrastructure pathways</h3>
-            <p>Which assets to build, retrofit or retire, and when.</p>
+            <p>Analyse decarbonization pathway with multiple conventional and emerging energy carriers included.</p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
             <h3>Asset valuation</h3>
-            <p>The value of an asset across the full range of futures, not one.</p>
+            <p>Guide your next big decisions in energy assets by more robust long-term asset valuation spanning their
+              entire lifetimes.</p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
             <h3>Uncertainty analytics</h3>
-            <p>What drives the range, and how much risk each decision carries.</p>
+            <p>Identify what uncertainty is most critical to your system and quantify the value of managing it.</p>
           </div>
         </div>
       </div>
