@@ -221,13 +221,6 @@ window.EORCFigures = (function () {
       f: t => 0.52 + 0.3 * Math.sin(t * 2 * Math.PI - 1.4) + 0.07 * Math.sin(t * 17),
       w: t => 0.06 + 0.06 * t
     },
-    year: {
-      title: 'Uncertainty across multiple time horizons',
-      body: 'Scenarios generated and evaluated across seasons, with trade-offs between cost, risk and system performance made comparable.',
-      axis: 'seasons',
-      f: t => 0.5 + 0.34 * Math.cos(t * 2 * Math.PI) + 0.05 * Math.sin(t * 9),
-      w: t => 0.07 + 0.05 * Math.sin(t * Math.PI)
-    },
     decade: {
       title: 'Long-term strategic planning',
       body: 'Investment, retrofit and abandonment planning, linked to short-term operational decisions rather than studied separately.',
@@ -249,7 +242,7 @@ window.EORCFigures = (function () {
     const axis = host.querySelector('[data-horizon-axis]');
     if (!path || !area) return;
 
-    segmented(host, '[data-horizon-controls]', 'year', key => {
+    segmented(host, '[data-horizon-controls]', 'day', key => {
       const cfg = HORIZONS[key];
       if (!cfg) return;
       const d = line(cfg.f, 4, 596, 60, 200, 170);

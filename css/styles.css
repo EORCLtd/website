@@ -345,6 +345,13 @@ button {
   margin: 18px 0 0;
 }
 
+.section-title--long {
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.12;
+  max-width: 960px;
+  text-wrap: balance;
+}
+
 .muted-line {
   display: block;
   color: var(--paper-40);
@@ -527,16 +534,23 @@ section:has(> .bg-art) {
 }
 
 .hero-home-copy {
-  max-width: 960px;
+  max-width: 1040px;
 }
 
 .hero-home h1 {
-  font-size: clamp(40px, 5.3vw, 68px);
-  line-height: 1.04;
+  font-size: clamp(38px, 4.8vw, 60px);
+  line-height: 1.06;
   letter-spacing: -0.035em;
   font-weight: 650;
   color: var(--paper);
   margin: 24px 0 0;
+  text-wrap: balance;
+}
+
+/* The headline is one sentence in two tones, so the muted half continues the
+   line instead of starting a new one mid-phrase. */
+.hero-home h1 .muted-line {
+  display: inline;
 }
 
 .role-tabs {
@@ -618,8 +632,8 @@ section:has(> .bg-art) {
 
 .role-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 24px 48px;
   align-items: start;
 }
 
@@ -629,7 +643,7 @@ section:has(> .bg-art) {
 }
 
 .role-panel h2 {
-  font-size: clamp(30px, 3.4vw, 44px);
+  font-size: clamp(28px, 3vw, 38px);
   line-height: 1.06;
   letter-spacing: -0.028em;
   font-weight: 650;
@@ -651,7 +665,7 @@ section:has(> .bg-art) {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5;
   color: rgba(242, 244, 246, 0.7);
   text-wrap: pretty;
@@ -844,8 +858,9 @@ section:has(> .bg-art) {
 }
 
 .feature-title {
-  font-size: clamp(30px, 3.4vw, 44px);
-  line-height: 1.08;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.12;
+  text-wrap: balance;
   letter-spacing: -0.025em;
   font-weight: 650;
   color: var(--ink);
@@ -1377,6 +1392,9 @@ section:has(> .bg-art) {
   letter-spacing: -0.03em;
   font-weight: 650;
   color: var(--paper);
+  max-width: 900px;
+  margin-inline: auto;
+  text-wrap: balance;
 }
 
 .cta-lede {
@@ -1482,30 +1500,45 @@ section:has(> .bg-art) {
   padding: 34px 30px 36px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 14px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
 }
 
 .wwd-cell+.wwd-cell {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.wwd-cell.is-lead {
+.wwd-cell:hover {
+  background: oklch(0.78 0.14 170 / 0.04);
+}
+
+.wwd-cell[aria-selected="true"] {
   background: oklch(0.78 0.14 170 / 0.07);
 }
 
-.wwd-cell h3 {
+.wwd-cell:focus-visible {
+  outline: 2px solid var(--accent-mid);
+  outline-offset: -4px;
+}
+
+.wwd-title {
   font-size: 21px;
   font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--paper);
-  margin: 6px 0 0;
+  margin-top: 6px;
 }
 
-.wwd-cell p {
+.wwd-text {
   font-size: 15px;
   line-height: 1.55;
   color: var(--paper-66);
-  margin: 0;
 }
 
 .wwd-cell .lit {
@@ -1517,17 +1550,77 @@ section:has(> .bg-art) {
   height: 10px;
   border-radius: 3px;
   border: 1.5px solid var(--accent);
+  transition: background 0.2s var(--ease);
 }
 
-.is-lead .wwd-mark {
+.wwd-cell:hover .wwd-mark,
+.wwd-cell[aria-selected="true"] .wwd-mark {
   background: var(--accent);
+}
+
+.wwd-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.wwd-panels {
+  margin-top: 56px;
+}
+
+/* only reachable without JavaScript, when all three panels are stacked */
+.wwd-panel+.wwd-panel {
+  margin-top: 40px;
+}
+
+.wwd-panel h3 {
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  color: var(--paper);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.wwd-panel p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--paper-62);
+  max-width: 420px;
+  margin: 0;
+}
+
+/* With JS, all panels share one grid cell so the area is always as tall as the
+   tallest panel and switching tabs never moves the content below. */
+.wwd-panels.is-stacked {
+  display: grid;
+}
+
+.wwd-panels.is-stacked .wwd-panel {
+  grid-area: 1 / 1;
+}
+
+.wwd-panels.is-stacked .wwd-panel+.wwd-panel {
+  margin-top: 0;
+}
+
+.wwd-panels.is-stacked .wwd-panel[hidden] {
+  display: grid;
+  visibility: hidden;
 }
 
 @media (max-width: 860px) {
 
   .wwd-head,
-  .wwd-strip {
+  .wwd-strip,
+  .wwd-panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wwd-panel {
+    gap: 20px;
   }
 
   .wwd-head {
@@ -2241,8 +2334,8 @@ section:has(> .bg-art) {
 
 .why-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px 72px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px 64px;
   align-items: center;
   margin-top: 40px;
 }
@@ -2251,6 +2344,16 @@ section:has(> .bg-art) {
   display: flex;
   flex-direction: column;
   gap: 44px;
+}
+
+/* the two ideas read as separate sections, not one long column */
+.why-block+.why-block {
+  padding-top: 44px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.why-block .role-label {
+  color: var(--accent);
 }
 
 .why-block h2,
@@ -2274,28 +2377,18 @@ section:has(> .bg-art) {
 .why-block p {
   font-size: 17px;
   line-height: 1.6;
-  color: rgba(242, 244, 246, 0.7);
+  color: rgba(242, 244, 246, 0.75);
   margin-top: 14px;
-  max-width: 520px;
+  max-width: 580px;
   text-wrap: pretty;
 }
 
-.why-factors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.why-factors li {
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--paper-75);
+/* the sentence that introduces scenarios, so it points at the tree beside it */
+.why-block p.why-bridge {
+  color: var(--paper);
+  margin-top: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
 }
 
 .why-next {
@@ -2359,7 +2452,7 @@ section:has(> .bg-art) {
 
 .tree-labels text {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 15px;
   fill: var(--paper-75);
 }
 
@@ -2550,9 +2643,10 @@ section:has(> .bg-art) {
   margin-top: 0;
 }
 
+/* Slide 4 also holds the takeaway, so reserving the tallest slide's height
+   would leave a large gap under the others. Only the active slide takes space. */
 .ex-slides.is-stacked .ex-slide[hidden] {
-  display: block;
-  visibility: hidden;
+  display: none;
 }
 
 .ex-inputs {
@@ -2596,6 +2690,23 @@ section:has(> .bg-art) {
   max-width: 640px;
   margin-top: 16px;
   text-wrap: pretty;
+}
+
+.ex-decisions {
+  margin-top: 24px;
+  max-width: 640px;
+}
+
+.ex-decisions ol {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+.ex-decisions li+li {
+  margin-top: 6px;
 }
 
 /* Price banner: the two possible prices tomorrow. */
@@ -2685,7 +2796,7 @@ section:has(> .bg-art) {
 }
 
 .ex-body h3 {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 650;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -2843,6 +2954,10 @@ section:has(> .bg-art) {
     padding: 96px 24px;
   }
 
+  .why-block+.why-block {
+    padding-top: 32px;
+  }
+
   .tree {
     padding: 16px 12px 14px;
   }
@@ -2870,7 +2985,7 @@ section:has(> .bg-art) {
   }
 
   .ex-body h3 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .ex-tr {
@@ -3107,6 +3222,21 @@ section:has(> .bg-art) {
   color: oklch(0.42 0.12 170);
 }
 
+/* "549x" keeps the headline-number size; the words after it become a caption. */
+.tech-stat-num {
+  display: block;
+}
+
+.tech-stat-text {
+  display: block;
+  margin-top: 12px;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
 .tech-copy {
   display: flex;
   flex-direction: column;
@@ -3297,9 +3427,13 @@ section:has(> .bg-art) {
   font-size: 18px;
   line-height: 1.6;
   color: var(--paper-66);
-  max-width: 640px;
+  max-width: 720px;
   margin: 26px 0 0;
   text-wrap: pretty;
+}
+
+.tech-hero-title .muted-line {
+  text-wrap: balance;
 }
 
 .path {
@@ -3423,9 +3557,16 @@ section:has(> .bg-art) {
   align-items: end;
 }
 
+/* Step headings are full sentences, so give them the wider column. */
+@media (min-width: 900px) {
+  .tech-split {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+}
+
 .tech-step-title {
-  font-size: clamp(34px, 4.4vw, 54px);
-  line-height: 1.06;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.12;
   letter-spacing: -0.03em;
   font-weight: 650;
   color: var(--paper);
@@ -3507,6 +3648,7 @@ section:has(> .bg-art) {
 
 .input-source {
   font-size: 13px;
+  line-height: 1.45;
   color: var(--ink-soft);
   margin-top: 2px;
 }
