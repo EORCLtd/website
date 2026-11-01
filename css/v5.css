@@ -158,6 +158,12 @@ body.v5 {
   background: var(--v5-green);
 }
 
+img.v5-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .v5-eyebrow {
   font-size: 17px;
   font-weight: 600;

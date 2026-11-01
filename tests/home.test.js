@@ -90,7 +90,16 @@ test('technology arrows are labelled buttons, hidden until JavaScript runs', () 
 test('every photo placeholder is preceded by a TODO comment', () => {
   const placeholders = all(html, /<div class="v5-photo"/g).length;
   assert.equal(all(html, /<!-- TODO photo:/g).length, placeholders);
-  assert.equal(placeholders, 12);
+  assert.equal(placeholders, 5);
+});
+
+test('photos in use point at files that exist and carry empty alt (decorative)', () => {
+  const photos = all(html, /<img class="v5-photo"[^>]*>/g);
+  assert.equal(photos.length, 7);
+  photos.forEach(tag => {
+    assert.match(tag, /alt=""/);
+    assert.ok(fs.existsSync(path.join(root, tag.match(/src="([^"]+)"/)[1])), tag);
+  });
 });
 
 test('every internal link points at a file that exists', () => {
