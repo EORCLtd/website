@@ -73,8 +73,9 @@ about your system, the energy carriers involved and the decision you are facing,
 This repository is the source of the [eorc.uk](https://eorc.uk) website: plain HTML, CSS and vanilla JavaScript,
 no build step and no server code, hosted on GitHub Pages. It replaces the previous WordPress site.
 
-The design is dark (`#0b0d10`) alternating with light, rounded sections, with a mint accent, Instrument Sans and
-IBM Plex Mono fonts, and scroll animations.
+The design is the v5 look: white sections with deep green (`#12302a`) panels and a warm amber accent, Red Hat
+Display, Text and Mono fonts, and scroll reveals. Photos are dark-green placeholders marked
+`<!-- TODO photo: ... -->` until the real images are added.
 
 ## Structure
 
@@ -86,7 +87,8 @@ about.html                About / team
 404.html                  Served by GitHub Pages on any unknown path
 request-a-demo.html       Redirect to contact.html (the old URL stays valid)
 request-a-demo/index.html Same redirect for the directory-style URL /request-a-demo/
-css/styles.css            Styles and design tokens
+css/styles.css            Base styles, nav/footer and the technology figures
+css/v5.css                The v5 design (header, footer, home, technology, about, contact, 404)
 js/main.js                Mobile nav, scroll animations, mailto helpers
 js/figures.js             Interactive figures on the Technology page
 js/analytics.js           PostHog analytics (see below)
@@ -148,7 +150,7 @@ records page views, scroll depth, clicks, heatmaps and session replay, plus four
 |-------|------------|------------|
 | `contact_intent` | The mailto button, a webmail link or "Copy address" is clicked | `method`: `mailto` / `gmail` / `outlook` / `copy`; `role` when the visitor came from a role panel |
 | `demo_cta_clicked` | Any link to `contact.html` is clicked | `location`, `label`, and `role` for role panels |
-| `role_tab_selected` | A role tab on the home page is clicked | `role` |
+| `role_tab_selected` | A role tab, or a "For" panel on the home page, is clicked | `role` |
 | `figure_control_used` | A filter on the Technology figures is clicked | `figure`, `value` |
 
 - The events hang off attributes in the markup (`data-mailto`, `role="tab"`, `data-net-controls`, ...), so
