@@ -91,6 +91,48 @@ test('technology: the closing section keeps the id the step nav hides on', () =>
   assert.match(read('product.html'), /<section id="get-started"/);
 });
 
+// Sizes must be in rem so the root font size can scale the whole design.
+// Breakpoints (@media lines) and hairlines (<= 2px) are allowed to stay in px.
+function pxOffenders(css) {
+  return css.replace(/\/\*[\s\S]*?\*\//g, '').split('\n')
+    .filter(line => !/^\s*@media/.test(line))
+    .flatMap(line => Array.from(line.matchAll(/(\d*\.?\d+)px\b/g), m => m[0]))
+    .filter(value => parseFloat(value) > 2);
+}
+
+test('pxOffenders: flags sizes but keeps breakpoints and hairlines', () => {
+  assert.deepEqual(pxOffenders('a { padding: 40px 0; margin: -12px; }'), ['40px', '12px']);
+  assert.deepEqual(pxOffenders('@media (max-width: 760px) {\n  a { border: 1px solid; outline: 1.5px solid; }\n}'), []);
+  assert.deepEqual(pxOffenders('a { width: 2px; height: 2.5px; }'), ['2.5px']);
+  assert.deepEqual(pxOffenders('/* drawn at\n 1920px */ a { gap: 8px; }'), ['8px']);
+  assert.deepEqual(pxOffenders(''), []);
+});
+
+['css/styles.css', 'css/v5.css'].forEach(file => {
+  test(`${file}: uses rem for every size`, () => {
+    assert.deepEqual(pxOffenders(read(file)), []);
+  });
+});
+
+PAGES.forEach(file => {
+  test(`${file}: inline styles use rem for every size`, () => {
+    assert.deepEqual(pxOffenders(all(read(file), /style="([^"]*)"/g).join('\n')), []);
+  });
+});
+
+test('styles.css: the root size scales with the screen, with an 80% floor and a fixed mobile size', () => {
+  const css = read('css/styles.css');
+  assert.match(css, /html \{\s*font-size: max\(80%, calc\(100vw \/ 120\)\);/);
+  assert.match(css, /@media \(max-width: 899px\) \{\s*html \{\s*font-size: 87\.5%;/);
+});
+
+test('technology: on narrow windows the step nav names only the current step, so all five fit', () => {
+  const css = read('css/v5.css');
+  // Other names stay readable to screen readers, only hidden visually.
+  assert.match(css, /@media \(max-width: 899px\) \{[^@]*\.v5-stepnav a:not\(\.is-active\) \.v5-stepnav-name \{[^}]*clip-path: inset\(50%\)/);
+  assert.match(css, /\.v5-stepnav-inner \{[^}]*scrollbar-width: none/);
+});
+
 test('technology: figure hooks that js/figures.js drives are all still present', () => {
   const html = read('product.html');
   ['data-fig="inputs"', 'data-fig="horizon"', 'data-fig="network"', 'data-fig="bars"', 'data-fig="fan"',
