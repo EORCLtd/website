@@ -743,6 +743,13 @@ img.v5-photo {
   color: #fff;
 }
 
+/* .role-name (styles.css) is a light-on-dark label; inside the pills it must follow
+   the button color or it vanishes on the light pill background. */
+.v5-pills .role-name {
+  font-size: inherit;
+  color: inherit;
+}
+
 .v5-pills--center {
   flex-wrap: wrap;
   align-self: center;
@@ -973,7 +980,8 @@ img.v5-photo {
 .v5-card-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  /* 4 / 5 suits photos; photoless cards are shortened to avoid an empty green slab. Restore 4 / 5 when photos are added. */
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 28px;
   background: var(--v5-green);
