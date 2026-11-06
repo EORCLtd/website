@@ -54,8 +54,8 @@
   const ctaLocation = a =>
     a.closest('.site-header') ? 'nav' :
       a.closest('footer') ? 'footer' :
-        a.closest('.role-panel') ? 'role-panel' :
-          a.closest('[data-hero-content]') ? 'hero' : 'section';
+        a.closest('[data-role]') ? 'role-panel' :
+          a.closest('.v5-hero') ? 'hero' : 'section';
 
   document.addEventListener('click', e => {
     const el = e.target.closest('a, button');
@@ -66,7 +66,7 @@
     if (el.matches('[data-mail-web]')) return track('contact_intent', { method: el.dataset.mailWeb });
     if (el.matches('[data-copy]')) return track('contact_intent', { method: 'copy' });
 
-    if (el.matches('[role="tab"]')) {
+    if (el.matches('[role="tab"], .v5-role-toggle')) {
       const name = el.querySelector('.role-name');
       return track('role_tab_selected', { role: text(name || el) });
     }

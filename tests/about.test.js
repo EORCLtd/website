@@ -10,11 +10,11 @@ const html = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
 const all = (re, group = 1) => Array.from(html.matchAll(re), m => m[group]);
 
 test('shows the three pillars', () => {
-  assert.equal(all(/class="about-pillar"/g, 0).length, 3);
+  assert.equal(all(/class="v5-pillar"/g, 0).length, 3);
 });
 
 test('shows the three team members, each with email and LinkedIn', () => {
-  assert.equal(all(/class="team-member"/g, 0).length, 3);
+  assert.equal(all(/class="v5-member"/g, 0).length, 3);
   assert.equal(all(/href="mailto:[^"]+"/g, 0).length, 3);
   const linkedin = all(/<a href="https:\/\/www\.linkedin\.com\/[^"]*"([^>]*)>/g);
   assert.equal(linkedin.length, 3);
@@ -24,13 +24,6 @@ test('shows the three team members, each with email and LinkedIn', () => {
 test('"Meet the team" link targets an existing #team anchor', () => {
   assert.match(html, /href="#team"/);
   assert.match(html, /id="team"/);
-});
-
-test('every <use> references a symbol defined in <defs>', () => {
-  const defined = new Set(all(/<g id="([^"]+)"/g));
-  const used = all(/<use href="#([^"]+)"/g);
-  assert.ok(used.length > 0);
-  used.forEach(id => assert.ok(defined.has(id), `missing #${id}`));
 });
 
 test('every local href/src resolves to an existing file', () => {

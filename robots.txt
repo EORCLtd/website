@@ -1,0 +1,34 @@
+# robots.txt for https://eorc.uk (RFC 9309)
+#
+# A crawler follows only the most specific group that names it, so every
+# group repeats the same rules. Keep them in sync.
+
+# AI search and user-requested fetches: let AI assistants cite the site.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+Disallow: /tests/
+Disallow: /README.md
+
+# AI training: allowed, so models can learn about EORC from its public pages.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /tests/
+Disallow: /README.md
+
+# Everyone else, including search engines.
+User-agent: *
+Allow: /
+# Repository files that GitHub Pages also serves; not part of the site.
+Disallow: /tests/
+Disallow: /README.md
+
+Sitemap: https://eorc.uk/sitemap.xml

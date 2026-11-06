@@ -4,8 +4,9 @@ const EASE = 'cubic-bezier(.22,.61,.21,1)';
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initReveal();
-  initScrollEffects();
   initRoleTabs();
+  initRolePanels();
+  initTechCarousel();
   initStepNav();
   if (window.EORCFigures) EORCFigures.init();
   initContact();
@@ -57,37 +58,6 @@ function initReveal() {
   els.forEach(el => io.observe(el));
 }
 
-// ---------- scroll-driven effects: hero parallax, [data-zoom] ----------
-function initScrollEffects() {
-  const hero = document.querySelector('[data-hero-content]');
-  const zooms = Array.from(document.querySelectorAll('[data-zoom]'));
-
-  if (REDUCED_MOTION || (!hero && !zooms.length)) return;
-
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const vh = innerHeight, y = scrollY;
-
-    if (hero) {
-      const k = Math.min(1, y / (vh * 0.72));
-      hero.style.opacity = String(1 - k * 0.96);
-      hero.style.transform = 'translateY(' + (y * 0.3).toFixed(1) + 'px)';
-    }
-
-    zooms.forEach(el => {
-      const r = el.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.85)));
-      el.style.transform = 'scale(' + (0.92 + 0.08 * p).toFixed(4) + ') translateY(' + ((1 - p) * 26).toFixed(1) + 'px)';
-    });
-  };
-
-  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
-  update();
-}
-
 // ---------- step progress bar (Technology page): [data-step-nav] ----------
 // Index of the last step whose top has scrolled above `line`, or -1 before the
 // first step and once the closing CTA is half way up the viewport.
@@ -125,21 +95,11 @@ function initStepNav() {
   update();
 }
 
-// ---------- tabs: every [role="tablist"] (role selector, example steps) ----------
+// ---------- tabs: every [role="tablist"] (example steps, contact intent) ----------
 // Panels ship visible so the copy reads without JavaScript; from here on only
 // the selected one is shown.
 function initRoleTabs() {
   document.querySelectorAll('[role="tablist"]').forEach(initTabList);
-}
-
-// Tabs that carry data-stage (Technology section) also light up the matching
-// stage of the pipeline diagram that sits beside them.
-function highlightStage(list, activeTab) {
-  const scope = list.closest('[data-tech]');
-  if (!scope) return;
-  scope.querySelectorAll('.tech-stage').forEach(stage => {
-    stage.classList.toggle('is-active', stage.dataset.stage === activeTab.dataset.stage);
-  });
 }
 
 function initTabList(list) {
@@ -152,7 +112,6 @@ function initTabList(list) {
       t.tabIndex = k === i ? 0 : -1;
       if (panels[k]) panels[k].hidden = k !== i;
     });
-    highlightStage(list, tabs[i]);
     list.dispatchEvent(new CustomEvent('tabchange', { detail: { tab: tabs[i] } }));
   };
 
@@ -171,6 +130,76 @@ function initTabList(list) {
   const wrap = panels[0] && panels[0].parentElement;
   if (wrap) wrap.classList.add('is-stacked');
 
+  select(0);
+}
+
+// ---------- home: "For" panels, one open at a time ----------
+// Panels ship open so the copy reads without JavaScript; from here on the first
+// is open and the rest collapse until clicked.
+function initRolePanels() {
+  const list = document.querySelector('[data-role-panels]');
+  if (!list) return;
+
+  const panels = Array.from(list.querySelectorAll('.v5-role'));
+  const open = i => {
+    panels.forEach((panel, k) => {
+      panel.classList.toggle('is-open', k === i);
+      panel.querySelector('.v5-role-toggle').setAttribute('aria-expanded', String(k === i));
+    });
+  };
+
+  panels.forEach((panel, i) => {
+    const toggle = panel.querySelector('.v5-role-toggle');
+    toggle.addEventListener('click', () => open(i));
+
+    // The whole collapsed card is a click target, not just the toggle. Going
+    // through toggle.click() keeps the analytics listener on the toggle firing.
+    panel.addEventListener('click', event => {
+      if (panel.classList.contains('is-open') || event.target.closest('a, button')) return;
+      toggle.click();
+    });
+  });
+
+  list.classList.add('is-enhanced');
+  open(0);
+}
+
+// ---------- home: technology carousel ----------
+// Where a card sits relative to the selected one: 0 centre, 1 right, 3 left,
+// and (with four cards) 2 behind. css/home-v5.css places cards by this value.
+function carouselPosition(index, selected, count) {
+  return (index - selected + count) % count;
+}
+
+// Cards ship stacked; the tab buttons and arrows ship [hidden] and are shown
+// here, so a visitor without JavaScript never sees dead controls.
+function initTechCarousel() {
+  const root = document.querySelector('[data-tech-carousel]');
+  const stage = root && root.querySelector('[data-tech-stage]');
+  if (!stage) return;
+
+  const cards = Array.from(stage.querySelectorAll('.v5-tech-card'));
+  const tabs = Array.from(root.querySelectorAll('[data-tech-tabs] button'));
+  const count = cards.length;
+
+  const select = i => {
+    const selected = (i + count) % count;
+    cards.forEach((card, k) => {
+      card.dataset.pos = String(carouselPosition(k, selected, count));
+      card.setAttribute('aria-hidden', String(k !== selected));
+    });
+    tabs.forEach((tab, k) => tab.setAttribute('aria-pressed', String(k === selected)));
+    root.dataset.selected = String(selected);
+  };
+  const current = () => Number(root.dataset.selected);
+
+  cards.forEach((card, k) => card.addEventListener('click', () => select(k)));
+  tabs.forEach((tab, k) => tab.addEventListener('click', () => select(k)));
+  root.querySelector('[data-tech-prev]').addEventListener('click', () => select(current() - 1));
+  root.querySelector('[data-tech-next]').addEventListener('click', () => select(current() + 1));
+
+  stage.classList.add('is-enhanced');
+  root.querySelectorAll('[data-tech-tabs], [data-tech-arrows]').forEach(el => { el.hidden = false; });
   select(0);
 }
 
