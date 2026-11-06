@@ -35,6 +35,15 @@ PAGES.forEach(file => {
   });
 });
 
+['index.html', 'product.html', 'about.html', 'contact.html'].forEach(file => {
+  test(`${file}: advertises the sitemap with a <link> in the head`, () => {
+    const html = read(file);
+    const link = html.indexOf('<link rel="sitemap" type="application/xml" href="sitemap.xml">');
+    assert.ok(link > -1);
+    assert.ok(link < html.indexOf('</head>'));
+  });
+});
+
 test('404: <base> comes before any relative URL that depends on it', () => {
   const html = read('404.html');
   const base = html.indexOf('<base href="/">');
