@@ -114,7 +114,9 @@ template, figure captions, "Copied") live in the same file under `contact.email.
 
 To add a language: copy `lang/en.json` to `lang/<code>.json`, translate the values, keep the keys, set `lang.name`
 to the language's own name ("Italiano"), and add the code to `lang/languages.json`. The selector in the top bar is
-built from that list (a static site cannot list a folder) and stays hidden while only one language exists. Never
+built from that list (a static site cannot list a folder) and stays hidden while only one language exists.
+A language file is an overlay on `en.json`: keys it leaves out fall back to English, so a variant such as
+`lang/en-us.json` (American spellings) only lists the strings that differ. Never
 hard-code text in a page or script; `node --test tests/*.test.js` fails if markup keeps copy or a key is missing.
 The `*.md` copies for agents are English only.
 

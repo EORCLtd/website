@@ -82,6 +82,13 @@ codes.forEach(code => {
   test(`lang/${code}.json: only uses keys that exist in en.json`, () => {
     Object.keys(strings).forEach(key => assert.ok(Object.hasOwn(en, key), `unknown key ${key}`));
   });
+
+  if (code !== 'en') {
+    // a language file is an overlay on en.json: keys left out fall back to English
+    test(`lang/${code}.json: overrides nothing with the English value`, () => {
+      Object.entries(strings).forEach(([key, value]) => assert.notEqual(value, en[key], `${key} is the same as en.json`));
+    });
+  }
 });
 
 PAGES.forEach(file => {
