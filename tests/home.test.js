@@ -6,7 +6,8 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const { render, en } = require('./helpers');
+const html = render(fs.readFileSync(path.join(root, 'index.html'), 'utf8'));
 
 // main.js is a plain browser script; give it just enough of a DOM to load.
 const sandbox = {

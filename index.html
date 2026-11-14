@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EORC — An uncertainty management company</title>
+  <title data-i18n="home.meta.title"></title>
   <meta name="description"
-    content="Decision support for energy planners and asset owners. EORC helps you plan for many possible futures, not just one forecast.">
+    content="" data-i18n-attr="content:home.meta.description">
   <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
   <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="alternate" type="text/markdown" href="index.md">
@@ -17,6 +17,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/v5.css">
+  <script src="js/i18n.js"></script>
 </head>
 
 <body class="v5">
@@ -24,17 +25,17 @@
     <nav class="nav">
       <a href="index.html" class="brand">
         <span class="brand-mark"></span>
-        EORC
+        <i18n-t data-i18n="nav.brand"></i18n-t>
       </a>
       <span class="nav-spacer"></span>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="" aria-expanded="false" data-i18n-attr="aria-label:nav.nav-toggle.aria-label">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="product.html">Technology</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+        <li><a href="product.html" data-i18n="nav.a-product"></a></li>
+        <li><a href="about.html" data-i18n="nav.a-about"></a></li>
+        <li><a href="contact.html" data-i18n="nav.a-contact"></a></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav.nav-cta"></a></li>
       </ul>
     </nav>
   </header>
@@ -45,15 +46,15 @@
       <img class="v5-photo" src="img/web/offshore_turbine.jpg" alt="" decoding="async">
       <div class="v5-hero-shade" aria-hidden="true"></div>
       <div class="v5-hero-inner">
-        <div class="v5-hero-eyebrow">An uncertainty management company</div>
-        <h1>Decision intelligence for energy <span>system planning and operation under uncertainty.</span></h1>
+        <div class="v5-hero-eyebrow" data-i18n="home.hero.hero-eyebrow"></div>
+        <h1 data-i18n-html="home.hero.h1"></h1>
       </div>
     </section>
 
     <!-- For: one expandable panel per audience. Every panel ships open so the copy reads without JavaScript; js/main.js collapses all but the selected one. -->
     <section class="v5-section v5-for">
       <div class="v5-wrap">
-        <h2 class="v5-for-title" id="for-title">For</h2>
+        <h2 class="v5-for-title" id="for-title" data-i18n="home.for.for-title"></h2>
         <div class="v5-roles" data-role-panels aria-labelledby="for-title">
           <article class="v5-role" data-role="asset-owner">
             <div class="v5-role-photo"><img class="v5-photo" src="img/web/asset_owner.jpg" alt="" loading="lazy" decoding="async"></div>
@@ -62,21 +63,19 @@
               <div class="v5-role-head">
                 <h3 class="v5-role-name">
                   <button type="button" class="v5-role-toggle" aria-expanded="true" aria-controls="role-body-1">
-                    <span class="role-name">Energy Asset Owners</span>
-                    <span class="v5-role-hint" aria-hidden="true">Click to explore <span>→</span></span>
+                    <span class="role-name" data-i18n="home.for.role-name"></span>
+                    <span class="v5-role-hint" aria-hidden="true"><i18n-t data-i18n="home.for.role-hint"></i18n-t> <span>→</span></span>
                   </button>
                 </h3>
               </div>
               <div class="v5-role-body" id="role-body-1">
-                <h4>Robust investment decision intelligence under uncertainty.</h4>
+                <h4 data-i18n="home.for.h4"></h4>
                 <ul>
-                  <li>Decision intelligence for long-term energy infrastructure investment under market, technology,
-                    policy, system and weather uncertainty.</li>
-                  <li>Accurate and robust asset valuation help you make the right bidding decisions in your next
-                    renewable energy projects.</li>
-                  <li>Efficient model building and analytics capability in a unified software platform.</li>
+                  <li data-i18n="home.for.li"></li>
+                  <li data-i18n="home.for.li-2"></li>
+                  <li data-i18n="home.for.li-3"></li>
                 </ul>
-                <a href="contact.html?role=asset-owner" class="v5-btn v5-btn--accent">Request a demo</a>
+                <a href="contact.html?role=asset-owner" class="v5-btn v5-btn--accent" data-i18n="home.for.btn"></a>
               </div>
             </div>
           </article>
@@ -88,19 +87,19 @@
               <div class="v5-role-head">
                 <h3 class="v5-role-name">
                   <button type="button" class="v5-role-toggle" aria-expanded="true" aria-controls="role-body-2">
-                    <span class="role-name">System Operators</span>
-                    <span class="v5-role-hint" aria-hidden="true">Click to explore <span>→</span></span>
+                    <span class="role-name" data-i18n="home.for.role-name-2"></span>
+                    <span class="v5-role-hint" aria-hidden="true"><i18n-t data-i18n="home.for.role-hint-2"></i18n-t> <span>→</span></span>
                   </button>
                 </h3>
               </div>
               <div class="v5-role-body" id="role-body-2">
-                <h4>Reliable and resilient system operation under uncertainty.</h4>
+                <h4 data-i18n="home.for.h4-2"></h4>
                 <ul>
-                  <li>Fast decision intelligence for a secure system operation with unmatched speed.</li>
-                  <li>Examine system expansion proposals under uncertainty.</li>
-                  <li>Diagnose and visualise system bottleneck effortlessly for your next assessment report.</li>
+                  <li data-i18n="home.for.li-4"></li>
+                  <li data-i18n="home.for.li-5"></li>
+                  <li data-i18n="home.for.li-6"></li>
                 </ul>
-                <a href="contact.html?role=system-operator" class="v5-btn v5-btn--accent">Request a demo</a>
+                <a href="contact.html?role=system-operator" class="v5-btn v5-btn--accent" data-i18n="home.for.btn-2"></a>
               </div>
             </div>
           </article>
@@ -112,20 +111,19 @@
               <div class="v5-role-head">
                 <h3 class="v5-role-name">
                   <button type="button" class="v5-role-toggle" aria-expanded="true" aria-controls="role-body-3">
-                    <span class="role-name">Power Market Analysts</span>
-                    <span class="v5-role-hint" aria-hidden="true">Click to explore <span>→</span></span>
+                    <span class="role-name" data-i18n="home.for.role-name-3"></span>
+                    <span class="v5-role-hint" aria-hidden="true"><i18n-t data-i18n="home.for.role-hint-3"></i18n-t> <span>→</span></span>
                   </button>
                 </h3>
               </div>
               <div class="v5-role-body" id="role-body-3">
-                <h4>Unlock long-term European power prices.</h4>
+                <h4 data-i18n="home.for.h4-3"></h4>
                 <ul>
-                  <li>Unique model library unlocks European long-term power prices decades ahead.</li>
-                  <li>Robust day ahead power price forecast under market, policy, system and weather uncertainty.</li>
-                  <li>Fast decision analytics with a user friendly interface to help you deliver your next power market
-                    analysis effortlessly.</li>
+                  <li data-i18n="home.for.li-7"></li>
+                  <li data-i18n="home.for.li-8"></li>
+                  <li data-i18n="home.for.li-9"></li>
                 </ul>
-                <a href="contact.html?role=market-analyst" class="v5-btn v5-btn--accent">Request a demo</a>
+                <a href="contact.html?role=market-analyst" class="v5-btn v5-btn--accent" data-i18n="home.for.btn-3"></a>
               </div>
             </div>
           </article>
@@ -136,24 +134,21 @@
     <!-- Understanding uncertainty: what it is, why it matters, with a scenario tree -->
     <section class="v5-section v5-why">
       <div class="v5-center">
-        <div data-rv class="v5-eyebrow">Understanding uncertainty</div>
-        <div data-rv data-rvd="60" class="v5-kicker">Defining uncertainty</div>
-        <h2 data-rv data-rvd="120" class="v5-display">Most decisions have to be made before the future is revealed.</h2>
+        <div data-rv class="v5-eyebrow" data-i18n="home.why.eyebrow"></div>
+        <div data-rv data-rvd="60" class="v5-kicker" data-i18n="home.why.kicker"></div>
+        <h2 data-rv data-rvd="120" class="v5-display" data-i18n="home.why.display"></h2>
       </div>
 
       <div class="v5-wrap v5-split">
         <div data-rv class="v5-copy">
-          <p class="v5-lead">Uncertainty is a state of having unknown information about the future. It prevents
-            decision-maker from knowing the consequences of a decision but also comes with great value if managed
-            properly.</p>
-          <p class="v5-lead v5-lead--strong">EORC uses scenarios to represent the unknown information to identify the
-            hidden value in uncertainty.</p>
+          <p class="v5-lead" data-i18n="home.why.lead"></p>
+          <p class="v5-lead v5-lead--strong" data-i18n="home.why.lead-2"></p>
         </div>
 
         <!-- Scenario tree: one decision today, many possible futures -->
         <figure data-rv data-rvd="100" class="v5-tree-card">
           <svg viewBox="0 0 600 290" role="img"
-            aria-label="Scenario tree: from today, the future branches into four scenarios, while a single forecast follows one straight line.">
+            aria-label="" data-i18n-attr="aria-label:home.why.svg.aria-label">
             <g class="v5-edges">
               <path d="M50 145 C150 145 150 85 250 85"></path>
               <path d="M50 145 C150 145 150 205 250 205"></path>
@@ -175,17 +170,17 @@
             <circle class="v5-forecast-end" cx="250" cy="145" r="6"></circle>
             <circle class="v5-forecast-end" cx="420" cy="145" r="6"></circle>
             <g class="v5-labels">
-              <text x="28" y="180">Today</text>
-              <text x="436" y="50">Scenario 1</text>
-              <text x="436" y="120">Scenario 2</text>
-              <text x="436" y="180">Scenario 3</text>
-              <text x="436" y="250">Scenario 4</text>
-              <text class="v5-forecast-label" x="436" y="150">Single forecast</text>
+              <text x="28" y="180" data-i18n="home.why.text"></text>
+              <text x="436" y="50" data-i18n="home.why.text-2"></text>
+              <text x="436" y="120" data-i18n="home.why.text-3"></text>
+              <text x="436" y="180" data-i18n="home.why.text-4"></text>
+              <text x="436" y="250" data-i18n="home.why.text-5"></text>
+              <text class="v5-forecast-label" x="436" y="150" data-i18n="home.why.forecast-label"></text>
             </g>
           </svg>
           <figcaption class="v5-key">
-            <span><i class="v5-key-line"></i>Possible futures</span>
-            <span><i class="v5-key-line v5-key-line--forecast"></i>One forecast</span>
+            <span><i class="v5-key-line"></i><i18n-t data-i18n="home.why.span"></i18n-t></span>
+            <span><i class="v5-key-line v5-key-line--forecast"></i><i18n-t data-i18n="home.why.span-2"></i18n-t></span>
           </figcaption>
         </figure>
       </div>
@@ -193,12 +188,10 @@
       <div class="v5-wrap v5-split v5-split--media">
         <div data-rv class="v5-media"><img class="v5-photo" src="img/web/why_it_metter.jpg" alt="" loading="lazy" decoding="async"></div>
         <div data-rv data-rvd="80" class="v5-copy">
-          <div class="v5-kicker">Why it matters</div>
-          <h3 class="v5-h3">Significant value is hidden in uncertainty.</h3>
-          <p class="v5-body">Managing uncertainty via scenario modelling help to make the optimal decision considering
-            the expectation of the unknown future. This helps the decision to be more robust than decision made
-            considering only one future. This also helps to find and quantify the value of flexibility.</p>
-          <a class="v5-btn v5-btn--outline" href="#example">See it in a small example <span
+          <div class="v5-kicker" data-i18n="home.why.kicker-2"></div>
+          <h3 class="v5-h3" data-i18n="home.why.h3"></h3>
+          <p class="v5-body" data-i18n="home.why.body"></p>
+          <a class="v5-btn v5-btn--outline" href="#example"><i18n-t data-i18n="home.why.btn"></i18n-t> <span
               aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -209,23 +202,18 @@
       <div class="v5-wrap">
         <div class="v5-head">
           <div>
-            <div data-rv class="v5-eyebrow">What Planning With Uncertainty Looks Like</div>
-            <h2 data-rv data-rvd="80" class="v5-title">Managing uncertainty helps us find the value of flexibility.</h2>
+            <div data-rv class="v5-eyebrow" data-i18n="home.example.eyebrow"></div>
+            <h2 data-rv data-rvd="80" class="v5-title" data-i18n="home.example.title"></h2>
           </div>
-          <p data-rv data-rvd="140" class="v5-head-note">Here is a simple energy storage example showing planning under
-            uncertainty can yield much higher revenue.</p>
+          <p data-rv data-rvd="140" class="v5-head-note" data-i18n="home.example.head-note"></p>
         </div>
 
         <div data-rv class="v5-ex" data-slides>
-          <div class="v5-pills" role="tablist" aria-label="Example steps">
-            <button type="button" role="tab" id="ex-tab-1" aria-controls="ex-slide-1" aria-selected="true">Problem
-              setup</button>
-            <button type="button" role="tab" id="ex-tab-2" aria-controls="ex-slide-2" aria-selected="false">Plan with a
-              deterministic view</button>
-            <button type="button" role="tab" id="ex-tab-3" aria-controls="ex-slide-3" aria-selected="false">Plan for
-              both outcomes</button>
-            <button type="button" role="tab" id="ex-tab-4" aria-controls="ex-slide-4" aria-selected="false">What
-              happens</button>
+          <div class="v5-pills" role="tablist" aria-label="" data-i18n-attr="aria-label:home.example.pills.aria-label">
+            <button type="button" role="tab" id="ex-tab-1" aria-controls="ex-slide-1" aria-selected="true" data-i18n="home.example.button"></button>
+            <button type="button" role="tab" id="ex-tab-2" aria-controls="ex-slide-2" aria-selected="false" data-i18n="home.example.button-2"></button>
+            <button type="button" role="tab" id="ex-tab-3" aria-controls="ex-slide-3" aria-selected="false" data-i18n="home.example.button-3"></button>
+            <button type="button" role="tab" id="ex-tab-4" aria-controls="ex-slide-4" aria-selected="false" data-i18n="home.example.button-4"></button>
           </div>
 
           <div class="v5-ex-card">
@@ -233,7 +221,7 @@
               <div class="v5-ex-split">
                 <figure class="v5-ex-fig">
                   <svg viewBox="0 0 580 200" role="img"
-                    aria-label="Tomorrow's price is either £110 or £10, equally likely.">
+                    aria-label="" data-i18n-attr="aria-label:home.example.svg.aria-label">
                     <g class="v5-edges">
                       <path d="M40 100 C170 100 170 40 300 40"></path>
                       <path d="M40 100 C170 100 170 160 300 160"></path>
@@ -244,38 +232,36 @@
                     </g>
                     <circle class="v5-today" cx="40" cy="100" r="9"></circle>
                     <g class="v5-labels v5-labels--strong">
-                      <text x="18" y="134">Today</text>
-                      <text x="316" y="46">£110</text>
-                      <text x="316" y="166">£10</text>
+                      <text x="18" y="134" data-i18n="home.example.text"></text>
+                      <text x="316" y="46" data-i18n="home.example.text-2"></text>
+                      <text x="316" y="166" data-i18n="home.example.text-3"></text>
                     </g>
                   </svg>
-                  <figcaption>Tomorrow's energy prices are unknown but we know the distribution of them, 110£/unit or
-                    10£/unit with equal probability.</figcaption>
+                  <figcaption data-i18n="home.example.figcaption"></figcaption>
                 </figure>
                 <div class="v5-ex-info">
                   <div class="v5-stats">
                     <div>
-                      <div class="v5-stat-value">£50</div>
-                      <div class="v5-stat-label">Buy energy today</div>
-                      <div class="v5-stat-unit">per unit</div>
+                      <div class="v5-stat-value" data-i18n="home.example.stat-value"></div>
+                      <div class="v5-stat-label" data-i18n="home.example.stat-label"></div>
+                      <div class="v5-stat-unit" data-i18n="home.example.stat-unit"></div>
                     </div>
                     <div>
-                      <div class="v5-stat-value">£20</div>
-                      <div class="v5-stat-label">Store it</div>
-                      <div class="v5-stat-unit">per unit</div>
+                      <div class="v5-stat-value" data-i18n="home.example.stat-value-2"></div>
+                      <div class="v5-stat-label" data-i18n="home.example.stat-label-2"></div>
+                      <div class="v5-stat-unit" data-i18n="home.example.stat-unit-2"></div>
                     </div>
                     <div>
                       <div class="v5-stat-value">100</div>
-                      <div class="v5-stat-label">Battery size</div>
-                      <div class="v5-stat-unit">units</div>
+                      <div class="v5-stat-label" data-i18n="home.example.stat-label-3"></div>
+                      <div class="v5-stat-unit" data-i18n="home.example.stat-unit-3"></div>
                     </div>
                   </div>
                   <div>
-                    <div class="v5-stat-label v5-stat-label--spaced">Decisions to make</div>
+                    <div class="v5-stat-label v5-stat-label--spaced" data-i18n="home.example.stat-label-4"></div>
                     <ol class="v5-decisions">
-                      <li>Whether to charge the battery today at £50.</li>
-                      <li>Whether to discharge tomorrow at the unknown price, or wait and discharge the day after at a
-                        guaranteed £50.</li>
+                      <li data-i18n="home.example.li"></li>
+                      <li data-i18n="home.example.li-2"></li>
                     </ol>
                   </div>
                 </div>
@@ -286,7 +272,7 @@
               <div class="v5-ex-split">
                 <figure class="v5-ex-fig">
                   <svg viewBox="0 0 580 200" role="img"
-                    aria-label="Planning on the average price of £60 squeezes the £110 and £10 outcomes into one number.">
+                    aria-label="" data-i18n-attr="aria-label:home.example.svg.aria-label-2">
                     <g class="v5-edges v5-edges--dim">
                       <path d="M40 100 C170 100 170 40 300 40"></path>
                       <path d="M40 100 C170 100 170 160 300 160"></path>
@@ -299,19 +285,18 @@
                     </g>
                     <circle class="v5-today" cx="40" cy="100" r="9"></circle>
                     <g class="v5-labels v5-labels--strong">
-                      <text x="18" y="134">Today</text>
-                      <text x="316" y="46">£110</text>
-                      <text x="316" y="166">£10</text>
-                      <text class="v5-forecast-label" x="316" y="106">Average £60</text>
+                      <text x="18" y="134" data-i18n="home.example.text-4"></text>
+                      <text x="316" y="46" data-i18n="home.example.text-5"></text>
+                      <text x="316" y="166" data-i18n="home.example.text-6"></text>
+                      <text class="v5-forecast-label" x="316" y="106" data-i18n="home.example.forecast-label"></text>
                     </g>
                   </svg>
-                  <figcaption>The average guess squeezes both outcomes into one number.</figcaption>
+                  <figcaption data-i18n="home.example.figcaption-2"></figcaption>
                 </figure>
                 <div class="v5-ex-info v5-ex-info--tight">
-                  <div class="v5-kind"><span class="v5-kind-mark">A</span>Plan with the expected price</div>
-                  <p class="v5-body">The average price is £60, only £10 more than the £50 you paid. Storing costs £20,
-                    so it looks like a loss.</p>
-                  <h3 class="v5-answer">Don't charge the battery today at all.</h3>
+                  <div class="v5-kind"><span class="v5-kind-mark" data-i18n="home.example.kind-mark"></span><i18n-t data-i18n="home.example.kind"></i18n-t></div>
+                  <p class="v5-body" data-i18n="home.example.body"></p>
+                  <h3 class="v5-answer" data-i18n="home.example.answer"></h3>
                 </div>
               </div>
             </div>
@@ -320,7 +305,7 @@
               <div class="v5-ex-split">
                 <figure class="v5-ex-fig">
                   <svg viewBox="0 0 580 200" role="img"
-                    aria-label="Planning for both outcomes: at £110 discharge tomorrow, at £10 keep the energy and discharge for £50.">
+                    aria-label="" data-i18n-attr="aria-label:home.example.svg.aria-label-3">
                     <g class="v5-edges">
                       <path d="M40 100 C170 100 170 40 300 40"></path>
                       <path d="M40 100 C170 100 170 160 300 160"></path>
@@ -331,19 +316,18 @@
                     </g>
                     <circle class="v5-today" cx="40" cy="100" r="9"></circle>
                     <g class="v5-labels v5-labels--small">
-                      <text x="18" y="134">Today</text>
-                      <text x="316" y="40">£110: discharge tomorrow</text>
-                      <text x="316" y="170">£10: keep, discharge for £50</text>
+                      <text x="18" y="134" data-i18n="home.example.text-7"></text>
+                      <text x="316" y="40" data-i18n="home.example.text-8"></text>
+                      <text x="316" y="170" data-i18n="home.example.text-9"></text>
                     </g>
                   </svg>
-                  <figcaption>Planning for both outcomes means having an answer for each.</figcaption>
+                  <figcaption data-i18n="home.example.figcaption-3"></figcaption>
                 </figure>
                 <div class="v5-ex-info v5-ex-info--tight">
-                  <div class="v5-kind"><span class="v5-kind-mark v5-kind-mark--dark">B</span>Plan for both outcomes
+                  <div class="v5-kind"><span class="v5-kind-mark v5-kind-mark--dark" data-i18n="home.example.kind-mark-2"></span><i18n-t data-i18n="home.example.kind-2"></i18n-t>
                   </div>
-                  <p class="v5-body">If the price is high, sell tomorrow and earn £60 a unit. If it is low, keep it and
-                    earn £0. On average that is £30 a unit, more than the £20 storage cost.</p>
-                  <h3 class="v5-answer v5-answer--eorc">Buy 100 units</h3>
+                  <p class="v5-body" data-i18n="home.example.body-2"></p>
+                  <h3 class="v5-answer v5-answer--eorc" data-i18n="home.example.answer-2"></h3>
                 </div>
               </div>
             </div>
@@ -351,40 +335,37 @@
             <div class="v5-ex-slide" role="tabpanel" id="ex-slide-4" aria-labelledby="ex-tab-4">
               <div class="v5-outcomes">
                 <div>
-                  <div class="v5-outcome-value v5-win">+£4,000</div>
-                  <div class="v5-stat-label">High price (50%)</div>
-                  <div class="v5-stat-unit">sell tomorrow at £110</div>
+                  <div class="v5-outcome-value v5-win" data-i18n="home.example.outcome-value"></div>
+                  <div class="v5-stat-label" data-i18n="home.example.stat-label-5"></div>
+                  <div class="v5-stat-unit" data-i18n="home.example.stat-unit-4"></div>
                 </div>
                 <div>
-                  <div class="v5-outcome-value v5-loss">-£2,000</div>
-                  <div class="v5-stat-label">Low price (50%)</div>
-                  <div class="v5-stat-unit">keep it, sell at £50</div>
+                  <div class="v5-outcome-value v5-loss" data-i18n="home.example.outcome-value-2"></div>
+                  <div class="v5-stat-label" data-i18n="home.example.stat-label-6"></div>
+                  <div class="v5-stat-unit" data-i18n="home.example.stat-unit-5"></div>
                 </div>
                 <div>
-                  <div class="v5-outcome-value">+£1,000</div>
-                  <div class="v5-stat-label">On average</div>
-                  <div class="v5-stat-unit">not buying earns £0</div>
+                  <div class="v5-outcome-value" data-i18n="home.example.outcome-value-3"></div>
+                  <div class="v5-stat-label" data-i18n="home.example.stat-label-7"></div>
+                  <div class="v5-stat-unit" data-i18n="home.example.stat-unit-6"></div>
                 </div>
               </div>
-              <p class="v5-calc">Each case already includes £5,000 to buy the energy and £2,000 to store it.</p>
+              <p class="v5-calc" data-i18n="home.example.calc"></p>
               <div class="v5-takeaway">
                 <div>
-                  <div class="v5-takeaway-big">£1,000</div>
-                  <div class="v5-takeaway-label">more on average by planning for both outcomes</div>
+                  <div class="v5-takeaway-big" data-i18n="home.example.takeaway-big"></div>
+                  <div class="v5-takeaway-label" data-i18n="home.example.takeaway-label"></div>
                 </div>
                 <div>
-                  <p class="v5-takeaway-lead">The average misses the value of adapting.</p>
-                  <p class="v5-takeaway-term">Planning for many possible futures like this is called stochastic
-                    optimization.</p>
+                  <p class="v5-takeaway-lead" data-i18n="home.example.takeaway-lead"></p>
+                  <p class="v5-takeaway-term" data-i18n="home.example.takeaway-term"></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <p data-rv class="v5-flag">Illustrative prices in pounds. Storage starts empty, with no energy losses or extra
-          charges. £1,000 is an average; the low-price case loses £2,000. For simplicity, we omit the fee for the
-          fixed-price sale.</p>
+        <p data-rv class="v5-flag" data-i18n="home.example.flag"></p>
       </div>
     </section>
 
@@ -393,12 +374,10 @@
       <div class="v5-wrap">
         <div class="v5-head">
           <div>
-            <div data-rv class="v5-eyebrow">What we do</div>
-            <h2 data-rv data-rvd="80" class="v5-title">We make stochastic modeling an effortless part of your workflow
-            </h2>
+            <div data-rv class="v5-eyebrow" data-i18n="home.wwd.eyebrow"></div>
+            <h2 data-rv data-rvd="80" class="v5-title" data-i18n="home.wwd.title"></h2>
           </div>
-          <p data-rv data-rvd="140" class="v5-head-note">Uncertainty becomes an input to every plan, rather than a caveat
-            added at the end.</p>
+          <p data-rv data-rvd="140" class="v5-head-note" data-i18n="home.wwd.head-note"></p>
         </div>
         <div class="v5-cards">
           <article data-rv class="v5-card">
@@ -407,14 +386,13 @@
               <div class="v5-photo" aria-hidden="true"></div>
               <div class="v5-card-shade" aria-hidden="true"></div>
               <div class="v5-card-overlay">
-                <h3>Decision intelligence</h3>
-                <p>Advanced decision intelligence based on stochastic optimisation and machine learning.</p>
+                <h3 data-i18n="home.wwd.h3"></h3>
+                <p data-i18n="home.wwd.p"></p>
               </div>
             </div>
             <div class="v5-card-text">
-              <h3>Plans that hold up across many possible futures.</h3>
-              <p>We test each plan against scenarios built from history, forecasts and your own assumptions, and show
-                the likely range and the risk it carries.</p>
+              <h3 data-i18n="home.wwd.h3-2"></h3>
+              <p data-i18n="home.wwd.p-2"></p>
             </div>
           </article>
           <article data-rv data-rvd="80" class="v5-card">
@@ -423,15 +401,13 @@
               <div class="v5-photo" aria-hidden="true"></div>
               <div class="v5-card-shade" aria-hidden="true"></div>
               <div class="v5-card-overlay">
-                <h3>User-friendly interface</h3>
-                <p>Data analytics, model building, advanced algorithms and results visualisation, all in a unified user
-                  friendly interface.</p>
+                <h3 data-i18n="home.wwd.h3-3"></h3>
+                <p data-i18n="home.wwd.p-3"></p>
               </div>
             </div>
             <div class="v5-card-text">
-              <h3>From model to answer, without code.</h3>
-              <p>Set up the model, run scenarios and read prices, pathways and valuations in one platform, with no
-                programming needed.</p>
+              <h3 data-i18n="home.wwd.h3-4"></h3>
+              <p data-i18n="home.wwd.p-4"></p>
             </div>
           </article>
           <article data-rv data-rvd="160" class="v5-card">
@@ -440,14 +416,13 @@
               <div class="v5-photo" aria-hidden="true"></div>
               <div class="v5-card-shade" aria-hidden="true"></div>
               <div class="v5-card-overlay">
-                <h3>Breaking software boundaries</h3>
-                <p>Turn your deterministic model from other platforms effortlessly using the EORC software.</p>
+                <h3 data-i18n="home.wwd.h3-5"></h3>
+                <p data-i18n="home.wwd.p-5"></p>
               </div>
             </div>
             <div class="v5-card-text">
-              <h3>Works with what your team already uses.</h3>
-              <p>Bring in the data you already have, and take the results back into the software your team relies on.
-              </p>
+              <h3 data-i18n="home.wwd.h3-6"></h3>
+              <p data-i18n="home.wwd.p-6"></p>
             </div>
           </article>
         </div>
@@ -458,20 +433,17 @@
     <section class="v5-section v5-tech">
       <div class="v5-wrap">
         <div class="v5-tech-head">
-          <div data-rv class="v5-eyebrow">Our technology</div>
-          <h2 data-rv data-rvd="80" class="v5-title v5-title--long">Managing comprehensive strategic and operational
-            uncertainty with unmatched computational performance with EORC decision intelligence.</h2>
-          <p data-rv data-rvd="140" class="v5-head-note">EORC's optimisation and machine learning powered decision
-            intelligence handle large-scale energy system models far beyond the limit of industry leading decision
-            solution providers.</p>
+          <div data-rv class="v5-eyebrow" data-i18n="home.tech.eyebrow"></div>
+          <h2 data-rv data-rvd="80" class="v5-title v5-title--long" data-i18n="home.tech.title"></h2>
+          <p data-rv data-rvd="140" class="v5-head-note" data-i18n="home.tech.head-note"></p>
         </div>
 
         <div class="v5-tech-body" data-tech-carousel>
-          <div class="v5-pills v5-pills--center" role="group" aria-label="Technology stages" data-tech-tabs hidden>
-            <button type="button" aria-pressed="true">Data</button>
-            <button type="button" aria-pressed="false">Algorithms</button>
-            <button type="button" aria-pressed="false">Models</button>
-            <button type="button" aria-pressed="false">Results</button>
+          <div class="v5-pills v5-pills--center" role="group" aria-label="" data-tech-tabs hidden data-i18n-attr="aria-label:home.tech.pills.aria-label">
+            <button type="button" aria-pressed="true" data-i18n="home.tech.button"></button>
+            <button type="button" aria-pressed="false" data-i18n="home.tech.button-2"></button>
+            <button type="button" aria-pressed="false" data-i18n="home.tech.button-3"></button>
+            <button type="button" aria-pressed="false" data-i18n="home.tech.button-4"></button>
           </div>
 
           <div class="v5-stage" data-tech-stage>
@@ -479,14 +451,13 @@
               <div class="v5-tech-media"><img class="v5-photo" src="img/web/data.jpg" alt="" loading="lazy" decoding="async"></div>
               <div class="v5-tech-text">
                 <div>
-                  <div class="v5-tech-label">Data</div>
-                  <div class="v5-tech-sub">Scenarios from history and your assumptions</div>
+                  <div class="v5-tech-label" data-i18n="home.tech.tech-label"></div>
+                  <div class="v5-tech-sub" data-i18n="home.tech.tech-sub"></div>
                 </div>
-                <div class="v5-tech-stat">Hours → Decades</div>
+                <div class="v5-tech-stat" data-i18n="home.tech.tech-stat"></div>
                 <div>
-                  <h3>Scenarios for every time horizon.</h3>
-                  <p>We turn historical data, probabilistic forecasts and your own assumptions into short-term
-                    operational and long-term strategic scenarios.</p>
+                  <h3 data-i18n="home.tech.h3"></h3>
+                  <p data-i18n="home.tech.p"></p>
                 </div>
               </div>
             </article>
@@ -494,17 +465,16 @@
               <div class="v5-tech-media"><img class="v5-photo" src="img/web/algorithm.jpg" alt="" loading="lazy" decoding="async"></div>
               <div class="v5-tech-text">
                 <div>
-                  <div class="v5-tech-label">Algorithms</div>
-                  <div class="v5-tech-sub">Fast optimisation and AI</div>
+                  <div class="v5-tech-label" data-i18n="home.tech.tech-label-2"></div>
+                  <div class="v5-tech-sub" data-i18n="home.tech.tech-sub-2"></div>
                 </div>
                 <div>
-                  <div class="v5-tech-stat">549x</div>
-                  <div class="v5-tech-stat-text">faster than industry leading solvers</div>
+                  <div class="v5-tech-stat" data-i18n="home.tech.tech-stat-2"></div>
+                  <div class="v5-tech-stat-text" data-i18n="home.tech.tech-stat-text"></div>
                 </div>
                 <div>
-                  <h3>Solve complex energy models beyond the limit of industry leading solvers</h3>
-                  <p>Focus on your energy models, EORC's optimisation and machine learning will solve the problem with
-                    unmatched speed.</p>
+                  <h3 data-i18n="home.tech.h3-2"></h3>
+                  <p data-i18n="home.tech.p-2"></p>
                 </div>
               </div>
             </article>
@@ -512,13 +482,13 @@
               <div class="v5-tech-media"><img class="v5-photo" src="img/web/model.jpg" alt="" loading="lazy" decoding="async"></div>
               <div class="v5-tech-text">
                 <div>
-                  <div class="v5-tech-label">Models</div>
-                  <div class="v5-tech-sub">One integrated energy system</div>
+                  <div class="v5-tech-label" data-i18n="home.tech.tech-label-3"></div>
+                  <div class="v5-tech-sub" data-i18n="home.tech.tech-sub-3"></div>
                 </div>
-                <div class="v5-tech-stat">Model library</div>
+                <div class="v5-tech-stat" data-i18n="home.tech.tech-stat-3"></div>
                 <div>
-                  <h3>Modular energy library for every energy carrier, conventional or emerging.</h3>
-                  <p>Modular model building for power, heat, hydrogen, oil &amp; gas and CCS across Europe.</p>
+                  <h3 data-i18n="home.tech.h3-3"></h3>
+                  <p data-i18n="home.tech.p-3"></p>
                 </div>
               </div>
             </article>
@@ -526,28 +496,27 @@
               <div class="v5-tech-media"><img class="v5-photo" src="img/web/results.jpg" alt="" loading="lazy" decoding="async"></div>
               <div class="v5-tech-text">
                 <div>
-                  <div class="v5-tech-label">Results</div>
-                  <div class="v5-tech-sub">Prices, pathways, valuations, risk</div>
+                  <div class="v5-tech-label" data-i18n="home.tech.tech-label-4"></div>
+                  <div class="v5-tech-sub" data-i18n="home.tech.tech-sub-4"></div>
                 </div>
-                <div class="v5-tech-stat">Results analytics</div>
+                <div class="v5-tech-stat" data-i18n="home.tech.tech-stat-4"></div>
                 <div>
-                  <h3>More confident decisions for your next energy investment.</h3>
-                  <p>Robust power price outlooks, infrastructure pathways, and asset valuations accounting operational
-                    and strategic uncertainty.</p>
+                  <h3 data-i18n="home.tech.h3-4"></h3>
+                  <p data-i18n="home.tech.p-4"></p>
                 </div>
               </div>
             </article>
           </div>
 
           <div class="v5-arrows" data-tech-arrows hidden>
-            <button type="button" class="v5-arrow" data-tech-prev aria-label="Previous">←</button>
-            <button type="button" class="v5-arrow v5-arrow--solid" data-tech-next aria-label="Next">→</button>
+            <button type="button" class="v5-arrow" data-tech-prev aria-label="" data-i18n-attr="aria-label:home.tech.arrow.aria-label">←</button>
+            <button type="button" class="v5-arrow v5-arrow--solid" data-tech-next aria-label="" data-i18n-attr="aria-label:home.tech.arrow.aria-label-2">→</button>
           </div>
         </div>
 
         <div data-rv class="v5-tech-cta">
-          <span>See the benchmarks, models and full platform.</span>
-          <a href="product.html" class="v5-btn v5-btn--dark">Explore the technology →</a>
+          <span data-i18n="home.tech.span"></span>
+          <a href="product.html" class="v5-btn v5-btn--dark" data-i18n="home.tech.btn"></a>
         </div>
       </div>
     </section>
@@ -556,22 +525,22 @@
     <section class="v5-closing">
       <div class="v5-wrap">
         <div class="v5-closing-row">
-          <h2 data-rv>Decision intelligence for your energy systems under uncertainty</h2>
+          <h2 data-rv data-i18n="home.closing.h2"></h2>
           <div data-rv data-rvd="120" class="v5-closing-actions">
-            <a href="contact.html" class="v5-btn v5-btn--accent v5-btn--lg">Request a demo</a>
-            <a href="about.html" class="v5-btn v5-btn--ghost v5-btn--lg">Meet the team</a>
+            <a href="contact.html" class="v5-btn v5-btn--accent v5-btn--lg" data-i18n="home.closing.btn"></a>
+            <a href="about.html" class="v5-btn v5-btn--ghost v5-btn--lg" data-i18n="home.closing.btn-2"></a>
           </div>
         </div>
         <footer class="site-footer">
           <div class="footer-brand">
             <span class="footer-mark"></span>
-            <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+            <span class="copyright" data-i18n="footer.copyright"></span>
           </div>
           <div class="footer-links">
-            <a href="product.html">Technology</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html">Request a demo</a>
+            <a href="product.html" data-i18n="footer.a-product"></a>
+            <a href="about.html" data-i18n="footer.a-about"></a>
+            <a href="contact.html" data-i18n="footer.a-contact"></a>
+            <a href="contact.html" data-i18n="footer.a-contact-2"></a>
           </div>
         </footer>
       </div>

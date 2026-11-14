@@ -118,13 +118,6 @@ window.EORCFigures = (function () {
     g: 'rgba(242,244,246,.3)'
   };
 
-  const CARRIER_CAPTION = {
-    all: 'All carriers in one integrated model',
-    e: 'Power network',
-    h: 'Hydrogen',
-    g: 'Oil, gas & CCS'
-  };
-
   function project(lat, lon) {
     const k = 23.4;
     return { x: 24 + (lon + 10.4) * 0.655 * k, y: 20 + (61.6 - lat) * k };
@@ -205,7 +198,7 @@ window.EORCFigures = (function () {
       nodes.forEach(n => {
         n.el.style.opacity = (carrier === 'all' || n.carriers.includes(carrier)) ? '1' : '0.16';
       });
-      if (caption) caption.textContent = CARRIER_CAPTION[carrier];
+      if (caption) caption.textContent = window.I18N.t('figures.carrier.' + carrier);
     });
   }
 
@@ -215,16 +208,12 @@ window.EORCFigures = (function () {
 
   const HORIZONS = {
     day: {
-      title: 'Short-term operational decisions',
-      body: 'Resolved at high temporal resolution, inside the same model that carries the long-term plan.',
-      axis: 'hours → days',
+      text: 'figures.horizon.day',
       f: t => 0.52 + 0.3 * Math.sin(t * 2 * Math.PI - 1.4) + 0.07 * Math.sin(t * 17),
       w: t => 0.06 + 0.06 * t
     },
     decade: {
-      title: 'Long-term strategic planning',
-      body: 'Investment, retrofit and abandonment planning, linked to short-term operational decisions rather than studied separately.',
-      axis: 'decades',
+      text: 'figures.horizon.decade',
       f: t => 0.24 + 0.6 * Math.pow(t, 1.5) + 0.04 * Math.sin(t * 11),
       w: t => 0.02 + 0.16 * t
     }
@@ -249,9 +238,9 @@ window.EORCFigures = (function () {
       path.setAttribute('d', d);
       area.setAttribute('d', d + ' L596 212 L4 212 Z');
       if (bandPath) bandPath.setAttribute('d', band(t => cfg.f(t) - cfg.w(t), t => cfg.f(t) + cfg.w(t), 4, 596, 60, 200, 170));
-      if (title) title.textContent = cfg.title;
-      if (body) body.textContent = cfg.body;
-      if (axis) axis.textContent = cfg.axis;
+      if (title) title.textContent = window.I18N.t(cfg.text + '.title');
+      if (body) body.textContent = window.I18N.t(cfg.text + '.body');
+      if (axis) axis.textContent = window.I18N.t(cfg.text + '.axis');
     });
   }
 

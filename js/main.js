@@ -1,7 +1,12 @@
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const EASE = 'cubic-bezier(.22,.61,.21,1)';
 
-document.addEventListener('DOMContentLoaded', () => {
+// Copy comes from lang/<code>.json (see js/i18n.js); wait for it before any
+// widget reads or builds text.
+const t = key => window.I18N.t(key);
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await window.I18N.ready;
   initMobileNav();
   initReveal();
   initRoleTabs();
@@ -210,24 +215,30 @@ function initTechCarousel() {
 // the no-JavaScript fallback for the default (demo) intent.
 const CONTACT_EMAIL = 'info@eorc.uk';
 
+// Text lives in lang/<code>.json under contact.email.* and contact.role.*.
 const CONTACT_INTENTS = {
   demo: {
-    cta: 'Email us to book a demo',
-    subject: 'Demo request — EORC platform',
-    fields: ['Your organisation and role', 'The system or portfolio, and the energy carriers involved', "The decision you're facing", 'A preferred time for a call']
+    cta: 'contact.email.demo.cta',
+    subject: 'contact.email.demo.subject',
+    fields: [
+      'contact.email.field.organisation-role',
+      'contact.email.field.system',
+      'contact.email.field.decision',
+      'contact.email.field.time'
+    ]
   },
   question: {
-    cta: 'Email us your question',
-    subject: 'Enquiry — EORC',
-    fields: ['Your organisation and role', 'Your question']
+    cta: 'contact.email.question.cta',
+    subject: 'contact.email.question.subject',
+    fields: ['contact.email.field.organisation-role', 'contact.email.field.question']
   }
 };
 
 const CONTACT_ROLES = {
-  'asset-owner': 'Energy asset owner',
-  'system-operator': 'System operator',
-  'market-analyst': 'Power market analyst',
-  other: 'Something else'
+  'asset-owner': 'contact.role.asset-owner',
+  'system-operator': 'contact.role.system-operator',
+  'market-analyst': 'contact.role.market-analyst',
+  other: 'contact.role.other'
 };
 
 // ?intent= picks the tab and ?role= the pill; a role on its own means a demo
@@ -242,22 +253,22 @@ function parseContactParams(search) {
 
 function buildEmail(intentKey, roleKey) {
   const intent = CONTACT_INTENTS[Object.hasOwn(CONTACT_INTENTS, intentKey) ? intentKey : 'demo'];
-  const roleLabel = Object.hasOwn(CONTACT_ROLES, roleKey) ? CONTACT_ROLES[roleKey] : null;
+  const roleLabel = Object.hasOwn(CONTACT_ROLES, roleKey) ? t(CONTACT_ROLES[roleKey]) : null;
 
   // the role pill already answers half of the first field
-  const lines = ['Hi EORC team,', ''];
-  if (roleLabel) lines.push('I work as: ' + roleLabel);
+  const lines = [t('contact.email.greeting'), ''];
+  if (roleLabel) lines.push(t('contact.email.role-line') + ' ' + roleLabel);
   intent.fields.forEach(f => {
-    lines.push(roleLabel && f === 'Your organisation and role' ? 'Organisation:' : f + ':');
+    lines.push(roleLabel && f === 'contact.email.field.organisation-role' ? t('contact.email.organisation') : t(f));
   });
 
-  const subject = intent.subject;
+  const subject = t(intent.subject);
   const body = lines.join('\r\n');
   const enc = encodeURIComponent;
   // encodeURIComponent rather than URLSearchParams: the latter writes spaces as
   // "+", which only decodes back to a space in form-encoded readers
   return {
-    cta: intent.cta,
+    cta: t(intent.cta),
     mailto: `mailto:${CONTACT_EMAIL}?subject=${enc(subject)}&body=${enc(body)}`,
     gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(CONTACT_EMAIL)}&su=${enc(subject)}&body=${enc(body)}`,
     outlook: `https://outlook.office.com/mail/deeplink/compose?to=${enc(CONTACT_EMAIL)}&subject=${enc(subject)}&body=${enc(body)}`
@@ -312,7 +323,7 @@ function initCopyButtons() {
     btn.addEventListener('click', async () => {
       const copied = await copyText(btn.dataset.copy);
       // on failure show the address itself, so it can still be selected by hand
-      btn.textContent = copied ? 'Copied' : btn.dataset.copy;
+      btn.textContent = copied ? t('ui.copied') : btn.dataset.copy;
       clearTimeout(timer);
       timer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
     });
@@ -376,7 +387,7 @@ function initForm(form) {
       showSuccess(form, statusEl);
       form.reset();
     } catch (err) {
-      setStatus(statusEl, err.message || 'Something went wrong. Please try again later.', 'err');
+      setStatus(statusEl, err.message || t('ui.error'), 'err');
     } finally {
       setLoading(submitBtn, false);
     }
@@ -392,7 +403,7 @@ function showSuccess(form, statusEl) {
     form.hidden = true;
     successPanel.hidden = false;
   } else {
-    setStatus(statusEl, 'Message sent. We’ll get back to you shortly.', 'ok');
+    setStatus(statusEl, t('ui.sent'), 'ok');
   }
 }
 
@@ -407,5 +418,5 @@ function setLoading(btn, isLoading) {
   if (!btn) return;
   btn.disabled = isLoading;
   btn.dataset.label = btn.dataset.label || btn.textContent;
-  btn.textContent = isLoading ? 'Sending…' : btn.dataset.label;
+  btn.textContent = isLoading ? t('ui.sending') : btn.dataset.label;
 }

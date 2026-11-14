@@ -2526,3 +2526,6 @@ body.v5 {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* js/i18n.js hides the page until the copy is in, so the empty skeleton never shows */
+html.i18n-loading body { visibility: hidden; }

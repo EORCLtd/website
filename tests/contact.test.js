@@ -8,8 +8,9 @@ const vm = require('node:vm');
 // main.js is a plain browser script: run it with a stub DOM and pull out the
 // two pure functions the contact page is built on.
 const matchMedia = () => ({ matches: false });
+const { en } = require('./helpers');
 const sandbox = {
-  window: { matchMedia },
+  window: { matchMedia, I18N: { t: key => en[key] } },
   matchMedia,
   URLSearchParams,
   encodeURIComponent,

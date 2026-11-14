@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — EORC</title>
+  <title data-i18n="about.meta.title"></title>
   <meta name="description"
-    content="Edinburgh Operational Research Corporation Ltd — optimisation and decision support under uncertainty for energy systems.">
+    content="" data-i18n-attr="content:about.meta.description">
   <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
   <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="alternate" type="text/markdown" href="about.md">
@@ -17,6 +17,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/v5.css">
+  <script src="js/i18n.js"></script>
 </head>
 
 <body class="v5">
@@ -25,17 +26,17 @@
     <nav class="nav">
       <a href="index.html" class="brand">
         <span class="brand-mark"></span>
-        EORC
+        <i18n-t data-i18n="nav.brand"></i18n-t>
       </a>
       <span class="nav-spacer"></span>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="" aria-expanded="false" data-i18n-attr="aria-label:nav.nav-toggle.aria-label">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="product.html">Technology</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+        <li><a href="product.html" data-i18n="nav.a-product"></a></li>
+        <li><a href="about.html" aria-current="page" data-i18n="nav.a-about"></a></li>
+        <li><a href="contact.html" data-i18n="nav.a-contact"></a></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav.nav-cta"></a></li>
       </ul>
     </nav>
   </header>
@@ -47,11 +48,10 @@
       <div class="v5-photo" aria-hidden="true"></div>
       <div class="v5-hero-shade" aria-hidden="true"></div>
       <div class="v5-page-hero-inner">
-        <div class="v5-hero-eyebrow">About EORC</div>
-        <h1>Rigorous methods<span> for uncertain futures.</span></h1>
-        <p class="v5-page-lede">Edinburgh Operational Research Corporation is a technology company specialising in
-          optimisation and decision support under uncertainty for energy systems.</p>
-        <a href="#team" class="v5-btn v5-btn--light">Meet the team ↓</a>
+        <div class="v5-hero-eyebrow" data-i18n="about.page-hero.hero-eyebrow"></div>
+        <h1 data-i18n-html="about.page-hero.h1"></h1>
+        <p class="v5-page-lede" data-i18n="about.page-hero.page-lede"></p>
+        <a href="#team" class="v5-btn v5-btn--light" data-i18n="about.page-hero.btn"></a>
       </div>
     </section>
 
@@ -59,19 +59,16 @@
     <section class="v5-section v5-about-pillars">
       <div class="v5-wrap v5-pillars">
         <article data-rv class="v5-pillar">
-          <h2>Who we are</h2>
-          <p>EORC is a technology company specialising in making decision intelligence under uncertainty for energy
-            systems accessible via optimisation and machine learning</p>
+          <h2 data-i18n="about.about-pillars.h2"></h2>
+          <p data-i18n="about.about-pillars.p"></p>
         </article>
         <article data-rv data-rvd="90" class="v5-pillar">
-          <h2>Our focus</h2>
-          <p>Operational research, applied mathematics and energy systems analysis — with explicit representations of
-            uncertainty: demand evolution, technology costs, policy and market dynamics.</p>
+          <h2 data-i18n="about.about-pillars.h2-2"></h2>
+          <p data-i18n="about.about-pillars.p-2"></p>
         </article>
         <article data-rv data-rvd="180" class="v5-pillar">
-          <h2>How we work</h2>
-          <p>We prioritise making advanced modelling and tools accessible and interpretable to asset owners, government
-            agencies, system operators, market analysts from all backgrounds.</p>
+          <h2 data-i18n="about.about-pillars.h2-3"></h2>
+          <p data-i18n="about.about-pillars.p-3"></p>
         </article>
       </div>
     </section>
@@ -81,64 +78,60 @@
       <div class="v5-wrap">
         <div class="v5-head">
           <div>
-            <div data-rv class="v5-eyebrow">The team</div>
-            <h2 data-rv data-rvd="80" class="v5-title">Operational researchers and engineers.</h2>
+            <div data-rv class="v5-eyebrow" data-i18n="about.team.eyebrow"></div>
+            <h2 data-rv data-rvd="80" class="v5-title" data-i18n="about.team.title"></h2>
           </div>
-          <p data-rv data-rvd="140" class="v5-head-note">A small team that builds the methods and the software, and works
-            directly with the people who use them.</p>
+          <p data-rv data-rvd="140" class="v5-head-note" data-i18n="about.team.head-note"></p>
         </div>
         <div class="v5-team-grid">
           <article data-rv class="v5-member">
             <div class="v5-member-photo">
-              <img src="img/HZ_ntnu_profile_photo.jpg" alt="Dr Hongyu Zhang">
+              <img src="img/HZ_ntnu_profile_photo.jpg" alt="" data-i18n-attr="alt:about.team.img.alt">
             </div>
             <div class="v5-member-body">
               <div>
-                <h3>Dr Hongyu Zhang</h3>
-                <div class="v5-member-role">Director</div>
+                <h3 data-i18n="about.team.h3"></h3>
+                <div class="v5-member-role" data-i18n="about.team.member-role"></div>
               </div>
-              <p>Leads EORC and its research. Works on large-scale optimisation under uncertainty for energy system
-                planning, and on the algorithms behind the platform.</p>
+              <p data-i18n="about.team.p"></p>
               <div class="v5-member-links">
-                <a href="mailto:info@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm">Email</a>
+                <a href="mailto:info@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm" data-i18n="about.team.btn"></a>
                 <a href="https://www.linkedin.com/in/hongyu-zhang-0416/" target="_blank" rel="noopener"
-                  class="v5-btn v5-btn--dark v5-btn--sm">LinkedIn ↗</a>
+                  class="v5-btn v5-btn--dark v5-btn--sm" data-i18n="about.team.btn-2"></a>
               </div>
             </div>
           </article>
           <article data-rv data-rvd="90" class="v5-member">
             <div class="v5-member-photo">
-              <img src="img/TF_profile_photo.jpg" alt="Tommaso Ferrario">
+              <img src="img/TF_profile_photo.jpg" alt="" data-i18n-attr="alt:about.team.img.alt-2">
             </div>
             <div class="v5-member-body">
               <div>
-                <h3>Tommaso Ferrario</h3>
-                <div class="v5-member-role">Software Engineer</div>
+                <h3 data-i18n="about.team.h3-2"></h3>
+                <div class="v5-member-role" data-i18n="about.team.member-role-2"></div>
               </div>
-              <p>Builds the EORC platform, from data pipelines and scenario generation to the interface analysts use to
-                set up models and read results.</p>
+              <p data-i18n="about.team.p-2"></p>
               <div class="v5-member-links">
-                <a href="mailto:tf@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm">Email</a>
+                <a href="mailto:tf@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm" data-i18n="about.team.btn-3"></a>
                 <a href="https://www.linkedin.com/in/tommaso-ferrario-383423200/" target="_blank" rel="noopener"
-                  class="v5-btn v5-btn--dark v5-btn--sm">LinkedIn ↗</a>
+                  class="v5-btn v5-btn--dark v5-btn--sm" data-i18n="about.team.btn-4"></a>
               </div>
             </div>
           </article>
           <article data-rv data-rvd="180" class="v5-member">
             <div class="v5-member-photo">
-              <img src="img/GS_square.jpg" alt="Gabriele Sormani">
+              <img src="img/GS_square.jpg" alt="" data-i18n-attr="alt:about.team.img.alt-3">
             </div>
             <div class="v5-member-body">
               <div>
-                <h3>Gabriele Sormani</h3>
-                <div class="v5-member-role">Software Engineer</div>
+                <h3 data-i18n="about.team.h3-3"></h3>
+                <div class="v5-member-role" data-i18n="about.team.member-role-3"></div>
               </div>
-              <p>Works on the modelling and solver side of the platform, turning research methods into software that
-                runs at full scale.</p>
+              <p data-i18n="about.team.p-3"></p>
               <div class="v5-member-links">
-                <a href="mailto:gs@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm">Email</a>
+                <a href="mailto:gs@eorc.uk" class="v5-btn v5-btn--outline v5-btn--sm" data-i18n="about.team.btn-5"></a>
                 <a href="https://www.linkedin.com/in/gabriele-sormani-0866962a3/" target="_blank" rel="noopener"
-                  class="v5-btn v5-btn--dark v5-btn--sm">LinkedIn ↗</a>
+                  class="v5-btn v5-btn--dark v5-btn--sm" data-i18n="about.team.btn-6"></a>
               </div>
             </div>
           </article>
@@ -150,24 +143,23 @@
     <section class="v5-closing v5-closing--center">
       <div class="v5-wrap">
         <div class="v5-closing-center">
-          <h2 data-rv>Talk to the team.</h2>
-          <p data-rv data-rvd="90">Tell us about the decisions you're facing — we'll show you how the platform handles
-            them.</p>
+          <h2 data-rv data-i18n="about.closing--center.h2"></h2>
+          <p data-rv data-rvd="90" data-i18n="about.closing--center.p"></p>
           <div data-rv data-rvd="180" class="v5-closing-actions">
-            <a href="contact.html" class="v5-btn v5-btn--accent v5-btn--lg">Request a demo</a>
-            <a href="product.html" class="v5-btn v5-btn--ghost v5-btn--lg">Explore the technology</a>
+            <a href="contact.html" class="v5-btn v5-btn--accent v5-btn--lg" data-i18n="about.closing--center.btn"></a>
+            <a href="product.html" class="v5-btn v5-btn--ghost v5-btn--lg" data-i18n="about.closing--center.btn-2"></a>
           </div>
         </div>
         <footer class="site-footer">
           <div class="footer-brand">
             <span class="footer-mark"></span>
-            <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+            <span class="copyright" data-i18n="footer.copyright"></span>
           </div>
           <div class="footer-links">
-            <a href="product.html">Technology</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html">Request a demo</a>
+            <a href="product.html" data-i18n="footer.a-product"></a>
+            <a href="about.html" data-i18n="footer.a-about"></a>
+            <a href="contact.html" data-i18n="footer.a-contact"></a>
+            <a href="contact.html" data-i18n="footer.a-contact-2"></a>
           </div>
         </footer>
       </div>
