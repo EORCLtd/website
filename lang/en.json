@@ -401,5 +401,7 @@
   "ui.copied": "Copied",
   "ui.sending": "Sending…",
   "ui.error": "Something went wrong. Please try again later.",
-  "ui.sent": "Message sent. We’ll get back to you shortly."
+  "ui.sent": "Message sent. We’ll get back to you shortly.",
+  "lang.name": "English",
+  "nav.language.aria-label": "Language"
 }

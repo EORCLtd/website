@@ -100,9 +100,40 @@ body.v5 {
   color: var(--v5-green);
 }
 
+.v5 .lang-switch select {
+  appearance: none;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%23fff' stroke-width='1.5'%3E%3Cpath d='m1 1 4 4 4-4'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 2rem 0.5rem 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 62.4375rem;
+  cursor: pointer;
+}
+
+.v5 .lang-switch select:hover {
+  border-color: #fff;
+}
+
+.v5 .lang-switch select:focus-visible {
+  outline: 2px solid var(--v5-mint);
+  outline-offset: 2px;
+}
+
+.v5 .lang-switch option {
+  color: var(--v5-green);
+  background: #fff;
+}
+
 @media (max-width: 760px) {
   .v5 .nav {
     padding: 0 1.25rem;
+  }
+
+  .v5 .lang-switch {
+    padding: 0.5rem 1.5rem;
   }
 
   .v5 .nav-links {

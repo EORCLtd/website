@@ -89,6 +89,7 @@ request-a-demo.html       Redirect to contact.html (the old URL stays valid)
 request-a-demo/index.html Same redirect for the directory-style URL /request-a-demo/
 css/styles.css            Base styles, nav/footer and the technology figures
 css/v5.css                The v5 design (header, footer, home, technology, about, contact, 404)
+lang/languages.json       Language codes offered in the nav selector
 lang/en.json              All page copy, as flat "key": "text" pairs (one file per language)
 js/i18n.js                Loads lang/<code>.json and writes the copy into the pages
 js/main.js                Mobile nav, scroll animations, mailto helpers
@@ -111,7 +112,9 @@ Pages carry no copy: elements hold a key (`data-i18n="home.hero.h1"`, `data-i18n
 English always loads first, so a partial translation falls back key by key. Strings used by scripts (email
 template, figure captions, "Copied") live in the same file under `contact.email.*`, `figures.*` and `ui.*`.
 
-To add a language: copy `lang/en.json` to `lang/<code>.json`, translate the values and keep the keys. Never
+To add a language: copy `lang/en.json` to `lang/<code>.json`, translate the values, keep the keys, set `lang.name`
+to the language's own name ("Italiano"), and add the code to `lang/languages.json`. The selector in the top bar is
+built from that list (a static site cannot list a folder) and stays hidden while only one language exists. Never
 hard-code text in a page or script; `node --test tests/*.test.js` fails if markup keeps copy or a key is missing.
 The `*.md` copies for agents are English only.
 

@@ -53,9 +53,40 @@ PAGES.forEach(file => {
 test('en.json: every key is used by a page or a script', () => {
   const used = new Set(PAGES.flatMap(file => keysIn(read(file))));
   const js = read('js/main.js') + read('js/figures.js');
+  const i18nJs = read('js/i18n.js') + "'lang.name'"; // lang.name is read by the selector, key built in code
   Object.keys(en).forEach(key => {
     const parent = key.slice(0, key.lastIndexOf('.'));
-    const inJs = js.includes(`'${key}'`) || js.includes(`'${parent}'`) || js.includes(`'${parent}.'`);
+    const inI18n = i18nJs.includes(`'${key}'`);
+    const inJs = inI18n || js.includes(`'${key}'`) || js.includes(`'${parent}'`) || js.includes(`'${parent}.'`);
     assert.ok(used.has(key) || inJs, `unused key ${key}`);
+  });
+});
+
+// ---------- language files and the nav selector ----------
+const langDir = path.join(root, 'lang');
+const codes = JSON.parse(read('lang/languages.json'));
+const files = fs.readdirSync(langDir).filter(f => f.endsWith('.json') && f !== 'languages.json').map(f => f.replace(/\.json$/, ''));
+
+test('languages.json lists exactly the language files in lang/', () => {
+  assert.deepEqual([...codes].sort(), [...files].sort());
+  assert.ok(codes.includes('en'));
+});
+
+codes.forEach(code => {
+  const strings = JSON.parse(read(`lang/${code}.json`));
+
+  test(`lang/${code}.json: has a display name`, () => {
+    assert.ok(typeof strings['lang.name'] === 'string' && strings['lang.name'].length > 0);
+  });
+
+  test(`lang/${code}.json: only uses keys that exist in en.json`, () => {
+    Object.keys(strings).forEach(key => assert.ok(Object.hasOwn(en, key), `unknown key ${key}`));
+  });
+});
+
+PAGES.forEach(file => {
+  test(`${file}: has the language selector placeholder inside the nav links`, () => {
+    const nav = read(file).match(/<ul class="nav-links">[\s\S]*?<\/ul>/)[0];
+    assert.match(nav, /<li class="lang-switch" data-lang-switch hidden><\/li>/);
   });
 });

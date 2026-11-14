@@ -12,8 +12,9 @@
  * "en". English is always loaded first, so a language that is only partly
  * translated falls back to English key by key.
  *
- * To add a language, copy lang/en.json to lang/<code>.json and translate the
- * values (keep the keys).
+ * To add a language, copy lang/en.json to lang/<code>.json, translate the
+ * values (keep the keys, set "lang.name" to the language's own name) and add
+ * its code to lang/languages.json: the nav selector is built from that list.
  *
  * Load this in <head>: it hides the page until the text is in, so visitors
  * never see the empty skeleton. Other scripts wait on I18N.ready.
@@ -88,5 +89,44 @@
     }
   })();
 
-  window.I18N = { t, apply, ready, get lang() { return lang; } };
+  // ---------- language selector: <li data-lang-switch> in the nav ----------
+  function setLanguage(code) {
+    try { localStorage.setItem(STORAGE_KEY, code); } catch { /* storage blocked: fall back to ?lang= */ }
+    const url = new URL(location.href);
+    url.searchParams.set('lang', code);
+    location.href = url.href; // reload: widgets that build text at start-up re-run in the new language
+  }
+
+  async function listLanguages() {
+    const res = await fetch('lang/languages.json');
+    if (!res.ok) throw new Error(`lang/languages.json: ${res.status}`);
+    const codes = (await res.json()).filter(valid);
+    const named = await Promise.all(codes.map(async code => {
+      try { return { code, name: (await load(code))['lang.name'] || code }; } catch { return null; }
+    }));
+    return named.filter(Boolean);
+  }
+
+  async function initSwitcher() {
+    const host = document.querySelector('[data-lang-switch]');
+    if (!host) return;
+    const languages = await listLanguages();
+    if (languages.length < 2) return;
+
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', t('nav.language.aria-label'));
+    languages.forEach(({ code, name }) => {
+      const option = new Option(name, code, false, code === lang);
+      option.lang = code;
+      select.add(option);
+    });
+    select.addEventListener('change', () => setLanguage(select.value));
+    host.replaceChildren(select);
+    host.hidden = false;
+  }
+
+  // the selector is an extra: any failure leaves the page as it is
+  const languagesReady = ready.then(initSwitcher).catch(err => console.warn('i18n: language selector unavailable', err));
+
+  window.I18N = { t, apply, ready, languagesReady, setLanguage, get lang() { return lang; } };
 })();
