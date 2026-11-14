@@ -143,6 +143,53 @@ test('technology: on narrow windows the step nav names only the current step, so
   assert.match(css, /\.v5-stepnav-inner \{[^}]*scrollbar-width: none/);
 });
 
+// Responsive layout: boxes follow their content, so copy is never clipped when it wraps.
+const uncommented = file => read(file).replace(/\/\*[\s\S]*?\*\//g, '');
+const rule = (css, selector) => {
+  const at = css.indexOf(`\n${selector} {`);
+  assert.ok(at >= 0, `no rule for ${selector}`);
+  return css.slice(at, css.indexOf('}', at));
+};
+
+test('nav: collapses to the menu button below 900px, where the links and language selector stop fitting', () => {
+  assert.match(uncommented('css/styles.css'), /@media \(max-width: 899px\) \{\s*\.nav \{[^}]*\}\s*\.nav-toggle \{\s*display: block;/);
+  assert.match(uncommented('css/v5.css'), /@media \(max-width: 899px\) \{\s*\.v5 \.nav \{/);
+});
+
+test('home: role panels and the technology stage have no fixed height', () => {
+  const css = uncommented('css/v5.css');
+  assert.doesNotMatch(css, /\.v5-roles \{[^}]*[^-]height:/);
+  assert.match(css, /\.v5-roles \{[^}]*min-height: 42\.5rem/);
+  assert.doesNotMatch(css, /\.v5-roles\.is-enhanced \.v5-role[^{]*\{[^}]*flex: 0 0 \d/);
+  assert.doesNotMatch(css, /\.v5-stage\.is-enhanced[^{]*\{[^}]*[^-]height:/);
+  assert.match(rule(css, '.v5-stage.is-enhanced .v5-tech-card'), /grid-area: 1 \/ 1/);
+});
+
+test('home: the copy over a "What we do" card is in the flow, so the card grows with it', () => {
+  const css = uncommented('css/v5.css');
+  assert.match(rule(css, '.v5-card-overlay'), /position: relative/);
+  assert.match(rule(css, '.v5-card-media'), /overflow: clip/);
+});
+
+test('home: example tabs carry a number and a name, and stick under the header while scrolling', () => {
+  const html = read('index.html');
+  const list = html.match(/<div class="v5-pills v5-pills--steps" role="tablist"[\s\S]*?<\/div>/)[0];
+  assert.equal(all(list, /<button[^>]*role="tab"/g).length, 4);
+  assert.deepEqual(all(list, /class="v5-pill-num" aria-hidden="true">(\d\d)</g), ['01', '02', '03', '04']);
+  assert.equal(all(list, /class="v5-pill-name"/g).length, 4);
+  assert.match(rule(uncommented('css/v5.css'), '.v5-pills--steps'), /position: sticky/);
+});
+
+test('home: below 900px only the selected example tab shows its name; the others stay readable to screen readers', () => {
+  const css = uncommented('css/v5.css');
+  assert.match(css, /@media \(max-width: 899px\) \{\s*\.v5-pills\.v5-pills--steps \{[^}]*flex-wrap: nowrap/);
+  assert.match(css, /\.v5-pills--steps button\[aria-selected="false"\] \.v5-pill-name \{[^}]*clip-path: inset\(50%\)/);
+});
+
+test('v5.css: every auto-fit column minimum is capped at the container width', () => {
+  assert.deepEqual(all(uncommented('css/v5.css'), /(minmax\(\d[^,]*, 1fr\))/g), []);
+});
+
 test('technology: figure hooks that js/figures.js drives are all still present', () => {
   const html = read('product.html');
   ['data-fig="inputs"', 'data-fig="horizon"', 'data-fig="network"', 'data-fig="bars"', 'data-fig="fan"',
