@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — EORC</title>
+  <title data-i18n="contact.meta.title"></title>
   <meta name="description"
-    content="Request a demo of the EORC platform, or contact us for general enquiries, partnerships, or questions about our work.">
+    content="" data-i18n-attr="content:contact.meta.description">
   <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
   <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="alternate" type="text/markdown" href="contact.md">
@@ -17,6 +17,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/v5.css">
+  <script src="js/i18n.js"></script>
 </head>
 
 <body class="v5">
@@ -25,17 +26,18 @@
     <nav class="nav">
       <a href="index.html" class="brand">
         <span class="brand-mark"></span>
-        EORC
+        <i18n-t data-i18n="nav.brand"></i18n-t>
       </a>
       <span class="nav-spacer"></span>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="" aria-expanded="false" data-i18n-attr="aria-label:nav.nav-toggle.aria-label">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="product.html">Technology</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
-        <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+        <li><a href="product.html" data-i18n="nav.a-product"></a></li>
+        <li><a href="about.html" data-i18n="nav.a-about"></a></li>
+        <li><a href="contact.html" aria-current="page" data-i18n="nav.a-contact"></a></li>
+        <li class="lang-switch" data-lang-switch hidden></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav.nav-cta"></a></li>
       </ul>
     </nav>
   </header>
@@ -47,8 +49,8 @@
       <div class="v5-photo" aria-hidden="true"></div>
       <div class="v5-hero-shade" aria-hidden="true"></div>
       <div class="v5-page-hero-inner">
-        <div class="v5-hero-eyebrow">Contact</div>
-        <h1>Talk to us<span> about your system.</span></h1>
+        <div class="v5-hero-eyebrow" data-i18n="contact.contact-hero.hero-eyebrow"></div>
+        <h1 data-i18n-html="contact.contact-hero.h1"></h1>
       </div>
     </section>
 
@@ -56,53 +58,52 @@
     <section class="v5-contact-card-wrap">
       <div class="v5-wrap v5-contact-card">
         <div class="v5-contact-intent">
-          <span class="v5-label" id="intent-label">I'd like to</span>
+          <span class="v5-label" id="intent-label" data-i18n="contact.contact-card-wrap.label"></span>
           <div class="v5-pills v5-pills--inline" role="tablist" aria-labelledby="intent-label">
             <button type="button" role="tab" data-intent="demo" aria-selected="true"><span
-                class="v5-pill-num">01</span><span class="role-name">Request a demo</span></button>
+                class="v5-pill-num">01</span><span class="role-name" data-i18n="contact.contact-card-wrap.role-name"></span></button>
             <button type="button" role="tab" data-intent="question" aria-selected="false"><span
-                class="v5-pill-num">02</span><span class="role-name">Ask a question</span></button>
+                class="v5-pill-num">02</span><span class="role-name" data-i18n="contact.contact-card-wrap.role-name-2"></span></button>
           </div>
         </div>
 
         <div class="v5-contact-grid">
           <div class="v5-contact-lede">
             <div data-for-intent="demo">
-              <h2>See the platform on a problem like yours.</h2>
-              <p>Tell us about your system, decisions and difficulty in modelling uncertainty you are facing, we'll show
-                you how the platform handles them.</p>
+              <h2 data-i18n="contact.contact-card-wrap.h2"></h2>
+              <p data-i18n="contact.contact-card-wrap.p"></p>
             </div>
             <div data-for-intent="question" hidden>
-              <h2>Partnerships, research or anything else.</h2>
-              <p>General enquiries, partnerships, or questions about our work.</p>
+              <h2 data-i18n="contact.contact-card-wrap.h2-2"></h2>
+              <p data-i18n="contact.contact-card-wrap.p-2"></p>
             </div>
           </div>
 
           <div class="v5-contact-form">
             <div class="v5-contact-field" data-roles hidden>
-              <div class="v5-label" id="role-pick-label">I work as</div>
+              <div class="v5-label" id="role-pick-label" data-i18n="contact.contact-card-wrap.label-2"></div>
               <div class="v5-chips" aria-labelledby="role-pick-label">
-                <button type="button" data-role-pick="asset-owner" aria-pressed="false">Energy asset owner</button>
-                <button type="button" data-role-pick="system-operator" aria-pressed="false">System operator</button>
-                <button type="button" data-role-pick="market-analyst" aria-pressed="false">Power market analyst</button>
-                <button type="button" data-role-pick="other" aria-pressed="false">Something else</button>
+                <button type="button" data-role-pick="asset-owner" aria-pressed="false" data-i18n="contact.contact-card-wrap.button"></button>
+                <button type="button" data-role-pick="system-operator" aria-pressed="false" data-i18n="contact.contact-card-wrap.button-2"></button>
+                <button type="button" data-role-pick="market-analyst" aria-pressed="false" data-i18n="contact.contact-card-wrap.button-3"></button>
+                <button type="button" data-role-pick="other" aria-pressed="false" data-i18n="contact.contact-card-wrap.button-4"></button>
               </div>
             </div>
 
             <div class="v5-contact-field">
-              <div class="v5-label">Your email will include</div>
+              <div class="v5-label" data-i18n="contact.contact-card-wrap.label-3"></div>
               <div data-for-intent="demo">
                 <ul class="v5-checklist">
-                  <li>Your organisation and role</li>
-                  <li>The system or portfolio, and the energy carriers involved</li>
-                  <li>The decision you're facing</li>
-                  <li>A preferred time for a call</li>
+                  <li data-i18n="contact.contact-card-wrap.li"></li>
+                  <li data-i18n="contact.contact-card-wrap.li-2"></li>
+                  <li data-i18n="contact.contact-card-wrap.li-3"></li>
+                  <li data-i18n="contact.contact-card-wrap.li-4"></li>
                 </ul>
               </div>
               <div data-for-intent="question" hidden>
                 <ul class="v5-checklist">
-                  <li>Your organisation and role</li>
-                  <li>Your question</li>
+                  <li data-i18n="contact.contact-card-wrap.li-5"></li>
+                  <li data-i18n="contact.contact-card-wrap.li-6"></li>
                 </ul>
               </div>
             </div>
@@ -113,11 +114,11 @@
             <div class="v5-contact-actions">
               <a data-mailto
                 href="mailto:info@eorc.uk?subject=Demo%20request%20%E2%80%94%20EORC%20platform&amp;body=Hi%20EORC%20team%2C%0D%0A%0D%0AYour%20organisation%20and%20role%3A%0D%0AThe%20system%20or%20portfolio%2C%20and%20the%20energy%20carriers%20involved%3A%0D%0AThe%20decision%20you%27re%20facing%3A%0D%0AA%20preferred%20time%20for%20a%20call%3A"
-                class="v5-btn v5-btn--accent v5-btn--lg" data-cta>Email us to book a demo</a>
-              <span class="v5-fallback" data-mail-fallback hidden>Nothing opened?
-                <a data-mail-web="gmail" href="#" target="_blank" rel="noopener">Gmail</a> ·
-                <a data-mail-web="outlook" href="#" target="_blank" rel="noopener">Outlook</a> ·
-                <button type="button" class="v5-link-btn" data-copy="info@eorc.uk">Copy address</button></span>
+                class="v5-btn v5-btn--accent v5-btn--lg" data-cta data-i18n="contact.contact-card-wrap.btn"></a>
+              <span class="v5-fallback" data-mail-fallback hidden><i18n-t data-i18n="contact.contact-card-wrap.fallback"></i18n-t>
+                <a data-mail-web="gmail" href="#" target="_blank" rel="noopener" data-i18n="contact.contact-card-wrap.a-"></a> ·
+                <a data-mail-web="outlook" href="#" target="_blank" rel="noopener" data-i18n="contact.contact-card-wrap.a--2"></a> ·
+                <button type="button" class="v5-link-btn" data-copy="info@eorc.uk" data-i18n="contact.contact-card-wrap.link-btn"></button></span>
             </div>
           </div>
         </div>
@@ -129,50 +130,50 @@
       <div class="v5-wrap v5-next-row">
         <div data-rv class="v5-next-main">
           <div>
-            <div class="v5-eyebrow">What happens next</div>
+            <div class="v5-eyebrow" data-i18n="contact.contact-next.eyebrow"></div>
             <div data-for-intent="demo">
-              <h2 class="v5-title">From your email to a walkthrough.</h2>
+              <h2 class="v5-title" data-i18n="contact.contact-next.title"></h2>
               <div class="v5-next-steps">
                 <div class="v5-next-step" style="--p:33%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">01</div>
-                  <h3>Send the email</h3>
-                  <p>It opens with the fields above already in place. A line on each is enough.</p>
+                  <h3 data-i18n="contact.contact-next.h3"></h3>
+                  <p data-i18n="contact.contact-next.p"></p>
                 </div>
                 <div class="v5-next-step" style="--p:67%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">02</div>
-                  <h3>We reply with a slot</h3>
-                  <p>We read your details and suggest a time for a call.</p>
+                  <h3 data-i18n="contact.contact-next.h3-2"></h3>
+                  <p data-i18n="contact.contact-next.p-2"></p>
                 </div>
                 <div class="v5-next-step" style="--p:100%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">03</div>
-                  <h3>A demo on your problem</h3>
-                  <p>We walk through the platform on a case shaped like yours.</p>
+                  <h3 data-i18n="contact.contact-next.h3-3"></h3>
+                  <p data-i18n="contact.contact-next.p-3"></p>
                 </div>
               </div>
             </div>
             <div data-for-intent="question" hidden>
-              <h2 class="v5-title">Your question goes to the right person.</h2>
+              <h2 class="v5-title" data-i18n="contact.contact-next.title-2"></h2>
               <div class="v5-next-steps">
                 <div class="v5-next-step" style="--p:33%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">01</div>
-                  <h3>Send the email</h3>
-                  <p>Tell us what it is about, in as much detail as you like.</p>
+                  <h3 data-i18n="contact.contact-next.h3-4"></h3>
+                  <p data-i18n="contact.contact-next.p-4"></p>
                 </div>
                 <div class="v5-next-step" style="--p:67%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">02</div>
-                  <h3>We pass it on</h3>
-                  <p>It goes to the person on the team best placed to answer.</p>
+                  <h3 data-i18n="contact.contact-next.h3-5"></h3>
+                  <p data-i18n="contact.contact-next.p-5"></p>
                 </div>
                 <div class="v5-next-step" style="--p:100%;">
                   <div class="v5-next-bar"></div>
                   <div class="v5-next-num">03</div>
-                  <h3>We reply</h3>
-                  <p>You hear back directly from them.</p>
+                  <h3 data-i18n="contact.contact-next.h3-6"></h3>
+                  <p data-i18n="contact.contact-next.p-6"></p>
                 </div>
               </div>
             </div>
@@ -181,16 +182,16 @@
 
         <aside data-rv data-rvd="120" class="v5-aside">
           <div>
-            <div class="v5-aside-label">Prefer email?</div>
-            <a href="mailto:info@eorc.uk" class="v5-aside-email">info@eorc.uk</a>
+            <div class="v5-aside-label" data-i18n="contact.contact-next.aside-label"></div>
+            <a href="mailto:info@eorc.uk" class="v5-aside-email" data-i18n="contact.contact-next.aside-email"></a>
           </div>
           <div>
-            <div class="v5-aside-label">Based in</div>
-            <div class="v5-aside-value">Edinburgh, United Kingdom</div>
+            <div class="v5-aside-label" data-i18n="contact.contact-next.aside-label-2"></div>
+            <div class="v5-aside-value" data-i18n="contact.contact-next.aside-value"></div>
           </div>
           <div class="v5-aside-note">
-            <p>Demos run on a problem shaped like yours — bring a system, a portfolio or a planning question.</p>
-            <a href="about.html#team">Meet the team →</a>
+            <p data-i18n="contact.contact-next.p-7"></p>
+            <a href="about.html#team" data-i18n="contact.contact-next.a-about"></a>
           </div>
         </aside>
       </div>
@@ -202,12 +203,12 @@
         <footer class="site-footer">
           <div class="footer-brand">
             <span class="footer-mark"></span>
-            <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+            <span class="copyright" data-i18n="footer.copyright"></span>
           </div>
           <div class="footer-links">
-            <a href="product.html">Technology</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="product.html" data-i18n="footer.a-product"></a>
+            <a href="about.html" data-i18n="footer.a-about"></a>
+            <a href="contact.html" data-i18n="footer.a-contact"></a>
           </div>
         </footer>
       </div>

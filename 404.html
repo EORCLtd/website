@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found — EORC</title>
+  <title data-i18n="notfound.meta.title"></title>
   <meta name="robots" content="noindex">
   <!-- GitHub Pages serves this file for any unknown path, at any depth, so relative
      paths cannot be resolved against the request URL. They resolve against this
@@ -24,6 +24,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/v5.css">
+  <script src="js/i18n.js"></script>
 </head>
 
 <body class="v5">
@@ -37,29 +38,30 @@
       <nav class="nav">
         <a href="./" class="brand">
           <span class="brand-mark"></span>
-          EORC
+          <i18n-t data-i18n="nav.brand"></i18n-t>
         </a>
         <span class="nav-spacer"></span>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <button class="nav-toggle" aria-label="" aria-expanded="false" data-i18n-attr="aria-label:nav.nav-toggle.aria-label">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-          <li><a href="product.html">Technology</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+          <li><a href="product.html" data-i18n="nav.a-product"></a></li>
+          <li><a href="about.html" data-i18n="nav.a-about"></a></li>
+          <li><a href="contact.html" data-i18n="nav.a-contact"></a></li>
+          <li class="lang-switch" data-lang-switch hidden></li>
+          <li><a href="contact.html" class="nav-cta" data-i18n="nav.nav-cta"></a></li>
         </ul>
       </nav>
     </header>
 
     <main class="v5-404-main">
       <div class="v5-404-inner">
-        <div class="v5-hero-eyebrow">Error 404</div>
-        <h1>This page doesn't exist.</h1>
-        <p>The link may be outdated, or the page moved when the site was rebuilt.</p>
+        <div class="v5-hero-eyebrow" data-i18n="notfound.main.hero-eyebrow"></div>
+        <h1 data-i18n="notfound.main.h1"></h1>
+        <p data-i18n="notfound.main.p"></p>
         <div class="v5-404-actions">
-          <a href="./" class="v5-btn v5-btn--accent v5-btn--lg">Back to home</a>
-          <a href="contact.html" class="v5-btn v5-btn--ghost v5-btn--lg">Contact us</a>
+          <a href="./" class="v5-btn v5-btn--accent v5-btn--lg" data-i18n="notfound.main.btn"></a>
+          <a href="contact.html" class="v5-btn v5-btn--ghost v5-btn--lg" data-i18n="notfound.main.btn-2"></a>
         </div>
       </div>
     </main>
@@ -68,12 +70,12 @@
       <footer class="site-footer">
         <div class="footer-brand">
           <span class="footer-mark"></span>
-          <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+          <span class="copyright" data-i18n="footer.copyright"></span>
         </div>
         <div class="footer-links">
-          <a href="product.html">Technology</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="product.html" data-i18n="footer.a-product"></a>
+          <a href="about.html" data-i18n="footer.a-about"></a>
+          <a href="contact.html" data-i18n="footer.a-contact"></a>
         </div>
       </footer>
     </div>

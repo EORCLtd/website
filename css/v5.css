@@ -26,6 +26,8 @@ body.v5 {
   background: #fff;
   color: var(--v5-ink);
   font-family: var(--v5-text);
+  /* a long word wraps rather than pushing the page wider than the screen */
+  overflow-wrap: break-word;
 }
 
 .v5 a {
@@ -100,17 +102,53 @@ body.v5 {
   color: var(--v5-green);
 }
 
-@media (max-width: 760px) {
+.v5 .lang-switch select {
+  appearance: none;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' stroke='%23fff' stroke-width='1.5'%3E%3Cpath d='m1 1 4 4 4-4'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 2rem 0.5rem 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 62.4375rem;
+  cursor: pointer;
+}
+
+.v5 .lang-switch select:hover {
+  border-color: #fff;
+}
+
+.v5 .lang-switch select:focus-visible {
+  outline: 2px solid var(--v5-mint);
+  outline-offset: 2px;
+}
+
+.v5 .lang-switch option {
+  color: var(--v5-green);
+  background: #fff;
+}
+
+@media (max-width: 899px) {
   .v5 .nav {
     padding: 0 1.25rem;
   }
 
+  .v5 .lang-switch {
+    padding: 0.5rem 1.5rem;
+  }
+
+  /* The open menu scrolls when it is taller than a short (landscape) screen. */
   .v5 .nav-links {
     top: 4.375rem;
+    max-height: calc(100dvh - 4.375rem);
+    overflow-y: auto;
     background: rgba(18, 48, 42, 0.96);
     border-bottom: 0;
   }
+}
 
+@media (max-width: 760px) {
   .v5 .site-footer {
     margin-top: 5rem;
   }
@@ -481,7 +519,7 @@ img.v5-photo {
 }
 
 .v5-roles.is-enhanced .v5-role.is-open .v5-role-body {
-  max-height: 40rem;
+  max-height: 60rem;
   opacity: 1;
   transition: opacity 0.5s 0.15s;
 }
@@ -506,20 +544,22 @@ img.v5-photo {
   z-index: 2;
 }
 
+/* Panels are as tall as their copy (never a fixed height, which would clip it). */
 @media (max-width: 899px) {
   .v5-roles.is-enhanced .v5-role {
-    flex: 0 0 8.75rem;
+    flex: 0 0 auto;
+    min-height: 8.75rem;
   }
 
   .v5-roles.is-enhanced .v5-role.is-open {
-    flex: 0 0 40rem;
+    min-height: 24rem;
   }
 }
 
 @media (min-width: 900px) {
   .v5-roles {
     flex-direction: row;
-    height: 42.5rem;
+    min-height: 42.5rem;
   }
 
   .v5-role {
@@ -683,13 +723,13 @@ img.v5-photo {
   margin-top: 1.25rem;
   font-size: 0.875rem;
   color: var(--v5-soft);
-  white-space: nowrap;
 }
 
 .v5-key span {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .v5-key-line {
@@ -759,6 +799,21 @@ img.v5-photo {
   align-self: center;
   margin: 0;
   background: var(--v5-mint);
+}
+
+/* Home example steps: the pill follows the scroll under the header (like the
+   Technology step nav) and stays put until the example ends. The numbers are
+   for small screens only; see the max-width: 899px block further down. */
+.v5-pills--steps {
+  position: sticky;
+  top: 5.25rem;
+  z-index: 20;
+  border: 1px solid rgba(19, 42, 37, 0.14);
+  box-shadow: 0 0.5rem 1.75rem rgba(19, 42, 37, 0.16);
+}
+
+.v5-pills--steps .v5-pill-num {
+  display: none;
 }
 
 .v5-ex-card {
@@ -882,7 +937,7 @@ img.v5-photo {
 
 .v5-outcomes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.75rem), 1fr));
   gap: 2rem;
 }
 
@@ -918,7 +973,7 @@ img.v5-photo {
 
 .v5-takeaway {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
   gap: 2rem;
   align-items: center;
   padding: 2.5rem;
@@ -971,7 +1026,7 @@ img.v5-photo {
 
 .v5-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.75rem), 1fr));
   gap: 1.5rem;
 }
 
@@ -986,7 +1041,11 @@ img.v5-photo {
   width: 100%;
   /* 4 / 5 suits photos; photoless cards are shortened to avoid an empty green slab. Restore 4 / 5 when photos are added. */
   aspect-ratio: 4 / 3;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* clip, not hidden: the box may then grow past its ratio when the overlay copy needs the room */
+  overflow: clip;
   border-radius: 1.75rem;
   background: var(--v5-green);
   color: #fff;
@@ -999,10 +1058,7 @@ img.v5-photo {
 }
 
 .v5-card-overlay {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1145,22 +1201,24 @@ img.v5-photo {
 
 /* Enhanced: a coverflow-style stage. Card positions come from data-pos:
    0 centre, 1 right, 3 left, 2 hidden behind. Sizes follow the stage width. */
+/* All four cards share one grid cell, so the stage is as tall as the tallest
+   card at any width and never clips its copy. */
 .v5-stage.is-enhanced {
   --card-w: min(47.5rem, 56cqw);
   --shift: calc(var(--card-w) * 0.42);
   position: relative;
-  display: block;
-  height: 32.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 0;
+  padding: 1.25rem 0;
   overflow: hidden;
-  transition: height 0.4s;
 }
 
 .v5-stage.is-enhanced .v5-tech-card {
-  position: absolute;
-  top: 1.25rem;
-  left: 50%;
+  position: relative;
+  grid-area: 1 / 1;
   width: var(--card-w);
-  height: calc(100% - 2.5rem);
   flex-wrap: wrap;
   transform-origin: center;
   transition: transform 0.8s var(--v5-ease), opacity 0.8s, filter 0.8s;
@@ -1168,7 +1226,6 @@ img.v5-photo {
 
 .v5-stage.is-enhanced .v5-tech-card[data-pos="0"] {
   z-index: 3;
-  transform: translateX(-50%);
 }
 
 .v5-stage.is-enhanced .v5-tech-card[data-pos="1"] {
@@ -1176,7 +1233,7 @@ img.v5-photo {
   opacity: 0.6;
   filter: saturate(0.6);
   cursor: pointer;
-  transform: translateX(calc(-50% + var(--shift))) scale(0.82);
+  transform: translateX(var(--shift)) scale(0.82);
 }
 
 .v5-stage.is-enhanced .v5-tech-card[data-pos="3"] {
@@ -1184,23 +1241,17 @@ img.v5-photo {
   opacity: 0.6;
   filter: saturate(0.6);
   cursor: pointer;
-  transform: translateX(calc(-50% - var(--shift))) scale(0.82);
+  transform: translateX(calc(-1 * var(--shift))) scale(0.82);
 }
 
 .v5-stage.is-enhanced .v5-tech-card[data-pos="2"] {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(-50%) scale(0.6);
+  transform: scale(0.6);
 }
 
-/* Narrower stages show one card; the card gets taller as the text stacks. */
-@container (max-width: 73.625rem) {
-  .v5-stage.is-enhanced {
-    height: 56.25rem;
-  }
-}
-
+/* Narrow stages show one card at full width. */
 @container (max-width: 43.6875rem) {
   .v5-stage.is-enhanced {
     --card-w: 100cqw;
@@ -1208,12 +1259,14 @@ img.v5-photo {
 
   .v5-stage.is-enhanced .v5-tech-card[data-pos="1"] {
     opacity: 0;
-    transform: translateX(60%) scale(0.8);
+    pointer-events: none;
+    transform: translateX(110%) scale(0.8);
   }
 
   .v5-stage.is-enhanced .v5-tech-card[data-pos="3"] {
     opacity: 0;
-    transform: translateX(-160%) scale(0.8);
+    pointer-events: none;
+    transform: translateX(-110%) scale(0.8);
   }
 }
 
@@ -1514,7 +1567,7 @@ img.v5-photo {
 
 .v5-pillars {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
   gap: 4rem;
 }
 
@@ -1550,7 +1603,7 @@ img.v5-photo {
 
 .v5-team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
   gap: 1.25rem;
 }
 
@@ -1859,7 +1912,7 @@ img.v5-photo {
 
 .v5-next-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
   gap: 1rem;
   margin-top: 1.75rem;
 }
@@ -2132,7 +2185,7 @@ body.v5 {
 
 .v5-path-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11.875rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11.875rem), 1fr));
   gap: 0.625rem;
 }
 
@@ -2439,7 +2492,7 @@ body.v5 {
 
 .v5 .output-grid {
   margin-top: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
 
 @media (max-width: 760px) {
@@ -2484,7 +2537,6 @@ body.v5 {
   }
 
   /* Explicit column counts, so 3, 4 and 5 items never leave a lone item on the last row. */
-  .v5-cards,
   .v5-pillars,
   .v5-team-grid,
   .v5-next-steps {
@@ -2493,6 +2545,12 @@ body.v5 {
 
   .v5-pillars {
     gap: 1.5rem;
+  }
+
+  /* Three narrow columns leave no room for the copy drawn over each card: one card per row. */
+  .v5-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
   }
 
   .v5 .output-grid,
@@ -2505,9 +2563,15 @@ body.v5 {
   }
 }
 
+/* A single card spans the page here, so a wide frame replaces the 4 / 3 one. */
+@media (min-width: 560px) and (max-width: 899px) {
+  .v5-card-media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
 @media (max-width: 699px) {
 
-  .v5-cards,
   .v5-pillars,
   .v5-team-grid,
   .v5-next-steps {
@@ -2525,4 +2589,119 @@ body.v5 {
   .v5-path-steps {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  /* Labels that are kept on one line elsewhere may wrap on a phone. */
+  .v5-btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .v5-pills {
+    flex-wrap: wrap;
+    border-radius: 1.75rem;
+  }
+
+  .v5-takeaway {
+    padding: 1.5rem;
+  }
+
+  .v5-takeaway-big {
+    font-size: 2.75rem;
+  }
 }
+
+/* Example steps on tablets and phones: numbers for the other steps, the name of
+   the selected one only, so all four always fit on one line. Same idea as the
+   Technology step nav. */
+@media (max-width: 899px) {
+  .v5-pills.v5-pills--steps {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+
+  .v5-pills--steps button {
+    display: flex;
+    align-items: center;
+    padding: 0.6875rem 0.875rem;
+  }
+
+  .v5-pills--steps .v5-pill-num {
+    display: inline;
+    margin-right: 0;
+  }
+
+  .v5-pills--steps button[aria-selected="true"] .v5-pill-num {
+    margin-right: 0.5rem;
+    color: var(--v5-accent);
+    opacity: 1;
+  }
+
+  /* Same as .sr-only: hidden visually, still read out as the tab's name. */
+  .v5-pills--steps button[aria-selected="false"] .v5-pill-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* The longest name ("Plan with a deterministic view") wraps rather than push the pill wider than a phone. */
+@media (max-width: 479px) {
+  .v5-pills.v5-pills--steps {
+    border-radius: 1.75rem;
+  }
+
+  .v5-pills--steps button[aria-selected="true"] {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-radius: 1.5rem;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+/* Figure labels are sized in the drawing's own units, so they shrink with it.
+   Where the drawing is narrow (phones, and the two-column layout on small
+   desktops) larger labels keep them readable; they still fit the viewBox. */
+@media (max-width: 560px) {
+  .v5-labels text {
+    font-size: 1.35rem;
+  }
+
+  .v5-labels--strong text {
+    font-size: 1.5rem;
+  }
+
+  .v5-labels--small text {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .v5-labels text {
+    font-size: 1.45rem;
+  }
+
+  .v5-labels--strong text {
+    font-size: 1.6rem;
+  }
+
+  .v5-labels--small text {
+    font-size: 1.25rem;
+  }
+}
+
+/* Grid and flex children shrink with their column instead of holding it open. */
+.v5-split>*,
+.v5-ex-split>*,
+.v5-feature>*,
+.v5-head>* {
+  min-width: 0;
+}
+
+/* js/i18n.js hides the page until the copy is in, so the empty skeleton never shows */
+html.i18n-loading body { visibility: hidden; }

@@ -6,7 +6,8 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'product.html'), 'utf8');
+const { render, en } = require('./helpers');
+const html = render(fs.readFileSync(path.join(root, 'product.html'), 'utf8'));
 
 // figures.js is a plain browser script; give it just enough of a DOM to load.
 const sandbox = {
@@ -33,7 +34,7 @@ test('horizon chart: buttons and HORIZONS entries match one to one', () => {
 });
 
 test('horizon chart: no-JS fallback text matches the initially pressed horizon', () => {
-  const day = HORIZONS.day;
+  const day = { title: en[HORIZONS.day.text + '.title'], body: en[HORIZONS.day.text + '.body'], axis: en[HORIZONS.day.text + '.axis'] };
   const text = attr => html.match(new RegExp(`<div[^>]*${attr}[^>]*>([\\s\\S]*?)</div>`))[1].replace(/\s+/g, ' ').trim();
   assert.equal(text('data-horizon-title'), day.title);
   assert.equal(text('data-horizon-body'), day.body);

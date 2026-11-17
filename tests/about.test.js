@@ -5,7 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.join(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'about.html'), 'utf8');
+const { render, en } = require('./helpers');
+const html = render(fs.readFileSync(path.join(root, 'about.html'), 'utf8'));
 
 const all = (re, group = 1) => Array.from(html.matchAll(re), m => m[group]);
 

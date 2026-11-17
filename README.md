@@ -89,6 +89,9 @@ request-a-demo.html       Redirect to contact.html (the old URL stays valid)
 request-a-demo/index.html Same redirect for the directory-style URL /request-a-demo/
 css/styles.css            Base styles, nav/footer and the technology figures
 css/v5.css                The v5 design (header, footer, home, technology, about, contact, 404)
+lang/languages.json       Language codes offered in the nav selector
+lang/en.json              All page copy, as flat "key": "text" pairs (one file per language)
+js/i18n.js                Loads lang/<code>.json and writes the copy into the pages
 js/main.js                Mobile nav, scroll animations, mailto helpers
 js/figures.js             Interactive figures on the Technology page
 js/analytics.js           PostHog analytics (see below)
@@ -100,6 +103,22 @@ CNAME                     Custom domain (eorc.uk). Do not delete
 All internal paths are **relative**, so the site works on both the project-page URL and the custom domain.
 `404.html` is served at any path depth, so it carries a `<base>` element that an inline script points at the
 site root. Any new link added to that page must stay relative.
+
+## Languages
+
+Pages carry no copy: elements hold a key (`data-i18n="home.hero.h1"`, `data-i18n-html` for inline
+`<strong>`/`<span>`, `data-i18n-attr="aria-label:key"` for attributes) and `js/i18n.js` fills them from
+`lang/<code>.json`. The language is `?lang=xx`, then `localStorage["eorc-lang"]`, then `<html lang>`, then `en`;
+English always loads first, so a partial translation falls back key by key. Strings used by scripts (email
+template, figure captions, "Copied") live in the same file under `contact.email.*`, `figures.*` and `ui.*`.
+
+To add a language: copy `lang/en.json` to `lang/<code>.json`, translate the values, keep the keys, set `lang.name`
+to the language's own name ("Italiano"), and add the code to `lang/languages.json`. The selector in the top bar is
+built from that list (a static site cannot list a folder) and stays hidden while only one language exists.
+A language file is an overlay on `en.json`: keys it leaves out fall back to English, so a variant such as
+`lang/en-us.json` (American spellings) only lists the strings that differ. Never
+hard-code text in a page or script; `node --test tests/*.test.js` fails if markup keeps copy or a key is missing.
+The `*.md` copies for agents are English only.
 
 ## Local preview
 

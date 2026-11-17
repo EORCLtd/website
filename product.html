@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Technology — EORC</title>
+  <title data-i18n="technology.meta.title"></title>
   <meta name="description"
-    content="Optimisation and AI methods with explicit representations of uncertainty, for energy system planning and investment decisions at scale.">
+    content="" data-i18n-attr="content:technology.meta.description">
   <link rel="icon" href="img/cropped-EORC_logo_letter-270x270.png">
   <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="alternate" type="text/markdown" href="product.md">
@@ -17,6 +17,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/v5.css">
+  <script src="js/i18n.js"></script>
 </head>
 
 <body class="v5">
@@ -25,31 +26,30 @@
     <nav class="nav">
       <a href="index.html" class="brand">
         <span class="brand-mark"></span>
-        EORC
+        <i18n-t data-i18n="nav.brand"></i18n-t>
       </a>
       <span class="nav-spacer"></span>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="" aria-expanded="false" data-i18n-attr="aria-label:nav.nav-toggle.aria-label">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="product.html" aria-current="page">Technology</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="contact.html" class="nav-cta">Request a demo</a></li>
+        <li><a href="product.html" aria-current="page" data-i18n="nav.a-product"></a></li>
+        <li><a href="about.html" data-i18n="nav.a-about"></a></li>
+        <li><a href="contact.html" data-i18n="nav.a-contact"></a></li>
+        <li class="lang-switch" data-lang-switch hidden></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav.nav-cta"></a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Progress through the five steps; shown from step 01 until the closing CTA (js/main.js) -->
-  <nav class="v5-stepnav" data-step-nav aria-label="Steps from data to decision">
+  <nav class="v5-stepnav" data-step-nav aria-label="" data-i18n-attr="aria-label:technology.page.stepnav.aria-label">
     <div class="v5-stepnav-inner">
-      <a href="#step-1" data-step="step-1"><span class="v5-stepnav-num">01</span><span class="v5-stepnav-name">Data
-          analytics</span></a>
-      <a href="#step-2" data-step="step-2"><span class="v5-stepnav-num">02</span><span class="v5-stepnav-name">Scenario
-          generation</span></a>
-      <a href="#step-3" data-step="step-3"><span class="v5-stepnav-num">03</span><span class="v5-stepnav-name">Modelling</span></a>
-      <a href="#step-4" data-step="step-4"><span class="v5-stepnav-num">04</span><span class="v5-stepnav-name">Algorithms</span></a>
-      <a href="#step-5" data-step="step-5"><span class="v5-stepnav-num">05</span><span class="v5-stepnav-name">Results</span></a>
+      <a href="#step-1" data-step="step-1"><span class="v5-stepnav-num">01</span><span class="v5-stepnav-name" data-i18n="technology.page.stepnav-name"></span></a>
+      <a href="#step-2" data-step="step-2"><span class="v5-stepnav-num">02</span><span class="v5-stepnav-name" data-i18n="technology.page.stepnav-name-2"></span></a>
+      <a href="#step-3" data-step="step-3"><span class="v5-stepnav-num">03</span><span class="v5-stepnav-name" data-i18n="technology.page.stepnav-name-3"></span></a>
+      <a href="#step-4" data-step="step-4"><span class="v5-stepnav-num">04</span><span class="v5-stepnav-name" data-i18n="technology.page.stepnav-name-4"></span></a>
+      <a href="#step-5" data-step="step-5"><span class="v5-stepnav-num">05</span><span class="v5-stepnav-name" data-i18n="technology.page.stepnav-name-5"></span></a>
     </div>
   </nav>
 
@@ -59,37 +59,31 @@
       <img class="v5-photo" src="img/web/technology.jpg" alt="" decoding="async">
       <div class="v5-hero-shade" aria-hidden="true"></div>
       <div class="v5-page-hero-inner">
-        <div class="v5-hero-kicker">Our technology</div>
-        <h1>Decisions intelligence <span>under operational and strategic uncertainty.</span></h1>
-        <p class="v5-page-lede">Advanced optimisation and machine learning methods with explicit representations of
-          uncertainty, operating at scale across energy carriers, geographic regions and decision timescales.</p>
+        <div class="v5-hero-kicker" data-i18n="technology.tech-hero.hero-kicker"></div>
+        <h1 data-i18n-html="technology.tech-hero.h1"></h1>
+        <p class="v5-page-lede" data-i18n="technology.tech-hero.page-lede"></p>
       </div>
     </section>
 
     <!-- From data to decision -->
     <section class="v5-path-section">
       <div class="v5-wrap v5-path">
-        <div data-rv class="v5-eyebrow">From data to decision</div>
+        <div data-rv class="v5-eyebrow" data-i18n="technology.path-section.eyebrow"></div>
         <div data-rv data-rvd="60" class="v5-path-steps">
           <a href="#step-1"><span class="v5-path-head"><span class="v5-path-num">01</span><span
-                class="v5-path-name">Data analytics</span></span><span class="v5-path-blurb">Historical data,
-              scenarios and your assumptions.</span></a>
+                class="v5-path-name" data-i18n="technology.path-section.path-name"></span></span><span class="v5-path-blurb" data-i18n="technology.path-section.path-blurb"></span></a>
           <a href="#step-2"><span class="v5-path-head"><span class="v5-path-num">02</span><span
-                class="v5-path-name">Scenario generation</span></span><span class="v5-path-blurb">Possible futures on
-              operational and strategic time horizons.</span></a>
+                class="v5-path-name" data-i18n="technology.path-section.path-name-2"></span></span><span class="v5-path-blurb" data-i18n="technology.path-section.path-blurb-2"></span></a>
           <a href="#step-3"><span class="v5-path-head"><span class="v5-path-num">03</span><span
-                class="v5-path-name">Modelling</span></span><span class="v5-path-blurb">Modular energy system model
-              library.</span></a>
+                class="v5-path-name" data-i18n="technology.path-section.path-name-3"></span></span><span class="v5-path-blurb" data-i18n="technology.path-section.path-blurb-3"></span></a>
           <a href="#step-4"><span class="v5-path-head"><span class="v5-path-num">04</span><span
-                class="v5-path-name">Algorithms</span></span><span class="v5-path-blurb">Algorithm tool box solving
-              complex problems fast.</span></a>
+                class="v5-path-name" data-i18n="technology.path-section.path-name-4"></span></span><span class="v5-path-blurb" data-i18n="technology.path-section.path-blurb-4"></span></a>
           <a href="#step-5"><span class="v5-path-head"><span class="v5-path-num">05</span><span
-                class="v5-path-name">Results analytics</span></span><span class="v5-path-blurb">Prices, pathways,
-              valuations and risk.</span></a>
+                class="v5-path-name" data-i18n="technology.path-section.path-name-5"></span></span><span class="v5-path-blurb" data-i18n="technology.path-section.path-blurb-5"></span></a>
         </div>
         <div data-rv data-rvd="120" class="v5-path-actions">
-          <a href="#step-1" class="v5-btn v5-btn--dark v5-btn--lg">Start with the data ↓</a>
-          <a href="contact.html?intent=demo" class="v5-btn v5-btn--outline v5-btn--lg">Request a demo</a>
+          <a href="#step-1" class="v5-btn v5-btn--dark v5-btn--lg" data-i18n="technology.path-section.btn"></a>
+          <a href="contact.html?intent=demo" class="v5-btn v5-btn--outline v5-btn--lg" data-i18n="technology.path-section.btn-2"></a>
         </div>
       </div>
     </section>
@@ -98,64 +92,63 @@
     <section id="step-1" class="v5-step">
       <div class="v5-wrap v5-feature">
         <div data-rv class="v5-feature-copy">
-          <div class="v5-eyebrow">Step 01 · Data Analytics</div>
-          <h2 class="v5-title v5-title--step">Flexible database management.</h2>
-          <p>EORC's data analytics provides European energy system database with high customisation capabilities.</p>
+          <div class="v5-eyebrow" data-i18n="technology.step-1.eyebrow"></div>
+          <h2 class="v5-title v5-title--step" data-i18n="technology.step-1.title"></h2>
+          <p data-i18n="technology.step-1.p"></p>
           <ul class="v5-feature-list">
-            <li>Up-to-date European energy system database covering multiple energy carriers.</li>
-            <li>Decades of high resolution time series data for renewable and energy demand</li>
-            <li>Flexible and user friendly data management interface allowing you to input your own data and assumptions
-            </li>
+            <li data-i18n="technology.step-1.li"></li>
+            <li data-i18n="technology.step-1.li-2"></li>
+            <li data-i18n="technology.step-1.li-3"></li>
           </ul>
-          <a href="#step-2" class="v5-step-next">Next: Scenario generation ↓</a>
+          <a href="#step-2" class="v5-step-next" data-i18n="technology.step-1.step-next"></a>
         </div>
         <div data-rv data-rvd="120" class="v5-feature-media">
           <div data-fig="inputs" class="figure-panel-light">
             <div class="inputs-head">
-              <span class="inputs-label">Data inputs</span>
-              <span class="inputs-label muted">resolution</span>
+              <span class="inputs-label" data-i18n="technology.step-1.inputs-label"></span>
+              <span class="inputs-label muted" data-i18n="technology.step-1.inputs-label-2"></span>
             </div>
             <div class="input-row">
               <div>
-                <div class="input-name">Energy demand</div>
-                <div class="input-source">Historical load</div>
+                <div class="input-name" data-i18n="technology.step-1.input-name"></div>
+                <div class="input-source" data-i18n="technology.step-1.input-source"></div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="demand"></path>
               </svg>
-              <span class="input-res">hourly</span>
+              <span class="input-res" data-i18n="technology.step-1.input-res"></span>
             </div>
             <div class="input-row">
               <div>
-                <div class="input-name">Wind and solar generation</div>
-                <div class="input-source">40 years historical data and machine learning based forecasts.</div>
+                <div class="input-name" data-i18n="technology.step-1.input-name-2"></div>
+                <div class="input-source" data-i18n="technology.step-1.input-source-2"></div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="renewables"></path>
               </svg>
-              <span class="input-res">hourly</span>
+              <span class="input-res" data-i18n="technology.step-1.input-res-2"></span>
             </div>
             <div class="input-row">
               <div>
-                <div class="input-name">Fuel and carbon prices</div>
-                <div class="input-source">Up-to-date market information and policy assumptions</div>
+                <div class="input-name" data-i18n="technology.step-1.input-name-3"></div>
+                <div class="input-source" data-i18n="technology.step-1.input-source-3"></div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="prices"></path>
               </svg>
-              <span class="input-res">monthly</span>
+              <span class="input-res" data-i18n="technology.step-1.input-res-3"></span>
             </div>
             <div class="input-row">
               <div>
-                <div class="input-name">Policy and technology costs</div>
-                <div class="input-source">European energy system database</div>
+                <div class="input-name" data-i18n="technology.step-1.input-name-4"></div>
+                <div class="input-source" data-i18n="technology.step-1.input-source-4"></div>
               </div>
               <svg viewBox="0 0 140 32" preserveAspectRatio="none" aria-hidden="true">
                 <path data-spark="costs"></path>
               </svg>
-              <span class="input-res">yearly</span>
+              <span class="input-res" data-i18n="technology.step-1.input-res-4"></span>
             </div>
-            <div class="figure-caption inputs-note">Schematic series</div>
+            <div class="figure-caption inputs-note" data-i18n="technology.step-1.figure-caption"></div>
           </div>
         </div>
       </div>
@@ -168,8 +161,8 @@
           <!-- Uncertainty across three decision timescales -->
           <div data-fig="horizon" class="figure-panel">
             <div class="seg" data-horizon-controls hidden>
-              <button type="button" data-value="day" aria-pressed="true">Operational</button>
-              <button type="button" data-value="decade" aria-pressed="false">Strategic</button>
+              <button type="button" data-value="day" aria-pressed="true" data-i18n="technology.step-2.button"></button>
+              <button type="button" data-value="decade" aria-pressed="false" data-i18n="technology.step-2.button-2"></button>
             </div>
             <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:15.625rem;"
               aria-hidden="true">
@@ -183,24 +176,22 @@
             </svg>
             <div class="figure-foot">
               <div>
-                <div class="horizon-title" data-horizon-title>Short-term operational decisions</div>
-                <div class="horizon-body" data-horizon-body>Resolved at high temporal resolution, inside the same model
-                  that carries the long-term plan.</div>
+                <div class="horizon-title" data-horizon-title data-i18n="figures.horizon.day.title"></div>
+                <div class="horizon-body" data-horizon-body data-i18n="figures.horizon.day.body"></div>
               </div>
-              <div class="figure-caption" data-horizon-axis>hours → days</div>
+              <div class="figure-caption" data-horizon-axis data-i18n="figures.horizon.day.axis"></div>
             </div>
           </div>
         </div>
         <div data-rv class="v5-feature-copy">
-          <div class="v5-eyebrow">Step 02 · Scenario generation</div>
-          <h2 class="v5-title v5-title--step">Multi-timescale uncertainty scenario generation.</h2>
-          <p>Proprietary scenario generation algorithms to help you capture uncertainty on both operational and
-            strategic time horizons.</p>
+          <div class="v5-eyebrow" data-i18n="technology.step-2.eyebrow"></div>
+          <h2 class="v5-title v5-title--step" data-i18n="technology.step-2.title"></h2>
+          <p data-i18n="technology.step-2.p"></p>
           <ul class="v5-feature-list">
-            <li>Optimisation and machine learning based short-term scenario generation.</li>
-            <li>Data-driven long-term scenario generation</li>
+            <li data-i18n="technology.step-2.li"></li>
+            <li data-i18n="technology.step-2.li-2"></li>
           </ul>
-          <a href="#step-3" class="v5-step-next">Next: Modelling ↓</a>
+          <a href="#step-3" class="v5-step-next" data-i18n="technology.step-2.step-next"></a>
         </div>
       </div>
     </section>
@@ -209,25 +200,24 @@
     <section id="step-3" class="v5-step">
       <div class="v5-wrap v5-feature">
         <div data-rv class="v5-feature-copy">
-          <div class="v5-eyebrow">Step 03 · Modelling</div>
-          <h2 class="v5-title v5-title--step">Modular multi-energy-carrier model library makes model building easy.</h2>
-          <p>Electricity, heat, transport and other carriers in one integrated model, configurable up to pan-European
-            scale, linking long-term strategic planning with short-term operational decisions.</p>
+          <div class="v5-eyebrow" data-i18n="technology.step-3.eyebrow"></div>
+          <h2 class="v5-title v5-title--step" data-i18n="technology.step-3.title"></h2>
+          <p data-i18n="technology.step-3.p"></p>
           <ul class="v5-feature-list">
-            <li>Pan-European multi-energy system: power, oil and natural gas, hydrogen</li>
-            <li>North Sea offshore system: offshore wind, O&amp;G platforms, pipelines</li>
-            <li>Investment, retrofit and abandonment planning with operational scheduling</li>
+            <li data-i18n="technology.step-3.li"></li>
+            <li data-i18n="technology.step-3.li-2"></li>
+            <li data-i18n="technology.step-3.li-3"></li>
           </ul>
-          <a href="#step-4" class="v5-step-next">Next: Algorithms ↓</a>
+          <a href="#step-4" class="v5-step-next" data-i18n="technology.step-3.step-next"></a>
         </div>
         <div data-rv data-rvd="120" class="v5-feature-media">
           <!-- Pan-European network, filtered by energy carrier -->
           <div data-fig="network" class="figure-panel-dark on-dark">
             <div class="filter-row" data-net-controls hidden>
-              <button type="button" data-value="all" aria-pressed="true">All carriers</button>
-              <button type="button" data-value="e" aria-pressed="false">Power</button>
-              <button type="button" data-value="h" aria-pressed="false">Hydrogen</button>
-              <button type="button" data-value="g" aria-pressed="false">Oil, gas &amp; CCS</button>
+              <button type="button" data-value="all" aria-pressed="true" data-i18n="technology.step-3.button"></button>
+              <button type="button" data-value="e" aria-pressed="false" data-i18n="technology.step-3.button-2"></button>
+              <button type="button" data-value="h" aria-pressed="false" data-i18n="technology.step-3.button-3"></button>
+              <button type="button" data-value="g" aria-pressed="false" data-i18n="technology.step-3.button-4"></button>
             </div>
             <svg class="figure-svg auto-h" viewBox="0 0 600 620" aria-hidden="true">
               <g data-net-links></g>
@@ -235,8 +225,8 @@
               <g data-net-nodes></g>
             </svg>
             <div class="figure-foot">
-              <div class="figure-caption" data-net-caption>All carriers in one integrated model</div>
-              <div class="figure-caption">schematic topology</div>
+              <div class="figure-caption" data-net-caption data-i18n="figures.carrier.all"></div>
+              <div class="figure-caption" data-i18n="technology.step-3.figure-caption-2"></div>
             </div>
           </div>
         </div>
@@ -248,15 +238,13 @@
       <div class="v5-wrap v5-step-inner">
         <div class="v5-split-head">
           <div data-rv>
-            <div class="v5-eyebrow">Step 04 · Algorithms</div>
-            <h2 class="v5-title v5-title--step">Efficient computational capability to solve large problems at unprecedented
-              scale.</h2>
+            <div class="v5-eyebrow" data-i18n="technology.step-4.eyebrow"></div>
+            <h2 class="v5-title v5-title--step" data-i18n="technology.step-4.title"></h2>
           </div>
           <div data-rv data-rvd="90">
-            <p class="v5-lede">Fast, cost efficient optimisation and machine learning based algorithms enabling
-              analysis at high spatial, temporal and technological resolution under multi-timescale uncertainty.</p>
+            <p class="v5-lede" data-i18n="technology.step-4.lede"></p>
             <div class="tag-row">
-              <span>proprietary EORC algorithms</span>
+              <span data-i18n="technology.step-4.span"></span>
             </div>
           </div>
         </div>
@@ -264,25 +252,24 @@
         <!-- Benchmarks: bars grow from the axis when first scrolled to -->
         <div class="bench-grid">
           <div data-rv class="bench-card">
-            <div class="bench-label">Rapid solution times</div>
+            <div class="bench-label" data-i18n="technology.step-4.bench-label"></div>
             <figure data-fig="bars" class="bars on-dark" style="--max:120;">
               <div class="bars-plot">
                 <div class="bars-row">
-                  <div class="bars-name">Industry-leading solver</div>
-                  <div class="bars-track"><span class="bars-note">Cannot solve this large-scale problem</span></div>
+                  <div class="bars-name" data-i18n="technology.step-4.bars-name"></div>
+                  <div class="bars-track"><span class="bars-note" data-i18n="technology.step-4.bars-note"></span></div>
                 </div>
                 <div class="bars-row">
-                  <div class="bars-name">Industry-leading solver + traditional algorithm</div>
+                  <div class="bars-name" data-i18n="technology.step-4.bars-name-2"></div>
                   <div class="bars-track">
-                    <div class="bar-line" style="--i:0;"><span class="bar" style="--v:106;"><span class="bar-value">≈
-                          106 h</span></span></div>
+                    <div class="bar-line" style="--i:0;"><span class="bar" style="--v:106;"><span class="bar-value" data-i18n="technology.step-4.bar-value"></span></span></div>
                   </div>
                 </div>
                 <div class="bars-row">
-                  <div class="bars-name">EORC</div>
+                  <div class="bars-name" data-i18n="technology.step-4.bars-name-3"></div>
                   <div class="bars-track">
                     <div class="bar-line" style="--i:1;"><span class="bar" style="--v:0.9;"></span><span
-                        class="bar-value out">&lt; 1 h</span></div>
+                        class="bar-value out" data-i18n="technology.step-4.bar-value-2"></span></div>
                   </div>
                 </div>
               </div>
@@ -292,35 +279,33 @@
                     style="--at:0.5;">60</span><span class="minor" style="--at:0.75;">90</span><span
                     style="--at:1;">120</span>
                 </div>
-                <div class="bars-unit">Hours</div>
+                <div class="bars-unit" data-i18n="technology.step-4.bars-unit"></div>
               </div>
               <figcaption class="bars-caption">
-                <span class="bars-takeaway">EORC's algorithm is <strong>120 times faster</strong> than an
-                  industry-leading solver + a traditional algorithm.</span>
-                <span class="bars-footnote">Linear programming problem size: 1 billion variables and 4.5 billion
-                  constraints, ~1.5 TB RAM</span>
+                <span class="bars-takeaway" data-i18n-html="technology.step-4.bars-takeaway"></span>
+                <span class="bars-footnote" data-i18n="technology.step-4.bars-footnote"></span>
               </figcaption>
             </figure>
           </div>
           <div data-rv data-rvd="110" class="bench-card">
-            <div class="bench-label">Tractability beyond solver limits</div>
+            <div class="bench-label" data-i18n="technology.step-4.bench-label-2"></div>
             <figure data-fig="bars" class="bars on-dark" style="--max:5000;">
               <div class="bars-legend">
-                <span style="--swatch:var(--series-a);">Variables</span>
-                <span style="--swatch:var(--series-b);">Constraints</span>
+                <span style="--swatch:var(--series-a);" data-i18n="technology.step-4.span-2"></span>
+                <span style="--swatch:var(--series-b);" data-i18n="technology.step-4.span-3"></span>
               </div>
               <div class="bars-plot">
                 <div class="bars-row">
-                  <div class="bars-name">Industry-leading solver</div>
-                  <div class="bars-track"><span class="bars-note">549× smaller — not visible at this scale</span></div>
+                  <div class="bars-name" data-i18n="technology.step-4.bars-name-4"></div>
+                  <div class="bars-track"><span class="bars-note" data-i18n="technology.step-4.bars-note-2"></span></div>
                 </div>
                 <div class="bars-row">
-                  <div class="bars-name">EORC</div>
+                  <div class="bars-name" data-i18n="technology.step-4.bars-name-5"></div>
                   <div class="bars-track">
                     <div class="bar-line" style="--i:0;"><span class="bar" style="--v:1000;"></span><span
-                        class="bar-value out"><span class="sr-only">Variables: </span>≈ 1&nbsp;000&nbsp;M</span></div>
+                        class="bar-value out"><span class="sr-only" data-i18n="technology.step-4.sr-only"></span> <i18n-t data-i18n="technology.step-4.bar-value-3"></i18n-t></span></div>
                     <div class="bar-line" style="--i:1;"><span class="bar b" style="--v:4500;"><span
-                          class="bar-value"><span class="sr-only">Constraints: </span>≈ 4&nbsp;500&nbsp;M</span></span>
+                          class="bar-value"><span class="sr-only" data-i18n="technology.step-4.sr-only-2"></span> <i18n-t data-i18n="technology.step-4.bar-value-4"></i18n-t></span></span>
                     </div>
                   </div>
                 </div>
@@ -331,38 +316,35 @@
                     style="--at:0.5;">2&nbsp;500</span><span class="minor" style="--at:0.75;">3&nbsp;750</span><span
                     style="--at:1;">5&nbsp;000</span>
                 </div>
-                <div class="bars-unit">Million</div>
+                <div class="bars-unit" data-i18n="technology.step-4.bars-unit-2"></div>
               </div>
               <figcaption class="bars-caption">
-                <span class="bars-takeaway">EORC solves problem instances up to <strong>549 times larger</strong> than
-                  those tractable with an industry-leading solver.</span>
+                <span class="bars-takeaway" data-i18n-html="technology.step-4.bars-takeaway-2"></span>
               </figcaption>
             </figure>
           </div>
         </div>
-        <a href="#step-5" class="v5-step-next">Next: Results ↓</a>
+        <a href="#step-5" class="v5-step-next" data-i18n="technology.step-4.step-next"></a>
       </div>
     </section>
 
     <!-- 05 Results -->
     <section id="step-5" class="v5-step">
       <div class="v5-wrap v5-step-inner">
-        <div data-rv class="v5-eyebrow">Step 05 · Results</div>
+        <div data-rv class="v5-eyebrow" data-i18n="technology.step-5.eyebrow"></div>
         <div data-rv data-rvd="80" class="v5-split-head">
-          <h2 class="v5-title v5-title--step">Powerful results analytics help you make advanced decision intelligence
-            accessible to stakeholders from all backgrounds.</h2>
-          <p class="v5-lede">Interactive visualisation and reporting helping you find and demonstrate
-            the hidden value in uncertainty as an expert.</p>
+          <h2 class="v5-title v5-title--step" data-i18n="technology.step-5.title"></h2>
+          <p class="v5-lede" data-i18n="technology.step-5.lede"></p>
         </div>
 
         <div data-rv data-rvd="120" data-fig="fan" class="figure-panel-light fan-panel">
           <div class="fan-head">
-            <span class="inputs-label">Long-term power price outlook</span>
+            <span class="inputs-label" data-i18n="technology.step-5.inputs-label"></span>
             <span class="fan-legend">
-              <span><i class="swatch-line"></i>Median</span>
-              <span><i class="swatch-box strong"></i>Likely range</span>
-              <span><i class="swatch-box"></i>Full range</span>
-              <span><i class="swatch-line dashed"></i>Single forecast</span>
+              <span><i class="swatch-line"></i><i18n-t data-i18n="technology.step-5.span"></i18n-t></span>
+              <span><i class="swatch-box strong"></i><i18n-t data-i18n="technology.step-5.span-2"></i18n-t></span>
+              <span><i class="swatch-box"></i><i18n-t data-i18n="technology.step-5.span-3"></i18n-t></span>
+              <span><i class="swatch-line dashed"></i><i18n-t data-i18n="technology.step-5.span-4"></i18n-t></span>
             </span>
           </div>
           <svg class="figure-svg" viewBox="0 0 600 220" preserveAspectRatio="none" style="height:16.25rem;"
@@ -377,31 +359,29 @@
             <path data-fan="median" fill="none" stroke="var(--accent-deep)" stroke-width="2.4" stroke-linejoin="round"
               vector-effect="non-scaling-stroke"></path>
           </svg>
-          <div class="fan-axis"><span>Today</span><span>+10 years</span><span>+25 years · illustrative</span></div>
+          <div class="fan-axis"><span data-i18n="technology.step-5.span-5"></span><span data-i18n="technology.step-5.span-6"></span><span data-i18n="technology.step-5.span-7"></span></div>
         </div>
 
         <div data-rv data-rvd="160" class="output-grid">
           <div class="output">
             <span class="output-mark"></span>
-            <h3>Long-term power prices</h3>
-            <p>Robust power price forecast based on optimisation and machine learning with multi-timescale uncertainty.
-            </p>
+            <h3 data-i18n="technology.step-5.h3"></h3>
+            <p data-i18n="technology.step-5.p"></p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
-            <h3>Infrastructure pathways</h3>
-            <p>Analyse decarbonization pathway with multiple conventional and emerging energy carriers included.</p>
+            <h3 data-i18n="technology.step-5.h3-2"></h3>
+            <p data-i18n="technology.step-5.p-2"></p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
-            <h3>Asset valuation</h3>
-            <p>Guide your next big decisions in energy assets by more robust long-term asset valuation spanning their
-              entire lifetimes.</p>
+            <h3 data-i18n="technology.step-5.h3-3"></h3>
+            <p data-i18n="technology.step-5.p-3"></p>
           </div>
           <div class="output">
             <span class="output-mark"></span>
-            <h3>Uncertainty analytics</h3>
-            <p>Identify what uncertainty is most critical to your system and quantify the value of managing it.</p>
+            <h3 data-i18n="technology.step-5.h3-4"></h3>
+            <p data-i18n="technology.step-5.p-4"></p>
           </div>
         </div>
       </div>
@@ -411,24 +391,24 @@
     <section id="get-started" class="v5-closing v5-closing--center">
       <div class="v5-wrap">
         <div class="v5-closing-center">
-          <div data-rv class="v5-hero-kicker">Your next step</div>
-          <h2 data-rv data-rvd="60">See your energy system <span>under uncertainty.</span></h2>
-          <p data-rv data-rvd="120">Get a walkthrough of the EORC platform on a problem that looks like yours.</p>
+          <div data-rv class="v5-hero-kicker" data-i18n="technology.get-started.hero-kicker"></div>
+          <h2 data-rv data-rvd="60" data-i18n-html="technology.get-started.h2"></h2>
+          <p data-rv data-rvd="120" data-i18n="technology.get-started.p"></p>
           <div data-rv data-rvd="180" class="v5-closing-actions">
-            <a href="contact.html?intent=demo" class="v5-btn v5-btn--accent v5-btn--lg">Request a demo</a>
-            <a href="about.html" class="v5-btn v5-btn--ghost v5-btn--lg">Meet the team</a>
+            <a href="contact.html?intent=demo" class="v5-btn v5-btn--accent v5-btn--lg" data-i18n="technology.get-started.btn"></a>
+            <a href="about.html" class="v5-btn v5-btn--ghost v5-btn--lg" data-i18n="technology.get-started.btn-2"></a>
           </div>
         </div>
         <footer class="site-footer">
           <div class="footer-brand">
             <span class="footer-mark"></span>
-            <span class="copyright">© 2026 Edinburgh Operational Research Corporation Ltd</span>
+            <span class="copyright" data-i18n="footer.copyright"></span>
           </div>
           <div class="footer-links">
-            <a href="product.html">Technology</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html">Request a demo</a>
+            <a href="product.html" data-i18n="footer.a-product"></a>
+            <a href="about.html" data-i18n="footer.a-about"></a>
+            <a href="contact.html" data-i18n="footer.a-contact"></a>
+            <a href="contact.html" data-i18n="footer.a-contact-2"></a>
           </div>
         </footer>
       </div>
